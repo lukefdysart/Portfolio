@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Page not found · Luke Dysart</title>
+  <meta name="robots" content="noindex" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/css/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23ff7814'/%3E%3Ctext x='50%25' y='56%25' font-family='sans-serif' font-size='15' font-weight='700' fill='%231a0f03' text-anchor='middle' dominant-baseline='middle'%3ELD%3C/text%3E%3C/svg%3E" />
+  <style>
+    .nf { min-height: 100vh; display: flex; flex-direction: column; align-items: center;
+          justify-content: center; text-align: center; padding: 24px; position: relative; }
+    .nf .hero-grid-bg { position: absolute; inset: 0; }
+    .nf-code { font-family: var(--font-head); font-weight: 700; letter-spacing: -2px;
+               font-size: clamp(4rem, 18vw, 10rem); line-height: 1; color: var(--accent); position: relative; z-index: 2; }
+    .nf-msg { font-family: var(--font-head); font-size: clamp(1.2rem, 4vw, 1.8rem);
+              margin: 8px 0 24px; position: relative; z-index: 2; }
+    .nf-sub { color: var(--text-dim); max-width: 440px; margin: 0 auto 30px; position: relative; z-index: 2; }
+  </style>
+</head>
+<body>
+  <main class="nf">
+    <div class="hero-grid-bg"></div>
+    <div class="nf-code">404</div>
+    <h1 class="nf-msg">This page wandered off.</h1>
+    <p class="nf-sub">The link may be broken or the page may have moved. Let's get you back to something that exists.</p>
+    <a class="btn btn-primary" href="/Portfolio/">← Back to home</a>
+  </main>
+</body>
+</html>
