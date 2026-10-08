@@ -59,12 +59,16 @@
   var lightboxImg = document.getElementById('lightbox-img');
   var closeBtn = document.querySelector('.lightbox-close');
 
+  var lightboxSvgHost = document.getElementById('lightbox-svg');
+
+  // Raster artwork (opens only if the real file is present)
   document.querySelectorAll('.gallery-item[data-full]').forEach(function (item) {
     item.addEventListener('click', function () {
       var src = item.getAttribute('data-full');
-      // Only open if the real image is present (placeholder has no actual <img>)
       var probe = new Image();
       probe.onload = function () {
+        if (lightboxSvgHost) { lightboxSvgHost.hidden = true; lightboxSvgHost.innerHTML = ''; }
+        lightboxImg.hidden = false;
         lightboxImg.src = src;
         lightbox.hidden = false;
       };
@@ -75,9 +79,24 @@
     });
   });
 
+  // Inline-SVG artwork (self-contained, always available)
+  document.querySelectorAll('.gallery-item[data-svg]').forEach(function (item) {
+    item.addEventListener('click', function () {
+      var svg = item.querySelector('.art-svg svg');
+      if (!svg || !lightboxSvgHost) return;
+      lightboxImg.hidden = true;
+      lightboxImg.src = '';
+      lightboxSvgHost.innerHTML = svg.outerHTML;
+      lightboxSvgHost.hidden = false;
+      lightbox.hidden = false;
+    });
+  });
+
   function closeLightbox() {
     lightbox.hidden = true;
     lightboxImg.src = '';
+    lightboxImg.hidden = false;
+    if (lightboxSvgHost) { lightboxSvgHost.hidden = true; lightboxSvgHost.innerHTML = ''; }
   }
   if (closeBtn) closeBtn.addEventListener('click', closeLightbox);
   if (lightbox) lightbox.addEventListener('click', function (e) {

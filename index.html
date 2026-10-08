@@ -64,10 +64,33 @@
 
       <div class="about-grid">
         <div class="about-photo">
-          <!-- Replace with your photo: assets/img/luke.jpg -->
-          <div class="photo-placeholder">
-            <span>Your photo here</span>
-            <small>assets/img/luke.jpg</small>
+          <!-- Monogram card rendered entirely in SVG (no raster image, no pixel limits).
+               To use a real photo later, replace this block with:
+               <img class="about-photo-img" src="assets/img/luke.jpg" alt="Luke Dysart" /> -->
+          <div class="photo-monogram" role="img" aria-label="Luke Dysart monogram">
+            <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="mono-bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#13202e" />
+                  <stop offset="1" stop-color="#0d1119" />
+                </linearGradient>
+                <radialGradient id="mono-glow" cx="30%" cy="26%" r="70%">
+                  <stop offset="0" stop-color="rgba(255,120,20,0.28)" />
+                  <stop offset="1" stop-color="rgba(255,120,20,0)" />
+                </radialGradient>
+              </defs>
+              <rect width="320" height="400" fill="url(#mono-bg)" />
+              <rect width="320" height="400" fill="url(#mono-glow)" />
+              <g fill="none" stroke="#262d3a" stroke-width="1">
+                <path d="M0 100 H320 M0 200 H320 M0 300 H320 M80 0 V400 M160 0 V400 M240 0 V400" opacity="0.5" />
+              </g>
+              <text x="160" y="210" text-anchor="middle"
+                    font-family="'Space Grotesk', sans-serif" font-weight="700"
+                    font-size="128" letter-spacing="4" fill="#e8ebf0">LD</text>
+              <text x="160" y="268" text-anchor="middle"
+                    font-family="'Space Grotesk', sans-serif" font-weight="500"
+                    font-size="15" letter-spacing="6" fill="#ff7814">LUKE DYSART</text>
+            </svg>
           </div>
         </div>
 
@@ -245,10 +268,69 @@
       <p class="section-lead">A selection of visual work. More pieces coming soon.</p>
 
       <div class="gallery" id="gallery">
-        <figure class="gallery-item" data-full="assets/img/sea-turtle.jpg">
-          <div class="art-placeholder">
-            <span>Sea Turtle</span>
-            <small>assets/img/sea-turtle.jpg</small>
+        <figure class="gallery-item art-svg-item" data-svg="art-sea-turtle">
+          <div class="art-svg" aria-label="Sea Turtle — stained-glass style illustration" role="img">
+            <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs>
+                <radialGradient id="turt-sea" cx="50%" cy="40%" r="75%">
+                  <stop offset="0" stop-color="#0e3a4a" />
+                  <stop offset="0.6" stop-color="#0a2838" />
+                  <stop offset="1" stop-color="#061a26" />
+                </radialGradient>
+                <linearGradient id="turt-shell" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#2bb673" />
+                  <stop offset="1" stop-color="#0f6b4a" />
+                </linearGradient>
+                <linearGradient id="turt-shell2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffb86c" />
+                  <stop offset="1" stop-color="#ff7814" />
+                </linearGradient>
+                <linearGradient id="turt-flip" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#4ea1ff" />
+                  <stop offset="1" stop-color="#1f6fd0" />
+                </linearGradient>
+              </defs>
+              <!-- water background -->
+              <rect width="300" height="400" fill="url(#turt-sea)" />
+              <!-- light rays -->
+              <g opacity="0.18" fill="#bfe9ff">
+                <polygon points="60,0 120,0 90,400 70,400" />
+                <polygon points="150,0 200,0 180,400 155,400" />
+                <polygon points="230,0 265,0 250,400 232,400" />
+              </g>
+              <!-- bubbles -->
+              <g fill="#bfe9ff" opacity="0.5">
+                <circle cx="245" cy="70" r="7" /><circle cx="262" cy="110" r="4" />
+                <circle cx="40" cy="320" r="6" /><circle cx="55" cy="350" r="3" />
+              </g>
+              <!-- turtle, leaded stained-glass look (dark outlines between color cells) -->
+              <g stroke="#05121a" stroke-width="3" stroke-linejoin="round">
+                <!-- rear flippers -->
+                <path d="M78 268 q-34 20 -40 54 q28 -6 54 -24 Z" fill="url(#turt-flip)" />
+                <path d="M222 268 q34 20 40 54 q-28 -6 -54 -24 Z" fill="url(#turt-flip)" />
+                <!-- front flippers -->
+                <path d="M70 150 q-46 -14 -58 20 q30 20 70 10 Z" fill="url(#turt-flip)" />
+                <path d="M230 150 q46 -14 58 20 q-30 20 -70 10 Z" fill="url(#turt-flip)" />
+                <!-- head -->
+                <path d="M150 70 q-26 2 -26 34 q0 24 26 28 q26 -4 26 -28 q0 -32 -26 -34 Z" fill="url(#turt-shell)" />
+                <circle cx="139" cy="104" r="4" fill="#05121a" stroke="none" />
+                <circle cx="161" cy="104" r="4" fill="#05121a" stroke="none" />
+                <!-- shell outer -->
+                <path d="M150 118 q74 6 74 92 q0 78 -74 86 q-74 -8 -74 -86 q0 -86 74 -92 Z" fill="url(#turt-shell)" />
+                <!-- central scutes -->
+                <path d="M150 128 l20 26 l-20 24 l-20 -24 Z" fill="url(#turt-shell2)" />
+                <path d="M150 178 l22 28 l-22 26 l-22 -26 Z" fill="url(#turt-shell2)" />
+                <path d="M150 232 l20 26 l-20 26 l-20 -26 Z" fill="url(#turt-shell2)" />
+                <!-- side scutes left -->
+                <path d="M128 150 l-26 10 l6 36 l24 -16 Z" fill="#0f6b4a" />
+                <path d="M126 206 l-24 8 l8 40 l24 -18 Z" fill="#0f6b4a" />
+                <path d="M128 268 l-20 10 l14 30 l20 -22 Z" fill="#0f6b4a" />
+                <!-- side scutes right -->
+                <path d="M172 150 l26 10 l-6 36 l-24 -16 Z" fill="#0f6b4a" />
+                <path d="M174 206 l24 8 l-8 40 l-24 -18 Z" fill="#0f6b4a" />
+                <path d="M172 268 l20 10 l-14 30 l-20 -22 Z" fill="#0f6b4a" />
+              </g>
+            </svg>
           </div>
           <figcaption>Sea Turtle — stained-glass style illustration</figcaption>
         </figure>
@@ -269,6 +351,7 @@
   <div class="lightbox" id="lightbox" hidden>
     <button class="lightbox-close" aria-label="Close">×</button>
     <img id="lightbox-img" alt="" />
+    <div class="lightbox-svg" id="lightbox-svg" hidden></div>
   </div>
 
   <!-- ================= FOOTER ================= -->
