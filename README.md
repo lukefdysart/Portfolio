@@ -16,8 +16,13 @@ open `index.html` or deploy the folder as-is.
     hand-tracking demo** (MediaPipe) that reproduces the Python project's
     finger-bend pipeline and drives an animated robotic hand
   - **Stories Illuminated** — projection-mapped animatronic storybook *(in development)*
-- **Creative Art** — image gallery with lightbox
+- **Creative Art** — gallery with lightbox (opens full artwork on click)
 - **LinkedIn** — external link
+
+> **Media note:** The About portrait and the *Sea Turtle* gallery piece are
+> rendered as **inline SVG** — self-contained vector art with no external image
+> files and no pixel-size limits. You can drop in real raster images later (see
+> below), but nothing is "missing" by default.
 
 ## Run locally
 
@@ -39,10 +44,13 @@ Everything marked as a placeholder is easy to swap:
 
 | What | Where |
 |------|-------|
-| Your photo | drop `assets/img/luke.jpg` (About section auto-uses it) |
-| Sea turtle art | drop `assets/img/sea-turtle.jpg` |
-| More artwork | add a `<figure class="gallery-item" data-full="assets/img/your-art.jpg">` block in the gallery, replace the placeholder divs with `<img>` |
+| Your photo (optional) | replace the `.photo-monogram` block in the About section with `<img class="about-photo-img" src="assets/img/luke.jpg" alt="Luke Dysart" />` |
+| Sea turtle art | the current piece is an inline SVG; to use a raster version instead, swap the `.art-svg` figure for `<figure class="gallery-item" data-full="assets/img/sea-turtle.jpg">` with an `<img>` |
+| More artwork | add either an inline-SVG `<figure class="gallery-item" data-svg="...">` or a raster `<figure class="gallery-item" data-full="assets/img/your-art.jpg">` block in the gallery |
 | New engineering project | copy an `<article class="project">` block in `index.html` |
+
+> If you add raster images, keep each file within **2000 px on every side** —
+> oversized images will be rejected on upload.
 | Mary live demo URL | update the `project-link-demo` link in `index.html` |
 | LinkedIn URL | update the two LinkedIn links in `index.html` |
 
