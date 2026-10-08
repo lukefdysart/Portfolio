@@ -48,6 +48,7 @@
       <ul class="nav-links">
         <li><a href="#about">About</a></li>
         <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#logs">Logs</a></li>
         <li><a href="#art">Creative Art</a></li>
         <li><a href="https://www.linkedin.com/in/luke-dysart-dys89" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       </ul>
@@ -278,11 +279,102 @@
     </div>
   </section>
 
+  <!-- ================= PROJECT LOGS ================= -->
+  <section id="logs" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">03</span>
+        <h2 class="section-title">Project Logs</h2>
+      </div>
+      <p class="section-lead">
+        Video updates straight from the bench — walking through what I'm building, what broke, and
+        what's next. New entries drop as the projects evolve.
+      </p>
+
+      <!-- Toolbar -->
+      <div class="logs-toolbar">
+        <div class="logs-filter" id="logs-filter" role="tablist" aria-label="Filter logs by project">
+          <button class="logs-chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="logs-chip" data-filter="Mary" role="tab" aria-selected="false">Mary</button>
+          <button class="logs-chip" data-filter="MIMIC" role="tab" aria-selected="false">Project MIMIC</button>
+          <button class="logs-chip" data-filter="Stories" role="tab" aria-selected="false">Stories Illuminated</button>
+        </div>
+        <button class="btn btn-small btn-primary" id="recorder-launch" aria-expanded="false" aria-controls="recorder">
+          ● Record a log
+        </button>
+      </div>
+
+      <!-- ---- In-browser Log Recorder ("studio") ---- -->
+      <div class="recorder" id="recorder" hidden>
+        <div class="recorder-head">
+          <h3>Log Studio</h3>
+          <p class="recorder-sub">
+            Record a video log right in your browser. Nothing is uploaded — the recording stays on
+            your device until you download it. Then add it to the feed (see the README).
+          </p>
+        </div>
+
+        <div class="recorder-stage">
+          <div class="recorder-video-wrap">
+            <video id="rec-preview" playsinline muted></video>
+            <div class="rec-badge" id="rec-badge" hidden><span class="rec-dot"></span> REC <span id="rec-timer">00:00</span></div>
+            <div class="recorder-overlay" id="recorder-overlay">
+              <p>Camera is off</p>
+              <button class="btn btn-small btn-ghost" id="rec-enable">Enable camera</button>
+            </div>
+          </div>
+
+          <aside class="recorder-side">
+            <label class="recorder-field">
+              <span>Teleprompter notes</span>
+              <textarea id="rec-notes" rows="6" placeholder="Jot talking points here — they scroll with you while you record. (Saved locally in your browser.)"></textarea>
+            </label>
+            <label class="recorder-toggle">
+              <input type="checkbox" id="rec-mic" checked /> Record microphone audio
+            </label>
+            <div class="recorder-controls">
+              <button class="btn btn-small btn-primary" id="rec-start" disabled>● Start</button>
+              <button class="btn btn-small btn-ghost" id="rec-pause" disabled>❚❚ Pause</button>
+              <button class="btn btn-small btn-ghost" id="rec-stop" disabled>■ Stop</button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Result (after recording) -->
+        <div class="recorder-result" id="rec-result" hidden>
+          <h4>Latest take</h4>
+          <video id="rec-playback" controls playsinline></video>
+          <div class="recorder-result-actions">
+            <a class="btn btn-small btn-primary" id="rec-download" download>⤓ Download .webm</a>
+            <button class="btn btn-small btn-ghost" id="rec-discard">Discard</button>
+            <span class="rec-size" id="rec-size"></span>
+          </div>
+          <p class="recorder-note">
+            Tip: short clips (under ~1–2 min) keep file sizes reasonable. For longer logs, upload to
+            YouTube/Vimeo (unlisted is fine) and embed the link instead.
+          </p>
+        </div>
+      </div>
+
+      <!-- ---- Log feed (rendered from JS data) ---- -->
+      <div class="logs-feed" id="logs-feed">
+        <!-- cards injected by logs.js -->
+      </div>
+      <p class="logs-empty" id="logs-empty" hidden>No logs for this project yet — check back soon.</p>
+    </div>
+  </section>
+
+  <!-- Video lightbox for log playback -->
+  <div class="vlightbox" id="vlightbox" hidden>
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <div class="vlightbox-inner" id="vlightbox-inner"></div>
+  </div>
+
   <!-- ================= CREATIVE ART ================= -->
   <section id="art" class="section">
     <div class="container">
       <div class="section-head">
-        <span class="section-index">03</span>
+        <span class="section-index">04</span>
         <h2 class="section-title">Creative Art</h2>
       </div>
       <p class="section-lead">A selection of visual work. More pieces coming soon.</p>
@@ -394,5 +486,6 @@
   <!-- Site scripts -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/mimic.js"></script>
+  <script src="assets/js/logs.js"></script>
 </body>
 </html>
