@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luke Dysart — Engineering & Art</title>
+  <meta name="description" content="Luke Dysart — Electrical & Computer and Biomedical Engineering student at Vanderbilt, working at the intersection of art and engineering: robotics, animatronics, motion capture, projection mapping, and visual art." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header id="site-header">
+    <nav class="nav container">
+      <a href="#home" class="brand">LUKE DYSART</a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#art">Creative Art</a></li>
+        <li><a href="https://www.linkedin.com/in/luke-dysart" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="home" class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">Electrical &amp; Computer · Biomedical Engineering · Vanderbilt University</p>
+      <h1 class="hero-title">
+        Turning <span class="accent">imagination</span><br />into something tangible.
+      </h1>
+      <p class="hero-sub">
+        I work at the intersection of <strong>art and engineering</strong> — robotics, animatronics,
+        motion capture, projection mapping, and visual art.
+      </p>
+      <div class="hero-cta">
+        <a href="#engineering" class="btn btn-primary">View Engineering</a>
+        <a href="#art" class="btn btn-ghost">View Creative Art</a>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">↓</a>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">01</span>
+        <h2 class="section-title">About</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo">
+          <!-- Replace with your photo: assets/img/luke.jpg -->
+          <div class="photo-placeholder">
+            <span>Your photo here</span>
+            <small>assets/img/luke.jpg</small>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <p>
+            I'm <strong>Luke Dysart</strong>, an Electrical &amp; Computer Engineering and
+            Biomedical Engineering student at <strong>Vanderbilt University</strong> focused on
+            working at the intersection of art and engineering. I'm especially interested in
+            robotics, animatronics, motion capture, projection mapping, and visual art — exploring
+            how creative ideas can be brought to life through physical and digital systems.
+          </p>
+          <p>
+            I work with the <strong>Biomedical Modeling Lab at Vanderbilt</strong>, specifically on
+            <strong>Combat Casualty Surgery</strong> — research that directly informs my project
+            Mary, an offline augmented-reality guide for medical procedures.
+          </p>
+          <p>
+            As the son of two Marines, service has always been an important part of my life, and I
+            plan to serve in the military myself. Outside the classroom, I serve as
+            <strong>Secretary of Vanderbilt Club Hockey</strong> and was a
+            <strong>2025 National Champion</strong> with the Colorado Buffaloes. Previously at
+            CU Boulder, I was part of a team that won the
+            <strong>Electrical, Computing, and Energy Engineering Design Expo</strong>.
+          </p>
+          <p>
+            I'm driven by curiosity, creativity, competition, and service — and by the challenge of
+            turning imagination into something tangible.
+          </p>
+
+          <ul class="about-tags">
+            <li>Robotics</li>
+            <li>Animatronics</li>
+            <li>Motion Capture</li>
+            <li>Projection Mapping</li>
+            <li>Visual Art</li>
+            <li>Biomedical</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENGINEERING ================= -->
+  <section id="engineering" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">02</span>
+        <h2 class="section-title">Engineering</h2>
+      </div>
+      <p class="section-lead">
+        Projects where creative ideas meet physical and digital systems. More coming soon.
+      </p>
+
+      <!-- ---- MARY ---- -->
+      <article class="project">
+        <div class="project-media">
+          <div class="project-thumb mary-thumb">
+            <span class="thumb-icon">🩺</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Augmented Reality</span>
+            <span class="tag">On-device AI</span>
+            <span class="tag">Biomedical</span>
+          </div>
+          <h3 class="project-title">Mary — Medical AR Interface</h3>
+          <p class="project-desc">
+            A self-explaining guide for any procedure, in augmented reality. Like the voice that
+            walks a bystander through using an AED — but for every procedure and piece of equipment,
+            hands-free, and able to see what you see. Mary recognizes the equipment, walks you
+            through one calm step at a time, answers questions, and re-explains anything you miss —
+            all running <strong>completely offline, on the device</strong>. Built alongside my work
+            in Combat Casualty Surgery at Vanderbilt's Biomedical Modeling Lab.
+          </p>
+          <div class="project-links">
+            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/Mary-medical-ar" target="_blank" rel="noopener">View Code ↗</a>
+            <!-- Add your deployed demo URL here when live -->
+            <a class="btn btn-small btn-ghost project-link-demo" href="#" target="_blank" rel="noopener" data-needs-url>Live Demo (add URL)</a>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---- PROJECT MIMIC (with live demo) ---- -->
+      <article class="project">
+        <div class="project-media">
+          <div class="project-thumb mimic-thumb">
+            <span class="thumb-icon">✋</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Robotics</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Live Demo</span>
+          </div>
+          <h3 class="project-title">Project MIMIC — Hand Mimicry Robotics</h3>
+          <p class="project-desc">
+            A robotic hand that mirrors your own in real time. A webcam tracks your hand with
+            MediaPipe, custom joint-angle math estimates how bent each finger is (0–100%), and those
+            values stream over serial to an Arduino driving servos. The live demo below runs the
+            exact tracking pipeline right in your browser — <strong>no install, just your webcam.</strong>
+          </p>
+          <div class="project-links">
+            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/Project-MIMIC" target="_blank" rel="noopener">View Code ↗</a>
+            <button class="btn btn-small btn-ghost" id="mimic-launch">▶ Try the live demo</button>
+          </div>
+
+          <!-- Live hand-tracking demo -->
+          <div class="mimic-demo" id="mimic-demo" hidden>
+            <div class="mimic-stage">
+              <div class="mimic-video-wrap">
+                <video id="mimic-video" playsinline muted></video>
+                <canvas id="mimic-overlay"></canvas>
+                <div class="mimic-status" id="mimic-status">Camera off</div>
+              </div>
+              <div class="mimic-hand-wrap">
+                <canvas id="mimic-hand"></canvas>
+                <div class="mimic-fps" id="mimic-fps"></div>
+              </div>
+            </div>
+            <div class="mimic-bars" id="mimic-bars">
+              <div class="mimic-bar"><label>Thumb</label><div class="bar"><i data-finger="thumb"></i></div><span data-val="thumb">0%</span></div>
+              <div class="mimic-bar"><label>Index</label><div class="bar"><i data-finger="index"></i></div><span data-val="index">0%</span></div>
+              <div class="mimic-bar"><label>Middle</label><div class="bar"><i data-finger="middle"></i></div><span data-val="middle">0%</span></div>
+              <div class="mimic-bar"><label>Ring</label><div class="bar"><i data-finger="ring"></i></div><span data-val="ring">0%</span></div>
+              <div class="mimic-bar"><label>Pinky</label><div class="bar"><i data-finger="pinky"></i></div><span data-val="pinky">0%</span></div>
+            </div>
+            <div class="mimic-controls">
+              <button class="btn btn-small btn-primary" id="mimic-start">Start camera</button>
+              <button class="btn btn-small btn-ghost" id="mimic-stop">Stop</button>
+              <p class="mimic-note">Your camera feed never leaves your device — all processing runs locally in the browser.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---- STORIES ILLUMINATED ---- -->
+      <article class="project">
+        <div class="project-media">
+          <div class="project-thumb stories-thumb">
+            <span class="thumb-icon">📖</span>
+            <span class="wip-badge">In Development</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Projection Mapping</span>
+            <span class="tag">Animatronics</span>
+            <span class="tag">Art + Engineering</span>
+          </div>
+          <h3 class="project-title">Stories Illuminated</h3>
+          <p class="project-desc">
+            A portable projection-mapped animatronic storybook — blending projection mapping,
+            animatronics, and visual storytelling into a single physical object that brings a story
+            to life. Currently in active development; more details and media coming soon.
+          </p>
+          <div class="project-links">
+            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/stories-illuminated" target="_blank" rel="noopener">View Code ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= CREATIVE ART ================= -->
+  <section id="art" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">03</span>
+        <h2 class="section-title">Creative Art</h2>
+      </div>
+      <p class="section-lead">A selection of visual work. More pieces coming soon.</p>
+
+      <div class="gallery" id="gallery">
+        <figure class="gallery-item" data-full="assets/img/sea-turtle.jpg">
+          <div class="art-placeholder">
+            <span>Sea Turtle</span>
+            <small>assets/img/sea-turtle.jpg</small>
+          </div>
+          <figcaption>Sea Turtle — stained-glass style illustration</figcaption>
+        </figure>
+
+        <figure class="gallery-item placeholder-slot">
+          <div class="art-placeholder empty"><span>+ Add artwork</span></div>
+          <figcaption>Coming soon</figcaption>
+        </figure>
+        <figure class="gallery-item placeholder-slot">
+          <div class="art-placeholder empty"><span>+ Add artwork</span></div>
+          <figcaption>Coming soon</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <img id="lightbox-img" alt="" />
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">LUKE DYSART</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/luke-dysart" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/lukefdysart" target="_blank" rel="noopener">GitHub</a>
+      </div>
+      <small>© <span id="year"></span> Luke Dysart · Built from scratch, code owned.</small>
+    </div>
+  </footer>
+
+  <!-- MediaPipe Hands (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+
+  <!-- Site scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/mimic.js"></script>
+</body>
+</html>
