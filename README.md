@@ -58,7 +58,18 @@ Everything marked as a placeholder is easy to swap:
 
 Works out of the box on **GitHub Pages**, Netlify, or Vercel — it's static.
 For GitHub Pages: push to the repo, then Settings → Pages → deploy from the
-`main` branch root.
+`main` branch root. The site is set up for the URL
+`https://lukefdysart.github.io/Portfolio/` (used in the canonical + social tags);
+a `.nojekyll` file and a custom `404.html` are included.
+
+## SEO & sharing
+
+- Open Graph + Twitter card meta tags are set, with a social preview image at
+  `assets/img/social-preview.png` (1200×630, generated from
+  `assets/img/social-preview.svg`).
+- Inline SVG favicon, `theme-color`, canonical URL, and a skip-to-content link
+  for accessibility.
+- `prefers-reduced-motion` is respected (animations disabled for users who ask).
 
 ---
 
