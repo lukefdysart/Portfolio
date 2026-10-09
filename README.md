@@ -21,10 +21,13 @@ open `index.html` or deploy the folder as-is.
 - **Creative Art** — gallery with lightbox (opens full artwork on click)
 - **LinkedIn** — external link
 
-> **Media note:** The About portrait and the *Sea Turtle* gallery piece are
-> rendered as **inline SVG** — self-contained vector art with no external image
-> files and no pixel-size limits. You can drop in real raster images later (see
-> below), but nothing is "missing" by default.
+> **Media note:** The About portrait, the *Sea Turtle* gallery piece, and the
+> three **animated project logos** (Mary, Project MIMIC, Stories Illuminated) are
+> all rendered as **inline SVG** — self-contained vector art with no external
+> image files and no pixel-size limits. The Mary mark is ported from the Mary
+> repo (a heartbeat pulse that reads as an "M", drawing itself on load); MIMIC is
+> an animated robotic hand that flexes; Stories is an open book lit by a sweeping
+> projection beam. All animations respect `prefers-reduced-motion`.
 
 ## Project Logs (video updates)
 

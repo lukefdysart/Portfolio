@@ -170,7 +170,32 @@
       <article class="project">
         <div class="project-media">
           <div class="project-thumb mary-thumb">
-            <span class="thumb-icon">🩺</span>
+            <!-- Mary's own animated logo: heartbeat pulse that reads as 'M',
+                 draws itself on load then breathes. Ported from the Mary repo. -->
+            <svg class="logo-anim logo-mary" viewBox="0 0 128 128" fill="none" role="img" aria-label="Mary logo — animated heartbeat pulse">
+              <defs>
+                <linearGradient id="mlBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8273FF" />
+                  <stop offset="1" stop-color="#5B6CFF" />
+                </linearGradient>
+                <linearGradient id="mlPulse" x1="24" y1="64" x2="104" y2="64" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#E4E8FF" />
+                </linearGradient>
+              </defs>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#mlBg)" />
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
+              <path class="mary-track"
+                d="M24 72 L40 72 L50 44 L64 92 L78 44 L88 72 L104 72"
+                stroke="#ffffff" stroke-opacity="0.18" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <path class="mary-pulse"
+                d="M24 72 L40 72 L50 44 L64 92 L78 44 L88 72 L104 72"
+                stroke="url(#mlPulse)" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+                font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
+            </svg>
           </div>
         </div>
         <div class="project-body">
@@ -200,7 +225,43 @@
       <article class="project">
         <div class="project-media">
           <div class="project-thumb mimic-thumb">
-            <span class="thumb-icon">✋</span>
+            <!-- MIMIC: a robotic hand whose fingers curl & flex, echoing the live demo -->
+            <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo — animated robotic hand">
+              <defs>
+                <linearGradient id="miBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2a1a08" />
+                  <stop offset="1" stop-color="#120a04" />
+                </linearGradient>
+                <linearGradient id="miFinger" x1="64" y1="34" x2="64" y2="104" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffd9a8" />
+                  <stop offset="0.55" stop-color="#ffa23e" />
+                  <stop offset="1" stop-color="#ff7814" />
+                </linearGradient>
+                <filter id="miGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#ff7814" flood-opacity="0.55" />
+                </filter>
+              </defs>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ff7814" opacity="0.06" />
+              <!-- scan ring (subtle, behind the hand) -->
+              <circle class="mimic-scan" cx="64" cy="60" r="42" stroke="#ff7814" stroke-opacity="0.22"
+                stroke-width="1.5" stroke-dasharray="4 9" fill="none" />
+              <!-- four fingers + thumb; each group rotates at its knuckle to flex -->
+              <g stroke="url(#miFinger)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#miGlow)">
+                <g class="mimic-finger f1"><line x1="51" y1="78" x2="51" y2="40" /></g>
+                <g class="mimic-finger f2"><line x1="61" y1="78" x2="61" y2="34" /></g>
+                <g class="mimic-finger f3"><line x1="71" y1="78" x2="71" y2="37" /></g>
+                <g class="mimic-finger f4"><line x1="81" y1="78" x2="81" y2="45" /></g>
+                <g class="mimic-thumb-f"><line x1="48" y1="90" x2="30" y2="76" /></g>
+              </g>
+              <!-- palm (drawn over finger bases) -->
+              <rect x="44" y="78" width="44" height="26" rx="9" fill="#2b3545" stroke="url(#miFinger)" stroke-width="2.5" />
+              <!-- knuckle joints -->
+              <g fill="#120a04">
+                <circle cx="51" cy="80" r="3.6" /><circle cx="61" cy="80" r="3.6" />
+                <circle cx="71" cy="80" r="3.6" /><circle cx="81" cy="80" r="3.6" />
+              </g>
+            </svg>
           </div>
         </div>
         <div class="project-body">
@@ -254,7 +315,41 @@
       <article class="project">
         <div class="project-media">
           <div class="project-thumb stories-thumb">
-            <span class="thumb-icon">📖</span>
+            <!-- Stories Illuminated: an open book lit by a projection beam that sweeps + glows -->
+            <svg class="logo-anim logo-stories" viewBox="0 0 128 128" fill="none" role="img" aria-label="Stories Illuminated logo — animated projection-lit book">
+              <defs>
+                <linearGradient id="stBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#241a3a" />
+                  <stop offset="1" stop-color="#120c22" />
+                </linearGradient>
+                <linearGradient id="stBeam" x1="64" y1="30" x2="64" y2="92" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#c9a4ff" stop-opacity="0.85" />
+                  <stop offset="1" stop-color="#c9a4ff" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="stGlow" cx="50%" cy="30%" r="60%">
+                  <stop stop-color="#e9d8ff" stop-opacity="0.9" />
+                  <stop offset="1" stop-color="#e9d8ff" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
+              <!-- projector source + sweeping beam -->
+              <g class="stories-beam-group">
+                <polygon class="stories-beam" points="64,30 44,86 84,86" fill="url(#stBeam)" />
+                <circle class="stories-source" cx="64" cy="30" r="5" fill="#e9d8ff" />
+              </g>
+              <!-- glow pooling on the page -->
+              <ellipse class="stories-glow" cx="64" cy="78" rx="30" ry="10" fill="url(#stGlow)" />
+              <!-- open book -->
+              <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
+                <path d="M64 70 C54 62 40 62 30 66 L30 96 C40 92 54 92 64 98 Z" />
+                <path d="M64 70 C74 62 88 62 98 66 L98 96 C88 92 74 92 64 98 Z" />
+              </g>
+              <!-- page lines -->
+              <g stroke="#c9a4ff" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round">
+                <line x1="37" y1="73" x2="57" y2="71" /><line x1="37" y1="80" x2="57" y2="78" />
+                <line x1="71" y1="71" x2="91" y2="73" /><line x1="71" y1="78" x2="91" y2="80" />
+              </g>
+            </svg>
             <span class="wip-badge">In Development</span>
           </div>
         </div>
