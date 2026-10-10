@@ -23,16 +23,16 @@
   <!-- eyebrow -->
   <text x="80" y="150" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="23"
         letter-spacing="3" font-weight="600" fill="#3b6fd4">
-    ECE &amp; BIOMEDICAL ENGINEERING · VANDERBILT UNIVERSITY
+    ECE &amp; BME · VANDERBILT UNIVERSITY
   </text>
   <!-- name -->
   <text x="78" y="268" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="92"
         font-weight="700" letter-spacing="-2" fill="#1b2230">LUKE DYSART</text>
   <!-- headline -->
   <text x="80" y="372" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="52"
-        font-weight="500" fill="#566073">Turning <tspan fill="#c7962f" font-weight="700">imagination</tspan> into</text>
+        font-weight="500"><tspan fill="#c7962f" font-weight="700">Imagination,</tspan></text>
   <text x="80" y="440" font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="52"
-        font-weight="500" fill="#566073">something tangible.</text>
+        font-weight="500" fill="#566073">engineered.</text>
   <!-- project chips -->
   <g font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="24" font-weight="500">
     <rect x="80"  y="500" width="200" height="54" rx="27" fill="#ffffff" stroke="#dce1ec"/>
