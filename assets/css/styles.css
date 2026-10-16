@@ -495,92 +495,49 @@ a { color: inherit; text-decoration: none; }
   100% { stroke-dasharray: 26 274; stroke-dashoffset: 0; }
 }
 
-/* ---- MIMIC: a builder ASSEMBLES a 3D 'M' — pillars rise, chevron drops ---- */
-.logo-mimic g[class^="mi-p"], .logo-mimic .mi-V { transform-box: view-box; }
-/* left pillar rises out of the floor, pushed up */
-.logo-mimic .mi-pL { transform: translateY(54px); opacity: 0; animation: riseUp .6s cubic-bezier(.2,.8,.3,1.2) 1.1s forwards; }
-/* right pillar rises next */
-.logo-mimic .mi-pR { transform: translateY(54px); opacity: 0; animation: riseUp .6s cubic-bezier(.2,.8,.3,1.2) 2.1s forwards; }
-/* chevron drops in from the top with a bounce */
-.logo-mimic .mi-V  { transform: translateY(-60px); opacity: 0; animation: dropIn .7s cubic-bezier(.3,1.4,.5,1) 3s forwards; }
-@keyframes riseUp { 0%{transform:translateY(54px);opacity:0} 60%{opacity:1} 100%{transform:translateY(0);opacity:1} }
-@keyframes dropIn { 0%{transform:translateY(-60px);opacity:0} 60%{opacity:1} 80%{transform:translateY(4px)} 100%{transform:translateY(0);opacity:1} }
-/* the floor shadow 'thumps' when the chevron lands */
-.logo-mimic .mi-shadow { transform-box: view-box; transform-origin: 64px 98px; animation: shadowThump .3s ease-out 3.5s both, floorBreathe 3.6s ease-in-out 4s infinite; }
-@keyframes shadowThump { 0%{transform:scaleX(.7)} 50%{transform:scaleX(1.25)} 100%{transform:scaleX(1)} }
-@keyframes floorBreathe { 0%,100%{opacity:1} 50%{opacity:.7} }
-
-/* BUILDER walks to left pillar, pushes, walks to right, pushes, then exits */
-.logo-mimic .mi-builder {
-  transform-box: view-box; transform: translate(-20px,92px);
-  animation: miBuildWalk 4.4s linear both, miBuildExit 1s ease-in 3.9s both;
+/* ---- MIMIC: the word writes itself, then its reflection MIMICS it ---- */
+/* reveal via a left-to-right clip wipe (like it's being written) */
+.logo-mimic .mi-top {
+  clip-path: inset(0 100% 0 0);
+  animation: miWrite 1s steps(16, end) .4s forwards;
 }
-@keyframes miBuildWalk {
-  0%   { transform: translate(-20px,92px); }
-  18%  { transform: translate(22px,92px); }   /* at left pillar */
-  25%  { transform: translate(22px,92px); }   /* push */
-  45%  { transform: translate(78px,92px); }   /* at right pillar */
-  52%  { transform: translate(78px,92px); }   /* push */
-  100% { transform: translate(78px,92px); }
+.logo-mimic .mi-bot {
+  clip-path: inset(0 100% 0 0);
+  animation: miWrite 1s steps(16, end) 1.6s forwards, miMimicGlow 2.6s ease-in-out 2.6s infinite;
 }
-@keyframes miBuildExit { from{transform:translate(78px,92px);opacity:1} to{transform:translate(140px,92px);opacity:0} }
-/* pushing arm thrusts when at a pillar */
-.logo-mimic .mi-builder .mi-armU { transform-box: fill-box; transform-origin: left; animation: pushArm 1s ease-in-out 2; }
-@keyframes pushArm { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-22deg)} }
-.logo-mimic .mi-builder .mi-legA { transform-box: fill-box; transform-origin: top; animation: legA .4s ease-in-out 11 both; }
-.logo-mimic .mi-builder .mi-legB { transform-box: fill-box; transform-origin: top; animation: legB .4s ease-in-out 11 both; }
-@keyframes legA { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(22deg) } }
-@keyframes legB { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(-22deg) } }
+@keyframes miWrite { to { clip-path: inset(0 0 0 0); } }
+/* the reflection subtly pulses, echoing the original */
+@keyframes miMimicGlow { 0%,100%{ opacity:.4 } 50%{ opacity:.75 } }
+/* mirror line draws in between the two */
+.logo-mimic .mi-mirror { stroke-dasharray: 80; stroke-dashoffset: 80; animation: miMirror .6s ease 1.3s forwards; }
+@keyframes miMirror { to { stroke-dashoffset: 0; } }
 
 .logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
-.project:hover .logo-mimic { transform: scale(1.06); }
+.project:hover .logo-mimic { transform: scale(1.05); }
+/* replay on hover */
+.project:hover .logo-mimic .mi-top { animation: miWrite 1s steps(16,end) forwards; }
+.project:hover .logo-mimic .mi-bot { animation: miWrite 1s steps(16,end) 1.2s forwards, miMimicGlow 2.6s ease-in-out 2.2s infinite; }
 
-/* ---- Stories: storyteller OPENS a 3D book; a dimensional star rises ---- */
-.logo-stories .st-book-base { opacity: 0; animation: fadeIn .4s ease 1.1s forwards; }
-/* covers swing open from the spine (scaleX from the center) */
-.logo-stories .st-page-l, .logo-stories .st-page-r { transform-box: view-box; transform-origin: 64px 76px; opacity: 0; }
-.logo-stories .st-page-l { animation: coverOpenL .8s cubic-bezier(.3,1.2,.5,1) 1.6s both; }
-.logo-stories .st-page-r { animation: coverOpenR .8s cubic-bezier(.3,1.2,.5,1) 1.6s both; }
-@keyframes coverOpenL { 0%{transform:scaleX(0);opacity:0} 40%{opacity:1} 100%{transform:scaleX(1);opacity:1} }
-@keyframes coverOpenR { 0%{transform:scaleX(0);opacity:0} 40%{opacity:1} 100%{transform:scaleX(1);opacity:1} }
-/* glow billows up after the book opens */
-.logo-stories .st-glow { transform-box: view-box; transform-origin: 64px 60px; opacity: 0;
-  animation: glowUp .8s ease 2.4s forwards, floorBreathe 3.6s ease-in-out 3.4s infinite; }
-@keyframes glowUp { 0%{opacity:0;transform:scale(.5)} 100%{opacity:.85;transform:scale(1)} }
-.logo-stories .st-shadow { transform-box: view-box; transform-origin: 64px 100px; animation: shadowThump .3s ease-out 2.4s both; }
-
-/* a dimensional star rises up out of the book, then twinkles */
-.logo-stories .stories-spark { transform-box: view-box; transform-origin: 64px 42px; opacity: 0;
-  animation: starRise .9s cubic-bezier(.34,1.5,.5,1) 2.6s forwards, sparkTwinkle 2.8s ease-in-out 3.6s infinite; }
-@keyframes starRise {
-  0%   { opacity: 0; transform: translateY(30px) scale(.2) rotate(-40deg); }
-  60%  { opacity: 1; }
-  100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
+/* ---- Stories: a projector beam SWEEPS and MAPS light onto faceted geometry ---- */
+/* the beam sweeps side to side like a scanning projection */
+.logo-stories .st-beam { transform-box: view-box; transform-origin: 41px 35px; opacity: .85;
+  animation: beamSweep 4s ease-in-out infinite; }
+@keyframes beamSweep { 0%,100%{ transform: rotate(-10deg) } 50%{ transform: rotate(14deg) } }
+/* each facet lights up in sequence as the mapped projection crosses it */
+.logo-stories .st-facet { animation: facetLight 4s ease-in-out infinite; }
+.logo-stories .f1 { animation-delay: 0s; }
+.logo-stories .f2 { animation-delay: .35s; }
+.logo-stories .f5 { animation-delay: .7s; }
+.logo-stories .f3 { animation-delay: 1.05s; }
+.logo-stories .f4 { animation-delay: 1.4s; }
+@keyframes facetLight {
+  0%, 60%, 100% { fill: #5a4a9e; }
+  18%           { fill: #fff3c4; }   /* lit by the projection */
+  34%           { fill: #c9b6ff; }
 }
-@keyframes sparkTwinkle { 0%,100%{ filter: drop-shadow(0 0 0 rgba(255,224,138,0)) } 50%{ filter: drop-shadow(0 0 5px rgba(255,224,138,.8)) } }
-
-/* storyteller walks to the book, pulls it open, cheers at the star, exits */
-.logo-stories .st-stick {
-  transform-box: view-box; transform: translate(-20px,92px);
-  animation: stWalk 3.4s linear both, stCheer .6s ease-in-out 2.6s 2, stExit 1s ease-in 3.4s both;
-}
-@keyframes stWalk {
-  0%   { transform: translate(-20px,92px); }
-  28%  { transform: translate(40px,92px); }   /* reach the book */
-  47%  { transform: translate(40px,92px); }   /* pull it open */
-  100% { transform: translate(40px,92px); }
-}
-@keyframes stCheer { 0%,100%{ transform: translate(40px,92px);} 50%{ transform: translate(40px,86px);} }
-@keyframes stExit { from{transform:translate(40px,92px);opacity:1} to{transform:translate(-30px,92px);opacity:0} }
-.logo-stories .st-stick .st-leg-a { transform-box: fill-box; transform-origin: top; animation: legA .4s ease-in-out 9 both; }
-.logo-stories .st-stick .st-leg-b { transform-box: fill-box; transform-origin: top; animation: legB .4s ease-in-out 9 both; }
-.logo-stories .st-stick .st-arm { transform-box: fill-box; transform-origin: left; animation: stPull .5s ease-in-out 1.6s 2, stArmUp .4s ease 2.6s both; }
-@keyframes stPull { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-30deg)} }
-@keyframes stArmUp { to { transform: rotate(-55deg); } }
-
-@keyframes fadeIn { to { opacity: 1; } }
 .logo-stories { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
 .project:hover .logo-stories { transform: translateY(-3px) scale(1.05); }
+.project:hover .logo-stories .st-beam { animation-duration: 2s; }
 
 /* shared family keyframes */
 @keyframes markDraw { to { stroke-dashoffset: 0; } }
@@ -591,12 +548,10 @@ a { color: inherit; text-decoration: none; }
 
 /* Reduced motion: show finished marks, no formation animation */
 @media (prefers-reduced-motion: reduce) {
-  .logo-mary .mary-pulse, .logo-stories .st-draw { stroke-dashoffset: 0 !important; animation: none !important; }
-  .logo-stories .st-node { opacity: 0 !important; animation: none !important; }
-  .logo-mimic .mi-pL, .logo-mimic .mi-pR, .logo-mimic .mi-V { transform: none !important; opacity: 1 !important; animation: none !important; }
-  .logo-mimic .mi-builder, .logo-stories .st-stick { opacity: 0 !important; animation: none !important; }
-  .logo-mimic .mi-shadow { animation: none !important; }
-  .logo-stories .stories-spark { opacity: 1 !important; animation: none !important; }
+  .logo-mary .mary-pulse { stroke-dashoffset: 0 !important; animation: none !important; }
+  .logo-mimic .mi-top, .logo-mimic .mi-bot { clip-path: none !important; animation: none !important; }
+  .logo-mimic .mi-mirror { stroke-dashoffset: 0 !important; animation: none !important; }
+  .logo-stories .st-beam, .logo-stories .st-facet { animation: none !important; }
 }
 
 /* ---------------- Confidential / NDA project ---------------- */
