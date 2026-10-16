@@ -476,11 +476,11 @@ a { color: inherit; text-decoration: none; }
 
 /* Fingers drum in a rolling WAVE (personality: it's "mimicking" / alive) */
 .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f { transform-box: view-box; }
-.logo-mimic .f1 { transform-origin: 51px 78px; animation: mimicWave 2s ease-in-out infinite 0s; }
-.logo-mimic .f2 { transform-origin: 61px 78px; animation: mimicWave 2s ease-in-out infinite .15s; }
-.logo-mimic .f3 { transform-origin: 71px 78px; animation: mimicWave 2s ease-in-out infinite .3s; }
-.logo-mimic .f4 { transform-origin: 81px 78px; animation: mimicWave 2s ease-in-out infinite .45s; }
-.logo-mimic .mimic-thumb-f { transform-origin: 48px 90px; animation: mimicThumb 2.6s ease-in-out infinite .2s; }
+.logo-mimic .f1 { transform-origin: 50px 72px; animation: mimicWave 2s ease-in-out infinite 0s; }
+.logo-mimic .f2 { transform-origin: 60px 71px; animation: mimicWave 2s ease-in-out infinite .15s; }
+.logo-mimic .f3 { transform-origin: 70px 71px; animation: mimicWave 2s ease-in-out infinite .3s; }
+.logo-mimic .f4 { transform-origin: 80px 72px; animation: mimicWave 2s ease-in-out infinite .45s; }
+.logo-mimic .mimic-thumb-f { transform-origin: 46px 84px; animation: mimicThumb 2.6s ease-in-out infinite .2s; }
 @keyframes mimicWave {
   0%, 70%, 100% { transform: rotate(0deg); }
   18%           { transform: rotate(-26deg); }   /* quick dip, then hold up — like a finger tap */
@@ -496,21 +496,17 @@ a { color: inherit; text-decoration: none; }
 .logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
 .project:hover .logo-mimic { transform: rotate(-4deg) scale(1.04); }
 
-/* ---- Stories: projection beam sweeps + glow pulses ---- */
-.logo-stories .stories-beam-group { transform-box: view-box; transform-origin: 64px 30px; animation: storiesSweep 5s ease-in-out infinite; }
-@keyframes storiesSweep {
-  0%, 100% { transform: rotate(-7deg); }
-  50%      { transform: rotate(7deg); }
-}
-.logo-stories .stories-glow { transform-box: view-box; transform-origin: 64px 78px; animation: storiesGlow 3s ease-in-out infinite; }
+/* ---- Stories: hidden-projector concept — illustrations glow off the page ---- */
+.logo-stories .stories-glow { transform-box: view-box; transform-origin: 64px 58px; animation: storiesGlow 3.4s ease-in-out infinite; }
 @keyframes storiesGlow {
-  0%, 100% { opacity: 0.55; transform: scale(0.92); }
-  50%      { opacity: 1;    transform: scale(1.08); }
+  0%, 100% { opacity: 0.45; transform: scale(0.9); }
+  50%      { opacity: 0.9;  transform: scale(1.1); }
 }
-.logo-stories .stories-source { animation: storiesFlicker 3s ease-in-out infinite; }
-@keyframes storiesFlicker {
-  0%, 100% { opacity: 1; }
-  50%      { opacity: 0.7; }
+/* the projected illustrations fade in and out like they're being "shown" */
+.logo-stories .stories-art { animation: storiesArt 3.4s ease-in-out infinite; }
+@keyframes storiesArt {
+  0%, 100% { opacity: 0.35; }
+  50%      { opacity: 1; }
 }
 /* right page gently flutters (personality: the story is "alive") */
 .logo-stories .stories-page { transform-box: view-box; transform-origin: 64px 84px; animation: pageFlutter 3.4s ease-in-out infinite; }
@@ -537,7 +533,7 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .logo-mary .mary-pulse { stroke-dashoffset: 0; animation: none; }
   .logo-mimic .mimic-scan, .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f,
-  .logo-stories .stories-beam-group, .logo-stories .stories-glow, .logo-stories .stories-source,
+  .logo-stories .stories-glow, .logo-stories .stories-art,
   .logo-stories .stories-page, .logo-stories .st-mote { animation: none; }
   .logo-stories .st-mote { opacity: .8; }
 }
@@ -676,3 +672,35 @@ a { color: inherit; text-decoration: none; }
   .panel-enter .hero-sub, .panel-enter .hero-cta { animation: none !important; }
   .shimmer { -webkit-text-fill-color: var(--accent); color: var(--accent); }
 }
+
+/* ---------------- "By request" note (code/GitHub) ---------------- */
+.by-request {
+  font-family: var(--font-head); font-size: 0.8rem; color: var(--text-faint);
+  border: 1px dashed var(--border); padding: 8px 14px; border-radius: 10px;
+  background: var(--surface-2); display: inline-flex; align-items: center; gap: 6px;
+}
+.by-request::before { content: "🔑"; font-size: 0.85rem; }
+
+/* ---------------- Commission request ---------------- */
+.commission {
+  margin-top: 44px; display: flex; align-items: center; justify-content: space-between;
+  gap: 24px; flex-wrap: wrap; padding: 28px 32px; border-radius: var(--radius);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  background:
+    radial-gradient(120% 160% at 0% 0%, rgba(199,150,47,.14), transparent 55%),
+    radial-gradient(120% 160% at 100% 100%, rgba(123,92,196,.14), transparent 55%),
+    var(--surface);
+}
+.commission-text h3 { font-family: var(--font-head); font-size: 1.3rem; margin-bottom: 6px; }
+.commission-text p { color: var(--text-dim); max-width: 560px; font-size: 0.95rem; }
+
+/* ---------------- Current collaborations ---------------- */
+.collab-note {
+  margin-top: 22px; display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+}
+.collab-label {
+  font-family: var(--font-head); font-size: 0.72rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent-2);
+}
+.collab-names { color: var(--text-dim); font-size: 0.95rem; }
+.collab-names strong { color: var(--text); }

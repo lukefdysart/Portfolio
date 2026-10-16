@@ -216,9 +216,10 @@
           </h3>
           <p class="project-desc">
             A confidential augmented-reality project in the Combat Casualty Care space, in active
-            development. Details, source, and demos are withheld under a strict non-disclosure
-            agreement. Access is granted only on a need-to-know basis to vetted partners under a
-            signed NDA.
+            development — tested and prototyped at <strong>Fort Campbell Army base</strong> and
+            <strong>Vanderbilt</strong>. Details, source, and demos are withheld under a strict
+            non-disclosure agreement. Access is granted only on a need-to-know basis to vetted
+            partners under a signed NDA.
           </p>
           <div class="project-links">
             <span class="confidential-note">🔒 Confidential · access by signed NDA only</span>
@@ -249,22 +250,36 @@
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
               <rect x="12" y="12" width="104" height="104" rx="30" fill="#e2b64f" opacity="0.06" />
               <!-- scan ring (subtle, behind the hand) -->
-              <circle class="mimic-scan" cx="64" cy="60" r="42" stroke="#e2b64f" stroke-opacity="0.3"
+              <circle class="mimic-scan" cx="64" cy="62" r="43" stroke="#e2b64f" stroke-opacity="0.3"
                 stroke-width="1.5" stroke-dasharray="4 9" fill="none" />
-              <!-- four fingers + thumb; each group rotates at its knuckle to flex -->
-              <g stroke="url(#miFinger)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#miGlow)">
-                <g class="mimic-finger f1"><line x1="51" y1="78" x2="51" y2="40" /></g>
-                <g class="mimic-finger f2"><line x1="61" y1="78" x2="61" y2="34" /></g>
-                <g class="mimic-finger f3"><line x1="71" y1="78" x2="71" y2="37" /></g>
-                <g class="mimic-finger f4"><line x1="81" y1="78" x2="81" y2="45" /></g>
-                <g class="mimic-thumb-f"><line x1="48" y1="90" x2="30" y2="76" /></g>
-              </g>
-              <!-- palm (drawn over finger bases) -->
-              <rect x="44" y="78" width="44" height="26" rx="9" fill="#2b3657" stroke="url(#miFinger)" stroke-width="2.5" />
-              <!-- knuckle joints -->
-              <g fill="#121a33">
-                <circle cx="51" cy="80" r="3.6" /><circle cx="61" cy="80" r="3.6" />
-                <circle cx="71" cy="80" r="3.6" /><circle cx="81" cy="80" r="3.6" />
+              <!-- Realistic open hand: filled palm + four fingers + thumb.
+                   Each finger group pivots at its knuckle for the wave. -->
+              <g filter="url(#miGlow)">
+                <!-- palm + wrist base (one organic shape) -->
+                <path fill="url(#miFinger)" d="
+                  M44 70
+                  C40 74 39 82 40 90
+                  C41 100 50 106 64 106
+                  C78 106 87 100 88 90
+                  C89 82 88 74 84 70
+                  C80 68 48 68 44 70 Z" />
+                <!-- fingers (rounded capsules via thick round-cap strokes) -->
+                <g stroke="url(#miFinger)" stroke-linecap="round" fill="none">
+                  <g class="mimic-finger f1"><line x1="50" y1="72" x2="49" y2="42" stroke-width="11" /></g>
+                  <g class="mimic-finger f2"><line x1="60" y1="71" x2="60" y2="36" stroke-width="11.5" /></g>
+                  <g class="mimic-finger f3"><line x1="70" y1="71" x2="71" y2="38" stroke-width="11.5" /></g>
+                  <g class="mimic-finger f4"><line x1="80" y1="72" x2="82" y2="46" stroke-width="10" /></g>
+                  <!-- thumb angled off the side of the palm -->
+                  <g class="mimic-thumb-f"><line x1="46" y1="84" x2="28" y2="72" stroke-width="11" /></g>
+                </g>
+                <!-- subtle knuckle shading on the palm -->
+                <g fill="#121a33" opacity="0.28">
+                  <ellipse cx="49" cy="74" rx="4" ry="3" /><ellipse cx="60" cy="73" rx="4" ry="3" />
+                  <ellipse cx="71" cy="73" rx="4" ry="3" /><ellipse cx="81" cy="74" rx="4" ry="3" />
+                </g>
+                <!-- palm crease line for realism -->
+                <path d="M48 88 C56 94 72 94 80 88" stroke="#121a33" stroke-opacity="0.3"
+                  stroke-width="2" fill="none" stroke-linecap="round" />
               </g>
             </svg>
           </div>
@@ -283,8 +298,8 @@
             exact tracking pipeline right in your browser — <strong>no install, just your webcam.</strong>
           </p>
           <div class="project-links">
-            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/Project-MIMIC" target="_blank" rel="noopener">View Code ↗</a>
             <button class="btn btn-small btn-ghost" id="mimic-launch">▶ Try the live demo</button>
+            <span class="by-request">Code &amp; GitHub available by request</span>
           </div>
 
           <!-- Live hand-tracking demo -->
@@ -334,29 +349,33 @@
                 </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
-              <!-- projector source + sweeping beam -->
-              <g class="stories-beam-group">
-                <polygon class="stories-beam" points="64,30 44,86 84,86" fill="url(#stBeam)" />
-                <circle class="stories-source" cx="64" cy="30" r="5" fill="#e9d8ff" />
-              </g>
-              <!-- glow pooling on the page -->
-              <ellipse class="stories-glow" cx="64" cy="78" rx="30" ry="10" fill="url(#stGlow)" />
-              <!-- open book: left page static, right page flutters -->
+              <!-- The projector is HIDDEN (that's the concept) — illustrations
+                   simply glow up off the open pages. -->
+              <!-- soft glow rising from the pages (light with no visible source) -->
+              <ellipse class="stories-glow" cx="64" cy="58" rx="30" ry="26" fill="url(#stGlow)" />
+              <!-- open book, slightly larger & centered now that the beam is gone -->
               <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
-                <path d="M64 70 C54 62 40 62 30 66 L30 96 C40 92 54 92 64 98 Z" />
-                <path class="stories-page" d="M64 70 C74 62 88 62 98 66 L98 96 C88 92 74 92 64 98 Z" />
+                <path d="M64 60 C52 50 36 50 24 55 L24 96 C36 90 52 90 64 100 Z" />
+                <path class="stories-page" d="M64 60 C76 50 92 50 104 55 L104 96 C92 90 76 90 64 100 Z" />
               </g>
-              <!-- page lines -->
-              <g stroke="#c9a4ff" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round">
-                <line x1="37" y1="73" x2="57" y2="71" /><line x1="37" y1="80" x2="57" y2="78" />
-                <line x1="71" y1="71" x2="91" y2="73" /><line x1="71" y1="78" x2="91" y2="80" />
+              <!-- glowing illustration shapes that appear projected on the pages -->
+              <g class="stories-art" fill="none" stroke="#e9d8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <!-- left page: a little glowing star -->
+                <path d="M43 70 l2.2 4.6 5 .7 -3.6 3.5 .9 5 -4.5-2.4 -4.5 2.4 .9-5 -3.6-3.5 5-.7 Z" fill="#e9d8ff" stroke="none" opacity="0.9" />
+                <!-- right page: a glowing crescent moon -->
+                <path d="M82 68 a9 9 0 1 0 7 15 a7 7 0 1 1 -7 -15 Z" fill="#e9d8ff" stroke="none" opacity="0.9" />
+              </g>
+              <!-- page text lines -->
+              <g stroke="#c9a4ff" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round">
+                <line x1="31" y1="84" x2="55" y2="83" /><line x1="31" y1="90" x2="55" y2="89" />
+                <line x1="73" y1="83" x2="97" y2="84" /><line x1="73" y1="89" x2="97" y2="90" />
               </g>
               <!-- rising light motes (magic) -->
               <g fill="#e9d8ff">
-                <circle class="st-mote m1" cx="56" cy="66" r="1.8" />
-                <circle class="st-mote m2" cx="68" cy="64" r="1.4" />
-                <circle class="st-mote m3" cx="62" cy="60" r="2.1" />
-                <circle class="st-mote m4" cx="74" cy="62" r="1.3" />
+                <circle class="st-mote m1" cx="54" cy="56" r="1.8" />
+                <circle class="st-mote m2" cx="70" cy="54" r="1.4" />
+                <circle class="st-mote m3" cx="62" cy="50" r="2.1" />
+                <circle class="st-mote m4" cx="76" cy="52" r="1.3" />
               </g>
             </svg>
             <span class="wip-badge">In Development</span>
@@ -370,12 +389,15 @@
           </div>
           <h3 class="project-title">Stories Illuminated</h3>
           <p class="project-desc">
-            A portable projection-mapped animatronic storybook — blending projection mapping,
-            animatronics, and visual storytelling into a single physical object that brings a story
-            to life. Currently in active development; more details and media coming soon.
+            A portable animatronic storybook that brings a story to life — projection, animatronics,
+            and visual storytelling fused into a single physical object, with the projector hidden
+            inside so the illustrations simply appear to glow and move. Inspired by the
+            <strong>Imagination Library</strong> in the wake of <strong>Dolly Parton</strong>'s work
+            to put books in children's hands. Currently in active development; more details and media
+            coming soon.
           </p>
           <div class="project-links">
-            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/stories-illuminated" target="_blank" rel="noopener">View Code ↗</a>
+            <span class="by-request">Code &amp; GitHub available by request</span>
           </div>
         </div>
       </article>
@@ -558,6 +580,24 @@
           <div class="art-placeholder empty"><span>+ Add artwork</span></div>
           <figcaption>Coming soon</figcaption>
         </figure>
+      </div>
+
+      <!-- Commission request -->
+      <div class="commission">
+        <div class="commission-text">
+          <h3>Commission a piece</h3>
+          <p>
+            Available for custom artwork and collaborations — stained-glass-style illustration,
+            murals, and mixed art/engineering pieces. Tell me what you have in mind.
+          </p>
+        </div>
+        <a class="btn btn-primary" href="mailto:lukedysart@example.com?subject=Art%20commission%20request">Request a commission</a>
+      </div>
+
+      <!-- Current collaborations -->
+      <div class="collab-note">
+        <span class="collab-label">Currently collaborating with</span>
+        <span class="collab-names"><strong>Royal Fades Nashville</strong> · <strong>Amber Mandell</strong> (art)</span>
       </div>
     </div>
   </section>
