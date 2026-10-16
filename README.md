@@ -11,7 +11,7 @@ open `index.html` or deploy the folder as-is.
 
 - **About** — bio and focus areas
 - **Engineering** — featured projects:
-  - **Mary** — offline medical AR interface
+  - **Mary** — a confidential project (under NDA; details withheld)
   - **Project MIMIC** — hand-mimicry robotics, with a **live in-browser webcam
     hand-tracking demo** (MediaPipe) that reproduces the Python project's
     finger-bend pipeline and drives an animated robotic hand
@@ -22,12 +22,11 @@ open `index.html` or deploy the folder as-is.
 - **LinkedIn** — external link
 
 > **Media note:** The About portrait, the *Sea Turtle* gallery piece, and the
-> three **animated project logos** (Mary, Project MIMIC, Stories Illuminated) are
-> all rendered as **inline SVG** — self-contained vector art with no external
-> image files and no pixel-size limits. The Mary mark is ported from the Mary
-> repo (a heartbeat pulse that reads as an "M", drawing itself on load); MIMIC is
-> an animated robotic hand that flexes; Stories is an open book lit by a sweeping
-> projection beam. All animations respect `prefers-reduced-motion`.
+> three **animated project logos** are all rendered as **inline SVG** —
+> self-contained vector art with no external image files and no pixel-size
+> limits. MIMIC is an animated robotic hand that flexes; Stories is an open book
+> lit by a sweeping projection beam. All animations respect
+> `prefers-reduced-motion`.
 
 ## Project Logs (video updates)
 
@@ -54,9 +53,9 @@ Edit the `LOGS` array at the top of **`assets/js/logs.js`**. Each entry takes
 ```js
 {
   n: 1,                        // log number (shows as "LOG 01")
-  title: 'Why Mary exists',
+  title: 'MIMIC: hand tracking to servos',
   date: '2026-10-08',
-  project: 'Mary',             // Mary | MIMIC | Stories | General  (drives the filter)
+  project: 'MIMIC',            // MIMIC | Stories | General  (drives the filter)
   blurb: 'One-line description.',
   duration: '1:12',            // optional label
 
@@ -101,7 +100,6 @@ Everything marked as a placeholder is easy to swap:
 
 > If you add raster images, keep each file within **2000 px on every side** —
 > oversized images will be rejected on upload.
-| Mary live demo URL | update the `project-link-demo` link in `index.html` |
 | LinkedIn URL | update the two LinkedIn links in `index.html` |
 
 ## Deploy

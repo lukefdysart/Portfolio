@@ -111,7 +111,7 @@
     el.addEventListener('click', function (e) {
       if (el.getAttribute('href') === '#') {
         e.preventDefault();
-        alert('Add your deployed Mary demo URL here in index.html (the project-link-demo link).');
+        alert('Add the deployed demo URL for this project in index.html.');
       }
     });
   });
