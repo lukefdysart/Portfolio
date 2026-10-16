@@ -244,54 +244,65 @@
         <div class="project-media">
           <div class="project-thumb mimic-thumb">
             <!-- MIMIC: a robotic hand whose fingers curl & flex, echoing the live demo -->
-            <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo — animated robotic hand">
+            <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo — Tron-style wireframe hand">
               <defs>
                 <linearGradient id="miBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#20305a" />
-                  <stop offset="1" stop-color="#121a33" />
+                  <stop stop-color="#05121f" />
+                  <stop offset="1" stop-color="#02060d" />
                 </linearGradient>
-                <linearGradient id="miFinger" x1="64" y1="34" x2="64" y2="104" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#f3dca0" />
-                  <stop offset="0.55" stop-color="#e2b64f" />
-                  <stop offset="1" stop-color="#c7962f" />
+                <linearGradient id="miBone" x1="64" y1="110" x2="64" y2="24" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#2fe6ff" />
+                  <stop offset="1" stop-color="#e2b64f" />
                 </linearGradient>
-                <filter id="miGlow" x="-30%" y="-30%" width="160%" height="160%">
-                  <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#e2b64f" flood-opacity="0.6" />
+                <filter id="miGlow" x="-50%" y="-50%" width="200%" height="200%">
+                  <feGaussianBlur stdDeviation="2.4" result="b" />
+                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
+                <radialGradient id="miVign" cx="50%" cy="46%" r="60%">
+                  <stop offset="0" stop-color="#0b2436" />
+                  <stop offset="1" stop-color="#02060d" />
+                </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
-              <rect x="12" y="12" width="104" height="104" rx="30" fill="#e2b64f" opacity="0.06" />
-              <!-- scan ring (subtle, behind the hand) -->
-              <circle class="mimic-scan" cx="64" cy="62" r="43" stroke="#e2b64f" stroke-opacity="0.3"
-                stroke-width="1.5" stroke-dasharray="4 9" fill="none" />
-              <!-- Realistic open hand: filled palm + four fingers + thumb.
-                   Each finger group pivots at its knuckle for the wave. -->
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miVign)" opacity="0.7" />
+              <!-- Tron grid floor -->
+              <g class="mimic-grid" stroke="#15e0ff" stroke-opacity="0.14" stroke-width="1">
+                <line x1="20" y1="40" x2="108" y2="40"/><line x1="20" y1="58" x2="108" y2="58"/>
+                <line x1="20" y1="76" x2="108" y2="76"/><line x1="20" y1="94" x2="108" y2="94"/>
+                <line x1="36" y1="20" x2="36" y2="108"/><line x1="64" y1="20" x2="64" y2="108"/><line x1="92" y1="20" x2="92" y2="108"/>
+              </g>
+              <!-- scanning sweep bar -->
+              <rect class="mimic-sweep" x="12" y="12" width="104" height="10" fill="#2fe6ff" opacity="0.18" />
+
+              <!-- WIREFRAME HAND (MediaPipe-style landmarks + bones).
+                   Each finger is a <g> that flexes at its knuckle. -->
               <g filter="url(#miGlow)">
-                <!-- palm + wrist base (one organic shape) -->
-                <path fill="url(#miFinger)" d="
-                  M44 70
-                  C40 74 39 82 40 90
-                  C41 100 50 106 64 106
-                  C78 106 87 100 88 90
-                  C89 82 88 74 84 70
-                  C80 68 48 68 44 70 Z" />
-                <!-- fingers (rounded capsules via thick round-cap strokes) -->
-                <g stroke="url(#miFinger)" stroke-linecap="round" fill="none">
-                  <g class="mimic-finger f1"><line x1="50" y1="72" x2="49" y2="42" stroke-width="11" /></g>
-                  <g class="mimic-finger f2"><line x1="60" y1="71" x2="60" y2="36" stroke-width="11.5" /></g>
-                  <g class="mimic-finger f3"><line x1="70" y1="71" x2="71" y2="38" stroke-width="11.5" /></g>
-                  <g class="mimic-finger f4"><line x1="80" y1="72" x2="82" y2="46" stroke-width="10" /></g>
-                  <!-- thumb angled off the side of the palm -->
-                  <g class="mimic-thumb-f"><line x1="46" y1="84" x2="28" y2="72" stroke-width="11" /></g>
+                <!-- bones -->
+                <g stroke="url(#miBone)" stroke-width="2.4" stroke-linecap="round" fill="none">
+                  <!-- palm fan from wrist(64,104) to knuckles -->
+                  <path d="M64 104 L46 78 M64 104 L57 76 M64 104 L68 75 M64 104 L80 78 M64 104 L50 86"/>
+                  <!-- knuckle arch -->
+                  <path d="M46 78 L57 76 L68 75 L80 78"/>
+                  <!-- index -->
+                  <g class="mimic-finger f1"><path d="M46 78 L43 60 L41 46"/></g>
+                  <!-- middle -->
+                  <g class="mimic-finger f2"><path d="M57 76 L56 56 L55 40"/></g>
+                  <!-- ring -->
+                  <g class="mimic-finger f3"><path d="M68 75 L70 56 L72 41"/></g>
+                  <!-- pinky -->
+                  <g class="mimic-finger f4"><path d="M80 78 L84 62 L87 50"/></g>
+                  <!-- thumb -->
+                  <g class="mimic-thumb-f"><path d="M50 86 L36 80 L27 74"/></g>
                 </g>
-                <!-- subtle knuckle shading on the palm -->
-                <g fill="#121a33" opacity="0.28">
-                  <ellipse cx="49" cy="74" rx="4" ry="3" /><ellipse cx="60" cy="73" rx="4" ry="3" />
-                  <ellipse cx="71" cy="73" rx="4" ry="3" /><ellipse cx="81" cy="74" rx="4" ry="3" />
+                <!-- landmark nodes -->
+                <g class="mimic-nodes" fill="#eafcff">
+                  <circle cx="64" cy="104" r="3.2"/>
+                  <circle cx="46" cy="78" r="2.2"/><circle cx="43" cy="60" r="2"/><circle cx="41" cy="46" r="2.4"/>
+                  <circle cx="57" cy="76" r="2.2"/><circle cx="56" cy="56" r="2"/><circle cx="55" cy="40" r="2.4"/>
+                  <circle cx="68" cy="75" r="2.2"/><circle cx="70" cy="56" r="2"/><circle cx="72" cy="41" r="2.4"/>
+                  <circle cx="80" cy="78" r="2.2"/><circle cx="84" cy="62" r="2"/><circle cx="87" cy="50" r="2.4"/>
+                  <circle cx="50" cy="86" r="2.2"/><circle cx="36" cy="80" r="2"/><circle cx="27" cy="74" r="2.4"/>
                 </g>
-                <!-- palm crease line for realism -->
-                <path d="M48 88 C56 94 72 94 80 88" stroke="#121a33" stroke-opacity="0.3"
-                  stroke-width="2" fill="none" stroke-linecap="round" />
               </g>
             </svg>
           </div>
@@ -361,33 +372,42 @@
                 </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
-              <!-- The projector is HIDDEN (that's the concept) — illustrations
-                   simply glow up off the open pages. -->
-              <!-- soft glow rising from the pages (light with no visible source) -->
-              <ellipse class="stories-glow" cx="64" cy="58" rx="30" ry="26" fill="url(#stGlow)" />
-              <!-- open book, slightly larger & centered now that the beam is gone -->
-              <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
-                <path d="M64 60 C52 50 36 50 24 55 L24 96 C36 90 52 90 64 100 Z" />
-                <path class="stories-page" d="M64 60 C76 50 92 50 104 55 L104 96 C92 90 76 90 64 100 Z" />
+              <!-- Projector HIDDEN (concept). Characters & stories LEAVE the pages. -->
+              <!-- soft glow billowing up from the open book -->
+              <ellipse class="stories-glow" cx="64" cy="54" rx="30" ry="30" fill="url(#stGlow)" />
+
+              <!-- Characters/story elements rising OUT of the book -->
+              <g class="stories-cast">
+                <!-- a little character silhouette taking flight -->
+                <g class="cast cast-1" fill="#f3e6ff" stroke="none">
+                  <circle cx="52" cy="40" r="4"/>
+                  <path d="M48 44 q4 7 8 0 l-1 10 q-3 2 -6 0 Z"/>
+                  <path d="M48 48 l-5 4 M56 48 l5 4" stroke="#f3e6ff" stroke-width="2" stroke-linecap="round"/>
+                </g>
+                <!-- a star shooting up -->
+                <path class="cast cast-2" d="M74 36 l1.8 3.8 4.2 .6 -3 3 .7 4.2 -3.7-2 -3.7 2 .7-4.2 -3-3 4.2-.6 Z" fill="#ffe9a8"/>
+                <!-- a little bird -->
+                <path class="cast cast-3" d="M58 30 q4-4 8 0 q4-4 8 0" fill="none" stroke="#c9a4ff" stroke-width="2.4" stroke-linecap="round"/>
+                <!-- a heart -->
+                <path class="cast cast-4" d="M44 52 a3 3 0 0 1 6 0 a3 3 0 0 1 6 0 q0 4 -6 8 q-6-4 -6-8 Z" fill="#ff9ecb"/>
               </g>
-              <!-- glowing illustration shapes that appear projected on the pages -->
-              <g class="stories-art" fill="none" stroke="#e9d8ff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <!-- left page: a little glowing star -->
-                <path d="M43 70 l2.2 4.6 5 .7 -3.6 3.5 .9 5 -4.5-2.4 -4.5 2.4 .9-5 -3.6-3.5 5-.7 Z" fill="#e9d8ff" stroke="none" opacity="0.9" />
-                <!-- right page: a glowing crescent moon -->
-                <path d="M82 68 a9 9 0 1 0 7 15 a7 7 0 1 1 -7 -15 Z" fill="#e9d8ff" stroke="none" opacity="0.9" />
+
+              <!-- the open book (pages flutter) -->
+              <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
+                <path d="M64 66 C52 56 36 56 24 61 L24 100 C36 94 52 94 64 102 Z" />
+                <path class="stories-page" d="M64 66 C76 56 92 56 104 61 L104 100 C92 94 76 94 64 102 Z" />
               </g>
               <!-- page text lines -->
               <g stroke="#c9a4ff" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round">
-                <line x1="31" y1="84" x2="55" y2="83" /><line x1="31" y1="90" x2="55" y2="89" />
-                <line x1="73" y1="83" x2="97" y2="84" /><line x1="73" y1="89" x2="97" y2="90" />
+                <line x1="31" y1="86" x2="55" y2="85" /><line x1="31" y1="92" x2="55" y2="91" />
+                <line x1="73" y1="85" x2="97" y2="86" /><line x1="73" y1="92" x2="97" y2="93" />
               </g>
-              <!-- rising light motes (magic) -->
+              <!-- rising sparkle motes -->
               <g fill="#e9d8ff">
-                <circle class="st-mote m1" cx="54" cy="56" r="1.8" />
-                <circle class="st-mote m2" cx="70" cy="54" r="1.4" />
-                <circle class="st-mote m3" cx="62" cy="50" r="2.1" />
-                <circle class="st-mote m4" cx="76" cy="52" r="1.3" />
+                <circle class="st-mote m1" cx="48" cy="60" r="1.6" />
+                <circle class="st-mote m2" cx="80" cy="58" r="1.3" />
+                <circle class="st-mote m3" cx="64" cy="56" r="1.9" />
+                <circle class="st-mote m4" cx="70" cy="62" r="1.2" />
               </g>
             </svg>
             <span class="wip-badge">In Development</span>

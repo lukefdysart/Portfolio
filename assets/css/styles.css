@@ -475,43 +475,53 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---- MIMIC: fingers curl/flex + scan ring rotates ---- */
-.logo-mimic .mimic-scan { transform-box: view-box; transform-origin: 64px 60px; animation: mimicScan 9s linear infinite, mimicScanPulse 2.4s ease-in-out infinite; }
-@keyframes mimicScan { to { transform: rotate(360deg); } }
-@keyframes mimicScanPulse { 0%,100%{stroke-opacity:.22} 50%{stroke-opacity:.55} }
+/* Tron grid gently pulses; scan bar sweeps down */
+.logo-mimic .mimic-grid { animation: miGrid 3s ease-in-out infinite; }
+@keyframes miGrid { 0%,100%{stroke-opacity:.1} 50%{stroke-opacity:.28} }
+.logo-mimic .mimic-sweep { transform-box: view-box; animation: miSweep 3.2s ease-in-out infinite; }
+@keyframes miSweep { 0%{transform:translateY(0);opacity:.25} 50%{transform:translateY(94px);opacity:.1} 100%{transform:translateY(0);opacity:.25} }
+.logo-mimic .mimic-nodes circle { animation: miNode 2.4s ease-in-out infinite; }
+@keyframes miNode { 0%,100%{opacity:.7} 50%{opacity:1} }
 
-/* Fingers drum in a rolling WAVE (personality: it's "mimicking" / alive) */
+/* Fingers flex with natural, staggered HUMAN motion (knuckle pivots) */
 .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f { transform-box: view-box; }
-.logo-mimic .f1 { transform-origin: 50px 72px; animation: mimicWave 2s ease-in-out infinite 0s; }
-.logo-mimic .f2 { transform-origin: 60px 71px; animation: mimicWave 2s ease-in-out infinite .15s; }
-.logo-mimic .f3 { transform-origin: 70px 71px; animation: mimicWave 2s ease-in-out infinite .3s; }
-.logo-mimic .f4 { transform-origin: 80px 72px; animation: mimicWave 2s ease-in-out infinite .45s; }
-.logo-mimic .mimic-thumb-f { transform-origin: 46px 84px; animation: mimicThumb 2.6s ease-in-out infinite .2s; }
-@keyframes mimicWave {
-  0%, 70%, 100% { transform: rotate(0deg); }
-  18%           { transform: rotate(-26deg); }   /* quick dip, then hold up — like a finger tap */
-  36%           { transform: rotate(2deg); }
+.logo-mimic .f1 { transform-origin: 46px 78px; animation: miFlex 2.6s ease-in-out infinite 0s; }
+.logo-mimic .f2 { transform-origin: 57px 76px; animation: miFlex 2.6s ease-in-out infinite .12s; }
+.logo-mimic .f3 { transform-origin: 68px 75px; animation: miFlex 2.6s ease-in-out infinite .24s; }
+.logo-mimic .f4 { transform-origin: 80px 78px; animation: miFlex 2.6s ease-in-out infinite .36s; }
+.logo-mimic .mimic-thumb-f { transform-origin: 50px 86px; animation: miThumb 2.6s ease-in-out infinite .2s; }
+@keyframes miFlex {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  22%           { transform: rotate(14deg); }   /* curl inward like a real finger */
+  40%           { transform: rotate(-3deg); }
 }
-@keyframes mimicThumb {
-  0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(16deg); }
+@keyframes miThumb {
+  0%, 60%, 100% { transform: rotate(0deg); }
+  30%           { transform: rotate(-12deg); }
 }
-/* On hover the whole hand "waves hello" faster + gives a little tilt */
-.project:hover .logo-mimic .mimic-finger { animation-duration: 1s; }
-.project:hover .logo-mimic .mimic-thumb-f { animation-duration: 1.1s; }
+/* On hover the hand flexes faster (like it's actively mimicking you) */
+.project:hover .logo-mimic .mimic-finger,
+.project:hover .logo-mimic .mimic-thumb-f { animation-duration: 1.3s; }
 .logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
-.project:hover .logo-mimic { transform: rotate(-4deg) scale(1.04); }
+.project:hover .logo-mimic { transform: scale(1.05); }
 
-/* ---- Stories: hidden-projector concept — illustrations glow off the page ---- */
-.logo-stories .stories-glow { transform-box: view-box; transform-origin: 64px 58px; animation: storiesGlow 3.4s ease-in-out infinite; }
+/* ---- Stories: characters & stories LEAVE the pages ---- */
+.logo-stories .stories-glow { transform-box: view-box; transform-origin: 64px 54px; animation: storiesGlow 3.6s ease-in-out infinite; }
 @keyframes storiesGlow {
-  0%, 100% { opacity: 0.45; transform: scale(0.9); }
-  50%      { opacity: 0.9;  transform: scale(1.1); }
+  0%, 100% { opacity: 0.4; transform: scale(0.88); }
+  50%      { opacity: 0.85; transform: scale(1.12); }
 }
-/* the projected illustrations fade in and out like they're being "shown" */
-.logo-stories .stories-art { animation: storiesArt 3.4s ease-in-out infinite; }
-@keyframes storiesArt {
-  0%, 100% { opacity: 0.35; }
-  50%      { opacity: 1; }
+/* each cast member rises up out of the book, drifts, and fades */
+.logo-stories .cast { transform-box: view-box; opacity: 0; }
+.logo-stories .cast-1 { transform-origin: 52px 48px; animation: castFly 4s ease-in infinite 0s; }
+.logo-stories .cast-2 { transform-origin: 76px 42px; animation: castFly 4.6s ease-in infinite 1s; }
+.logo-stories .cast-3 { transform-origin: 66px 32px; animation: castFly 4.2s ease-in infinite 2s; }
+.logo-stories .cast-4 { transform-origin: 50px 56px; animation: castFly 5s ease-in infinite 2.8s; }
+@keyframes castFly {
+  0%   { opacity: 0; transform: translateY(16px) scale(.5) rotate(-8deg); }
+  22%  { opacity: 1; }
+  70%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-30px) scale(1.1) rotate(8deg); }
 }
 /* right page gently flutters (personality: the story is "alive") */
 .logo-stories .stories-page { transform-box: view-box; transform-origin: 64px 84px; animation: pageFlutter 3.4s ease-in-out infinite; }
@@ -537,9 +547,11 @@ a { color: inherit; text-decoration: none; }
 /* Reduced motion: show the finished mark, no looping animation */
 @media (prefers-reduced-motion: reduce) {
   .logo-mary .mary-pulse { stroke-dashoffset: 0; animation: none; }
-  .logo-mimic .mimic-scan, .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f,
-  .logo-stories .stories-glow, .logo-stories .stories-art,
+  .logo-mimic .mimic-grid, .logo-mimic .mimic-sweep, .logo-mimic .mimic-nodes circle,
+  .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f,
+  .logo-stories .stories-glow, .logo-stories .cast,
   .logo-stories .stories-page, .logo-stories .st-mote { animation: none; }
+  .logo-stories .cast { opacity: .9; }
   .logo-stories .st-mote { opacity: .8; }
 }
 
