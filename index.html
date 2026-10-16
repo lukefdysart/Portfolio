@@ -294,17 +294,21 @@
           <div class="project-tags">
             <span class="tag">Robotics</span>
             <span class="tag">Computer Vision</span>
-            <span class="tag">Live Demo</span>
+            <span class="tag">Human–Machine Interaction</span>
           </div>
-          <h3 class="project-title">Project MIMIC — Hand Mimicry Robotics</h3>
+          <h3 class="project-title">Project MIMIC</h3>
+          <p class="project-subtitle">A robotic hand that moves with you.</p>
           <p class="project-desc">
-            A robotic hand that mirrors your own in real time. A webcam tracks your hand with
-            MediaPipe, custom joint-angle math estimates how bent each finger is (0–100%), and those
-            values stream over serial to an Arduino driving servos.
+            MIMIC translates human hand movements into real-time robotic motion. Using computer
+            vision to track finger positions, the system calculates individual finger bends and
+            sends them to an Arduino-controlled robotic hand.
+          </p>
+          <p class="project-desc">
+            The result is an intuitive connection between human movement and physical machinery —
+            no gloves, controllers, or wearable sensors required.
           </p>
           <div class="project-links">
-            <button class="btn btn-small btn-ghost" id="mimic-launch">▶ Try the live demo</button>
-            <span class="by-request">Code &amp; GitHub available by request</span>
+            <button class="btn btn-small btn-primary" id="mimic-launch">▶ See it in action</button>
           </div>
 
           <!-- Live hand-tracking demo -->
@@ -337,69 +341,67 @@
       <article class="project">
         <div class="project-media">
           <div class="project-thumb stories-thumb">
-            <!-- Stories Illuminated: an open book lit by a projection beam that sweeps + glows -->
+            <!-- Stories Illuminated: a minimal open book from which light rises
+                 and a line-illustration lifts off the page (the story told by light). -->
             <svg class="logo-anim logo-stories" viewBox="0 0 128 128" fill="none" role="img" aria-label="Stories Illuminated logo">
               <defs>
                 <linearGradient id="stBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#9a7bff" />
-                  <stop offset="1" stop-color="#6f5ad6" />
+                  <stop stop-color="#20283c" /><stop offset="1" stop-color="#141a28" />
                 </linearGradient>
-                <linearGradient id="stMark" x1="24" y1="64" x2="104" y2="64" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff" />
-                  <stop offset="1" stop-color="#f1ecff" />
+                <linearGradient id="stLight" x1="64" y1="86" x2="64" y2="20" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffe6a8" stop-opacity=".55" /><stop offset="1" stop-color="#ffe6a8" stop-opacity="0" />
                 </linearGradient>
-              </defs>
-              <defs>
-                <linearGradient id="stBeamG" x1="0" y1="0" x2="1" y2="0.5">
-                  <stop stop-color="#fff3c4" stop-opacity=".9"/><stop offset="1" stop-color="#fff3c4" stop-opacity="0"/>
-                </linearGradient>
+                <radialGradient id="stPool" cx="50%" cy="100%" r="70%">
+                  <stop stop-color="#ffe6a8" stop-opacity=".9" /><stop offset="1" stop-color="#ffe6a8" stop-opacity="0" />
+                </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
-              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
 
-              <!-- PROJECTION MAPPING: a projector casts a beam that sweeps over
-                   faceted 3D geometry; each facet LIGHTS UP as the light maps onto it. -->
-              <!-- the faceted surface being mapped (dim base) -->
-              <g stroke="#2a2140" stroke-width="1.5" stroke-linejoin="round">
-                <path class="st-facet f1" d="M40 86 L54 70 L62 88 Z" fill="#5a4a9e"/>
-                <path class="st-facet f2" d="M54 70 L70 60 L74 78 L62 88 Z" fill="#5a4a9e"/>
-                <path class="st-facet f3" d="M70 60 L86 66 L84 86 L74 78 Z" fill="#5a4a9e"/>
-                <path class="st-facet f4" d="M86 66 L96 82 L84 86 Z" fill="#5a4a9e"/>
-                <path class="st-facet f5" d="M62 88 L74 78 L84 86 L72 96 Z" fill="#5a4a9e"/>
-              </g>
+              <!-- soft column of light rising from the open page -->
+              <path class="st-lightcol" d="M50 86 L40 24 L88 24 L78 86 Z" fill="url(#stLight)" />
+              <!-- warm pool of light where the page sits -->
+              <ellipse class="st-pool" cx="64" cy="86" rx="26" ry="7" fill="url(#stPool)" />
 
-              <!-- the projector in the top-left corner -->
-              <g>
-                <rect x="22" y="30" width="20" height="12" rx="3" fill="#2a2140"/>
-                <circle cx="40" cy="36" r="5" fill="#ffe08a" stroke="#2a2140" stroke-width="1.5"/>
+              <!-- a single elegant line-illustration (a bird) lifts off the page -->
+              <g class="st-bird" stroke="#ffe6a8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path d="M50 50 q8 -8 14 -1 q6 -7 14 1" />
               </g>
-              <!-- the sweeping light beam -->
-              <path class="st-beam" d="M42 34 L96 60 L72 98 Z" fill="url(#stBeamG)"/>
+              <!-- tiny trailing sparks -->
+              <circle class="st-spk s1" cx="60" cy="62" r="1.4" fill="#ffe6a8"/>
+              <circle class="st-spk s2" cx="70" cy="58" r="1.1" fill="#ffe6a8"/>
+
+              <!-- minimal open book: two clean page planes + spine -->
+              <g stroke="#eef1f8" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path class="st-pg-l" d="M64 90 C54 82 42 82 34 85 L34 72 C42 69 54 69 64 77 Z" />
+                <path class="st-pg-r" d="M64 90 C74 82 86 82 94 85 L94 72 C86 69 74 69 64 77 Z" />
+                <path d="M64 77 V90" stroke-opacity=".6" />
+              </g>
 
               <text x="104" y="110" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
-                font-size="11" font-weight="800" fill="#ffffff" opacity="0.75" letter-spacing="1">DYS</text>
+                font-size="11" font-weight="800" fill="#ffffff" opacity="0.6" letter-spacing="1">DYS</text>
             </svg>
             <span class="wip-badge">In Development</span>
           </div>
         </div>
         <div class="project-body">
           <div class="project-tags">
+            <span class="tag">Interactive Storytelling</span>
             <span class="tag">Projection Mapping</span>
             <span class="tag">Animatronics</span>
-            <span class="tag">Art + Engineering</span>
           </div>
           <h3 class="project-title">Stories Illuminated</h3>
+          <p class="project-subtitle">What if the illustrations could tell the story, too?</p>
           <p class="project-desc">
-            A portable animatronic storybook that brings a story to life — projection, animatronics,
-            and visual storytelling fused into a single physical object, with the projector hidden
-            inside so the illustrations simply appear to glow and move. Inspired by the
-            <strong>Imagination Library</strong> in the wake of <strong>Dolly Parton</strong>'s work
-            to put books in children's hands. Currently in active development; more details and media
-            coming soon.
+            Stories Illuminated reimagines the traditional storybook as an interactive physical
+            experience. Hidden projection, animatronics, and carefully designed movement bring
+            illustrations to life, transforming ordinary pages into moments of discovery.
           </p>
-          <div class="project-links">
-            <span class="by-request">Code &amp; GitHub available by request</span>
-          </div>
+          <p class="project-desc">
+            Inspired by the spirit of <strong>Dolly Parton's Imagination Library</strong>, the
+            project explores how engineering and storytelling can work together to make reading feel
+            magical.
+          </p>
+          <p class="project-note">Currently in development.</p>
         </div>
       </article>
 

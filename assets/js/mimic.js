@@ -34,7 +34,7 @@
   // ---------- Reveal / launch ----------
   launchBtn.addEventListener('click', function () {
     demo.hidden = !demo.hidden;
-    launchBtn.textContent = demo.hidden ? '▶ Try the live demo' : '▼ Hide demo';
+    launchBtn.textContent = demo.hidden ? '▶ See it in action' : '▼ Hide demo';
     if (!demo.hidden) sizeCanvases();
   });
 

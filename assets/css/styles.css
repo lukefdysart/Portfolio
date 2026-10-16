@@ -204,8 +204,10 @@ a { color: inherit; text-decoration: none; }
   color: var(--text-dim); background: var(--surface-2); border: 1px solid var(--border);
   padding: 4px 10px; border-radius: 6px;
 }
-.project-title { font-family: var(--font-head); font-size: 1.35rem; margin-bottom: 10px; }
-.project-desc { color: var(--text-dim); margin-bottom: 18px; }
+.project-title { font-family: var(--font-head); font-size: 1.45rem; margin-bottom: 4px; letter-spacing: -0.3px; }
+.project-subtitle { font-family: var(--font-display); font-style: italic; font-size: 1.08rem; color: var(--accent-2); margin-bottom: 16px; }
+.project-desc { color: var(--text-dim); margin-bottom: 14px; line-height: 1.7; }
+.project-note { font-family: var(--font-head); font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-3); margin-top: 4px; }
 .project-links { display: flex; gap: 12px; flex-wrap: wrap; }
 
 /* ---------------- MIMIC live demo ---------------- */
@@ -518,26 +520,27 @@ a { color: inherit; text-decoration: none; }
 .project:hover .logo-mimic .mi-top { animation: miWrite 1s steps(16,end) forwards; }
 .project:hover .logo-mimic .mi-bot { animation: miWrite 1s steps(16,end) 1.2s forwards, miMimicGlow 2.6s ease-in-out 2.2s infinite; }
 
-/* ---- Stories: a projector beam SWEEPS and MAPS light onto faceted geometry ---- */
-/* the beam sweeps side to side like a scanning projection */
-.logo-stories .st-beam { transform-box: view-box; transform-origin: 41px 35px; opacity: .85;
-  animation: beamSweep 4s ease-in-out infinite; }
-@keyframes beamSweep { 0%,100%{ transform: rotate(-10deg) } 50%{ transform: rotate(14deg) } }
-/* each facet lights up in sequence as the mapped projection crosses it */
-.logo-stories .st-facet { animation: facetLight 4s ease-in-out infinite; }
-.logo-stories .f1 { animation-delay: 0s; }
-.logo-stories .f2 { animation-delay: .35s; }
-.logo-stories .f5 { animation-delay: .7s; }
-.logo-stories .f3 { animation-delay: 1.05s; }
-.logo-stories .f4 { animation-delay: 1.4s; }
-@keyframes facetLight {
-  0%, 60%, 100% { fill: #5a4a9e; }
-  18%           { fill: #fff3c4; }   /* lit by the projection */
-  34%           { fill: #c9b6ff; }
+/* ---- Stories: light rises from the open page; a line-bird lifts off ---- */
+/* the column of light breathes */
+.logo-stories .st-lightcol { transform-box: view-box; transform-origin: 64px 86px; animation: stLightBreathe 4s ease-in-out infinite; }
+@keyframes stLightBreathe { 0%,100%{ opacity:.55; transform: scaleY(.96) } 50%{ opacity:.95; transform: scaleY(1.04) } }
+.logo-stories .st-pool { animation: stPoolGlow 4s ease-in-out infinite; }
+@keyframes stPoolGlow { 0%,100%{ opacity:.65 } 50%{ opacity:1 } }
+/* the bird illustration lifts off the page, drifts up, and resets */
+.logo-stories .st-bird { transform-box: view-box; transform-origin: 64px 50px; animation: stBirdLift 5s ease-in-out infinite; }
+@keyframes stBirdLift {
+  0%   { transform: translateY(26px) scale(.7); opacity: 0; }
+  18%  { opacity: 1; }
+  45%  { transform: translateY(0) scale(1); opacity: 1; }
+  80%  { transform: translateY(-10px) scale(1.02); opacity: 1; }
+  100% { transform: translateY(-20px) scale(1); opacity: 0; }
 }
+.logo-stories .st-spk { transform-box: view-box; opacity: 0; }
+.logo-stories .s1 { transform-origin: 60px 62px; animation: stSpark 5s ease-in-out infinite .3s; }
+.logo-stories .s2 { transform-origin: 70px 58px; animation: stSpark 5s ease-in-out infinite .7s; }
+@keyframes stSpark { 0%{opacity:0;transform:translateY(6px)} 30%{opacity:1} 70%{opacity:1} 100%{opacity:0;transform:translateY(-14px)} }
 .logo-stories { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
 .project:hover .logo-stories { transform: translateY(-3px) scale(1.05); }
-.project:hover .logo-stories .st-beam { animation-duration: 2s; }
 
 /* shared family keyframes */
 @keyframes markDraw { to { stroke-dashoffset: 0; } }
@@ -551,7 +554,9 @@ a { color: inherit; text-decoration: none; }
   .logo-mary .mary-pulse { stroke-dashoffset: 0 !important; animation: none !important; }
   .logo-mimic .mi-top, .logo-mimic .mi-bot { clip-path: none !important; animation: none !important; }
   .logo-mimic .mi-mirror { stroke-dashoffset: 0 !important; animation: none !important; }
-  .logo-stories .st-beam, .logo-stories .st-facet { animation: none !important; }
+  .logo-stories .st-lightcol, .logo-stories .st-pool, .logo-stories .st-spk { animation: none !important; }
+  .logo-stories .st-bird { animation: none !important; transform: none !important; opacity: 1 !important; }
+  .logo-stories .st-spk { opacity: .8 !important; }
 }
 
 /* ---------------- Confidential / NDA project ---------------- */
