@@ -15,7 +15,8 @@
   var DPR = Math.min(window.devicePixelRatio || 1, 2);
   var W = 0, H = 0, nodes = [], raf = null, running = true;
   var mouse = { x: -9999, y: -9999 };
-  var COLORS = ['199,150,47', '59,111,212', '123,92,196'];
+  // light blue leads (Luke's color), with gold + purple accents
+  var COLORS = ['53,195,240', '47,159,224', '199,150,47', '123,92,196'];
 
   function size() {
     var r = canvas.getBoundingClientRect();

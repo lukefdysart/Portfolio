@@ -13,10 +13,11 @@
   --text-dim: #566073;       /* secondary text */
   --text-faint: #94a0b4;     /* tertiary / captions */
 
-  --accent: #c7962f;         /* gold (primary) */
+  --accent: #c7962f;         /* gold (co-primary) */
   --accent-soft: #e2b64f;    /* lighter gold */
   --accent-ink: #3a2c05;     /* text on gold buttons */
-  --accent-2: #3b6fd4;       /* blue */
+  --accent-2: #2f9fe0;       /* light blue (Luke's signature color) */
+  --accent-cyan: #35c3f0;    /* bright light blue for glows/kinetics */
   --accent-3: #7b5cc4;       /* purple */
 
   --border: #dce1ec;
@@ -71,7 +72,14 @@ a { color: inherit; text-decoration: none; }
 }
 #site-header.scrolled { border-color: var(--border); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
-.brand { font-family: var(--font-head); font-weight: 700; letter-spacing: 2px; font-size: 1.05rem; }
+.brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-head); font-weight: 700; letter-spacing: 2px; font-size: 1.05rem; }
+.brand-mark { display: inline-flex; filter: drop-shadow(0 3px 8px rgba(53,195,240,.4)); transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+.brand:hover .brand-mark { transform: rotate(-6deg) scale(1.08); }
+.brand-mark .brand-spark { animation: brandSpark 2.6s ease-in-out infinite; transform-box: view-box; transform-origin: 30px 11px; }
+@keyframes brandSpark { 0%,100%{opacity:.6; transform:scale(.8)} 50%{opacity:1; transform:scale(1.25)} }
+.brand-word { line-height: 1; }
+@media (max-width: 420px) { .brand-word { display: none; } }
+@media (prefers-reduced-motion: reduce) { .brand-mark .brand-spark { animation: none; } }
 .nav-links { list-style: none; display: flex; gap: 30px; }
 .nav-links a {
   font-family: var(--font-head); font-size: 0.9rem; font-weight: 500; color: var(--text-dim);
@@ -750,3 +758,23 @@ a { color: inherit; text-decoration: none; }
 }
 .collab-names { color: var(--text-dim); font-size: 0.95rem; }
 .collab-names strong { color: var(--text); }
+
+/* ---------------- Acknowledgements / Thank You ---------------- */
+.thanks-motivation {
+  margin: 0 0 40px; padding: 24px 28px; border-left: 4px solid var(--accent-2);
+  background: linear-gradient(100deg, rgba(47,159,224,.08), transparent 70%);
+  border-radius: 0 14px 14px 0; max-width: 760px;
+}
+.thanks-motivation p { font-family: var(--font-display); font-size: 1.3rem; font-style: italic; color: var(--text); line-height: 1.4; }
+.thanks-motivation cite { display: block; margin-top: 12px; font-style: normal; font-family: var(--font-head); color: var(--accent-2); font-weight: 600; }
+.thanks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px; }
+.thanks-card {
+  padding: 22px; border-radius: var(--radius); background: var(--surface);
+  border: 1px solid var(--border); box-shadow: var(--shadow);
+  transition: transform .25s ease, border-color .25s ease;
+}
+.thanks-card:hover { transform: translateY(-4px); border-color: var(--accent-2); }
+.thanks-card h3 { font-family: var(--font-head); font-size: 1.05rem; margin-bottom: 8px; color: var(--accent-2); }
+.thanks-card p { color: var(--text-dim); font-size: 0.95rem; }
+.thanks-card em { color: var(--text-faint); font-size: 0.82rem; }
+.thanks-footnote { margin-top: 28px; color: var(--text-faint); font-size: 0.9rem; }

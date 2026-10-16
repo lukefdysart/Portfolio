@@ -8,7 +8,7 @@
 (function () {
   'use strict';
 
-  var PANELS = ['home', 'about', 'engineering', 'logs', 'art'];
+  var PANELS = ['home', 'about', 'engineering', 'logs', 'art', 'thanks'];
   var panels = {};
   PANELS.forEach(function (id) {
     panels[id] = document.querySelector('.tab-panel[data-panel="' + id + '"]');
