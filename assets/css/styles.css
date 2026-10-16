@@ -574,3 +574,80 @@ a { color: inherit; text-decoration: none; }
 @media (prefers-reduced-motion: reduce) {
   .panel-enter, .panel-enter * { animation: none !important; }
 }
+
+/* ============================================================
+   Front-page kinetics — animated hero
+   ============================================================ */
+
+/* Slowly drifting grid for depth */
+.hero-grid-bg { animation: gridDrift 22s ease-in-out infinite alternate; }
+@keyframes gridDrift {
+  from { background-position: 0 0, 0 0, 0 0, 0 0; transform: scale(1); }
+  to   { background-position: 0 0, 0 0, 30px 20px, 20px 30px; transform: scale(1.04); }
+}
+
+/* Floating color orbs behind the hero content */
+.hero-aura { position: absolute; inset: 0; overflow: hidden; z-index: 1; pointer-events: none; }
+.hero-aura .orb {
+  position: absolute; border-radius: 50%; filter: blur(60px); opacity: .5;
+  mix-blend-mode: multiply;
+}
+.orb-gold   { width: 42vmax; height: 42vmax; top: -8vmax;  left: 8vmax;
+  background: radial-gradient(circle, rgba(199,150,47,.55), transparent 70%);
+  animation: float1 16s ease-in-out infinite; }
+.orb-blue   { width: 38vmax; height: 38vmax; bottom: -10vmax; right: 6vmax;
+  background: radial-gradient(circle, rgba(59,111,212,.42), transparent 70%);
+  animation: float2 19s ease-in-out infinite; }
+.orb-purple { width: 34vmax; height: 34vmax; top: 20vmax; right: 24vmax;
+  background: radial-gradient(circle, rgba(123,92,196,.4), transparent 70%);
+  animation: float3 23s ease-in-out infinite; }
+@keyframes float1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(6vmax,4vmax) scale(1.12)} }
+@keyframes float2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-5vmax,-6vmax) scale(1.15)} }
+@keyframes float3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-4vmax,5vmax) scale(1.1)} }
+
+/* Hero content: kinetic staggered entrance */
+.hero-inner { animation: none; }
+.panel-enter .hero-eyebrow  { animation: riseIn .7s cubic-bezier(.22,.61,.36,1) both; }
+.panel-enter .hero-title .accent { display:inline-block; animation: wordIn .8s cubic-bezier(.22,.61,.36,1) .1s both; }
+.panel-enter .hero-line2    { display:inline-block; animation: wordIn .8s cubic-bezier(.22,.61,.36,1) .22s both; }
+.panel-enter .hero-sub      { animation: riseIn .7s cubic-bezier(.22,.61,.36,1) .36s both; }
+.panel-enter .hero-cta      { animation: riseIn .7s cubic-bezier(.22,.61,.36,1) .48s both; }
+@keyframes wordIn {
+  from { opacity: 0; transform: translateY(26px) rotate(-2deg); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Gold word gets a traveling shimmer */
+.shimmer {
+  background: linear-gradient(100deg, var(--accent) 30%, #f3dca0 50%, var(--accent) 70%);
+  background-size: 200% auto; -webkit-background-clip: text; background-clip: text;
+  -webkit-text-fill-color: transparent; color: transparent;
+  animation: shimmerMove 4.5s linear infinite;
+}
+@keyframes shimmerMove { to { background-position: 200% center; } }
+
+/* Buttons: springy hover + sheen */
+.btn { position: relative; overflow: hidden; }
+.btn-primary::after {
+  content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
+  background: linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent);
+  transform: skewX(-18deg);
+}
+.btn-primary:hover::after { animation: sheen .8s ease; }
+@keyframes sheen { from { left: -120%; } to { left: 160%; } }
+.hero-cta .btn:hover { transform: translateY(-3px) scale(1.03); }
+
+/* Scroll cue: a bouncing chevron with a soft glow */
+.scroll-cue {
+  width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%;
+  color: var(--accent); background: rgba(199,150,47,.1);
+  border: 1px solid rgba(199,150,47,.3); text-decoration: none;
+}
+.scroll-cue:hover { background: rgba(199,150,47,.2); }
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-grid-bg, .hero-aura .orb, .shimmer, .panel-enter .hero-eyebrow,
+  .panel-enter .hero-title .accent, .panel-enter .hero-line2,
+  .panel-enter .hero-sub, .panel-enter .hero-cta { animation: none !important; }
+  .shimmer { -webkit-text-fill-color: var(--accent); color: var(--accent); }
+}
