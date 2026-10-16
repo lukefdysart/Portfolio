@@ -58,24 +58,36 @@
 
   <!-- ================= HERO ================= -->
   <section id="home" class="hero tab-panel" data-panel="home">
+    <!-- Kinetic layered background -->
+    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
     <div class="hero-grid-bg"></div>
     <div class="hero-aura" aria-hidden="true">
       <span class="orb orb-gold"></span>
       <span class="orb orb-blue"></span>
       <span class="orb orb-purple"></span>
     </div>
+    <div class="hero-scan" aria-hidden="true"></div>
+
     <div class="container hero-inner">
-      <p class="hero-eyebrow">ECE &amp; BME · Vanderbilt University</p>
-      <h1 class="hero-title">
-        <span class="accent shimmer">Imagination,</span><br /><span class="hero-line2">engineered.</span>
+      <p class="hero-eyebrow"><span class="eyebrow-dot"></span>ECE &amp; BME · Vanderbilt University</p>
+      <h1 class="hero-title" aria-label="Imagination, engineered.">
+        <span class="line line-1"><span class="accent shimmer">Imagination,</span></span>
+        <span class="line line-2"><span class="hero-line2">engineered.</span></span>
       </h1>
       <p class="hero-sub">
-        I work at the intersection of <strong>art and engineering</strong> — robotics, animatronics,
+        I live at the intersection of <strong>art and engineering</strong> — robotics, animatronics,
         motion capture, projection mapping, and visual art.
       </p>
       <div class="hero-cta">
         <a href="#engineering" class="btn btn-primary nav-tab" data-tab="engineering">View Engineering</a>
         <a href="#art" class="btn btn-ghost nav-tab" data-tab="art">View Creative Art</a>
+      </div>
+      <!-- marquee of disciplines, always in motion -->
+      <div class="hero-marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>ROBOTICS</span><span>•</span><span>ANIMATRONICS</span><span>•</span><span>MOTION CAPTURE</span><span>•</span><span>PROJECTION MAPPING</span><span>•</span><span>COMPUTER VISION</span><span>•</span><span>VISUAL ART</span><span>•</span>
+          <span>ROBOTICS</span><span>•</span><span>ANIMATRONICS</span><span>•</span><span>MOTION CAPTURE</span><span>•</span><span>PROJECTION MAPPING</span><span>•</span><span>COMPUTER VISION</span><span>•</span><span>VISUAL ART</span><span>•</span>
+        </div>
       </div>
     </div>
     <a href="#about" class="scroll-cue nav-tab" data-tab="about" aria-label="Go to About">↓</a>
@@ -631,5 +643,6 @@
   <script src="assets/js/mimic.js"></script>
   <script src="assets/js/logs.js"></script>
   <script src="assets/js/tabs.js"></script>
+  <script src="assets/js/hero-fx.js"></script>
 </body>
 </html>
