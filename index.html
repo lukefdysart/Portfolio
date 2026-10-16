@@ -9,8 +9,8 @@
   <meta name="theme-color" content="#f7f8fc" />
   <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
 
-  <!-- Favicon (inline SVG, no file needed) — simplified LD monogram on paper -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect width='72' height='72' rx='16' fill='%23f7f3ea'/%3E%3Cpath d='M18 18 L18 50 C18 53 20 54 24 53 L33 50' fill='none' stroke='%231f1f1f' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M41 54 L41 18 C55 17 65 25 64 36 C63 48 52 55 41 51' fill='none' stroke='%231f1f1f' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M33 43 C44 39 56 39 67 44' fill='none' stroke='%23c9a34a' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <!-- Favicon (inline SVG, no file needed) — simplified monochrome LD monogram on paper -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 86 86'%3E%3Crect width='86' height='86' rx='18' fill='%23f7f3ea'/%3E%3Cg transform='translate(0 9)'%3E%3Cpath d='M30 8 C24 22 18 38 16 50 C15 57 19 59 26 55 C33 51 37 46 40 41' fill='none' stroke='%231f1f1f' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M50 60 C52 44 54 26 56 10 C70 10 80 20 78 34 C76 50 62 58 50 52' fill='none' stroke='%231f1f1f' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M40 50 C50 44 62 36 76 24' fill='none' stroke='%231f1f1f' stroke-width='3.4' stroke-linecap='round'/%3E%3C/g%3E%3C/svg%3E" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -41,21 +41,24 @@
     <nav class="nav container">
       <a href="#home" class="brand" aria-label="Luke Dysart — home">
         <span class="brand-mark" aria-hidden="true">
-          <!-- Handwritten LD monogram — a clean recreation of Luke's "SIMPLIFIED
-               (MONOCHROME)" branding mark: a straightforward (non-cursive) L, a
-               large expressive D, and a curved cross-stroke that flows through
-               the back of the D, echoing his real signature. Charcoal ink, with
-               the cross-stroke carrying the gold accent. -->
-          <svg class="ld-logo" viewBox="0 0 72 52" width="56" height="40" role="img" aria-label="LD monogram">
-            <!-- L: a plain upright down-stroke with a short base flick -->
-            <path class="ld-l" d="M14 8 L14 40 C14 43 16 44 20 43 L29 40"
-              fill="none" stroke="#1f1f1f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- D: tall straight spine + one big open bowl (expressive, not calligraphic) -->
-            <path class="ld-d" d="M39 44 L39 8 C53 7 63 15 62 26 C61 38 50 45 39 41"
-              fill="none" stroke="#1f1f1f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- cross-stroke: a single natural curve sweeping through the back of the D -->
-            <path class="ld-flourish" d="M31 33 C42 29 54 29 65 34"
-              fill="none" stroke="#c9a34a" stroke-width="3" stroke-linecap="round"/>
+          <!-- Handwritten LD monogram — a clean SVG recreation of Luke's
+               "SIMPLIFIED (MONOCHROME)" mark: a gestural, handwritten L whose
+               stroke sweeps down into a looping base, a tall expressive D with
+               an open bowl, and a single charcoal cross-stroke that rises
+               diagonally through the back of the D — exactly as in his
+               signature. Fully monochrome charcoal, no background. -->
+          <svg class="ld-logo" viewBox="0 0 86 68" width="58" height="46" role="img" aria-label="LD monogram">
+            <!-- L: one flowing gesture — tall lean-in stroke that curves and
+                 loops at the base, like a handwritten capital L -->
+            <path class="ld-l" d="M30 8 C24 22 18 38 16 50 C15 57 19 59 26 55 C33 51 37 46 40 41"
+              fill="none" stroke="#1f1f1f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- D: tall spine rising, then a large open bowl sweeping right and back -->
+            <path class="ld-d" d="M50 60 C52 44 54 26 56 10 C70 10 80 20 78 34 C76 50 62 58 50 52"
+              fill="none" stroke="#1f1f1f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- cross-stroke: a single charcoal gesture rising through the back
+                 of the D (lower-left up to upper-right) -->
+            <path class="ld-flourish" d="M40 50 C50 44 62 36 76 24"
+              fill="none" stroke="#1f1f1f" stroke-width="3.4" stroke-linecap="round"/>
           </svg>
         </span>
         <span class="brand-word">LUKE DYSART</span>
@@ -207,11 +210,11 @@
               <g fill="none" stroke="#2c2f38" stroke-width="1">
                 <path d="M0 100 H320 M0 200 H320 M0 300 H320 M80 0 V400 M160 0 V400 M240 0 V400" opacity="0.5" />
               </g>
-              <!-- same simplified LD monogram as the nav logo/favicon, scaled up -->
-              <g transform="translate(96 128) scale(2.1)" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M14 8 L14 40 C14 43 16 44 20 43 L29 40" stroke="#f3efe4" stroke-width="3.4"/>
-                <path d="M39 44 L39 8 C53 7 63 15 62 26 C61 38 50 45 39 41" stroke="#f3efe4" stroke-width="3.4"/>
-                <path d="M31 33 C42 29 54 29 65 34" stroke="#c9a34a" stroke-width="3"/>
+              <!-- same simplified monochrome LD monogram as the nav logo/favicon, scaled up -->
+              <g transform="translate(72 118) scale(2.05)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M30 8 C24 22 18 38 16 50 C15 57 19 59 26 55 C33 51 37 46 40 41" stroke="#f3efe4" stroke-width="4"/>
+                <path d="M50 60 C52 44 54 26 56 10 C70 10 80 20 78 34 C76 50 62 58 50 52" stroke="#f3efe4" stroke-width="4"/>
+                <path d="M40 50 C50 44 62 36 76 24" stroke="#f3efe4" stroke-width="3.4"/>
               </g>
               <text x="160" y="330" text-anchor="middle"
                     font-family="'Space Grotesk', sans-serif" font-weight="500"
