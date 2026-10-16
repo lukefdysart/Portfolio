@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
 
   <!-- Favicon (inline SVG, no file needed) — light-blue LD monogram -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='11' fill='%2335c3f0'/%3E%3Cpath d='M13 11 V29 H22' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M23 11 H27 a7 7 0 0 1 0 18 H23 Z' fill='none' stroke='%23fff' stroke-width='3.2' stroke-linejoin='round'/%3E%3Ccircle cx='30' cy='11' r='2.1' fill='%23f3dca0'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='12' fill='%2335c3f0'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 13 V31 H21'/%3E%3Cpath d='M24 13 H28 a8 8 0 0 1 0 18 H24 Z'/%3E%3C/g%3E%3Cpath d='M6 22 H12 l2 -6 3 11 2 -5 h2' fill='none' stroke='%23f3dca0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -41,19 +41,28 @@
     <nav class="nav container">
       <a href="#home" class="brand" aria-label="Luke Dysart — home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 40 40" width="34" height="34">
+          <svg viewBox="0 0 44 44" width="36" height="36">
             <defs>
               <linearGradient id="brandG" x1="0" y1="0" x2="1" y2="1">
                 <stop offset="0" stop-color="#35c3f0"/>
                 <stop offset="1" stop-color="#2f9fe0"/>
               </linearGradient>
             </defs>
-            <rect x="1.5" y="1.5" width="37" height="37" rx="11" fill="url(#brandG)"/>
-            <rect x="1.5" y="1.5" width="37" height="37" rx="11" fill="#fff" opacity="0.06"/>
-            <!-- L + D monogram, drawn as clean strokes -->
-            <path class="brand-l" d="M13 11 V29 H22" fill="none" stroke="#fff" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <path class="brand-d" d="M23 11 H27 a7 7 0 0 1 0 18 H23 Z" fill="none" stroke="#fff" stroke-width="3.2" stroke-linejoin="round"/>
-            <circle class="brand-spark" cx="30" cy="11" r="2.1" fill="#f3dca0"/>
+            <rect x="2" y="2" width="40" height="40" rx="12" fill="url(#brandG)"/>
+            <rect x="2" y="2" width="40" height="40" rx="12" fill="#fff" opacity="0.07"/>
+            <!-- centered L + D monogram -->
+            <g fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13 13 V31 H21"/>
+              <path d="M24 13 H28 a8 8 0 0 1 0 18 H24 Z"/>
+            </g>
+            <!-- heartbeat pulse travels across the mark (the motif) -->
+            <path class="brand-pulse" d="M6 22 H12 l2 -6 3 11 2 -5 h2"
+              fill="none" stroke="#f3dca0" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- tiny parachute accent, top-right -->
+            <g class="brand-chute">
+              <path d="M30 8 a4 4 0 0 1 8 0 Z" fill="#fff" opacity=".9"/>
+              <path d="M30 8 L34 13 M38 8 L34 13" stroke="#fff" stroke-width="1.4" opacity=".9"/>
+            </g>
           </svg>
         </span>
         <span class="brand-word">LUKE DYSART</span>
@@ -84,20 +93,24 @@
          life, clustered down both margins (center stays readable). Filled,
          thick-outline, colorful "sticker" style a la Overexposed / Black Pontiac. -->
     <div class="doodles" aria-hidden="true">
-      <!-- LEFT CLUSTER -->
+      <!-- LEFT COLUMN -->
       <svg class="doodle dd-hockey" viewBox="0 0 64 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10 L22 44" fill="none"/><path d="M22 44 q-2 10 10 10 h16 v-8 h-14 q-3 0 -2.5 -4" fill="#c7962f"/><circle cx="50" cy="20" r="6" fill="#2f9fe0"/></g></svg>
-      <svg class="doodle dd-gear" viewBox="0 0 64 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><circle cx="32" cy="32" r="11" fill="#2f9fe0"/><circle cx="32" cy="32" r="4" fill="#fff"/><path d="M32 8v8M32 48v8M8 32h8M48 32h8M15 15l6 6M43 43l6 6M49 15l-6 6M21 43l-6 6" fill="none"/></g></svg>
+      <svg class="doodle dd-football" viewBox="0 0 64 48"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><ellipse cx="32" cy="24" rx="22" ry="13" fill="#b4652f"/><path d="M24 24h16M28 20v8M32 20v8M36 20v8" fill="none" stroke="#fff"/></g></svg>
       <svg class="doodle dd-mountain" viewBox="0 0 72 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M6 50 L28 14 L40 32 L52 18 L66 50 Z" fill="#7b5cc4"/><path d="M22 23 l6 5 -5 4 7 2" fill="#fff" stroke="none"/></g></svg>
-      <svg class="doodle dd-bulb" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M28 6a18 18 0 0 0-10 33c2 2 3 4 3 7h14c0-3 1-5 3-7a18 18 0 0 0-10-33Z" fill="#f6d35a"/><path d="M22 52h12M24 58h8" fill="none"/></g></svg>
+      <svg class="doodle dd-run" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="34" cy="12" r="6" fill="#2f9fe0" stroke-width="2.5"/><path d="M30 20 l-6 12 8 6 -4 14M32 24 l10 4M24 32 l-12 2M38 44 l6 8"/></g></svg>
       <svg class="doodle dd-turtle" viewBox="0 0 70 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><ellipse cx="35" cy="30" rx="18" ry="14" fill="#2bb673"/><path d="M35 20 l5 7 -5 7 -5-7 Z" fill="#c7962f" stroke-width="2"/><circle cx="17" cy="22" r="4" fill="#2bb673"/><path d="M20 42l-4 7M50 42l4 7M14 36l-7 3M56 36l7 3" fill="none" stroke-linecap="round"/></g></svg>
-      <svg class="doodle dd-circuit" viewBox="0 0 72 48"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M6 24h12M54 24h12M18 24a6 6 0 0 1 12 0 6 6 0 0 0 12 0"/><circle cx="6" cy="24" r="4" fill="#2f9fe0"/><circle cx="66" cy="24" r="4" fill="#c7962f"/></g></svg>
+      <svg class="doodle dd-chef" viewBox="0 0 60 60"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M16 30a10 10 0 1 1 6-18 9 9 0 0 1 16 0 10 10 0 1 1 6 18 Z" fill="#eef1f8"/><path d="M16 30h28v10a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4Z" fill="#eef1f8"/><path d="M16 38h28" fill="none"/></g></svg>
+      <svg class="doodle dd-tv" viewBox="0 0 64 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><rect x="8" y="14" width="48" height="34" rx="5" fill="#9a7bff"/><path d="M26 24 l12 7 -12 7 Z" fill="#fff" stroke="none"/><path d="M24 8l8 6 8-6" fill="none" stroke-linecap="round"/></g></svg>
 
-      <!-- RIGHT CLUSTER -->
+      <!-- RIGHT COLUMN -->
       <svg class="doodle dd-plane" viewBox="0 0 72 60"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M36 6 L42 30 L64 42 L42 40 L40 54 L36 46 L32 54 L30 40 L8 42 L30 30 Z" fill="#2f9fe0"/></g></svg>
       <svg class="doodle dd-chute" viewBox="0 0 64 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M8 26a24 24 0 0 1 48 0 Z" fill="#c7962f"/><path d="M8 26 L30 46 M32 26 L30 46 M56 26 L34 46" fill="none"/><circle cx="32" cy="52" r="5" fill="#15202b"/></g></svg>
+      <svg class="doodle dd-dogtag" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round" fill="none"><path d="M14 10 a6 6 0 0 0 0 12 l6 0" stroke-width="2.5"/><rect x="20" y="20" width="20" height="34" rx="7" fill="#b8c0cc"/><path d="M25 30h10M25 38h10" stroke="#15202b" stroke-width="2"/></g></svg>
       <svg class="doodle dd-brush" viewBox="0 0 60 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M46 8 26 28l8 8 20-20a4.5 4.5 0 0 0-8-8Z" fill="#7b5cc4"/><path d="M26 28c-7 1-10 6-11 14-.5 3-2 4-5 5 3 5 11 6 17 1 4-3 5-8 7-14Z" fill="#ff6fae"/></g></svg>
-      <svg class="doodle dd-book" viewBox="0 0 68 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M34 14C26 8 14 8 7 11v34c7-3 19-3 27 3 8-6 20-6 27-3V11c-7-3-19-3-27 3Z" fill="#9a7bff"/><path d="M34 14v33" fill="none"/></g></svg>
+      <svg class="doodle dd-mask" viewBox="0 0 72 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M8 10 q10 4 20 0 v16 a10 10 0 0 1 -20 0 Z" fill="#f6d35a"/><path d="M12 16a3 2 0 0 1 5 0M19 16a3 2 0 0 1 5 0M11 22q6 5 14 1" fill="none" stroke-width="2"/><path d="M44 10 q10 4 20 0 v16 a10 10 0 0 1 -20 0 Z" fill="#2f9fe0"/><path d="M48 16a3 2 0 0 1 5 0M55 16a3 2 0 0 1 5 0M47 26q6-5 14-1" fill="none" stroke-width="2"/></g></svg>
       <svg class="doodle dd-pulse" viewBox="0 0 76 44"><path d="M6 22 H22 L30 8 L40 36 L50 8 L58 22 H70" fill="none" stroke="#e5484d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      <svg class="doodle dd-tree" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M28 6 L42 28 H34 L46 48 H10 L22 28 H14 Z" fill="#2bb673"/><path d="M28 48 v10" fill="none"/></g></svg>
+      <svg class="doodle dd-dog" viewBox="0 0 64 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M20 20 q-10 -2 -12 10 q-1 8 6 9 l0 10 h28 l0 -10 q7 -1 6 -9 q-2 -12 -12 -10 Z" fill="#e9b64d"/><path d="M14 22 q-6 2 -5 12M50 22 q6 2 5 12" fill="#d79a33" stroke-width="2"/><circle cx="25" cy="34" r="2.2" fill="#15202b" stroke="none"/><circle cx="39" cy="34" r="2.2" fill="#15202b" stroke="none"/><path d="M29 40 q3 3 6 0" fill="none" stroke-width="2"/></g></svg>
       <svg class="doodle dd-star" viewBox="0 0 48 48"><path d="M24 4l6 12 13 2-9.5 9 2 13-11.5-6-11.5 6 2-13L5 18l13-2Z" fill="#f6d35a" stroke="#15202b" stroke-width="3" stroke-linejoin="round"/></svg>
     </div>
 
@@ -283,16 +296,18 @@
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
               <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
-              <!-- Self-forming hand: palm draws first, then fingers build one
-                   by one, then the whole hand waves. Each piece is separate. -->
-              <g stroke="url(#miMark)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                <path class="mi-part mi-palm" d="M46 92 Q64 102 82 92 L82 72 Q64 80 46 72 Z" />
-                <path class="mi-part mi-fg1" d="M46 74 L46 46" />
-                <path class="mi-part mi-fg2" d="M58 76 L58 40" />
-                <path class="mi-part mi-fg3" d="M70 76 L70 42" />
-                <path class="mi-part mi-fg4" d="M82 74 L82 50" />
-                <path class="mi-part mi-thumb" d="M46 78 Q35 73 31 62" />
-              </g>
+              <!-- Pixar-lamp style: a bold 'M' is DRAWN by a travelling robot
+                   node (the tracker), which then settles into place. -->
+              <path class="mi-track" d="M34 86 L34 42 L64 74 L94 42 L94 86"
+                stroke="#ffffff" stroke-opacity="0.16" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <path class="mi-draw" d="M34 86 L34 42 L64 74 L94 42 L94 86"
+                stroke="url(#miMark)" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- the drawing node that rides along forming the M -->
+              <circle class="mi-node" r="5" fill="#ffffff" />
+              <!-- offset motion-path node (visual spark at the pen tip) -->
+              <circle class="mi-node2" cx="34" cy="86" r="3" fill="#eafaff" />
               <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
                 font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
             </svg>
@@ -359,15 +374,18 @@
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
               <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
-              <!-- Book spine (center) -->
-              <path class="stories-spine" d="M64 50 L64 95" stroke="url(#stMark)" stroke-width="7" stroke-linecap="round" fill="none" />
-              <!-- Left & right pages swing open from the spine on load -->
-              <path class="st-page-l" d="M64 50 C52 40 36 40 26 45 L26 92 C36 87 52 87 64 95"
-                stroke="url(#stMark)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <path class="st-page-r" d="M64 50 C76 40 92 40 102 45 L102 92 C92 87 76 87 64 95"
-                stroke="url(#stMark)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <!-- a small star rising off the page -->
-              <path class="stories-spark" d="M64 34 l1.6 3.4 3.8 .5 -2.8 2.7 .7 3.8 -3.3-1.8 -3.3 1.8 .7-3.8 -2.8-2.7 3.8-.5 Z" fill="#ffe9a8" />
+              <!-- Pixar-lamp style: a bold 'S' is DRAWN like unspooling ribbon
+                   (a story unfolding), then a star pops up off the top. -->
+              <path class="st-track" d="M86 42 C86 30 42 30 42 48 C42 64 86 62 86 80 C86 98 42 98 42 84"
+                stroke="#ffffff" stroke-opacity="0.16" stroke-width="8"
+                stroke-linecap="round" fill="none" />
+              <path class="st-draw" d="M86 42 C86 30 42 30 42 48 C42 64 86 62 86 80 C86 98 42 98 42 84"
+                stroke="url(#stMark)" stroke-width="8"
+                stroke-linecap="round" fill="none" />
+              <!-- node that rides the ribbon as it draws -->
+              <circle class="st-node" r="4.5" fill="#ffffff" />
+              <!-- star pops up after the S forms -->
+              <path class="stories-spark" d="M64 24 l2 4.4 4.8 .6 -3.6 3.4 .9 4.8 -4.1-2.3 -4.1 2.3 .9-4.8 -3.6-3.4 4.8-.6 Z" fill="#ffe9a8" stroke="#fff" stroke-width="1" stroke-linejoin="round" />
               <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
                 font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
             </svg>
