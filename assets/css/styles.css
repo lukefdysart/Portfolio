@@ -470,26 +470,31 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---- MIMIC: fingers curl/flex + scan ring rotates ---- */
-.logo-mimic .mimic-scan { transform-origin: 64px 64px; animation: mimicScan 9s linear infinite; }
+.logo-mimic .mimic-scan { transform-box: view-box; transform-origin: 64px 60px; animation: mimicScan 9s linear infinite, mimicScanPulse 2.4s ease-in-out infinite; }
 @keyframes mimicScan { to { transform: rotate(360deg); } }
+@keyframes mimicScanPulse { 0%,100%{stroke-opacity:.22} 50%{stroke-opacity:.55} }
 
-.logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f { transform-box: view-box; transform-origin: center; }
-.logo-mimic .f1 { transform-origin: 51px 78px; animation: mimicCurl 2.8s ease-in-out infinite; }
-.logo-mimic .f2 { transform-origin: 61px 78px; animation: mimicCurl 2.8s ease-in-out infinite .12s; }
-.logo-mimic .f3 { transform-origin: 71px 78px; animation: mimicCurl 2.8s ease-in-out infinite .24s; }
-.logo-mimic .f4 { transform-origin: 81px 78px; animation: mimicCurl 2.8s ease-in-out infinite .36s; }
-.logo-mimic .mimic-thumb-f { transform-origin: 48px 90px; animation: mimicThumb 2.8s ease-in-out infinite .2s; }
-@keyframes mimicCurl {
-  0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(-22deg); }
+/* Fingers drum in a rolling WAVE (personality: it's "mimicking" / alive) */
+.logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f { transform-box: view-box; }
+.logo-mimic .f1 { transform-origin: 51px 78px; animation: mimicWave 2s ease-in-out infinite 0s; }
+.logo-mimic .f2 { transform-origin: 61px 78px; animation: mimicWave 2s ease-in-out infinite .15s; }
+.logo-mimic .f3 { transform-origin: 71px 78px; animation: mimicWave 2s ease-in-out infinite .3s; }
+.logo-mimic .f4 { transform-origin: 81px 78px; animation: mimicWave 2s ease-in-out infinite .45s; }
+.logo-mimic .mimic-thumb-f { transform-origin: 48px 90px; animation: mimicThumb 2.6s ease-in-out infinite .2s; }
+@keyframes mimicWave {
+  0%, 70%, 100% { transform: rotate(0deg); }
+  18%           { transform: rotate(-26deg); }   /* quick dip, then hold up — like a finger tap */
+  36%           { transform: rotate(2deg); }
 }
 @keyframes mimicThumb {
   0%, 100% { transform: rotate(0deg); }
-  50%      { transform: rotate(18deg); }
+  50%      { transform: rotate(16deg); }
 }
-/* fingers flex faster on hover (like gripping) */
-.project:hover .logo-mimic .mimic-finger,
+/* On hover the whole hand "waves hello" faster + gives a little tilt */
+.project:hover .logo-mimic .mimic-finger { animation-duration: 1s; }
 .project:hover .logo-mimic .mimic-thumb-f { animation-duration: 1.1s; }
+.logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
+.project:hover .logo-mimic { transform: rotate(-4deg) scale(1.04); }
 
 /* ---- Stories: projection beam sweeps + glow pulses ---- */
 .logo-stories .stories-beam-group { transform-box: view-box; transform-origin: 64px 30px; animation: storiesSweep 5s ease-in-out infinite; }
@@ -507,14 +512,34 @@ a { color: inherit; text-decoration: none; }
   0%, 100% { opacity: 1; }
   50%      { opacity: 0.7; }
 }
+/* right page gently flutters (personality: the story is "alive") */
+.logo-stories .stories-page { transform-box: view-box; transform-origin: 64px 84px; animation: pageFlutter 3.4s ease-in-out infinite; }
+@keyframes pageFlutter {
+  0%, 100% { transform: skewY(0deg) scaleX(1); }
+  50%      { transform: skewY(-2.5deg) scaleX(0.94); }
+}
+/* light motes drift upward and fade — like sparks from the pages */
+.logo-stories .st-mote { transform-box: view-box; opacity: 0; }
+.logo-stories .m1 { transform-origin: 56px 66px; animation: moteRise 3.2s ease-in infinite 0s; }
+.logo-stories .m2 { transform-origin: 68px 64px; animation: moteRise 3.6s ease-in infinite .8s; }
+.logo-stories .m3 { transform-origin: 62px 60px; animation: moteRise 4s   ease-in infinite 1.5s; }
+.logo-stories .m4 { transform-origin: 74px 62px; animation: moteRise 3.4s ease-in infinite 2.2s; }
+@keyframes moteRise {
+  0%   { opacity: 0; transform: translateY(0) scale(.6); }
+  25%  { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-26px) scale(1.1); }
+}
+/* whole book lifts slightly on hover */
+.logo-stories { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
+.project:hover .logo-stories { transform: translateY(-3px) scale(1.04); }
 
 /* Reduced motion: show the finished mark, no looping animation */
 @media (prefers-reduced-motion: reduce) {
   .logo-mary .mary-pulse { stroke-dashoffset: 0; animation: none; }
   .logo-mimic .mimic-scan, .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f,
-  .logo-stories .stories-beam-group, .logo-stories .stories-glow, .logo-stories .stories-source {
-    animation: none;
-  }
+  .logo-stories .stories-beam-group, .logo-stories .stories-glow, .logo-stories .stories-source,
+  .logo-stories .stories-page, .logo-stories .st-mote { animation: none; }
+  .logo-stories .st-mote { opacity: .8; }
 }
 
 /* ---------------- Confidential / NDA project ---------------- */

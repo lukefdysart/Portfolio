@@ -341,15 +341,22 @@
               </g>
               <!-- glow pooling on the page -->
               <ellipse class="stories-glow" cx="64" cy="78" rx="30" ry="10" fill="url(#stGlow)" />
-              <!-- open book -->
+              <!-- open book: left page static, right page flutters -->
               <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
                 <path d="M64 70 C54 62 40 62 30 66 L30 96 C40 92 54 92 64 98 Z" />
-                <path d="M64 70 C74 62 88 62 98 66 L98 96 C88 92 74 92 64 98 Z" />
+                <path class="stories-page" d="M64 70 C74 62 88 62 98 66 L98 96 C88 92 74 92 64 98 Z" />
               </g>
               <!-- page lines -->
               <g stroke="#c9a4ff" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round">
                 <line x1="37" y1="73" x2="57" y2="71" /><line x1="37" y1="80" x2="57" y2="78" />
                 <line x1="71" y1="71" x2="91" y2="73" /><line x1="71" y1="78" x2="91" y2="80" />
+              </g>
+              <!-- rising light motes (magic) -->
+              <g fill="#e9d8ff">
+                <circle class="st-mote m1" cx="56" cy="66" r="1.8" />
+                <circle class="st-mote m2" cx="68" cy="64" r="1.4" />
+                <circle class="st-mote m3" cx="62" cy="60" r="2.1" />
+                <circle class="st-mote m4" cx="74" cy="62" r="1.3" />
               </g>
             </svg>
             <span class="wip-badge">In Development</span>
