@@ -117,13 +117,13 @@ a { color: inherit; text-decoration: none; }
   font-size: 0.72rem; color: var(--accent-2); margin-bottom: 22px; font-weight: 600;
 }
 .hero-title {
-  font-family: var(--font-display); font-weight: 600; line-height: 1.06;
+  font-family: var(--font-display); font-weight: 600; line-height: 1.18;
   font-size: clamp(3rem, 9vw, 6rem); letter-spacing: -1px; margin-bottom: 26px;
-  font-optical-sizing: auto; padding: 0.08em 0; overflow: visible;
+  font-optical-sizing: auto; overflow: visible;
 }
-.hero-title .line { display: block; overflow: visible; }
+.hero-title .line { display: block; overflow: visible; padding: 0.12em 0.06em; }
 .hero-title .accent { color: var(--accent); font-style: italic; font-weight: 600;
-  display: inline-block; padding-right: .06em; }
+  display: inline-block; padding-right: .12em; overflow: visible; }
 .hero-line2 { font-weight: 700; display: inline-block; }
 .hero-sub { color: var(--text-dim); max-width: 600px; margin: 0 auto 34px; font-size: 1.15rem; }
 .hero-cta { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
@@ -622,109 +622,60 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ============================================================
-   Front-page kinetics — animated hero
+   Front-page — calm, sketchbook feel with hand-drawn doodles
    ============================================================ */
 
-/* Slowly drifting grid for depth */
-.hero-grid-bg { animation: gridDrift 22s ease-in-out infinite alternate; }
-@keyframes gridDrift {
-  from { background-position: 0 0, 0 0, 0 0, 0 0; transform: scale(1); }
-  to   { background-position: 0 0, 0 0, 30px 20px, 20px 30px; transform: scale(1.04); }
+/* Soft, still paper grid — subtle, no drift */
+.hero-grid-bg { opacity: .4; }
+
+/* Hand-drawn doodles scattered to the sides (not over the text) */
+.doodles { position: absolute; inset: 0; z-index: 0; pointer-events: none; color: var(--accent-2); }
+.doodle { position: absolute; width: 58px; height: 58px; opacity: .22;
+  animation: doodleFloat 9s ease-in-out infinite; }
+.doodle.d-gear   { color: var(--accent); }
+.doodle.d-star   { color: var(--accent); }
+.doodle.d-brush  { color: var(--accent-3); }
+.doodle.d-book   { color: var(--accent-3); }
+/* left cluster */
+.d-bulb    { top: 20%;  left: 7%;  width: 54px; animation-delay: 0s; }
+.d-gear    { top: 44%;  left: 4%;  width: 62px; animation-delay: 1.2s; }
+.d-brush   { bottom: 16%; left: 9%; width: 56px; animation-delay: 2.1s; }
+.d-circuit { bottom: 30%; left: 15%; width: 70px; opacity: .16; animation-delay: 3s; }
+/* right cluster */
+.d-hand    { top: 22%;  right: 7%;  width: 54px; animation-delay: .6s; }
+.d-book    { top: 46%;  right: 4%;  width: 64px; animation-delay: 1.8s; }
+.d-wave    { bottom: 20%; right: 9%; width: 72px; opacity: .16; animation-delay: 2.6s; }
+.d-star    { top: 32%;  right: 16%; width: 40px; animation-delay: 3.4s; }
+@keyframes doodleFloat {
+  0%, 100% { transform: translateY(0) rotate(-3deg); }
+  50%      { transform: translateY(-12px) rotate(3deg); }
 }
 
-/* Full-bleed kinetic particle/circuit canvas */
-.hero-canvas { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
-
-/* Floating color orbs behind the hero content */
-.hero-aura { position: absolute; inset: 0; overflow: hidden; z-index: 0; pointer-events: none; }
-.hero-aura .orb { position: absolute; border-radius: 50%; filter: blur(70px); opacity: .6; }
-.orb-gold   { width: 46vmax; height: 46vmax; top: -10vmax; left: 4vmax;
-  background: radial-gradient(circle, rgba(199,150,47,.6), transparent 70%);
-  animation: float1 14s ease-in-out infinite; }
-.orb-blue   { width: 40vmax; height: 40vmax; bottom: -12vmax; right: 2vmax;
-  background: radial-gradient(circle, rgba(59,111,212,.5), transparent 70%);
-  animation: float2 17s ease-in-out infinite; }
-.orb-purple { width: 38vmax; height: 38vmax; top: 24vmax; right: 20vmax;
-  background: radial-gradient(circle, rgba(123,92,196,.48), transparent 70%);
-  animation: float3 21s ease-in-out infinite; }
-@keyframes float1 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(8vmax,5vmax) scale(1.18)} }
-@keyframes float2 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-7vmax,-7vmax) scale(1.2)} }
-@keyframes float3 { 0%,100%{transform:translate(0,0) scale(1)} 50%{transform:translate(-5vmax,6vmax) scale(1.14)} }
-
-/* A sweeping scan line across the whole hero */
-.hero-scan {
-  position: absolute; inset: 0; z-index: 0; pointer-events: none;
-  background: linear-gradient(180deg, transparent 0%, rgba(199,150,47,.10) 48%, rgba(199,150,47,.18) 50%, rgba(199,150,47,.10) 52%, transparent 100%);
-  background-size: 100% 220%; animation: scanSweep 7s ease-in-out infinite;
-  mix-blend-mode: screen; opacity: .5;
-}
-@keyframes scanSweep { 0%{background-position:0 -60%} 100%{background-position:0 160%} }
-
-/* Hero content kinetic entrance — lines rise behind a clip mask */
+/* Gentle, calm content entrance (no violent motion) */
 .hero-inner { animation: none; }
-.hero-eyebrow { display: inline-flex; align-items: center; gap: 9px; }
-.eyebrow-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); box-shadow: 0 0 0 0 rgba(199,150,47,.5); animation: dotPulse 1.8s infinite; }
-@keyframes dotPulse { 0%{box-shadow:0 0 0 0 rgba(199,150,47,.5)} 70%{box-shadow:0 0 0 9px rgba(199,150,47,0)} 100%{box-shadow:0 0 0 0 rgba(199,150,47,0)} }
+.panel-enter .hero-eyebrow { animation: riseIn .6s ease .05s both; }
+.panel-enter .line-1 .accent { display:inline-block; animation: riseIn .7s ease .14s both; }
+.panel-enter .line-2 .hero-line2 { display:inline-block; animation: riseIn .7s ease .26s both; }
+.panel-enter .hero-sub { animation: riseIn .6s ease .4s both; }
+.panel-enter .hero-cta { animation: riseIn .6s ease .52s both; }
 
-.panel-enter .hero-eyebrow { animation: riseIn .7s cubic-bezier(.22,.61,.36,1) both; }
-.panel-enter .line-1 .accent { display:inline-block; animation: lineRise .9s cubic-bezier(.19,1,.22,1) .12s both; }
-.panel-enter .line-2 .hero-line2 { display:inline-block; animation: lineRise .9s cubic-bezier(.19,1,.22,1) .26s both; }
-.panel-enter .hero-sub { animation: riseIn .7s cubic-bezier(.22,.61,.36,1) .5s both; }
-.panel-enter .hero-cta { animation: riseIn .7s cubic-bezier(.22,.61,.36,1) .62s both; }
-.panel-enter .hero-marquee { animation: riseIn .9s ease .8s both; }
-@keyframes lineRise {
-  from { opacity: 0; transform: translateY(70%) rotate(3deg); }
-  to   { opacity: 1; transform: none; }
-}
+/* Accent word: a soft underline sketch instead of a loud shimmer */
+.hero-title .accent { position: relative; }
 
-/* Gold word: traveling shimmer */
-.shimmer {
-  background: linear-gradient(100deg, #b5831f 20%, #f6e2a8 50%, #b5831f 80%);
-  background-size: 220% auto; -webkit-background-clip: text; background-clip: text;
-  -webkit-text-fill-color: transparent; color: transparent;
-  animation: shimmerMove 4s linear infinite;
-}
-@keyframes shimmerMove { to { background-position: 220% center; } }
-
-/* Discipline marquee — always scrolling */
-.hero-marquee {
-  position: relative; margin-top: 40px; width: 100vw; left: 50%; transform: translateX(-50%);
-  overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-          mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
-}
-.marquee-track {
-  display: inline-flex; gap: 20px; white-space: nowrap; align-items: center;
-  font-family: var(--font-head); font-weight: 600; font-size: .82rem; letter-spacing: 3px;
-  color: var(--text-faint); animation: marquee 26s linear infinite;
-}
-.marquee-track span:nth-child(even) { color: var(--accent); }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-
-/* Buttons: springy hover + sheen */
-.btn { position: relative; overflow: hidden; }
-.btn-primary::after {
-  content: ''; position: absolute; top: 0; left: -120%; width: 60%; height: 100%;
-  background: linear-gradient(100deg, transparent, rgba(255,255,255,.5), transparent);
-  transform: skewX(-18deg);
-}
-.btn-primary:hover::after { animation: sheen .8s ease; }
-@keyframes sheen { from { left: -120%; } to { left: 160%; } }
-.hero-cta .btn:hover { transform: translateY(-3px) scale(1.04); }
+/* Buttons: calm lift (no sheen flash) */
+.hero-cta .btn:hover { transform: translateY(-2px); }
 
 /* Scroll cue */
 .scroll-cue {
   width: 40px; height: 40px; display: grid; place-items: center; border-radius: 50%;
-  color: var(--accent); background: rgba(199,150,47,.1);
-  border: 1px solid rgba(199,150,47,.3); text-decoration: none; z-index: 2;
+  color: var(--accent-2); background: rgba(47,159,224,.1);
+  border: 1px solid rgba(47,159,224,.3); text-decoration: none; z-index: 2;
 }
-.scroll-cue:hover { background: rgba(199,150,47,.2); }
+.scroll-cue:hover { background: rgba(47,159,224,.2); }
 
 @media (prefers-reduced-motion: reduce) {
-  .hero-grid-bg, .hero-aura .orb, .hero-scan, .shimmer, .eyebrow-dot, .marquee-track,
-  .panel-enter .hero-eyebrow, .panel-enter .line-1 .accent, .panel-enter .line-2 .hero-line2,
-  .panel-enter .hero-sub, .panel-enter .hero-cta, .panel-enter .hero-marquee { animation: none !important; }
-  .shimmer { -webkit-text-fill-color: var(--accent); color: var(--accent); }
-  .hero-canvas { display: none; }
+  .doodle, .panel-enter .hero-eyebrow, .panel-enter .line-1 .accent,
+  .panel-enter .line-2 .hero-line2, .panel-enter .hero-sub, .panel-enter .hero-cta { animation: none !important; }
 }
 
 /* ---------------- "By request" note (code/GitHub) ---------------- */

@@ -77,20 +77,25 @@
 
   <!-- ================= HERO ================= -->
   <section id="home" class="hero tab-panel" data-panel="home">
-    <!-- Kinetic layered background -->
-    <canvas class="hero-canvas" id="heroCanvas" aria-hidden="true"></canvas>
+    <!-- Soft paper-grid backdrop (calm) -->
     <div class="hero-grid-bg"></div>
-    <div class="hero-aura" aria-hidden="true">
-      <span class="orb orb-gold"></span>
-      <span class="orb orb-blue"></span>
-      <span class="orb orb-purple"></span>
+
+    <!-- Hand-drawn doodles scattered on the sides (art + engineering) -->
+    <div class="doodles" aria-hidden="true">
+      <svg class="doodle d-bulb"  viewBox="0 0 60 60"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M30 8a16 16 0 0 0-9 29c2 1.5 3 3 3 6h12c0-3 1-4.5 3-6a16 16 0 0 0-9-29Z"/><path d="M24 49h12M26 54h8"/><path d="M30 20v10M26 26h8" stroke-opacity=".6"/></g></svg>
+      <svg class="doodle d-gear"  viewBox="0 0 60 60"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round"><circle cx="30" cy="30" r="9"/><path d="M30 6v8M30 46v8M6 30h8M46 30h8M13 13l6 6M41 41l6 6M47 13l-6 6M19 41l-6 6"/></g></svg>
+      <svg class="doodle d-brush" viewBox="0 0 60 60"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M44 10 26 28l6 6 18-18a4.2 4.2 0 0 0-6-6Z"/><path d="M26 28c-6 1-9 5-10 12-.5 3-2 4-5 5 3 4 10 5 15 1 4-3 5-7 6-12Z"/></g></svg>
+      <svg class="doodle d-wave"  viewBox="0 0 70 40"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" d="M4 20q6-14 11 0t11 0t11 0t11 0t11 0"/></svg>
+      <svg class="doodle d-book"  viewBox="0 0 64 54"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M32 14C25 8 14 8 7 11v34c7-3 18-3 25 3 7-6 18-6 25-3V11c-7-3-18-3-25 3Z"/><path d="M32 14v33"/></g></svg>
+      <svg class="doodle d-hand"  viewBox="0 0 54 60"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M16 34V14a3.5 3.5 0 0 1 7 0v16m0-2V10a3.5 3.5 0 0 1 7 0v18m0-2V14a3.5 3.5 0 0 1 7 0v16m0-6a3.5 3.5 0 0 1 7 0v12c0 10-6 18-16 18s-15-6-18-14l-3-7a3.6 3.6 0 0 1 6-4l3 5"/></g></svg>
+      <svg class="doodle d-star"  viewBox="0 0 44 44"><path fill="none" stroke="currentColor" stroke-width="2.4" stroke-linejoin="round" d="M22 5l5 11 12 1-9 8 3 12-11-6-11 6 3-12-9-8 12-1Z"/></svg>
+      <svg class="doodle d-circuit" viewBox="0 0 70 50"><g fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M6 25h14M50 25h14M20 25a6 6 0 0 1 12 0 6 6 0 0 0 12 0"/><circle cx="6" cy="25" r="3"/><circle cx="64" cy="25" r="3"/><path d="M35 13v-7M35 44v-7"/></g></svg>
     </div>
-    <div class="hero-scan" aria-hidden="true"></div>
 
     <div class="container hero-inner">
-      <p class="hero-eyebrow"><span class="eyebrow-dot"></span>ECE &amp; BME · Vanderbilt University</p>
+      <p class="hero-eyebrow">ECE &amp; BME · Vanderbilt University</p>
       <h1 class="hero-title" aria-label="Imagination, engineered.">
-        <span class="line line-1"><span class="accent shimmer">Imagination,</span></span>
+        <span class="line line-1"><span class="accent">Imagination,</span></span>
         <span class="line line-2"><span class="hero-line2">engineered.</span></span>
       </h1>
       <p class="hero-sub">
@@ -100,13 +105,6 @@
       <div class="hero-cta">
         <a href="#engineering" class="btn btn-primary nav-tab" data-tab="engineering">View Engineering</a>
         <a href="#art" class="btn btn-ghost nav-tab" data-tab="art">View Creative Art</a>
-      </div>
-      <!-- marquee of disciplines, always in motion -->
-      <div class="hero-marquee" aria-hidden="true">
-        <div class="marquee-track">
-          <span>ROBOTICS</span><span>•</span><span>ANIMATRONICS</span><span>•</span><span>MOTION CAPTURE</span><span>•</span><span>PROJECTION MAPPING</span><span>•</span><span>COMPUTER VISION</span><span>•</span><span>VISUAL ART</span><span>•</span>
-          <span>ROBOTICS</span><span>•</span><span>ANIMATRONICS</span><span>•</span><span>MOTION CAPTURE</span><span>•</span><span>PROJECTION MAPPING</span><span>•</span><span>COMPUTER VISION</span><span>•</span><span>VISUAL ART</span><span>•</span>
-        </div>
       </div>
     </div>
     <a href="#about" class="scroll-cue nav-tab" data-tab="about" aria-label="Go to About">↓</a>
@@ -336,8 +334,7 @@
           <p class="project-desc">
             A robotic hand that mirrors your own in real time. A webcam tracks your hand with
             MediaPipe, custom joint-angle math estimates how bent each finger is (0–100%), and those
-            values stream over serial to an Arduino driving servos. The live demo below runs the
-            exact tracking pipeline right in your browser — <strong>no install, just your webcam.</strong>
+            values stream over serial to an Arduino driving servos.
           </p>
           <div class="project-links">
             <button class="btn btn-small btn-ghost" id="mimic-launch">▶ Try the live demo</button>
@@ -474,6 +471,7 @@
           <button class="logs-chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
           <button class="logs-chip" data-filter="MIMIC" role="tab" aria-selected="false">Project MIMIC</button>
           <button class="logs-chip" data-filter="Stories" role="tab" aria-selected="false">Stories Illuminated</button>
+          <button class="logs-chip" data-filter="General" role="tab" aria-selected="false">General</button>
         </div>
         <button class="btn btn-small btn-primary" id="recorder-launch" aria-expanded="false" aria-controls="recorder">
           ● Record a log
@@ -745,6 +743,5 @@
   <script src="assets/js/mimic.js"></script>
   <script src="assets/js/logs.js"></script>
   <script src="assets/js/tabs.js"></script>
-  <script src="assets/js/hero-fx.js"></script>
 </body>
 </html>
