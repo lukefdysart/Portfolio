@@ -75,16 +75,16 @@ a { color: inherit; text-decoration: none; }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-head); font-weight: 700; letter-spacing: 2px; font-size: 1.05rem; }
 .brand-mark { display: inline-flex; }
-.ld-logo { display: block; height: 46px; width: auto; overflow: visible; }
-/* handwriting-reveal: the L is written, then the D, then the cross-stroke
-   sweeps through the back of the D (plays once on initial page load) */
-.ld-l { stroke-dasharray: 110; stroke-dashoffset: 110; animation: ldDraw .55s ease-out .2s forwards; }
-.ld-d { stroke-dasharray: 130; stroke-dashoffset: 130; animation: ldDraw .8s cubic-bezier(.3,.7,.3,1) .6s forwards; }
-.ld-flourish { stroke-dasharray: 60; stroke-dashoffset: 60; animation: ldDraw .4s ease-out 1.3s forwards; }
+.ld-logo { display: block; height: 49px; width: auto; overflow: visible; }
+/* handwriting-reveal: the L is written, then the D spine, then the bold
+   connecting cross/bowl sweeps over last (plays once on initial page load) */
+.ld-l { stroke-dasharray: 96; stroke-dashoffset: 96; animation: ldDraw .6s ease-out .2s forwards; }
+.ld-d { stroke-dasharray: 58; stroke-dashoffset: 58; animation: ldDraw .4s ease-out .75s forwards; }
+.ld-flourish { stroke-dasharray: 124; stroke-dashoffset: 124; animation: ldDraw .75s cubic-bezier(.3,.7,.3,1) 1.05s forwards; }
 @keyframes ldDraw { to { stroke-dashoffset: 0; } }
-/* hover: re-sweep only the cross-stroke */
-.brand:hover .ld-flourish { animation: ldFlourishReplay .5s ease-out; }
-@keyframes ldFlourishReplay { 0% { stroke-dashoffset: 60; } 100% { stroke-dashoffset: 0; } }
+/* hover: re-sweep only the signature cross/bowl stroke */
+.brand:hover .ld-flourish { animation: ldFlourishReplay .7s ease-out; }
+@keyframes ldFlourishReplay { 0% { stroke-dashoffset: 124; } 100% { stroke-dashoffset: 0; } }
 .brand-word { line-height: 1; letter-spacing: 1.5px; }
 @media (max-width: 420px) { .brand-word { display: none; } }
 /* static fallback — everything fully drawn, no motion */
