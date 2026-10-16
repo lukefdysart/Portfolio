@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Luke Dysart — Engineering & Art</title>
+  <meta name="description" content="Luke Dysart — Electrical & Computer and Biomedical Engineering student at Vanderbilt, working at the intersection of art and engineering: robotics, animatronics, motion capture, projection mapping, and visual art." />
+  <meta name="author" content="Luke Dysart" />
+  <meta name="theme-color" content="#f7f8fc" />
+  <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
+
+  <!-- Favicon (inline SVG, no file needed) -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23c7962f'/%3E%3Ctext x='50%25' y='56%25' font-family='sans-serif' font-size='15' font-weight='700' fill='%23ffffff' text-anchor='middle' dominant-baseline='middle'%3ELD%3C/text%3E%3C/svg%3E" />
+
+  <!-- Open Graph / social sharing -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Luke Dysart — Engineering & Art" />
+  <meta property="og:description" content="ECE & Biomedical Engineering at Vanderbilt, working at the intersection of art and engineering. Projects: Project MIMIC (hand-mimicry robotics), Stories Illuminated, and more." />
+  <meta property="og:url" content="https://lukefdysart.github.io/Portfolio/" />
+  <meta property="og:image" content="https://lukefdysart.github.io/Portfolio/assets/img/social-preview.png" />
+  <meta property="og:image:alt" content="Luke Dysart — Imagination, engineered." />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Luke Dysart — Engineering & Art" />
+  <meta name="twitter:description" content="ECE & Biomedical Engineering at Vanderbilt — art + engineering. Project MIMIC, Stories Illuminated, and more." />
+  <meta name="twitter:image" content="https://lukefdysart.github.io/Portfolio/assets/img/social-preview.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#home">Skip to content</a>
+
+  <!-- ================= HEADER / NAV ================= -->
+  <header id="site-header">
+    <nav class="nav container">
+      <a href="#home" class="brand">LUKE DYSART</a>
+
+      <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#engineering">Engineering</a></li>
+        <li><a href="#logs">Logs</a></li>
+        <li><a href="#art">Creative Art</a></li>
+        <li><a href="https://www.linkedin.com/in/luke-dysart-dys89" target="_blank" rel="noopener">LinkedIn ↗</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <section id="home" class="hero">
+    <div class="hero-grid-bg"></div>
+    <div class="container hero-inner">
+      <p class="hero-eyebrow">ECE &amp; BME · Vanderbilt University</p>
+      <h1 class="hero-title">
+        <span class="accent">Imagination,</span><br />engineered.
+      </h1>
+      <p class="hero-sub">
+        I work at the intersection of <strong>art and engineering</strong> — robotics, animatronics,
+        motion capture, projection mapping, and visual art.
+      </p>
+      <div class="hero-cta">
+        <a href="#engineering" class="btn btn-primary">View Engineering</a>
+        <a href="#art" class="btn btn-ghost">View Creative Art</a>
+      </div>
+    </div>
+    <a href="#about" class="scroll-cue" aria-label="Scroll down">↓</a>
+  </section>
+
+  <!-- ================= ABOUT ================= -->
+  <section id="about" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">01</span>
+        <h2 class="section-title">About</h2>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-photo">
+          <!-- Monogram card rendered entirely in SVG (no raster image, no pixel limits).
+               To use a real photo later, replace this block with:
+               <img class="about-photo-img" src="assets/img/luke.jpg" alt="Luke Dysart" /> -->
+          <div class="photo-monogram" role="img" aria-label="Luke Dysart monogram">
+            <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+              <defs>
+                <linearGradient id="mono-bg" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#2a3b6b" />
+                  <stop offset="1" stop-color="#4a3b78" />
+                </linearGradient>
+                <radialGradient id="mono-glow" cx="30%" cy="26%" r="70%">
+                  <stop offset="0" stop-color="rgba(226,182,79,0.32)" />
+                  <stop offset="1" stop-color="rgba(226,182,79,0)" />
+                </radialGradient>
+              </defs>
+              <rect width="320" height="400" fill="url(#mono-bg)" />
+              <rect width="320" height="400" fill="url(#mono-glow)" />
+              <g fill="none" stroke="#262d3a" stroke-width="1">
+                <path d="M0 100 H320 M0 200 H320 M0 300 H320 M80 0 V400 M160 0 V400 M240 0 V400" opacity="0.5" />
+              </g>
+              <text x="160" y="210" text-anchor="middle"
+                    font-family="'Space Grotesk', sans-serif" font-weight="700"
+                    font-size="128" letter-spacing="4" fill="#e8ebf0">LD</text>
+              <text x="160" y="268" text-anchor="middle"
+                    font-family="'Space Grotesk', sans-serif" font-weight="500"
+                    font-size="15" letter-spacing="6" fill="#e2b64f">LUKE DYSART</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="about-text">
+          <p>
+            I'm <strong>Luke Dysart</strong>, an Electrical &amp; Computer Engineering and
+            Biomedical Engineering student at <strong>Vanderbilt University</strong> focused on
+            working at the intersection of art and engineering. I'm especially interested in
+            robotics, animatronics, motion capture, projection mapping, and visual art — exploring
+            how creative ideas can be brought to life through physical and digital systems.
+          </p>
+          <p>
+            I work with the <strong>Biomedical Modeling Lab at Vanderbilt</strong>, specifically on
+            <strong>Combat Casualty Surgery</strong> — research that directly informs a confidential
+            project I'm building (currently under NDA).
+          </p>
+          <p>
+            As the son of two Marines, service has always been an important part of my life, and I
+            plan to serve in the military myself. Outside the classroom, I serve as
+            <strong>Secretary of Vanderbilt Club Hockey</strong> and was a
+            <strong>2025 National Champion</strong> with the Colorado Buffaloes. Previously at
+            CU Boulder, I was part of a team that won the
+            <strong>Electrical, Computing, and Energy Engineering Design Expo</strong>.
+          </p>
+          <p>
+            I'm driven by curiosity, creativity, competition, and service — and by the challenge of
+            building at the seam where art and engineering meet. You can also find some of my earlier
+            research on the <a href="https://geneticlogiclab.org/author/luke-dysart/" target="_blank" rel="noopener" class="inline-link">Genetic Logic Lab</a>.
+          </p>
+
+          <ul class="about-tags">
+            <li>Robotics</li>
+            <li>Animatronics</li>
+            <li>Motion Capture</li>
+            <li>Projection Mapping</li>
+            <li>Visual Art</li>
+            <li>Biomedical</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= ENGINEERING ================= -->
+  <section id="engineering" class="section section-alt">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">02</span>
+        <h2 class="section-title">Engineering</h2>
+      </div>
+      <p class="section-lead">
+        Projects where creative ideas meet physical and digital systems. More coming soon.
+      </p>
+
+      <!-- ---- Confidential project (NDA) ---- -->
+      <article class="project">
+        <div class="project-media">
+          <div class="project-thumb mary-thumb">
+            <!-- Animated logo: heartbeat pulse that reads as 'M',
+                 draws itself on load then breathes. -->
+            <svg class="logo-anim logo-mary" viewBox="0 0 128 128" fill="none" role="img" aria-label="Mary logo — animated heartbeat pulse">
+              <defs>
+                <linearGradient id="mlBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#8273FF" />
+                  <stop offset="1" stop-color="#5B6CFF" />
+                </linearGradient>
+                <linearGradient id="mlPulse" x1="24" y1="64" x2="104" y2="64" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#E4E8FF" />
+                </linearGradient>
+              </defs>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#mlBg)" />
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
+              <path class="mary-track"
+                d="M24 72 L40 72 L50 44 L64 92 L78 44 L88 72 L104 72"
+                stroke="#ffffff" stroke-opacity="0.18" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <path class="mary-pulse"
+                d="M24 72 L40 72 L50 44 L64 92 L78 44 L88 72 L104 72"
+                stroke="url(#mlPulse)" stroke-width="8"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+                font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Augmented Reality</span>
+            <span class="tag">Confidential</span>
+          </div>
+          <h3 class="project-title">
+            Mary <span class="nda-badge">🔒 Under NDA</span>
+          </h3>
+          <p class="project-desc">
+            A confidential augmented-reality project in active development. Details, code, and demos
+            are withheld under a non-disclosure agreement. A deeper walkthrough is available to
+            serious collaborators and reviewers on request.
+          </p>
+          <div class="project-links">
+            <span class="confidential-note">🔒 Private repository · available under NDA</span>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---- PROJECT MIMIC (with live demo) ---- -->
+      <article class="project">
+        <div class="project-media">
+          <div class="project-thumb mimic-thumb">
+            <!-- MIMIC: a robotic hand whose fingers curl & flex, echoing the live demo -->
+            <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo — animated robotic hand">
+              <defs>
+                <linearGradient id="miBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#20305a" />
+                  <stop offset="1" stop-color="#121a33" />
+                </linearGradient>
+                <linearGradient id="miFinger" x1="64" y1="34" x2="64" y2="104" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#f3dca0" />
+                  <stop offset="0.55" stop-color="#e2b64f" />
+                  <stop offset="1" stop-color="#c7962f" />
+                </linearGradient>
+                <filter id="miGlow" x="-30%" y="-30%" width="160%" height="160%">
+                  <feDropShadow dx="0" dy="0" stdDeviation="2.2" flood-color="#e2b64f" flood-opacity="0.6" />
+                </filter>
+              </defs>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="#e2b64f" opacity="0.06" />
+              <!-- scan ring (subtle, behind the hand) -->
+              <circle class="mimic-scan" cx="64" cy="60" r="42" stroke="#e2b64f" stroke-opacity="0.3"
+                stroke-width="1.5" stroke-dasharray="4 9" fill="none" />
+              <!-- four fingers + thumb; each group rotates at its knuckle to flex -->
+              <g stroke="url(#miFinger)" stroke-width="8.5" stroke-linecap="round" fill="none" filter="url(#miGlow)">
+                <g class="mimic-finger f1"><line x1="51" y1="78" x2="51" y2="40" /></g>
+                <g class="mimic-finger f2"><line x1="61" y1="78" x2="61" y2="34" /></g>
+                <g class="mimic-finger f3"><line x1="71" y1="78" x2="71" y2="37" /></g>
+                <g class="mimic-finger f4"><line x1="81" y1="78" x2="81" y2="45" /></g>
+                <g class="mimic-thumb-f"><line x1="48" y1="90" x2="30" y2="76" /></g>
+              </g>
+              <!-- palm (drawn over finger bases) -->
+              <rect x="44" y="78" width="44" height="26" rx="9" fill="#2b3657" stroke="url(#miFinger)" stroke-width="2.5" />
+              <!-- knuckle joints -->
+              <g fill="#121a33">
+                <circle cx="51" cy="80" r="3.6" /><circle cx="61" cy="80" r="3.6" />
+                <circle cx="71" cy="80" r="3.6" /><circle cx="81" cy="80" r="3.6" />
+              </g>
+            </svg>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Robotics</span>
+            <span class="tag">Computer Vision</span>
+            <span class="tag">Live Demo</span>
+          </div>
+          <h3 class="project-title">Project MIMIC — Hand Mimicry Robotics</h3>
+          <p class="project-desc">
+            A robotic hand that mirrors your own in real time. A webcam tracks your hand with
+            MediaPipe, custom joint-angle math estimates how bent each finger is (0–100%), and those
+            values stream over serial to an Arduino driving servos. The live demo below runs the
+            exact tracking pipeline right in your browser — <strong>no install, just your webcam.</strong>
+          </p>
+          <div class="project-links">
+            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/Project-MIMIC" target="_blank" rel="noopener">View Code ↗</a>
+            <button class="btn btn-small btn-ghost" id="mimic-launch">▶ Try the live demo</button>
+          </div>
+
+          <!-- Live hand-tracking demo -->
+          <div class="mimic-demo" id="mimic-demo" hidden>
+            <div class="mimic-stage">
+              <div class="mimic-video-wrap">
+                <video id="mimic-video" playsinline muted></video>
+                <canvas id="mimic-overlay"></canvas>
+                <div class="mimic-status" id="mimic-status">Camera off</div>
+              </div>
+              <div class="mimic-hand-wrap">
+                <canvas id="mimic-hand"></canvas>
+                <div class="mimic-fps" id="mimic-fps"></div>
+              </div>
+            </div>
+            <div class="mimic-bars" id="mimic-bars">
+              <div class="mimic-bar"><label>Thumb</label><div class="bar"><i data-finger="thumb"></i></div><span data-val="thumb">0%</span></div>
+              <div class="mimic-bar"><label>Index</label><div class="bar"><i data-finger="index"></i></div><span data-val="index">0%</span></div>
+              <div class="mimic-bar"><label>Middle</label><div class="bar"><i data-finger="middle"></i></div><span data-val="middle">0%</span></div>
+              <div class="mimic-bar"><label>Ring</label><div class="bar"><i data-finger="ring"></i></div><span data-val="ring">0%</span></div>
+              <div class="mimic-bar"><label>Pinky</label><div class="bar"><i data-finger="pinky"></i></div><span data-val="pinky">0%</span></div>
+            </div>
+            <div class="mimic-controls">
+              <button class="btn btn-small btn-primary" id="mimic-start">Start camera</button>
+              <button class="btn btn-small btn-ghost" id="mimic-stop">Stop</button>
+              <p class="mimic-note">Your camera feed never leaves your device — all processing runs locally in the browser.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ---- STORIES ILLUMINATED ---- -->
+      <article class="project">
+        <div class="project-media">
+          <div class="project-thumb stories-thumb">
+            <!-- Stories Illuminated: an open book lit by a projection beam that sweeps + glows -->
+            <svg class="logo-anim logo-stories" viewBox="0 0 128 128" fill="none" role="img" aria-label="Stories Illuminated logo — animated projection-lit book">
+              <defs>
+                <linearGradient id="stBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#241a3a" />
+                  <stop offset="1" stop-color="#120c22" />
+                </linearGradient>
+                <linearGradient id="stBeam" x1="64" y1="30" x2="64" y2="92" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#c9a4ff" stop-opacity="0.85" />
+                  <stop offset="1" stop-color="#c9a4ff" stop-opacity="0" />
+                </linearGradient>
+                <radialGradient id="stGlow" cx="50%" cy="30%" r="60%">
+                  <stop stop-color="#e9d8ff" stop-opacity="0.9" />
+                  <stop offset="1" stop-color="#e9d8ff" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
+              <!-- projector source + sweeping beam -->
+              <g class="stories-beam-group">
+                <polygon class="stories-beam" points="64,30 44,86 84,86" fill="url(#stBeam)" />
+                <circle class="stories-source" cx="64" cy="30" r="5" fill="#e9d8ff" />
+              </g>
+              <!-- glow pooling on the page -->
+              <ellipse class="stories-glow" cx="64" cy="78" rx="30" ry="10" fill="url(#stGlow)" />
+              <!-- open book -->
+              <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
+                <path d="M64 70 C54 62 40 62 30 66 L30 96 C40 92 54 92 64 98 Z" />
+                <path d="M64 70 C74 62 88 62 98 66 L98 96 C88 92 74 92 64 98 Z" />
+              </g>
+              <!-- page lines -->
+              <g stroke="#c9a4ff" stroke-opacity="0.5" stroke-width="1.5" stroke-linecap="round">
+                <line x1="37" y1="73" x2="57" y2="71" /><line x1="37" y1="80" x2="57" y2="78" />
+                <line x1="71" y1="71" x2="91" y2="73" /><line x1="71" y1="78" x2="91" y2="80" />
+              </g>
+            </svg>
+            <span class="wip-badge">In Development</span>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="tag">Projection Mapping</span>
+            <span class="tag">Animatronics</span>
+            <span class="tag">Art + Engineering</span>
+          </div>
+          <h3 class="project-title">Stories Illuminated</h3>
+          <p class="project-desc">
+            A portable projection-mapped animatronic storybook — blending projection mapping,
+            animatronics, and visual storytelling into a single physical object that brings a story
+            to life. Currently in active development; more details and media coming soon.
+          </p>
+          <div class="project-links">
+            <a class="btn btn-small btn-primary" href="https://github.com/lukefdysart/stories-illuminated" target="_blank" rel="noopener">View Code ↗</a>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ================= PROJECT LOGS ================= -->
+  <section id="logs" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">03</span>
+        <h2 class="section-title">Project Logs</h2>
+      </div>
+      <p class="section-lead">
+        Video updates straight from the bench — walking through what I'm building, what broke, and
+        what's next. New entries drop as the projects evolve.
+      </p>
+
+      <!-- Toolbar -->
+      <div class="logs-toolbar">
+        <div class="logs-filter" id="logs-filter" role="tablist" aria-label="Filter logs by project">
+          <button class="logs-chip is-active" data-filter="all" role="tab" aria-selected="true">All</button>
+          <button class="logs-chip" data-filter="MIMIC" role="tab" aria-selected="false">Project MIMIC</button>
+          <button class="logs-chip" data-filter="Stories" role="tab" aria-selected="false">Stories Illuminated</button>
+        </div>
+        <button class="btn btn-small btn-primary" id="recorder-launch" aria-expanded="false" aria-controls="recorder">
+          ● Record a log
+        </button>
+      </div>
+
+      <!-- ---- In-browser Log Recorder ("studio") ---- -->
+      <div class="recorder" id="recorder" hidden>
+        <div class="recorder-head">
+          <h3>Log Studio</h3>
+          <p class="recorder-sub">
+            Record a video log right in your browser. Nothing is uploaded — the recording stays on
+            your device until you download it. Then add it to the feed (see the README).
+          </p>
+        </div>
+
+        <div class="recorder-stage">
+          <div class="recorder-video-wrap">
+            <video id="rec-preview" playsinline muted></video>
+            <div class="rec-badge" id="rec-badge" hidden><span class="rec-dot"></span> REC <span id="rec-timer">00:00</span></div>
+            <div class="recorder-overlay" id="recorder-overlay">
+              <p>Camera is off</p>
+              <button class="btn btn-small btn-ghost" id="rec-enable">Enable camera</button>
+            </div>
+          </div>
+
+          <aside class="recorder-side">
+            <label class="recorder-field">
+              <span>Teleprompter notes</span>
+              <textarea id="rec-notes" rows="6" placeholder="Jot talking points here — they scroll with you while you record. (Saved locally in your browser.)"></textarea>
+            </label>
+            <label class="recorder-toggle">
+              <input type="checkbox" id="rec-mic" checked /> Record microphone audio
+            </label>
+            <div class="recorder-controls">
+              <button class="btn btn-small btn-primary" id="rec-start" disabled>● Start</button>
+              <button class="btn btn-small btn-ghost" id="rec-pause" disabled>❚❚ Pause</button>
+              <button class="btn btn-small btn-ghost" id="rec-stop" disabled>■ Stop</button>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Result (after recording) -->
+        <div class="recorder-result" id="rec-result" hidden>
+          <h4>Latest take</h4>
+          <video id="rec-playback" controls playsinline></video>
+          <div class="recorder-result-actions">
+            <a class="btn btn-small btn-primary" id="rec-download" download>⤓ Download .webm</a>
+            <button class="btn btn-small btn-ghost" id="rec-discard">Discard</button>
+            <span class="rec-size" id="rec-size"></span>
+          </div>
+          <p class="recorder-note">
+            Tip: short clips (under ~1–2 min) keep file sizes reasonable. For longer logs, upload to
+            YouTube/Vimeo (unlisted is fine) and embed the link instead.
+          </p>
+        </div>
+      </div>
+
+      <!-- ---- Log feed (rendered from JS data) ---- -->
+      <div class="logs-feed" id="logs-feed">
+        <!-- cards injected by logs.js -->
+      </div>
+      <p class="logs-empty" id="logs-empty" hidden>No logs for this project yet — check back soon.</p>
+    </div>
+  </section>
+
+  <!-- Video lightbox for log playback -->
+  <div class="vlightbox" id="vlightbox" hidden>
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <div class="vlightbox-inner" id="vlightbox-inner"></div>
+  </div>
+
+  <!-- ================= CREATIVE ART ================= -->
+  <section id="art" class="section">
+    <div class="container">
+      <div class="section-head">
+        <span class="section-index">04</span>
+        <h2 class="section-title">Creative Art</h2>
+      </div>
+      <p class="section-lead">A selection of visual work. More pieces coming soon.</p>
+
+      <div class="gallery" id="gallery">
+        <figure class="gallery-item art-svg-item" data-svg="art-sea-turtle">
+          <div class="art-svg" aria-label="Sea Turtle — stained-glass style illustration" role="img">
+            <svg viewBox="0 0 300 400" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+              <defs>
+                <radialGradient id="turt-sea" cx="50%" cy="40%" r="75%">
+                  <stop offset="0" stop-color="#0e3a4a" />
+                  <stop offset="0.6" stop-color="#0a2838" />
+                  <stop offset="1" stop-color="#061a26" />
+                </radialGradient>
+                <linearGradient id="turt-shell" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#2bb673" />
+                  <stop offset="1" stop-color="#0f6b4a" />
+                </linearGradient>
+                <linearGradient id="turt-shell2" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#ffb86c" />
+                  <stop offset="1" stop-color="#ff7814" />
+                </linearGradient>
+                <linearGradient id="turt-flip" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stop-color="#4ea1ff" />
+                  <stop offset="1" stop-color="#1f6fd0" />
+                </linearGradient>
+              </defs>
+              <!-- water background -->
+              <rect width="300" height="400" fill="url(#turt-sea)" />
+              <!-- light rays -->
+              <g opacity="0.18" fill="#bfe9ff">
+                <polygon points="60,0 120,0 90,400 70,400" />
+                <polygon points="150,0 200,0 180,400 155,400" />
+                <polygon points="230,0 265,0 250,400 232,400" />
+              </g>
+              <!-- bubbles -->
+              <g fill="#bfe9ff" opacity="0.5">
+                <circle cx="245" cy="70" r="7" /><circle cx="262" cy="110" r="4" />
+                <circle cx="40" cy="320" r="6" /><circle cx="55" cy="350" r="3" />
+              </g>
+              <!-- turtle, leaded stained-glass look (dark outlines between color cells) -->
+              <g stroke="#05121a" stroke-width="3" stroke-linejoin="round">
+                <!-- rear flippers -->
+                <path d="M78 268 q-34 20 -40 54 q28 -6 54 -24 Z" fill="url(#turt-flip)" />
+                <path d="M222 268 q34 20 40 54 q-28 -6 -54 -24 Z" fill="url(#turt-flip)" />
+                <!-- front flippers -->
+                <path d="M70 150 q-46 -14 -58 20 q30 20 70 10 Z" fill="url(#turt-flip)" />
+                <path d="M230 150 q46 -14 58 20 q-30 20 -70 10 Z" fill="url(#turt-flip)" />
+                <!-- head -->
+                <path d="M150 70 q-26 2 -26 34 q0 24 26 28 q26 -4 26 -28 q0 -32 -26 -34 Z" fill="url(#turt-shell)" />
+                <circle cx="139" cy="104" r="4" fill="#05121a" stroke="none" />
+                <circle cx="161" cy="104" r="4" fill="#05121a" stroke="none" />
+                <!-- shell outer -->
+                <path d="M150 118 q74 6 74 92 q0 78 -74 86 q-74 -8 -74 -86 q0 -86 74 -92 Z" fill="url(#turt-shell)" />
+                <!-- central scutes -->
+                <path d="M150 128 l20 26 l-20 24 l-20 -24 Z" fill="url(#turt-shell2)" />
+                <path d="M150 178 l22 28 l-22 26 l-22 -26 Z" fill="url(#turt-shell2)" />
+                <path d="M150 232 l20 26 l-20 26 l-20 -26 Z" fill="url(#turt-shell2)" />
+                <!-- side scutes left -->
+                <path d="M128 150 l-26 10 l6 36 l24 -16 Z" fill="#0f6b4a" />
+                <path d="M126 206 l-24 8 l8 40 l24 -18 Z" fill="#0f6b4a" />
+                <path d="M128 268 l-20 10 l14 30 l20 -22 Z" fill="#0f6b4a" />
+                <!-- side scutes right -->
+                <path d="M172 150 l26 10 l-6 36 l-24 -16 Z" fill="#0f6b4a" />
+                <path d="M174 206 l24 8 l-8 40 l-24 -18 Z" fill="#0f6b4a" />
+                <path d="M172 268 l20 10 l-14 30 l-20 -22 Z" fill="#0f6b4a" />
+              </g>
+            </svg>
+          </div>
+          <figcaption>Sea Turtle — stained-glass style illustration</figcaption>
+        </figure>
+
+        <figure class="gallery-item placeholder-slot">
+          <div class="art-placeholder empty"><span>+ Add artwork</span></div>
+          <figcaption>Coming soon</figcaption>
+        </figure>
+        <figure class="gallery-item placeholder-slot">
+          <div class="art-placeholder empty"><span>+ Add artwork</span></div>
+          <figcaption>Coming soon</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= LIGHTBOX ================= -->
+  <div class="lightbox" id="lightbox" hidden>
+    <button class="lightbox-close" aria-label="Close">×</button>
+    <img id="lightbox-img" alt="" />
+    <div class="lightbox-svg" id="lightbox-svg" hidden></div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">LUKE DYSART</span>
+      <div class="footer-links">
+        <a href="https://www.linkedin.com/in/luke-dysart-dys89" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://github.com/lukefdysart" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://geneticlogiclab.org/author/luke-dysart/" target="_blank" rel="noopener">Research</a>
+      </div>
+      <small>© <span id="year"></span> Luke Dysart · Built from scratch, code owned.</small>
+    </div>
+  </footer>
+
+  <!-- MediaPipe Hands (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+
+  <!-- Site scripts -->
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/mimic.js"></script>
+  <script src="assets/js/logs.js"></script>
+</body>
+</html>
