@@ -261,66 +261,31 @@
         <div class="project-media">
           <div class="project-thumb mimic-thumb">
             <!-- MIMIC: a robotic hand whose fingers curl & flex, echoing the live demo -->
-            <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo — Tron-style wireframe hand">
+            <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo">
               <defs>
                 <linearGradient id="miBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#05121f" />
-                  <stop offset="1" stop-color="#02060d" />
+                  <stop stop-color="#3ec6f0" />
+                  <stop offset="1" stop-color="#2f9fe0" />
                 </linearGradient>
-                <linearGradient id="miBone" x1="64" y1="110" x2="64" y2="24" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#2fe6ff" />
-                  <stop offset="1" stop-color="#e2b64f" />
+                <linearGradient id="miMark" x1="24" y1="64" x2="104" y2="64" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#eafaff" />
                 </linearGradient>
-                <filter id="miGlow" x="-50%" y="-50%" width="200%" height="200%">
-                  <feGaussianBlur stdDeviation="2.4" result="b" />
-                  <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
-                </filter>
-                <radialGradient id="miVign" cx="50%" cy="46%" r="60%">
-                  <stop offset="0" stop-color="#0b2436" />
-                  <stop offset="1" stop-color="#02060d" />
-                </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
-              <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miVign)" opacity="0.7" />
-              <!-- Tron grid floor -->
-              <g class="mimic-grid" stroke="#15e0ff" stroke-opacity="0.14" stroke-width="1">
-                <line x1="20" y1="40" x2="108" y2="40"/><line x1="20" y1="58" x2="108" y2="58"/>
-                <line x1="20" y1="76" x2="108" y2="76"/><line x1="20" y1="94" x2="108" y2="94"/>
-                <line x1="36" y1="20" x2="36" y2="108"/><line x1="64" y1="20" x2="64" y2="108"/><line x1="92" y1="20" x2="92" y2="108"/>
-              </g>
-              <!-- scanning sweep bar -->
-              <rect class="mimic-sweep" x="12" y="12" width="104" height="10" fill="#2fe6ff" opacity="0.18" />
-
-              <!-- WIREFRAME HAND (MediaPipe-style landmarks + bones).
-                   Each finger is a <g> that flexes at its knuckle. -->
-              <g filter="url(#miGlow)">
-                <!-- bones -->
-                <g stroke="url(#miBone)" stroke-width="2.4" stroke-linecap="round" fill="none">
-                  <!-- palm fan from wrist(64,104) to knuckles -->
-                  <path d="M64 104 L46 78 M64 104 L57 76 M64 104 L68 75 M64 104 L80 78 M64 104 L50 86"/>
-                  <!-- knuckle arch -->
-                  <path d="M46 78 L57 76 L68 75 L80 78"/>
-                  <!-- index -->
-                  <g class="mimic-finger f1"><path d="M46 78 L43 60 L41 46"/></g>
-                  <!-- middle -->
-                  <g class="mimic-finger f2"><path d="M57 76 L56 56 L55 40"/></g>
-                  <!-- ring -->
-                  <g class="mimic-finger f3"><path d="M68 75 L70 56 L72 41"/></g>
-                  <!-- pinky -->
-                  <g class="mimic-finger f4"><path d="M80 78 L84 62 L87 50"/></g>
-                  <!-- thumb -->
-                  <g class="mimic-thumb-f"><path d="M50 86 L36 80 L27 74"/></g>
-                </g>
-                <!-- landmark nodes -->
-                <g class="mimic-nodes" fill="#eafcff">
-                  <circle cx="64" cy="104" r="3.2"/>
-                  <circle cx="46" cy="78" r="2.2"/><circle cx="43" cy="60" r="2"/><circle cx="41" cy="46" r="2.4"/>
-                  <circle cx="57" cy="76" r="2.2"/><circle cx="56" cy="56" r="2"/><circle cx="55" cy="40" r="2.4"/>
-                  <circle cx="68" cy="75" r="2.2"/><circle cx="70" cy="56" r="2"/><circle cx="72" cy="41" r="2.4"/>
-                  <circle cx="80" cy="78" r="2.2"/><circle cx="84" cy="62" r="2"/><circle cx="87" cy="50" r="2.4"/>
-                  <circle cx="50" cy="86" r="2.2"/><circle cx="36" cy="80" r="2"/><circle cx="27" cy="74" r="2.4"/>
-                </g>
-              </g>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
+              <!-- faint track of the hand mark -->
+              <path class="mimic-track"
+                d="M46 92 L46 46 M58 92 L58 40 M70 92 L70 42 M82 92 L82 50 M46 92 Q64 102 82 92 L82 72 Q64 80 46 72 Z M46 78 Q36 72 31 62"
+                stroke="#ffffff" stroke-opacity="0.16" stroke-width="6.5"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- clean single-line open-hand mark (4 fingers + palm + thumb) -->
+              <path class="mimic-mark"
+                d="M46 92 L46 46 M58 92 L58 40 M70 92 L70 42 M82 92 L82 50 M46 92 Q64 102 82 92 L82 72 Q64 80 46 72 Z M46 78 Q35 73 31 62"
+                stroke="url(#miMark)" stroke-width="6.5"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+                font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
             </svg>
           </div>
         </div>
@@ -372,59 +337,33 @@
         <div class="project-media">
           <div class="project-thumb stories-thumb">
             <!-- Stories Illuminated: an open book lit by a projection beam that sweeps + glows -->
-            <svg class="logo-anim logo-stories" viewBox="0 0 128 128" fill="none" role="img" aria-label="Stories Illuminated logo — animated projection-lit book">
+            <svg class="logo-anim logo-stories" viewBox="0 0 128 128" fill="none" role="img" aria-label="Stories Illuminated logo">
               <defs>
                 <linearGradient id="stBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#241a3a" />
-                  <stop offset="1" stop-color="#120c22" />
+                  <stop stop-color="#9a7bff" />
+                  <stop offset="1" stop-color="#6f5ad6" />
                 </linearGradient>
-                <linearGradient id="stBeam" x1="64" y1="30" x2="64" y2="92" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#c9a4ff" stop-opacity="0.85" />
-                  <stop offset="1" stop-color="#c9a4ff" stop-opacity="0" />
+                <linearGradient id="stMark" x1="24" y1="64" x2="104" y2="64" gradientUnits="userSpaceOnUse">
+                  <stop stop-color="#ffffff" />
+                  <stop offset="1" stop-color="#f1ecff" />
                 </linearGradient>
-                <radialGradient id="stGlow" cx="50%" cy="30%" r="60%">
-                  <stop stop-color="#e9d8ff" stop-opacity="0.9" />
-                  <stop offset="1" stop-color="#e9d8ff" stop-opacity="0" />
-                </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
-              <!-- Projector HIDDEN (concept). Characters & stories LEAVE the pages. -->
-              <!-- soft glow billowing up from the open book -->
-              <ellipse class="stories-glow" cx="64" cy="54" rx="30" ry="30" fill="url(#stGlow)" />
-
-              <!-- Characters/story elements rising OUT of the book -->
-              <g class="stories-cast">
-                <!-- a little character silhouette taking flight -->
-                <g class="cast cast-1" fill="#f3e6ff" stroke="none">
-                  <circle cx="52" cy="40" r="4"/>
-                  <path d="M48 44 q4 7 8 0 l-1 10 q-3 2 -6 0 Z"/>
-                  <path d="M48 48 l-5 4 M56 48 l5 4" stroke="#f3e6ff" stroke-width="2" stroke-linecap="round"/>
-                </g>
-                <!-- a star shooting up -->
-                <path class="cast cast-2" d="M74 36 l1.8 3.8 4.2 .6 -3 3 .7 4.2 -3.7-2 -3.7 2 .7-4.2 -3-3 4.2-.6 Z" fill="#ffe9a8"/>
-                <!-- a little bird -->
-                <path class="cast cast-3" d="M58 30 q4-4 8 0 q4-4 8 0" fill="none" stroke="#c9a4ff" stroke-width="2.4" stroke-linecap="round"/>
-                <!-- a heart -->
-                <path class="cast cast-4" d="M44 52 a3 3 0 0 1 6 0 a3 3 0 0 1 6 0 q0 4 -6 8 q-6-4 -6-8 Z" fill="#ff9ecb"/>
-              </g>
-
-              <!-- the open book (pages flutter) -->
-              <g stroke="#b388ff" stroke-width="2.5" stroke-linejoin="round" fill="#2a2140">
-                <path d="M64 66 C52 56 36 56 24 61 L24 100 C36 94 52 94 64 102 Z" />
-                <path class="stories-page" d="M64 66 C76 56 92 56 104 61 L104 100 C92 94 76 94 64 102 Z" />
-              </g>
-              <!-- page text lines -->
-              <g stroke="#c9a4ff" stroke-opacity="0.45" stroke-width="1.5" stroke-linecap="round">
-                <line x1="31" y1="86" x2="55" y2="85" /><line x1="31" y1="92" x2="55" y2="91" />
-                <line x1="73" y1="85" x2="97" y2="86" /><line x1="73" y1="92" x2="97" y2="93" />
-              </g>
-              <!-- rising sparkle motes -->
-              <g fill="#e9d8ff">
-                <circle class="st-mote m1" cx="48" cy="60" r="1.6" />
-                <circle class="st-mote m2" cx="80" cy="58" r="1.3" />
-                <circle class="st-mote m3" cx="64" cy="56" r="1.9" />
-                <circle class="st-mote m4" cx="70" cy="62" r="1.2" />
-              </g>
+              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
+              <!-- faint track of the book mark -->
+              <path class="stories-track"
+                d="M64 50 C52 40 36 40 26 45 L26 92 C36 87 52 87 64 95 C76 87 92 87 102 92 L102 45 C92 40 76 40 64 50 Z M64 50 L64 95"
+                stroke="#ffffff" stroke-opacity="0.16" stroke-width="7"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- clean single-stroke open-book mark that draws itself -->
+              <path class="stories-mark"
+                d="M64 50 C52 40 36 40 26 45 L26 92 C36 87 52 87 64 95 C76 87 92 87 102 92 L102 45 C92 40 76 40 64 50 Z M64 50 L64 95"
+                stroke="url(#stMark)" stroke-width="7"
+                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- a small star rising off the page (the one living detail) -->
+              <path class="stories-spark" d="M64 34 l1.6 3.4 3.8 .5 -2.8 2.7 .7 3.8 -3.3-1.8 -3.3 1.8 .7-3.8 -2.8-2.7 3.8-.5 Z" fill="#ffe9a8" />
+              <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+                font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
             </svg>
             <span class="wip-badge">In Development</span>
           </div>
@@ -675,35 +614,48 @@
 
       <!-- Thank-you groups -->
       <div class="thanks-grid">
-        <div class="thanks-card">
-          <h3>Family</h3>
-          <p>My parents — two Marines whose example of service shaped everything — and my family, for
-          their constant support. <em>(Add names/notes here.)</em></p>
+        <p class="places-intro">The places that shaped me — thank-you words coming soon for each.</p>
+        <div class="states-grid">
+          <div class="state-card">
+            <svg class="state-outline" viewBox="0 0 100 100" aria-hidden="true"><path d="M12 10 L58 12 L60 30 L92 66 L92 74 L70 74 L62 90 L40 90 L30 70 L16 58 Z"/></svg>
+            <span class="state-name">California</span>
+            <p class="state-words"><em>(Your words here.)</em></p>
+          </div>
+          <div class="state-card">
+            <svg class="state-outline" viewBox="0 0 100 100" aria-hidden="true"><rect x="14" y="26" width="72" height="48" rx="2"/></svg>
+            <span class="state-name">Colorado</span>
+            <p class="state-words"><em>(Your words here.)</em></p>
+          </div>
+          <div class="state-card">
+            <svg class="state-outline" viewBox="0 0 100 100" aria-hidden="true"><path d="M20 40 L46 30 L62 42 L80 44 L86 56 L70 70 L54 62 L40 66 L26 56 Z"/></svg>
+            <span class="state-name">Northern Virginia</span>
+            <p class="state-words"><em>(Your words here.)</em></p>
+          </div>
+          <div class="state-card">
+            <svg class="state-outline" viewBox="0 0 100 100" aria-hidden="true"><path d="M30 20 L58 24 L60 40 L74 46 L78 70 L58 84 L40 80 L34 60 L26 54 L30 38 Z"/></svg>
+            <span class="state-name">Ohio</span>
+            <p class="state-words"><em>(Your words here.)</em></p>
+          </div>
+          <div class="state-card">
+            <svg class="state-outline" viewBox="0 0 100 100" aria-hidden="true"><path d="M12 44 L22 36 L30 44 L40 38 L86 40 L90 60 L80 60 L70 56 L60 62 L48 58 L36 64 L24 60 L12 58 Z"/></svg>
+            <span class="state-name">Tennessee</span>
+            <p class="state-words"><em>(Your words here.)</em></p>
+          </div>
         </div>
-        <div class="thanks-card">
-          <h3>Mentors &amp; Faculty</h3>
-          <p>The Vanderbilt Biomedical Modeling Lab and the mentors who challenged and guided me.
-          <em>(Add names here.)</em></p>
-        </div>
-        <div class="thanks-card">
-          <h3>Communities</h3>
-          <p>Vanderbilt &amp; CU Boulder engineering, Club Hockey, and the makers and artists who
-          welcomed me in. <em>(Add groups here.)</em></p>
-        </div>
-        <div class="thanks-card">
-          <h3>Collaborators</h3>
-          <p>Royal Fades Nashville, Amber Mandell, and everyone who's built alongside me.
-          <em>(Add names here.)</em></p>
-        </div>
-        <div class="thanks-card">
-          <h3>Inspiration</h3>
-          <p>The Imagination Library and Dolly Parton's mission to put books in children's hands —
-          a north star for Stories Illuminated. <em>(Add more here.)</em></p>
-        </div>
-        <div class="thanks-card">
-          <h3>In Service</h3>
-          <p>To those I hope to serve as an Air Force Special Forces Combat Rescue Officer — this work
-          is for you. <em>(Add a dedication here.)</em></p>
+
+        <div class="thanks-grid">
+          <div class="thanks-card">
+            <h3>Family</h3>
+            <p><em>(Your words here.)</em></p>
+          </div>
+          <div class="thanks-card">
+            <h3>Mentors &amp; Communities</h3>
+            <p><em>(Your words here.)</em></p>
+          </div>
+          <div class="thanks-card">
+            <h3>In Service</h3>
+            <p><em>(Your words here.)</em></p>
+          </div>
         </div>
       </div>
 

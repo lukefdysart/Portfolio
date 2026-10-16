@@ -482,85 +482,36 @@ a { color: inherit; text-decoration: none; }
   100% { stroke-dasharray: 26 274; stroke-dashoffset: 0; }
 }
 
-/* ---- MIMIC: fingers curl/flex + scan ring rotates ---- */
-/* Tron grid gently pulses; scan bar sweeps down */
-.logo-mimic .mimic-grid { animation: miGrid 3s ease-in-out infinite; }
-@keyframes miGrid { 0%,100%{stroke-opacity:.1} 50%{stroke-opacity:.28} }
-.logo-mimic .mimic-sweep { transform-box: view-box; animation: miSweep 3.2s ease-in-out infinite; }
-@keyframes miSweep { 0%{transform:translateY(0);opacity:.25} 50%{transform:translateY(94px);opacity:.1} 100%{transform:translateY(0);opacity:.25} }
-.logo-mimic .mimic-nodes circle { animation: miNode 2.4s ease-in-out infinite; }
-@keyframes miNode { 0%,100%{opacity:.7} 50%{opacity:1} }
-
-/* Fingers flex with natural, staggered HUMAN motion (knuckle pivots) */
-.logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f { transform-box: view-box; }
-.logo-mimic .f1 { transform-origin: 46px 78px; animation: miFlex 2.6s ease-in-out infinite 0s; }
-.logo-mimic .f2 { transform-origin: 57px 76px; animation: miFlex 2.6s ease-in-out infinite .12s; }
-.logo-mimic .f3 { transform-origin: 68px 75px; animation: miFlex 2.6s ease-in-out infinite .24s; }
-.logo-mimic .f4 { transform-origin: 80px 78px; animation: miFlex 2.6s ease-in-out infinite .36s; }
-.logo-mimic .mimic-thumb-f { transform-origin: 50px 86px; animation: miThumb 2.6s ease-in-out infinite .2s; }
-@keyframes miFlex {
-  0%, 60%, 100% { transform: rotate(0deg); }
-  22%           { transform: rotate(14deg); }   /* curl inward like a real finger */
-  40%           { transform: rotate(-3deg); }
+/* ---- MIMIC: single-stroke hand mark draws itself, then breathes (Mary family) ---- */
+.logo-mimic .mimic-mark {
+  stroke-dasharray: 420; stroke-dashoffset: 420;
+  animation: markDraw 1.8s ease-out forwards, markBreathe 3.4s ease-in-out 2s infinite;
 }
-@keyframes miThumb {
-  0%, 60%, 100% { transform: rotate(0deg); }
-  30%           { transform: rotate(-12deg); }
-}
-/* On hover the hand flexes faster (like it's actively mimicking you) */
-.project:hover .logo-mimic .mimic-finger,
-.project:hover .logo-mimic .mimic-thumb-f { animation-duration: 1.3s; }
 .logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
 .project:hover .logo-mimic { transform: scale(1.05); }
 
-/* ---- Stories: characters & stories LEAVE the pages ---- */
-.logo-stories .stories-glow { transform-box: view-box; transform-origin: 64px 54px; animation: storiesGlow 3.6s ease-in-out infinite; }
-@keyframes storiesGlow {
-  0%, 100% { opacity: 0.4; transform: scale(0.88); }
-  50%      { opacity: 0.85; transform: scale(1.12); }
+/* ---- Stories: single-stroke book mark draws itself, then breathes (Mary family) ---- */
+.logo-stories .stories-mark {
+  stroke-dasharray: 520; stroke-dashoffset: 520;
+  animation: markDraw 2s ease-out forwards, markBreathe 3.6s ease-in-out 2.2s infinite;
 }
-/* each cast member rises up out of the book, drifts, and fades */
-.logo-stories .cast { transform-box: view-box; opacity: 0; }
-.logo-stories .cast-1 { transform-origin: 52px 48px; animation: castFly 4s ease-in infinite 0s; }
-.logo-stories .cast-2 { transform-origin: 76px 42px; animation: castFly 4.6s ease-in infinite 1s; }
-.logo-stories .cast-3 { transform-origin: 66px 32px; animation: castFly 4.2s ease-in infinite 2s; }
-.logo-stories .cast-4 { transform-origin: 50px 56px; animation: castFly 5s ease-in infinite 2.8s; }
-@keyframes castFly {
-  0%   { opacity: 0; transform: translateY(16px) scale(.5) rotate(-8deg); }
-  22%  { opacity: 1; }
-  70%  { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-30px) scale(1.1) rotate(8deg); }
-}
-/* right page gently flutters (personality: the story is "alive") */
-.logo-stories .stories-page { transform-box: view-box; transform-origin: 64px 84px; animation: pageFlutter 3.4s ease-in-out infinite; }
-@keyframes pageFlutter {
-  0%, 100% { transform: skewY(0deg) scaleX(1); }
-  50%      { transform: skewY(-2.5deg) scaleX(0.94); }
-}
-/* light motes drift upward and fade — like sparks from the pages */
-.logo-stories .st-mote { transform-box: view-box; opacity: 0; }
-.logo-stories .m1 { transform-origin: 56px 66px; animation: moteRise 3.2s ease-in infinite 0s; }
-.logo-stories .m2 { transform-origin: 68px 64px; animation: moteRise 3.6s ease-in infinite .8s; }
-.logo-stories .m3 { transform-origin: 62px 60px; animation: moteRise 4s   ease-in infinite 1.5s; }
-.logo-stories .m4 { transform-origin: 74px 62px; animation: moteRise 3.4s ease-in infinite 2.2s; }
-@keyframes moteRise {
-  0%   { opacity: 0; transform: translateY(0) scale(.6); }
-  25%  { opacity: 1; }
-  100% { opacity: 0; transform: translateY(-26px) scale(1.1); }
-}
-/* whole book lifts slightly on hover */
+.logo-stories .stories-spark { transform-box: view-box; transform-origin: 64px 36px; animation: sparkTwinkle 2.6s ease-in-out infinite; }
+@keyframes sparkTwinkle { 0%,100%{opacity:.5; transform:scale(.8)} 50%{opacity:1; transform:scale(1.25)} }
 .logo-stories { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
 .project:hover .logo-stories { transform: translateY(-3px) scale(1.04); }
 
+/* shared family keyframes (match Mary's draw + breathe) */
+@keyframes markDraw { to { stroke-dashoffset: 0; } }
+@keyframes markBreathe {
+  0%, 100% { opacity: 1; filter: drop-shadow(0 0 0 rgba(255,255,255,0)); }
+  50%      { opacity: 0.85; filter: drop-shadow(0 0 5px rgba(255,255,255,0.55)); }
+}
+
 /* Reduced motion: show the finished mark, no looping animation */
 @media (prefers-reduced-motion: reduce) {
-  .logo-mary .mary-pulse { stroke-dashoffset: 0; animation: none; }
-  .logo-mimic .mimic-grid, .logo-mimic .mimic-sweep, .logo-mimic .mimic-nodes circle,
-  .logo-mimic .mimic-finger, .logo-mimic .mimic-thumb-f,
-  .logo-stories .stories-glow, .logo-stories .cast,
-  .logo-stories .stories-page, .logo-stories .st-mote { animation: none; }
-  .logo-stories .cast { opacity: .9; }
-  .logo-stories .st-mote { opacity: .8; }
+  .logo-mary .mary-pulse,
+  .logo-mimic .mimic-mark, .logo-stories .stories-mark { stroke-dashoffset: 0; animation: none; }
+  .logo-stories .stories-spark { animation: none; }
 }
 
 /* ---------------- Confidential / NDA project ---------------- */
@@ -729,3 +680,23 @@ a { color: inherit; text-decoration: none; }
 .thanks-card p { color: var(--text-dim); font-size: 0.95rem; }
 .thanks-card em { color: var(--text-faint); font-size: 0.82rem; }
 .thanks-footnote { margin-top: 28px; color: var(--text-faint); font-size: 0.9rem; }
+
+/* ---------------- Acknowledgements: state cards ---------------- */
+.places-intro { color: var(--text-dim); margin: 0 0 18px; }
+.states-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px; margin-bottom: 28px; }
+.state-card {
+  position: relative; overflow: hidden; padding: 20px; min-height: 150px;
+  border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border);
+  box-shadow: var(--shadow); transition: transform .25s ease, border-color .25s ease;
+  display: flex; flex-direction: column; justify-content: flex-end;
+}
+.state-card:hover { transform: translateY(-4px); border-color: var(--accent-2); }
+.state-outline {
+  position: absolute; top: 10px; right: 10px; width: 72px; height: 72px;
+  fill: none; stroke: var(--accent-2); stroke-width: 2.5; stroke-linejoin: round;
+  opacity: 0.3; transition: opacity .25s ease;
+}
+.state-card:hover .state-outline { opacity: 0.55; }
+.state-name { font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; color: var(--accent-2); position: relative; z-index: 1; }
+.state-words { color: var(--text-dim); font-size: 0.92rem; margin-top: 4px; position: relative; z-index: 1; }
+.state-words em { color: var(--text-faint); font-size: 0.82rem; }
