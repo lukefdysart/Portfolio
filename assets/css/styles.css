@@ -73,25 +73,29 @@ a { color: inherit; text-decoration: none; }
 #site-header.scrolled { border-color: var(--border); }
 .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
 .brand { display: inline-flex; align-items: center; gap: 11px; font-family: var(--font-head); font-weight: 700; letter-spacing: 2px; font-size: 1.05rem; }
-.brand-mark { display: inline-flex; filter: drop-shadow(0 3px 8px rgba(53,195,240,.4)); transition: transform .35s cubic-bezier(.22,.61,.36,1); }
-.brand:hover .brand-mark { transform: rotate(-5deg) scale(1.08); }
-/* heartbeat pulse sweeps across the LD on a loop (the motif) */
-.brand-mark .brand-pulse {
-  stroke-dasharray: 34; stroke-dashoffset: 34;
-  animation: brandBeat 3s ease-in-out infinite;
+.brand-mark { display: inline-flex; transition: transform .35s cubic-bezier(.22,.61,.36,1); }
+.brand:hover .brand-mark { transform: scale(1.06); }
+/* the whole mark drops in by parachute on load */
+.brand-mark svg { animation: brandDrop 1s cubic-bezier(.3,1.2,.5,1) both; }
+@keyframes brandDrop { 0%{ transform: translateY(-10px); opacity: 0; } 100%{ transform: none; opacity: 1; } }
+/* parachute canopy + cords gently sway (as if still floating) */
+.brand-mark .brand-chute, .brand-mark .brand-chute-rib, .brand-mark .brand-cords {
+  transform-box: view-box; transform-origin: 27px 7px; animation: brandSway 3.6s ease-in-out infinite;
 }
+@keyframes brandSway { 0%,100%{ transform: rotate(-3deg) } 50%{ transform: rotate(3deg) } }
+/* heartbeat pulse (the baseline) sweeps through the word on a loop */
+.brand-mark .brand-pulse { stroke-dasharray: 60; stroke-dashoffset: 60; animation: brandBeat 3.2s ease-in-out 1s infinite; }
 @keyframes brandBeat {
-  0%   { stroke-dashoffset: 34; opacity: 0; }
-  15%  { opacity: 1; }
-  55%  { stroke-dashoffset: -34; opacity: 1; }
-  60%, 100% { stroke-dashoffset: -34; opacity: 0; }
+  0%   { stroke-dashoffset: 60; }
+  45%  { stroke-dashoffset: 0; }
+  60%, 100% { stroke-dashoffset: -60; }
 }
-/* little parachute gently drifts */
-.brand-mark .brand-chute { transform-box: view-box; transform-origin: 34px 8px; animation: brandChute 3.4s ease-in-out infinite; }
-@keyframes brandChute { 0%,100%{transform:translateY(0) rotate(-4deg)} 50%{transform:translateY(1.5px) rotate(4deg)} }
 .brand-word { line-height: 1; }
 @media (max-width: 420px) { .brand-word { display: none; } }
-@media (prefers-reduced-motion: reduce) { .brand-mark .brand-pulse, .brand-mark .brand-chute { animation: none; } .brand-mark .brand-pulse { stroke-dashoffset: 0; opacity: 1; } }
+@media (prefers-reduced-motion: reduce) {
+  .brand-mark svg, .brand-mark .brand-chute, .brand-mark .brand-chute-rib, .brand-mark .brand-cords, .brand-mark .brand-pulse { animation: none; }
+  .brand-mark .brand-pulse { stroke-dashoffset: 0; }
+}
 .nav-links { list-style: none; display: flex; gap: 30px; }
 .nav-links a {
   font-family: var(--font-head); font-size: 0.9rem; font-weight: 500; color: var(--text-dim);

@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
 
   <!-- Favicon (inline SVG, no file needed) — light-blue LD monogram -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='12' fill='%2335c3f0'/%3E%3Cg fill='none' stroke='%23fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 13 V31 H21'/%3E%3Cpath d='M24 13 H28 a8 8 0 0 1 0 18 H24 Z'/%3E%3C/g%3E%3Cpath d='M6 22 H12 l2 -6 3 11 2 -5 h2' fill='none' stroke='%23f3dca0' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='12' fill='%23f7f8fc'/%3E%3Cpath d='M9 11 a13 6 0 0 1 26 0 Z' fill='%232f9fe0'/%3E%3Cg stroke='%239aa6b4' stroke-width='1'%3E%3Cpath d='M9 11 L13 20'/%3E%3Cpath d='M22 13 L22 20'/%3E%3Cpath d='M35 11 L31 20'/%3E%3C/g%3E%3Ctext x='22' y='32' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='15' fill='%2315202b'%3Edys%3C/text%3E%3Cpath d='M4 37 H15 l2 -6 3 11 2 -5 h18' fill='none' stroke='%23e5484d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -41,28 +41,24 @@
     <nav class="nav container">
       <a href="#home" class="brand" aria-label="Luke Dysart — home">
         <span class="brand-mark" aria-hidden="true">
-          <svg viewBox="0 0 44 44" width="36" height="36">
-            <defs>
-              <linearGradient id="brandG" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#35c3f0"/>
-                <stop offset="1" stop-color="#2f9fe0"/>
-              </linearGradient>
-            </defs>
-            <rect x="2" y="2" width="40" height="40" rx="12" fill="url(#brandG)"/>
-            <rect x="2" y="2" width="40" height="40" rx="12" fill="#fff" opacity="0.07"/>
-            <!-- centered L + D monogram -->
-            <g fill="none" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M13 13 V31 H21"/>
-              <path d="M24 13 H28 a8 8 0 0 1 0 18 H24 Z"/>
+          <!-- "dys" wordmark where the motifs ARE the letters:
+               a parachute canopy hangs cords that become the strokes, and a
+               heartbeat pulse is the baseline running through the word. -->
+          <svg viewBox="0 0 54 44" width="48" height="40">
+            <!-- parachute canopy up top -->
+            <path class="brand-chute" d="M12 7 a15 7 0 0 1 30 0 Z" fill="#2f9fe0" stroke="#1f82c7" stroke-width="1.5" stroke-linejoin="round"/>
+            <path class="brand-chute-rib" d="M12 7 q15 7 30 0 M22 7.5 q5 5 5 9 M32 7.5 q-5 5 -5 9" stroke="#1f82c7" stroke-width="1" fill="none" opacity=".7"/>
+            <!-- cords from the canopy down to the letters -->
+            <g class="brand-cords" stroke="#9aa6b4" stroke-width="1" opacity=".8">
+              <path d="M12 7 L15 20"/><path d="M27 10 L27 18"/><path d="M42 7 L39 20"/>
             </g>
-            <!-- heartbeat pulse travels across the mark (the motif) -->
-            <path class="brand-pulse" d="M4 23 H11 l2.5 -8 3.5 15 2.5 -7 h3"
-              fill="none" stroke="#ffd14d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- tiny parachute accent, top-right -->
-            <g class="brand-chute">
-              <path d="M30 8 a4 4 0 0 1 8 0 Z" fill="#fff" opacity=".9"/>
-              <path d="M30 8 L34 13 M38 8 L34 13" stroke="#fff" stroke-width="1.4" opacity=".9"/>
-            </g>
+            <!-- the 'dys' letters (hung from the cords) -->
+            <text class="brand-letters" x="27" y="30" text-anchor="middle"
+              font-family="'Space Grotesk','Segoe UI',sans-serif" font-weight="700" font-size="18"
+              letter-spacing="-0.5" fill="#15202b">dys</text>
+            <!-- heartbeat pulse = the baseline running through the word -->
+            <path class="brand-pulse" d="M4 37 H16 l3 -9 4 17 3 -8 h5 l2 4 h14"
+              fill="none" stroke="#e5484d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>
         </span>
         <span class="brand-word">LUKE DYSART</span>
