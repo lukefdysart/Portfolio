@@ -191,38 +191,65 @@ a { color: inherit; text-decoration: none; }
   letter-spacing: 0.5px; color: var(--text-faint);
 }
 
-/* ---------------- Projects ---------------- */
+/* ---------------- Projects — editorial case studies ---------------- */
+/* Two-column: logo/identity on the left, information on the right.
+   No cards, no app-icon chrome — just a divider between projects. */
 .project {
-  display: grid; grid-template-columns: 300px 1fr; gap: 36px; align-items: start;
-  background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
-  padding: 28px; margin-bottom: 28px; box-shadow: var(--shadow);
-  transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  display: grid; grid-template-columns: 300px 1fr; gap: 48px; align-items: start;
+  padding: 48px 0; border-top: 1px solid var(--border);
 }
-.project:hover { border-color: var(--accent); transform: translateY(-3px); box-shadow: 0 16px 40px -16px rgba(27,34,48,0.28); }
-.project-thumb {
-  position: relative; aspect-ratio: 1/1; border-radius: 12px; overflow: hidden;
-  display: flex; align-items: center; justify-content: center; font-size: 3.4rem;
-  background: linear-gradient(145deg, #eef1f8, #e2e7f2);
+.project:first-of-type { border-top: 0; padding-top: 8px; }
+
+/* Logo presented as a project identity, with breathing room — not an icon tile */
+.project-media { position: sticky; top: 112px; }
+.project-logo {
+  position: relative; width: 100%; aspect-ratio: 1 / 1; max-width: 240px;
+  display: flex; align-items: center; justify-content: center;
 }
-.mary-thumb   { background: radial-gradient(circle at 32% 28%, rgba(59,111,212,.22), transparent 62%), linear-gradient(145deg,#eaf0fb,#dde6f6); }
-.mimic-thumb  { background: radial-gradient(circle at 32% 28%, rgba(199,150,47,.26), transparent 62%), linear-gradient(145deg,#f6efdc,#efe6cf); }
-.stories-thumb{ background: radial-gradient(circle at 32% 28%, rgba(123,92,196,.22), transparent 62%), linear-gradient(145deg,#efeafb,#e6def5); }
-.wip-badge {
-  position: absolute; top: 10px; right: 10px; font-family: var(--font-head); font-size: 0.68rem;
-  text-transform: uppercase; letter-spacing: 1px; background: rgba(255,255,255,.82); color: var(--accent-3);
-  border: 1px solid var(--border); padding: 4px 9px; border-radius: 999px;
+.project-logo .logo-anim { width: 78%; height: 78%; overflow: visible; }
+
+/* information column */
+.project-eyebrow {
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.6px; color: var(--text-faint);
+  margin-bottom: 14px;
 }
-.project-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 12px; }
-.tag {
-  font-family: var(--font-head); font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1px;
-  color: var(--text-dim); background: var(--surface-2); border: 1px solid var(--border);
-  padding: 4px 10px; border-radius: 6px;
+.project-title {
+  font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700;
+  letter-spacing: -0.5px; margin-bottom: 6px; display: flex; align-items: baseline;
+  flex-wrap: wrap; gap: 12px;
 }
-.project-title { font-family: var(--font-head); font-size: 1.45rem; margin-bottom: 4px; letter-spacing: -0.3px; }
-.project-subtitle { font-family: var(--font-display); font-style: italic; font-size: 1.08rem; color: var(--accent-2); margin-bottom: 16px; }
-.project-desc { color: var(--text-dim); margin-bottom: 14px; line-height: 1.7; }
-.project-note { font-family: var(--font-head); font-size: 0.82rem; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-3); margin-top: 4px; }
-.project-links { display: flex; gap: 12px; flex-wrap: wrap; }
+.project-title-link { transition: color .2s ease; }
+.project-title-link:hover { color: var(--accent); }
+.project-subtitle {
+  font-family: var(--font-display); font-style: italic; font-size: 1.12rem;
+  color: var(--accent-2); margin-bottom: 20px;
+}
+.project-desc { color: var(--text-dim); margin-bottom: 16px; line-height: 1.75; max-width: 60ch; }
+.project-links { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; margin-top: 6px; }
+
+/* "Explore Project" link — understated, gold on hover */
+.project-explore {
+  font-family: var(--font-head); font-weight: 600; font-size: 0.9rem; color: var(--text);
+  display: inline-flex; align-items: center; gap: 7px; padding-bottom: 2px;
+  border-bottom: 1.5px solid var(--accent); transition: gap .2s ease, color .2s ease;
+}
+.project-explore:hover { color: var(--accent); gap: 11px; }
+
+/* small "In Development" status pill — tasteful, not a badge sticker */
+.status-pill {
+  font-family: var(--font-head); font-size: 0.64rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.2px; color: var(--accent-3);
+  border: 1px solid var(--border); border-radius: 999px; padding: 4px 11px;
+  align-self: center; white-space: nowrap;
+}
+
+/* confidential indicator — small, professional */
+.project-meta {
+  display: inline-flex; align-items: center; gap: 8px; margin-top: 6px;
+  font-family: var(--font-head); font-size: 0.8rem; letter-spacing: 0.4px; color: var(--text-faint);
+}
+.lock-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); display: inline-block; }
 
 /* ---------------- MIMIC live demo ---------------- */
 .mimic-demo {
@@ -300,8 +327,9 @@ a { color: inherit; text-decoration: none; }
   .nav-links a { display: block; padding: 16px 24px; }
   .about-grid { grid-template-columns: 1fr; }
   .about-photo { position: static; max-width: 300px; }
-  .project { grid-template-columns: 1fr; }
-  .project-thumb { max-width: 200px; }
+  .project { grid-template-columns: 1fr; gap: 24px; padding: 36px 0; }
+  .project-media { position: static; }
+  .project-logo { max-width: 150px; aspect-ratio: 1 / 1; }
   .mimic-stage { grid-template-columns: 1fr; }
 }
 
@@ -503,11 +531,7 @@ a { color: inherit; text-decoration: none; }
    Animated project logos (inline SVG — no files, no size limits)
    ============================================================ */
 
-.logo-anim {
-  width: 72%; height: 72%; overflow: visible;
-}
-/* let the badge show the logo centered without the old emoji sizing */
-.mary-thumb, .mimic-thumb, .stories-thumb { font-size: 0; }
+/* logo sizing is handled by .project-logo .logo-anim (editorial cards above) */
 
 /* ---- Mary: heartbeat pulse-M draws on, then breathes ---- */
 .logo-mary .mary-pulse {
@@ -530,16 +554,25 @@ a { color: inherit; text-decoration: none; }
 }
 
 /* ---- MIMIC: the word writes itself, then its reflection MIMICS it ---- */
-/* reveal via a left-to-right clip wipe (like it's being written) */
+/* reveal via a left-to-right clip wipe (like it's being written). The write
+   loops gently — writes in, holds, clears, and re-writes — so the logo keeps
+   its signature behavior after the first play (single looping animation each,
+   no duplicate loops). */
 .logo-mimic .mi-top {
   clip-path: inset(0 100% 0 0);
-  animation: miWrite 1s steps(16, end) .4s forwards;
+  animation: miWriteLoop 7s steps(16, end) .4s infinite;
 }
 .logo-mimic .mi-bot {
   clip-path: inset(0 100% 0 0);
-  animation: miWrite 1s steps(16, end) 1.6s forwards, miMimicGlow 2.6s ease-in-out 2.6s infinite;
+  animation: miWriteLoop 7s steps(16, end) 1.6s infinite, miMimicGlow 2.6s ease-in-out 2.6s infinite;
 }
-@keyframes miWrite { to { clip-path: inset(0 0 0 0); } }
+@keyframes miWriteLoop {
+  0%   { clip-path: inset(0 100% 0 0); }   /* unwritten */
+  14%  { clip-path: inset(0 0 0 0); }      /* fully written (~1s) */
+  82%  { clip-path: inset(0 0 0 0); }      /* hold */
+  92%  { clip-path: inset(0 100% 0 0); }   /* clear */
+  100% { clip-path: inset(0 100% 0 0); }   /* wait, then repeat */
+}
 /* the reflection subtly pulses, echoing the original */
 @keyframes miMimicGlow { 0%,100%{ opacity:.4 } 50%{ opacity:.75 } }
 /* mirror line draws in between the two */
@@ -547,10 +580,9 @@ a { color: inherit; text-decoration: none; }
 @keyframes miMirror { to { stroke-dashoffset: 0; } }
 
 .logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
-.project:hover .logo-mimic { transform: scale(1.05); }
-/* replay on hover */
-.project:hover .logo-mimic .mi-top { animation: miWrite 1s steps(16,end) forwards; }
-.project:hover .logo-mimic .mi-bot { animation: miWrite 1s steps(16,end) 1.2s forwards, miMimicGlow 2.6s ease-in-out 2.2s infinite; }
+.project:hover .logo-mimic { transform: scale(1.04); }
+/* the write already loops continuously, so hover just lifts the mark subtly
+   (no second write animation — avoids duplicate loops) */
 
 /* ---- Stories: light rises from the open page; a line-bird lifts off ---- */
 /* the column of light breathes */
@@ -589,20 +621,6 @@ a { color: inherit; text-decoration: none; }
   .logo-stories .st-lightcol, .logo-stories .st-pool, .logo-stories .st-spk { animation: none !important; }
   .logo-stories .st-bird { animation: none !important; transform: none !important; opacity: 1 !important; }
   .logo-stories .st-spk { opacity: .8 !important; }
-}
-
-/* ---------------- Confidential / NDA project ---------------- */
-.nda-badge {
-  display: inline-block; vertical-align: middle; margin-left: 8px;
-  font-family: var(--font-head); font-size: 0.6rem; font-weight: 600;
-  text-transform: uppercase; letter-spacing: 1px;
-  color: var(--accent-3); background: rgba(123,92,196,0.12);
-  border: 1px solid rgba(123,92,196,0.35); padding: 4px 10px; border-radius: 999px;
-}
-.confidential-note {
-  font-family: var(--font-head); font-size: 0.8rem; color: var(--text-faint);
-  border: 1px dashed var(--border); padding: 8px 14px; border-radius: 10px;
-  background: var(--surface-2);
 }
 
 /* ============================================================
@@ -807,4 +825,66 @@ a { color: inherit; text-decoration: none; }
   .stickguy .toss, .stickguy .pose-run g { animation: none; }
   .doodle { animation: none; opacity: .9; }
   .hero-dog { display: none; }
+}
+
+/* ============================================================
+   Project detail pages (projects/*.html) — an extension of the
+   portfolio, not a separate site. Modular blocks; project media
+   can be swapped for Rive embeds later without layout changes.
+   ============================================================ */
+.detail-page { padding-top: 108px; }
+.detail-main { max-width: 860px; margin: 0 auto; padding: 0 24px 100px; }
+
+/* back-to-engineering link */
+.detail-back {
+  display: inline-flex; align-items: center; gap: 8px; margin: 28px 0 36px;
+  font-family: var(--font-head); font-size: 0.85rem; font-weight: 600; color: var(--text-dim);
+  transition: gap .2s ease, color .2s ease;
+}
+.detail-back:hover { color: var(--accent); gap: 12px; }
+
+.detail-eyebrow {
+  font-family: var(--font-head); font-size: 0.72rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 1.6px; color: var(--text-faint); margin-bottom: 14px;
+}
+.detail-title {
+  font-family: var(--font-head); font-weight: 700; letter-spacing: -0.6px;
+  font-size: clamp(2.1rem, 5vw, 3.1rem); margin-bottom: 10px;
+  display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;
+}
+.detail-subtitle {
+  font-family: var(--font-display); font-style: italic; font-size: 1.25rem;
+  color: var(--accent-2); margin-bottom: 28px;
+}
+.detail-intro { color: var(--text-dim); font-size: 1.08rem; line-height: 1.75; max-width: 64ch; }
+
+/* content blocks */
+.detail-section { margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--border); }
+.detail-section:first-of-type { border-top: 0; }
+.detail-section h2 {
+  font-family: var(--font-head); font-size: 1.25rem; font-weight: 700; letter-spacing: -0.3px;
+  margin-bottom: 16px;
+}
+.detail-section p { color: var(--text-dim); line-height: 1.75; margin-bottom: 14px; max-width: 64ch; }
+.detail-section ul { color: var(--text-dim); line-height: 1.7; margin: 0 0 14px 1.1rem; }
+.detail-section li { margin-bottom: 8px; }
+.detail-section strong { color: var(--text); font-weight: 600; }
+
+/* a slot for future media (photos / video / Rive embeds) */
+.media-slot {
+  margin-top: 20px; border: 1px dashed var(--border); border-radius: var(--radius);
+  background: var(--surface-2);
+  min-height: 220px; display: flex; align-items: center; justify-content: center;
+  text-align: center; padding: 28px;
+}
+.media-slot p {
+  font-family: var(--font-head); font-size: 0.82rem; letter-spacing: 0.5px;
+  color: var(--text-faint); margin: 0; max-width: 42ch;
+}
+
+/* reuse the home demo styles on the detail page; keep it tidy */
+.detail-page .mimic-demo { margin-top: 20px; border-top: 0; padding-top: 0; }
+
+@media (max-width: 820px) {
+  .detail-main { padding-bottom: 72px; }
 }

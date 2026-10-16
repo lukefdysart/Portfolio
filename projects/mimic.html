@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project MIMIC — Luke Dysart</title>
+  <meta name="description" content="Project MIMIC — a robotic hand that mirrors human hand movements in real time using in-browser computer vision. By Luke Dysart." />
+  <meta name="author" content="Luke Dysart" />
+  <meta name="theme-color" content="#f7f8fc" />
+
+  <link rel="icon" type="image/png" href="../assets/img/Bold Black LD Monogram Signature.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+
+  <a class="skip-link" href="#overview">Skip to content</a>
+
+  <!-- Header / nav (brand links back to the main site) -->
+  <header id="site-header">
+    <nav class="nav container">
+      <a href="../index.html" class="brand" aria-label="Luke Dysart — home">
+        <span class="brand-mark" aria-hidden="true">
+          <img class="ld-logo" src="../assets/img/Bold Black LD Monogram Signature.png"
+               width="62" height="44" alt="LD monogram" decoding="async" />
+        </span>
+        <span class="brand-word">LUKE DYSART</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="../index.html#engineering">Engineering</a></li>
+        <li><a href="../index.html#home">Home</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="detail-page">
+    <div class="detail-main">
+      <a class="detail-back" href="../index.html#engineering"><span aria-hidden="true">←</span> Back to Engineering</a>
+
+      <p class="detail-eyebrow">Robotics · Computer Vision · Human–Machine Interaction</p>
+      <h1 class="detail-title">Project MIMIC</h1>
+      <p class="detail-subtitle">A robotic hand that moves with you.</p>
+      <p class="detail-intro">
+        MIMIC translates human hand movements into real-time robotic motion. Using computer vision
+        to track finger positions, the system estimates individual finger bends and sends those
+        values to an Arduino-controlled robotic hand — a direct connection between human movement
+        and physical machinery, without gloves, controllers, or wearable sensors.
+      </p>
+
+      <!-- OVERVIEW -->
+      <section class="detail-section" id="overview">
+        <h2>Overview</h2>
+        <p>
+          A camera watches your hand. Computer vision locates the joints of each finger, and from
+          those positions MIMIC estimates how far each finger is bent. Those bend values drive a
+          physical robotic hand so that it follows along with your own hand in real time.
+        </p>
+      </section>
+
+      <!-- TECHNICAL APPROACH -->
+      <section class="detail-section">
+        <h2>Technical approach</h2>
+        <ul>
+          <li>Hand landmarks are detected from a live camera feed with computer-vision hand tracking.</li>
+          <li>For each finger, the angles between its joints are measured and mapped to a bend
+              percentage from fully open to fully closed.</li>
+          <li>The per-finger bend values are sent to an <strong>Arduino-controlled robotic hand</strong>,
+              which actuates to match.</li>
+          <li>No gloves, controllers, or wearable sensors are required — the camera is the only input.</li>
+        </ul>
+        <p>
+          The live demo below runs the same tracking and finger-bend estimation entirely in your
+          browser. The camera feed never leaves your device.
+        </p>
+      </section>
+
+      <!-- LIVE DEMO (same component as the Engineering section) -->
+      <section class="detail-section" id="demo">
+        <h2>Live demo</h2>
+        <p>Allow camera access, then show your hand to the camera. All processing is local.</p>
+
+        <div class="project-links" style="margin-bottom: 8px;">
+          <button class="btn btn-small btn-primary" id="mimic-launch">▶ See it in action</button>
+        </div>
+
+        <div class="mimic-demo" id="mimic-demo" hidden>
+          <div class="mimic-stage">
+            <div class="mimic-video-wrap">
+              <video id="mimic-video" playsinline muted></video>
+              <canvas id="mimic-overlay"></canvas>
+              <div class="mimic-status" id="mimic-status">Camera off</div>
+              <div class="mimic-fps" id="mimic-fps"></div>
+            </div>
+          </div>
+          <div class="mimic-bars" id="mimic-bars">
+            <div class="mimic-bar"><label>Thumb</label><div class="bar"><i data-finger="thumb"></i></div><span data-val="thumb">0%</span></div>
+            <div class="mimic-bar"><label>Index</label><div class="bar"><i data-finger="index"></i></div><span data-val="index">0%</span></div>
+            <div class="mimic-bar"><label>Middle</label><div class="bar"><i data-finger="middle"></i></div><span data-val="middle">0%</span></div>
+            <div class="mimic-bar"><label>Ring</label><div class="bar"><i data-finger="ring"></i></div><span data-val="ring">0%</span></div>
+            <div class="mimic-bar"><label>Pinky</label><div class="bar"><i data-finger="pinky"></i></div><span data-val="pinky">0%</span></div>
+          </div>
+          <div class="mimic-controls">
+            <button class="btn btn-small btn-primary" id="mimic-start">Start camera</button>
+            <button class="btn btn-small btn-ghost" id="mimic-stop">Stop</button>
+            <p class="mimic-note">Your camera feed never leaves your device — all processing runs locally in the browser.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FUTURE MEDIA -->
+      <section class="detail-section">
+        <h2>Media</h2>
+        <p>Build photos, bench footage, and interactive animations will be added here.</p>
+        <div class="media-slot">
+          <p>Reserved for project photos, video, and a Rive animation.</p>
+        </div>
+      </section>
+
+      <a class="detail-back" href="../index.html#engineering"><span aria-hidden="true">←</span> Back to Engineering</a>
+    </div>
+  </main>
+
+  <!-- MediaPipe Hands (CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <script src="../assets/js/mimic.js"></script>
+</body>
+</html>

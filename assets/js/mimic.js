@@ -109,14 +109,34 @@
     [13,17],[17,18],[18,19],[19,20],[0,17]
   ];
 
+  // Map a normalized MediaPipe landmark (0..1, relative to the SOURCE video
+  // frame) to a pixel on the overlay canvas, accounting for:
+  //   - object-fit: cover  (the video is scaled to fill the box, cropping the
+  //     overflowing axis — so normalized coords do NOT map linearly to the box)
+  //   - the CSS horizontal mirror on the <video> (transform: scaleX(-1))
+  // Without this, the overlay drifts off the hand (worst near the edges and on
+  // non-4:3 containers), which is the misalignment being fixed here.
+  function mapPoint(p, w, h) {
+    var vw = video.videoWidth || 640;
+    var vh = video.videoHeight || 480;
+    // object-fit: cover scale = max so the frame fills the box
+    var scale = Math.max(w / vw, h / vh);
+    var dispW = vw * scale;        // displayed (pre-crop) frame size
+    var dispH = vh * scale;
+    var offX = (w - dispW) / 2;    // centered → negative when cropped
+    var offY = (h - dispH) / 2;
+    var x = p.x * dispW + offX;    // source-frame px → canvas px
+    var y = p.y * dispH + offY;
+    return { x: w - x, y: y };     // mirror X to match the flipped video
+  }
+
   function drawScan(landmarks) {
     var ctx = overlay.getContext('2d');
     var w = overlay.width, h = overlay.height;
     ctx.clearRect(0, 0, w, h);
     if (!landmarks) return;
 
-    // Mirror X to match the mirrored video feed
-    function px(p) { return { x: (1 - p.x) * w, y: p.y * h }; }
+    function px(p) { return mapPoint(p, w, h); }
 
     // connections — glow then bright core
     SCAN_CONNECTIONS.forEach(function (pair) {

@@ -154,13 +154,13 @@
         <h2 class="section-title">Engineering</h2>
       </div>
       <p class="section-lead">
-        Projects where creative ideas meet physical and digital systems. More coming soon.
+        Selected projects in robotics, computer vision, biomedical engineering, and interactive systems.
       </p>
 
-      <!-- ---- Confidential project (NDA) ---- -->
-      <article class="project">
+      <!-- ---- MARY — confidential (NDA) ---- -->
+      <article class="project" aria-labelledby="proj-mary-title">
         <div class="project-media">
-          <div class="project-thumb mary-thumb">
+          <div class="project-logo mary-logo">
             <!-- Animated logo: heartbeat pulse that reads as 'M',
                  draws itself on load then breathes. -->
             <svg class="logo-anim logo-mary" viewBox="0 0 128 128" fill="none" role="img" aria-label="Mary logo — animated heartbeat pulse">
@@ -190,32 +190,27 @@
           </div>
         </div>
         <div class="project-body">
-          <div class="project-tags">
-            <span class="tag">Augmented Reality</span>
-            <span class="tag">Combat Casualty Care</span>
-            <span class="tag">Confidential</span>
-          </div>
-          <h3 class="project-title">
-            Mary <span class="nda-badge">🔒 Under NDA</span>
-          </h3>
+          <p class="project-eyebrow">Augmented Reality · Biomedical Engineering · Combat Casualty Care</p>
+          <h3 class="project-title" id="proj-mary-title">MARY</h3>
           <p class="project-desc">
-            A confidential augmented-reality project in the Combat Casualty Care space, in active
-            development — tested and prototyped at <strong>Fort Campbell Army base</strong> and
-            <strong>Vanderbilt</strong>. Details, source, and demos are withheld under a strict
-            non-disclosure agreement. Access is granted only on a need-to-know basis to vetted
-            partners under a signed NDA.
+            MARY is a confidential augmented-reality project developed in connection with combat
+            casualty care research at <strong>Vanderbilt University</strong>. The project has
+            involved prototyping and testing at <strong>Vanderbilt</strong> and
+            <strong>Fort Campbell</strong>.
           </p>
-          <div class="project-links">
-            <span class="confidential-note">🔒 Confidential · access by signed NDA only</span>
-          </div>
+          <p class="project-desc">
+            Further technical details and demonstrations are restricted under a non-disclosure
+            agreement.
+          </p>
+          <p class="project-meta"><span class="lock-dot" aria-hidden="true"></span> Confidential · details under NDA</p>
         </div>
       </article>
 
       <!-- ---- PROJECT MIMIC (with live demo) ---- -->
-      <article class="project">
+      <article class="project" aria-labelledby="proj-mimic-title">
         <div class="project-media">
-          <div class="project-thumb mimic-thumb">
-            <!-- MIMIC: a robotic hand whose fingers curl & flex, echoing the live demo -->
+          <div class="project-logo mimic-logo">
+            <!-- MIMIC: the word MIMIC + its reflection; writes itself then loops -->
             <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo">
               <defs>
                 <linearGradient id="miBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
@@ -251,24 +246,23 @@
           </div>
         </div>
         <div class="project-body">
-          <div class="project-tags">
-            <span class="tag">Robotics</span>
-            <span class="tag">Computer Vision</span>
-            <span class="tag">Human–Machine Interaction</span>
-          </div>
-          <h3 class="project-title">Project MIMIC</h3>
+          <p class="project-eyebrow">Robotics · Computer Vision · Human–Machine Interaction</p>
+          <h3 class="project-title" id="proj-mimic-title">
+            <a class="project-title-link" href="projects/mimic.html">Project MIMIC</a>
+          </h3>
           <p class="project-subtitle">A robotic hand that moves with you.</p>
           <p class="project-desc">
             MIMIC translates human hand movements into real-time robotic motion. Using computer
-            vision to track finger positions, the system calculates individual finger bends and
-            sends them to an Arduino-controlled robotic hand.
+            vision to track finger positions, the system estimates individual finger bends and
+            sends those values to an Arduino-controlled robotic hand.
           </p>
           <p class="project-desc">
-            The result is an intuitive connection between human movement and physical machinery —
-            no gloves, controllers, or wearable sensors required.
+            The result is a direct connection between human movement and physical machinery, without
+            gloves, controllers, or wearable sensors.
           </p>
           <div class="project-links">
-            <button class="btn btn-small btn-primary" id="mimic-launch">▶ See it in action</button>
+            <a class="project-explore" href="projects/mimic.html">Explore Project <span aria-hidden="true">→</span></a>
+            <button class="btn btn-small btn-ghost" id="mimic-launch">▶ See it in action</button>
           </div>
 
           <!-- Live hand-tracking demo -->
@@ -298,9 +292,9 @@
       </article>
 
       <!-- ---- STORIES ILLUMINATED ---- -->
-      <article class="project">
+      <article class="project" aria-labelledby="proj-stories-title">
         <div class="project-media">
-          <div class="project-thumb stories-thumb">
+          <div class="project-logo stories-logo">
             <!-- Stories Illuminated: a minimal open book from which light rises
                  and a line-illustration lifts off the page (the story told by light). -->
             <svg class="logo-anim logo-stories" viewBox="0 0 128 128" fill="none" role="img" aria-label="Stories Illuminated logo">
@@ -340,28 +334,27 @@
               <text x="104" y="110" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
                 font-size="11" font-weight="800" fill="#ffffff" opacity="0.6" letter-spacing="1">DYS</text>
             </svg>
-            <span class="wip-badge">In Development</span>
           </div>
         </div>
         <div class="project-body">
-          <div class="project-tags">
-            <span class="tag">Interactive Storytelling</span>
-            <span class="tag">Projection Mapping</span>
-            <span class="tag">Animatronics</span>
-          </div>
-          <h3 class="project-title">Stories Illuminated</h3>
+          <p class="project-eyebrow">Interactive Storytelling · Projection · Animatronics</p>
+          <h3 class="project-title" id="proj-stories-title">
+            <a class="project-title-link" href="projects/stories.html">Stories Illuminated</a>
+            <span class="status-pill">In Development</span>
+          </h3>
           <p class="project-subtitle">What if the illustrations could tell the story, too?</p>
           <p class="project-desc">
-            Stories Illuminated reimagines the traditional storybook as an interactive physical
-            experience. Hidden projection, animatronics, and carefully designed movement bring
-            illustrations to life, transforming ordinary pages into moments of discovery.
+            Stories Illuminated explores how projection, animatronics, and physical storytelling can
+            transform a traditional storybook into an interactive experience.
           </p>
           <p class="project-desc">
-            Inspired by the spirit of <strong>Dolly Parton's Imagination Library</strong>, the
-            project explores how engineering and storytelling can work together to make reading feel
-            magical.
+            With the projection system concealed inside the book, illustrations can appear to move
+            and come to life. Inspired by <strong>Dolly Parton's Imagination Library</strong>, the
+            project brings engineering and storytelling together in a new approach to reading.
           </p>
-          <p class="project-note">Currently in development.</p>
+          <div class="project-links">
+            <a class="project-explore" href="projects/stories.html">Explore Project <span aria-hidden="true">→</span></a>
+          </div>
         </div>
       </article>
 
