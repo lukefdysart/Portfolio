@@ -600,28 +600,41 @@ a { color: inherit; text-decoration: none; }
 /* Soft, still paper grid — subtle, no drift */
 .hero-grid-bg { opacity: .4; }
 
-/* Hand-drawn doodles scattered to the sides (not over the text) */
-.doodles { position: absolute; inset: 0; z-index: 0; pointer-events: none; color: var(--accent-2); }
-.doodle { position: absolute; width: 58px; height: 58px; opacity: .22;
-  animation: doodleFloat 9s ease-in-out infinite; }
-.doodle.d-gear   { color: var(--accent); }
-.doodle.d-star   { color: var(--accent); }
-.doodle.d-brush  { color: var(--accent-3); }
-.doodle.d-book   { color: var(--accent-3); }
-/* left cluster */
-.d-bulb    { top: 20%;  left: 7%;  width: 54px; animation-delay: 0s; }
-.d-gear    { top: 44%;  left: 4%;  width: 62px; animation-delay: 1.2s; }
-.d-brush   { bottom: 16%; left: 9%; width: 56px; animation-delay: 2.1s; }
-.d-circuit { bottom: 30%; left: 15%; width: 70px; opacity: .16; animation-delay: 3s; }
-/* right cluster */
-.d-hand    { top: 22%;  right: 7%;  width: 54px; animation-delay: .6s; }
-.d-book    { top: 46%;  right: 4%;  width: 64px; animation-delay: 1.8s; }
-.d-wave    { bottom: 20%; right: 9%; width: 72px; opacity: .16; animation-delay: 2.6s; }
-.d-star    { top: 32%;  right: 16%; width: 40px; animation-delay: 3.4s; }
+/* Custom doodle collage — bold filled "stickers" clustered down both margins */
+.doodles { position: absolute; inset: 0; z-index: 0; pointer-events: none; }
+.doodle { position: absolute; width: 64px; height: 64px; opacity: .9;
+  filter: drop-shadow(2px 3px 0 rgba(21,32,43,.12));
+  animation: doodleFloat 7s ease-in-out infinite; }
+
+/* LEFT cluster */
+.dd-hockey   { top: 13%; left: 6%;  width: 66px; animation-delay: 0s;   transform: rotate(-8deg); }
+.dd-gear     { top: 30%; left: 11%; width: 58px; animation-delay: .8s;  }
+.dd-mountain { top: 46%; left: 4%;  width: 76px; animation-delay: 1.5s; }
+.dd-bulb     { bottom: 24%; left: 10%; width: 56px; animation-delay: 2.2s; }
+.dd-turtle   { bottom: 10%; left: 5%;  width: 74px; animation-delay: 3s;  transform: rotate(6deg); }
+.dd-circuit  { top: 62%; left: 15%; width: 70px; animation-delay: 3.6s; opacity: .8; }
+
+/* RIGHT cluster */
+.dd-plane    { top: 12%; right: 7%;  width: 70px; animation-delay: .4s; transform: rotate(10deg); }
+.dd-chute    { top: 30%; right: 4%;  width: 62px; animation-delay: 1.1s; }
+.dd-brush    { top: 47%; right: 10%; width: 60px; animation-delay: 1.9s; }
+.dd-book     { bottom: 25%; right: 5%; width: 68px; animation-delay: 2.6s; transform: rotate(-6deg); }
+.dd-pulse    { bottom: 12%; right: 9%; width: 76px; animation-delay: 3.3s; }
+.dd-star     { top: 60%; right: 15%; width: 44px; animation-delay: 4s; }
+
 @keyframes doodleFloat {
-  0%, 100% { transform: translateY(0) rotate(-3deg); }
-  50%      { transform: translateY(-12px) rotate(3deg); }
+  0%, 100% { transform: translateY(0) rotate(var(--r, 0deg)); }
+  50%      { transform: translateY(-10px) rotate(calc(var(--r, 0deg) + 4deg)); }
 }
+/* keep the preset rotations during the float via per-item vars */
+.dd-hockey{--r:-8deg} .dd-turtle{--r:6deg} .dd-plane{--r:10deg} .dd-book{--r:-6deg}
+
+/* On small screens, thin the collage so it never crowds the text */
+@media (max-width: 900px) {
+  .dd-circuit, .dd-star, .dd-mountain, .dd-chute { display: none; }
+  .doodle { opacity: .6; }
+}
+@media (max-width: 620px) { .doodles { display: none; } }
 
 /* Gentle, calm content entrance (no violent motion) */
 .hero-inner { animation: none; }
