@@ -46,17 +46,18 @@
       </button>
 
       <ul class="nav-links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#engineering">Engineering</a></li>
-        <li><a href="#logs">Logs</a></li>
-        <li><a href="#art">Creative Art</a></li>
+        <li><a href="#home" class="nav-tab" data-tab="home">Home</a></li>
+        <li><a href="#about" class="nav-tab" data-tab="about">About</a></li>
+        <li><a href="#engineering" class="nav-tab" data-tab="engineering">Engineering</a></li>
+        <li><a href="#logs" class="nav-tab" data-tab="logs">Logs</a></li>
+        <li><a href="#art" class="nav-tab" data-tab="art">Creative Art</a></li>
         <li><a href="https://www.linkedin.com/in/luke-dysart-dys89" target="_blank" rel="noopener">LinkedIn ↗</a></li>
       </ul>
     </nav>
   </header>
 
   <!-- ================= HERO ================= -->
-  <section id="home" class="hero">
+  <section id="home" class="hero tab-panel" data-panel="home">
     <div class="hero-grid-bg"></div>
     <div class="container hero-inner">
       <p class="hero-eyebrow">ECE &amp; BME · Vanderbilt University</p>
@@ -68,15 +69,15 @@
         motion capture, projection mapping, and visual art.
       </p>
       <div class="hero-cta">
-        <a href="#engineering" class="btn btn-primary">View Engineering</a>
-        <a href="#art" class="btn btn-ghost">View Creative Art</a>
+        <a href="#engineering" class="btn btn-primary nav-tab" data-tab="engineering">View Engineering</a>
+        <a href="#art" class="btn btn-ghost nav-tab" data-tab="art">View Creative Art</a>
       </div>
     </div>
-    <a href="#about" class="scroll-cue" aria-label="Scroll down">↓</a>
+    <a href="#about" class="scroll-cue nav-tab" data-tab="about" aria-label="Go to About">↓</a>
   </section>
 
   <!-- ================= ABOUT ================= -->
-  <section id="about" class="section">
+  <section id="about" class="section tab-panel" data-panel="about">
     <div class="container">
       <div class="section-head">
         <span class="section-index">01</span>
@@ -129,8 +130,9 @@
             project I'm building (currently under NDA).
           </p>
           <p>
-            As the son of two Marines, service has always been an important part of my life, and I
-            plan to serve in the military myself. Outside the classroom, I serve as
+            As the son of two Marines, service has always been an important part of my life, and I'm
+            training toward becoming an <strong>Air Force Special Forces Combat Rescue Officer</strong>.
+            Outside the classroom, I serve as
             <strong>Secretary of Vanderbilt Club Hockey</strong> and was a
             <strong>2025 National Champion</strong> with the Colorado Buffaloes. Previously at
             CU Boulder, I was part of a team that won the
@@ -156,7 +158,7 @@
   </section>
 
   <!-- ================= ENGINEERING ================= -->
-  <section id="engineering" class="section section-alt">
+  <section id="engineering" class="section tab-panel" data-panel="engineering">
     <div class="container">
       <div class="section-head">
         <span class="section-index">02</span>
@@ -209,11 +211,12 @@
           </h3>
           <p class="project-desc">
             A confidential augmented-reality project in the Combat Casualty Care space, in active
-            development. Details, code, and demos are withheld under a non-disclosure agreement. A
-            deeper walkthrough is available to serious collaborators and reviewers on request.
+            development. Details, source, and demos are withheld under a strict non-disclosure
+            agreement. Access is granted only on a need-to-know basis to vetted partners under a
+            signed NDA.
           </p>
           <div class="project-links">
-            <span class="confidential-note">🔒 Private repository · available under NDA</span>
+            <span class="confidential-note">🔒 Confidential · access by signed NDA only</span>
           </div>
         </div>
       </article>
@@ -369,7 +372,7 @@
   </section>
 
   <!-- ================= PROJECT LOGS ================= -->
-  <section id="logs" class="section">
+  <section id="logs" class="section tab-panel" data-panel="logs">
     <div class="container">
       <div class="section-head">
         <span class="section-index">03</span>
@@ -459,7 +462,7 @@
   </div>
 
   <!-- ================= CREATIVE ART ================= -->
-  <section id="art" class="section">
+  <section id="art" class="section tab-panel" data-panel="art">
     <div class="container">
       <div class="section-head">
         <span class="section-index">04</span>
@@ -575,5 +578,6 @@
   <script src="assets/js/main.js"></script>
   <script src="assets/js/mimic.js"></script>
   <script src="assets/js/logs.js"></script>
+  <script src="assets/js/tabs.js"></script>
 </body>
 </html>
