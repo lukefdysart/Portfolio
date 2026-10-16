@@ -90,6 +90,7 @@
   // ============================================================
   function sizeCanvases() {
     [overlay, handCanvas].forEach(function (c) {
+      if (!c) return;
       var r = c.parentElement.getBoundingClientRect();
       c.width = Math.max(2, Math.round(r.width));
       c.height = Math.max(2, Math.round(r.height));
@@ -140,6 +141,7 @@
   //  Robotic hand renderer (driven by bend %)
   // ============================================================
   function drawRoboHand() {
+    if (!handCanvas) return;   // robotic-hand panel removed from the demo
     var ctx = handCanvas.getContext('2d');
     var w = handCanvas.width, h = handCanvas.height;
     ctx.clearRect(0, 0, w, h);
@@ -268,6 +270,7 @@
     });
     drawRoboHand();
     updateBars();
+    if (fpsEl) fpsEl.textContent = running ? (currentFps + ' fps') : '';
     requestAnimationFrame(animate);
   }
 
