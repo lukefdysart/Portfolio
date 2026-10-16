@@ -720,76 +720,66 @@ a { color: inherit; text-decoration: none; }
 .collab-names strong { color: var(--text); }
 
 /* ---------------- To the People Who Made Me — a personal letter ---------------- */
-/* The closing letter — an editorial composition. On desktop each block is a
-   label rail + a comfortable reading column, so the width is used
-   intentionally without stretching paragraphs. Writing is the centerpiece. */
-.letter { max-width: 940px; margin: 4px auto 0; }
-.letter p { color: var(--text-dim); line-height: 1.85; margin-bottom: 24px; }
+/* The closing letter — one cohesive, personal reading column. Paragraph
+   spacing and subtle hierarchy carry the composition (no label rails). */
+.letter { max-width: 64ch; margin: 2px auto 0; }
+.letter > p { color: var(--text-dim); font-size: 1.02rem; line-height: 1.75; margin-bottom: 18px; }
 .letter strong { color: var(--text); font-weight: 600; }
 
-/* opening statement — large elegant serif, the letter's introduction */
+/* opening statement — elegant serif introduction, ~2 lines on desktop */
 .letter-lead {
   font-family: var(--font-display); font-weight: 500;
-  font-size: clamp(1.7rem, 3.4vw, 2.6rem); line-height: 1.3; letter-spacing: -0.4px;
-  color: var(--text); margin: 0 0 56px; max-width: 24ch;
+  font-size: clamp(1.3rem, 2.1vw, 1.7rem); line-height: 1.4; letter-spacing: -0.2px;
+  color: var(--text) !important; margin: 0 0 34px !important; max-width: 40ch;
 }
 
-/* label rail (left) + reading column (right) */
-.letter-block {
-  display: grid; grid-template-columns: 190px minmax(0, 60ch); gap: 40px;
-  align-items: start; margin-bottom: 44px;
-}
-.letter-label {
-  font-family: var(--font-head); font-weight: 600; font-size: 0.72rem;
-  text-transform: uppercase; letter-spacing: 2px; color: var(--accent);
-  margin: 8px 0 0 !important; line-height: 1.5;
-}
-.letter-body { min-width: 0; }
-.letter-body p:last-child { margin-bottom: 0; }
-
-/* the line that carries the letter — a restrained statement, pulled slightly
-   outside the reading column so it reads as its own moment */
+/* the line that carries the letter — a balanced statement with a quiet gold
+   rule; emphasis without reading like a generic pull-quote */
 .letter-statement {
   font-family: var(--font-display); font-style: italic; font-weight: 500;
-  font-size: clamp(1.35rem, 2.6vw, 1.85rem); line-height: 1.4;
-  color: var(--text) !important; max-width: 20ch;
-  margin: 8px 0 48px !important; padding-left: 22px;
+  font-size: 1.3rem; line-height: 1.5;
+  color: var(--text) !important; max-width: none;
+  margin: 30px 0 !important; padding-left: 20px;
   border-left: 2px solid var(--accent);
 }
 
-/* The places — a clean, scannable typographic list of names (no graphics) */
-.places-list {
-  list-style: none; margin: 0 0 24px; padding: 0;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 10px 32px;
+/* understated heading for the Places + Rob sub-sections */
+.letter-heading {
+  font-family: var(--font-head); font-weight: 600; font-size: 0.72rem;
+  text-transform: uppercase; letter-spacing: 2px; color: var(--accent);
+  margin: 0 0 16px !important;
 }
-.places-list li {
-  font-family: var(--font-head); font-weight: 500; font-size: 1.02rem;
-  color: var(--text); padding-bottom: 10px; border-bottom: 1px solid var(--border);
+
+/* The places — a compact typographic grouping with small gold separators */
+.places { margin-top: 44px; }
+.places-names {
+  margin: 0 0 16px !important; line-height: 2;
+  font-family: var(--font-head); font-weight: 500; font-size: 1rem; color: var(--text);
 }
-.places-note { color: var(--text-dim); line-height: 1.8; }
+.places-names span { white-space: nowrap; }
+.places-names span:not(:last-child)::after {
+  content: "·"; color: var(--accent); margin: 0 12px; font-weight: 700;
+}
+.places-note { color: var(--text-dim) !important; font-size: 1.02rem; line-height: 1.75; }
 
 /* the note to Rob — its own quiet identity: a divider + hierarchy, not a card */
 .letter-note {
-  display: grid; grid-template-columns: 190px minmax(0, 60ch); gap: 40px;
-  align-items: start; margin-top: 56px; padding-top: 40px;
-  border-top: 1px solid var(--border);
+  margin-top: 48px; padding-top: 36px; border-top: 1px solid var(--border);
 }
+.letter-note p { color: var(--text-dim); font-size: 1.02rem; line-height: 1.75; margin-bottom: 18px; }
 .letter-note-name {
-  font-family: var(--font-display); font-size: 1.4rem; font-weight: 600;
-  color: var(--text) !important; margin-bottom: 22px !important; letter-spacing: -0.3px;
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 600;
+  color: var(--text) !important; margin-bottom: 20px !important; letter-spacing: -0.3px;
 }
 .letter-signoff {
-  font-family: var(--font-display); font-style: italic; font-size: 1.35rem;
-  color: var(--text) !important; margin-top: 6px !important;
+  font-family: var(--font-display); font-style: italic; font-size: 1.3rem;
+  color: var(--text) !important; margin: 4px 0 0 !important;
 }
 
-/* tablet + mobile: labels stack above their column; everything single-column */
 @media (max-width: 820px) {
-  .letter { max-width: 60ch; }
-  .letter-block, .letter-note { grid-template-columns: 1fr; gap: 12px; }
-  .letter-label { margin: 0 0 2px !important; }
-  .letter-note { margin-top: 44px; padding-top: 32px; }
-  .places-list { grid-template-columns: 1fr; }
+  .letter { max-width: 100%; }
+  .letter-lead { font-size: 1.25rem; }
+  .places-names { line-height: 2.1; }
 }
 
 /* ---------------- Animated stick-guy mascot ---------------- */
