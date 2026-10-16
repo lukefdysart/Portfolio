@@ -274,16 +274,16 @@
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
               <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
-              <!-- faint track of the hand mark -->
-              <path class="mimic-track"
-                d="M46 92 L46 46 M58 92 L58 40 M70 92 L70 42 M82 92 L82 50 M46 92 Q64 102 82 92 L82 72 Q64 80 46 72 Z M46 78 Q36 72 31 62"
-                stroke="#ffffff" stroke-opacity="0.16" stroke-width="6.5"
-                stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <!-- clean single-line open-hand mark (4 fingers + palm + thumb) -->
-              <path class="mimic-mark"
-                d="M46 92 L46 46 M58 92 L58 40 M70 92 L70 42 M82 92 L82 50 M46 92 Q64 102 82 92 L82 72 Q64 80 46 72 Z M46 78 Q35 73 31 62"
-                stroke="url(#miMark)" stroke-width="6.5"
-                stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- Self-forming hand: palm draws first, then fingers build one
+                   by one, then the whole hand waves. Each piece is separate. -->
+              <g stroke="url(#miMark)" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <path class="mi-part mi-palm" d="M46 92 Q64 102 82 92 L82 72 Q64 80 46 72 Z" />
+                <path class="mi-part mi-fg1" d="M46 74 L46 46" />
+                <path class="mi-part mi-fg2" d="M58 76 L58 40" />
+                <path class="mi-part mi-fg3" d="M70 76 L70 42" />
+                <path class="mi-part mi-fg4" d="M82 74 L82 50" />
+                <path class="mi-part mi-thumb" d="M46 78 Q35 73 31 62" />
+              </g>
               <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
                 font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
             </svg>
@@ -350,17 +350,14 @@
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
               <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
-              <!-- faint track of the book mark -->
-              <path class="stories-track"
-                d="M64 50 C52 40 36 40 26 45 L26 92 C36 87 52 87 64 95 C76 87 92 87 102 92 L102 45 C92 40 76 40 64 50 Z M64 50 L64 95"
-                stroke="#ffffff" stroke-opacity="0.16" stroke-width="7"
-                stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <!-- clean single-stroke open-book mark that draws itself -->
-              <path class="stories-mark"
-                d="M64 50 C52 40 36 40 26 45 L26 92 C36 87 52 87 64 95 C76 87 92 87 102 92 L102 45 C92 40 76 40 64 50 Z M64 50 L64 95"
-                stroke="url(#stMark)" stroke-width="7"
-                stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <!-- a small star rising off the page (the one living detail) -->
+              <!-- Book spine (center) -->
+              <path class="stories-spine" d="M64 50 L64 95" stroke="url(#stMark)" stroke-width="7" stroke-linecap="round" fill="none" />
+              <!-- Left & right pages swing open from the spine on load -->
+              <path class="st-page-l" d="M64 50 C52 40 36 40 26 45 L26 92 C36 87 52 87 64 95"
+                stroke="url(#stMark)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <path class="st-page-r" d="M64 50 C76 40 92 40 102 45 L102 92 C92 87 76 87 64 95"
+                stroke="url(#stMark)" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+              <!-- a small star rising off the page -->
               <path class="stories-spark" d="M64 34 l1.6 3.4 3.8 .5 -2.8 2.7 .7 3.8 -3.3-1.8 -3.3 1.8 .7-3.8 -2.8-2.7 3.8-.5 Z" fill="#ffe9a8" />
               <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
                 font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
