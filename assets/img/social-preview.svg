@@ -35,10 +35,10 @@
         font-weight="500" fill="#566073">engineered.</text>
   <!-- project chips -->
   <g font-family="'Space Grotesk','Segoe UI',sans-serif" font-size="24" font-weight="500">
-    <rect x="80"  y="500" width="200" height="54" rx="27" fill="#ffffff" stroke="#dce1ec"/>
-    <text x="180" y="535" text-anchor="middle" fill="#1b2230">Mary · AR</text>
-    <rect x="300" y="500" width="260" height="54" rx="27" fill="#ffffff" stroke="#dce1ec"/>
-    <text x="430" y="535" text-anchor="middle" fill="#1b2230">Project MIMIC</text>
+    <rect x="80"  y="500" width="220" height="54" rx="27" fill="#ffffff" stroke="#dce1ec"/>
+    <text x="190" y="535" text-anchor="middle" fill="#1b2230">Confidential R&amp;D</text>
+    <rect x="320" y="500" width="240" height="54" rx="27" fill="#ffffff" stroke="#dce1ec"/>
+    <text x="440" y="535" text-anchor="middle" fill="#1b2230">Project MIMIC</text>
     <rect x="580" y="500" width="290" height="54" rx="27" fill="#ffffff" stroke="#dce1ec"/>
     <text x="725" y="535" text-anchor="middle" fill="#1b2230">Stories Illuminated</text>
   </g>

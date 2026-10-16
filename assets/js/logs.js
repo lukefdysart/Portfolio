@@ -17,21 +17,11 @@
           youtube: "VIDEO_ID"                       (the id after v=)
           vimeo:   "VIDEO_ID"
         Omit all three to show a styled "coming soon" card.
-        `project` must be one of: Mary | MIMIC | Stories | General
+        `project` must be one of: MIMIC | Stories | General
      ---------------------------------------------------------- */
   var LOGS = [
     {
       n: 1,
-      title: 'Why Mary exists',
-      date: '',                       // e.g. '2026-10-08'
-      project: 'Mary',
-      blurb: 'The one-minute origin story — from the AED that talks a bystander through CPR to an offline AR guide for any procedure.',
-      // video: 'assets/video/log-01-mary-intro.webm',
-      // youtube: 'XXXXXXXXXXX',
-      duration: ''
-    },
-    {
-      n: 2,
       title: 'MIMIC: hand tracking to servos',
       date: '',
       project: 'MIMIC',
@@ -40,7 +30,7 @@
       duration: ''
     },
     {
-      n: 3,
+      n: 2,
       title: 'Stories Illuminated: first light',
       date: '',
       project: 'Stories',
@@ -50,7 +40,7 @@
   ];
 
   var PROJECT_LABEL = {
-    Mary: 'Mary', MIMIC: 'Project MIMIC', Stories: 'Stories Illuminated', General: 'General'
+    MIMIC: 'Project MIMIC', Stories: 'Stories Illuminated', General: 'General'
   };
 
   // ----------------------------------------------------------
