@@ -748,3 +748,43 @@ a { color: inherit; text-decoration: none; }
 .state-name { font-family: var(--font-head); font-weight: 700; font-size: 1.02rem; color: var(--accent-2); position: relative; z-index: 1; }
 .state-words { color: var(--text-dim); font-size: 0.92rem; margin-top: 4px; position: relative; z-index: 1; }
 .state-words em { color: var(--text-faint); font-size: 0.82rem; }
+
+/* ---------------- Animated stick-guy mascot ---------------- */
+.stickguy { position: absolute; width: 150px; height: 175px; z-index: 1; pointer-events: none; }
+.stickguy svg { width: 100%; height: 100%; overflow: visible; }
+.stickguy-left { top: 30%; left: 2%; }
+@media (max-width: 1100px) { .stickguy-left { left: -1%; width: 120px; } }
+@media (max-width: 820px) { .stickguy { display: none; } }
+
+/* each pose fades in while the others fade out — 6 poses, 15s loop */
+.stickguy .pose { opacity: 0; animation: poseCycle 15s ease-in-out infinite; transform-origin: 56px 70px; }
+.stickguy .pose-chute  { animation-delay: 0s; }
+.stickguy .pose-chef   { animation-delay: 2.5s; }
+.stickguy .pose-run    { animation-delay: 5s; }
+.stickguy .pose-hockey { animation-delay: 7.5s; }
+.stickguy .pose-paint  { animation-delay: 10s; }
+.stickguy .pose-salute { animation-delay: 12.5s; }
+@keyframes poseCycle {
+  0%     { opacity: 0; transform: translateY(8px) scale(.96); }
+  3%     { opacity: 1; transform: none; }
+  14%    { opacity: 1; transform: none; }
+  17%    { opacity: 0; transform: translateY(-6px) scale(.98); }
+  100%   { opacity: 0; }
+}
+/* the parachute pose should gently sway while visible */
+.stickguy .pose-chute { animation: poseCycle 15s ease-in-out infinite, chuteSway 2.4s ease-in-out infinite; }
+@keyframes chuteSway { 0%,100%{ transform: rotate(-3deg) } 50%{ transform: rotate(3deg) } }
+/* little tossed item (food / paint) bobs */
+.stickguy .toss { animation: tossBob 1s ease-in-out infinite; }
+@keyframes tossBob { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-5px) } }
+/* running pose: quick leg jitter via subtle horizontal nudge */
+.stickguy .pose-run g { animation: runBob .5s ease-in-out infinite; transform-box: view-box; }
+@keyframes runBob { 0%,100%{ transform: translateY(0) } 50%{ transform: translateY(-2px) } }
+
+@media (prefers-reduced-motion: reduce) {
+  .stickguy .pose { animation: none; }
+  .stickguy .pose-chute { opacity: 1; animation: none; }   /* show one static pose */
+  .stickguy .pose-chef, .stickguy .pose-run, .stickguy .pose-hockey,
+  .stickguy .pose-paint, .stickguy .pose-salute { opacity: 0; }
+  .stickguy .toss, .stickguy .pose-run g { animation: none; }
+}
