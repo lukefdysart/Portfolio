@@ -9,8 +9,8 @@
   <meta name="theme-color" content="#f7f8fc" />
   <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
 
-  <!-- Favicon (inline SVG, no file needed) — light-blue LD monogram -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 52'%3E%3Crect width='68' height='52' rx='10' fill='%23f6f3ec'/%3E%3Cpath d='M12 9 C11 20 10 31 12 39 C14 43 20 43 26 41' fill='none' stroke='%23292d38' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M31 42 C30 32 30 18 32 9 C33 8 35 8 36 10 C50 11 58 19 56 29 C54 39 42 44 33 40 C40 42 48 38 50 30' fill='none' stroke='%23292d38' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M9 46 C24 50 46 49 62 43' fill='none' stroke='%23c59a42' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E" />
+  <!-- Favicon (inline SVG, no file needed) — simplified LD monogram on paper -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 72 72'%3E%3Crect width='72' height='72' rx='16' fill='%23f7f3ea'/%3E%3Cpath d='M18 18 L18 50 C18 53 20 54 24 53 L33 50' fill='none' stroke='%231f1f1f' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M41 54 L41 18 C55 17 65 25 64 36 C63 48 52 55 41 51' fill='none' stroke='%231f1f1f' stroke-width='3.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M33 43 C44 39 56 39 67 44' fill='none' stroke='%23c9a34a' stroke-width='3.2' stroke-linecap='round'/%3E%3C/svg%3E" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -41,20 +41,21 @@
     <nav class="nav container">
       <a href="#home" class="brand" aria-label="Luke Dysart — home">
         <span class="brand-mark" aria-hidden="true">
-          <!-- Handwritten LD monogram: an angled L, an expressive looping D,
-               and a sweeping gold finishing stroke. Provisional — swap the
-               paths for a traced sample of Luke's real handwriting later. -->
-          <svg class="ld-logo" viewBox="0 0 68 48" width="54" height="38" role="img" aria-label="LD monogram">
-            <!-- L: slight back-slant down-stroke + base flick -->
-            <path class="ld-l" d="M12 7 C11 18 10 29 12 37 C14 41 20 41 26 39"
-              fill="none" stroke="#292d38" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- D: vertical spine, then a big expressive bowl loop that overshoots -->
-            <path class="ld-d" d="M31 40 C30 30 30 16 32 7 C33 6 35 6 36 8
-              C50 9 58 17 56 27 C54 37 42 42 33 38 C40 40 48 36 50 28"
-              fill="none" stroke="#292d38" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- sweeping gold finishing stroke beneath -->
-            <path class="ld-flourish" d="M9 44 C24 48 46 47 62 41"
-              fill="none" stroke="#c59a42" stroke-width="2.6" stroke-linecap="round"/>
+          <!-- Handwritten LD monogram — a clean recreation of Luke's "SIMPLIFIED
+               (MONOCHROME)" branding mark: a straightforward (non-cursive) L, a
+               large expressive D, and a curved cross-stroke that flows through
+               the back of the D, echoing his real signature. Charcoal ink, with
+               the cross-stroke carrying the gold accent. -->
+          <svg class="ld-logo" viewBox="0 0 72 52" width="56" height="40" role="img" aria-label="LD monogram">
+            <!-- L: a plain upright down-stroke with a short base flick -->
+            <path class="ld-l" d="M14 8 L14 40 C14 43 16 44 20 43 L29 40"
+              fill="none" stroke="#1f1f1f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- D: tall straight spine + one big open bowl (expressive, not calligraphic) -->
+            <path class="ld-d" d="M39 44 L39 8 C53 7 63 15 62 26 C61 38 50 45 39 41"
+              fill="none" stroke="#1f1f1f" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- cross-stroke: a single natural curve sweeping through the back of the D -->
+            <path class="ld-flourish" d="M31 33 C42 29 54 29 65 34"
+              fill="none" stroke="#c9a34a" stroke-width="3" stroke-linecap="round"/>
           </svg>
         </span>
         <span class="brand-word">LUKE DYSART</span>
@@ -82,47 +83,52 @@
     <div class="hero-grid-bg"></div>
     <div class="hero-grain" aria-hidden="true"></div>
 
-    <div class="hero-stage">
-      <!-- LEFT — engineering sketchbook: the MIMIC robotic hand being drawn -->
-      <div class="hero-sketch" aria-hidden="true">
-        <svg class="sketch-hand" viewBox="0 0 180 220" fill="none">
-          <!-- faint construction grid + measurements -->
-          <g class="sk-construct" stroke="#c59a42" stroke-width="0.7" stroke-opacity=".55">
-            <circle cx="92" cy="150" r="46" stroke-dasharray="3 4"/>
-            <line x1="20" y1="150" x2="164" y2="150" stroke-dasharray="2 5"/>
-            <line x1="92" y1="40" x2="92" y2="210" stroke-dasharray="2 5"/>
-            <path d="M44 196 h30 M44 193 v6 M74 193 v6"/>
+    <div class="hero-stage" data-parallax>
+      <!-- LEFT — engineer's notebook: loose hand-drawn engineering doodles
+           (robotic finger, a small gear, a few circuit traces). Casual pencil
+           line, intentionally composed — not a photoreal mechanical diagram. -->
+      <div class="hero-doodles hero-doodles-left" aria-hidden="true">
+        <svg class="doodle-eng" viewBox="0 0 230 300" fill="none" data-depth="2">
+          <!-- robotic finger: two segments + a hinge joint + a pad -->
+          <g class="dd dd-finger" stroke="#1f1f1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M58 150 q-6 -40 2 -70 q2 -8 11 -8 q9 0 10 9 q4 30 -1 66"/>
+            <path d="M58 150 q-4 30 10 44 q18 16 40 6"/>
+            <!-- knuckle hinge -->
+            <circle cx="70" cy="86" r="7"/>
+            <path d="M63 86 h14"/>
+            <circle cx="63" cy="150" r="4"/>
           </g>
-          <!-- the hand: palm + 4 fingers + thumb, drawn as strokes (reveal) -->
-          <g class="sk-ink" stroke="#292d38" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
-            <path class="sk-p" d="M60 150 q-10 24 6 40 q26 20 56 6 q18 -10 16 -34 l-2 -22"/>
-            <path class="sk-f sk-f1" d="M58 128 q-3 -34 2 -46"/>
-            <path class="sk-f sk-f2" d="M74 120 q-2 -40 1 -54"/>
-            <path class="sk-f sk-f3" d="M92 118 q0 -42 2 -56"/>
-            <path class="sk-f sk-f4" d="M110 122 q4 -36 7 -48"/>
-            <path class="sk-f sk-th" d="M60 150 q-20 -4 -30 10"/>
-            <!-- knuckle joint diagrams -->
-            <g class="sk-joints" stroke-width="1.6">
-              <circle cx="60" cy="128" r="3"/><circle cx="75" cy="120" r="3"/>
-              <circle cx="93" cy="118" r="3"/><circle cx="110" cy="122" r="3"/>
+          <!-- small gear -->
+          <g class="dd dd-gear" stroke="#1f1f1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <circle cx="150" cy="92" r="24"/>
+            <circle cx="150" cy="92" r="8"/>
+            <g stroke-width="2.4">
+              <path d="M150 60 v-10 M150 134 v-10 M118 92 h-10 M192 92 h-10
+                       M127 69 l-7 -7 M180 115 l-7 -7 M173 69 l7 -7 M120 115 l7 -7"/>
             </g>
           </g>
+          <!-- circuit traces + nodes -->
+          <g class="dd dd-circuit" stroke="#7ba6bd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M40 232 h46 v-26 h40 v30 h58"/>
+            <circle cx="40" cy="232" r="3.4" fill="#7ba6bd"/>
+            <circle cx="126" cy="206" r="3.4" fill="#7ba6bd"/>
+            <path d="M126 236 h30 v24"/>
+            <rect x="150" y="248" width="22" height="14" rx="2"/>
+          </g>
         </svg>
-        <span class="note note-hand">robotic hand — MIMIC</span>
-        <svg class="arrow arrow-hand" viewBox="0 0 80 50" aria-hidden="true"><path d="M4 6 C30 4 44 20 62 34" fill="none" stroke="#292d38" stroke-width="2" stroke-linecap="round"/><path d="M62 34 l-11 -1 M62 34 l-2 -11" fill="none" stroke="#292d38" stroke-width="2" stroke-linecap="round"/></svg>
-        <span class="note note-build">built with curiosity</span>
+        <span class="note note-eng">built with curiosity</span>
       </div>
 
-      <!-- CENTER — the message -->
+      <!-- CENTER — the message (focal point) -->
       <div class="hero-inner">
         <p class="hero-eyebrow">Electrical &amp; Computer Engineering · Vanderbilt University</p>
         <h1 class="hero-title" aria-label="Imagination, engineered.">
           <span class="line line-1"><span class="accent">Imagination,</span></span>
           <span class="line line-2">
             <span class="hero-line2">engineered.</span>
-            <!-- hand-drawn gold underline under 'engineered.' -->
-            <svg class="hero-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
-              <path d="M6 14 C70 6 150 5 210 11 C250 15 278 13 294 9" fill="none" stroke="#c59a42" stroke-width="4" stroke-linecap="round"/>
+            <!-- small hand-drawn gold underline under part of 'engineered.' -->
+            <svg class="hero-underline" viewBox="0 0 120 14" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M4 8 C34 3 70 3 116 7" fill="none" stroke="#c9a34a" stroke-width="3.4" stroke-linecap="round"/>
             </svg>
           </span>
         </h1>
@@ -134,24 +140,37 @@
         <span class="note note-ideas">ideas · systems · stories</span>
       </div>
 
-      <!-- RIGHT — creative collage: placeholder frames (replace with real photos) -->
-      <div class="hero-collage" aria-hidden="true" data-parallax>
-        <figure class="frame frame-1" data-depth="2">
-          <div class="frame-ph ph-blue"><span>project photo</span></div>
-          <figcaption>MIMIC · bench test</figcaption>
-          <span class="tape tape-tl"></span>
-        </figure>
-        <figure class="frame frame-2" data-depth="4">
-          <div class="frame-ph ph-coral"><span>projection mapping</span></div>
-          <figcaption>Stories Illuminated</figcaption>
-          <span class="tape tape-tr"></span>
-        </figure>
-        <figure class="frame frame-3" data-depth="3">
-          <div class="frame-ph ph-paper"><span>Vanderbilt</span></div>
-          <span class="tape tape-tl"></span>
-        </figure>
-        <span class="note note-motion">turning ideas into motion</span>
-        <svg class="arrow arrow-collage" viewBox="0 0 70 46" aria-hidden="true"><path d="M64 8 C40 6 26 22 10 36" fill="none" stroke="#b76e54" stroke-width="2" stroke-linecap="round"/><path d="M10 36 l11 -2 M10 36 l1 -11" fill="none" stroke="#b76e54" stroke-width="2" stroke-linecap="round"/></svg>
+      <!-- RIGHT — artist's sketchbook: loose creative doodles (open book,
+           projection lines, abstract shapes, expressive marks). The pencil
+           character takes after Luke's cat drawing — casual, personal. -->
+      <div class="hero-doodles hero-doodles-right" aria-hidden="true">
+        <svg class="doodle-art" viewBox="0 0 230 300" fill="none" data-depth="3">
+          <!-- open book -->
+          <g class="dd dd-book" stroke="#1f1f1f" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path d="M30 196 C58 180 92 180 112 192 C132 180 166 180 194 196"/>
+            <path d="M112 192 V116"/>
+            <path d="M30 196 V128 C58 112 92 112 112 124"/>
+            <path d="M194 196 V128 C166 112 132 112 112 124"/>
+            <!-- a couple of page lines -->
+            <path d="M48 150 q24 -8 48 2 M48 168 q24 -8 48 2" stroke-width="1.5" stroke="#8b91a0"/>
+            <path d="M128 150 q24 -10 48 0 M128 168 q24 -10 48 0" stroke-width="1.5" stroke="#8b91a0"/>
+          </g>
+          <!-- projection lines rising from the book -->
+          <g class="dd dd-projection" stroke="#b76e54" stroke-width="1.8" stroke-linecap="round" fill="none" stroke-opacity=".85">
+            <path d="M100 112 L74 54" stroke-dasharray="2 6"/>
+            <path d="M112 110 L112 48" stroke-dasharray="2 6"/>
+            <path d="M124 112 L150 54" stroke-dasharray="2 6"/>
+          </g>
+          <!-- abstract shapes + expressive marks (the "lift-off" illustration) -->
+          <g class="dd dd-marks" stroke="#1f1f1f" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <!-- a simple bird-like gesture, loose like the cat sketch -->
+            <path d="M92 40 q10 -11 20 -2 q10 -9 20 1"/>
+            <!-- a little triangle + circle, abstract composition -->
+            <path d="M150 92 l16 -22 l16 22 Z" stroke="#c9a34a"/>
+            <circle cx="60" cy="86" r="11" stroke="#7ba6bd"/>
+          </g>
+        </svg>
+        <span class="note note-art">turning ideas into motion</span>
       </div>
     </div>
 
@@ -171,29 +190,32 @@
           <!-- Monogram card rendered entirely in SVG (no raster image, no pixel limits).
                To use a real photo later, replace this block with:
                <img class="about-photo-img" src="assets/img/luke.jpg" alt="Luke Dysart" /> -->
-          <div class="photo-monogram" role="img" aria-label="Luke Dysart monogram">
+          <div class="photo-monogram" role="img" aria-label="Luke Dysart handwritten monogram">
             <svg viewBox="0 0 320 400" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
               <defs>
                 <linearGradient id="mono-bg" x1="0" y1="0" x2="1" y2="1">
-                  <stop offset="0" stop-color="#2a3b6b" />
-                  <stop offset="1" stop-color="#4a3b78" />
+                  <stop offset="0" stop-color="#242730" />
+                  <stop offset="1" stop-color="#1f1f1f" />
                 </linearGradient>
                 <radialGradient id="mono-glow" cx="30%" cy="26%" r="70%">
-                  <stop offset="0" stop-color="rgba(226,182,79,0.32)" />
-                  <stop offset="1" stop-color="rgba(226,182,79,0)" />
+                  <stop offset="0" stop-color="rgba(201,163,74,0.26)" />
+                  <stop offset="1" stop-color="rgba(201,163,74,0)" />
                 </radialGradient>
               </defs>
               <rect width="320" height="400" fill="url(#mono-bg)" />
               <rect width="320" height="400" fill="url(#mono-glow)" />
-              <g fill="none" stroke="#262d3a" stroke-width="1">
+              <g fill="none" stroke="#2c2f38" stroke-width="1">
                 <path d="M0 100 H320 M0 200 H320 M0 300 H320 M80 0 V400 M160 0 V400 M240 0 V400" opacity="0.5" />
               </g>
-              <text x="160" y="210" text-anchor="middle"
-                    font-family="'Space Grotesk', sans-serif" font-weight="700"
-                    font-size="128" letter-spacing="4" fill="#e8ebf0">LD</text>
-              <text x="160" y="268" text-anchor="middle"
+              <!-- same simplified LD monogram as the nav logo/favicon, scaled up -->
+              <g transform="translate(96 128) scale(2.1)" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 8 L14 40 C14 43 16 44 20 43 L29 40" stroke="#f3efe4" stroke-width="3.4"/>
+                <path d="M39 44 L39 8 C53 7 63 15 62 26 C61 38 50 45 39 41" stroke="#f3efe4" stroke-width="3.4"/>
+                <path d="M31 33 C42 29 54 29 65 34" stroke="#c9a34a" stroke-width="3"/>
+              </g>
+              <text x="160" y="330" text-anchor="middle"
                     font-family="'Space Grotesk', sans-serif" font-weight="500"
-                    font-size="15" letter-spacing="6" fill="#e2b64f">LUKE DYSART</text>
+                    font-size="15" letter-spacing="6" fill="#c9a34a">LUKE DYSART</text>
             </svg>
           </div>
         </div>
