@@ -115,4 +115,31 @@
       }
     });
   });
+
+  // ----- Animation D: subtle pointer parallax on the hero collage (desktop only) -----
+  var collage = document.querySelector('[data-parallax]');
+  var fine = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
+  var okMotion = !window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (collage && fine && okMotion) {
+    var frames = Array.prototype.slice.call(collage.querySelectorAll('[data-depth]'));
+    var raf = null, tx = 0, ty = 0;
+    window.addEventListener('pointermove', function (e) {
+      // normalized -1..1 from viewport center
+      tx = (e.clientX / window.innerWidth - 0.5) * 2;
+      ty = (e.clientY / window.innerHeight - 0.5) * 2;
+      if (!raf) raf = requestAnimationFrame(apply);
+    }, { passive: true });
+    function apply() {
+      raf = null;
+      frames.forEach(function (f) {
+        var d = parseFloat(f.getAttribute('data-depth')) || 2;  // 2..4 px-ish
+        f.style.transform = f.getAttribute('data-base') +
+          ' translate3d(' + (tx * d) + 'px,' + (ty * d) + 'px,0)';
+      });
+    }
+    // capture each frame's static rotation as its base transform
+    frames.forEach(function (f) {
+      f.setAttribute('data-base', getComputedStyle(f).transform === 'none' ? '' : getComputedStyle(f).transform);
+    });
+  }
 })();

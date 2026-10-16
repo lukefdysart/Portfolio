@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
 
   <!-- Favicon (inline SVG, no file needed) — light-blue LD monogram -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='12' fill='%232f9fe0'/%3E%3Cpath d='M6 23 H15 l3 -11 4 20 3 -14 2 7 h8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 68 52'%3E%3Crect width='68' height='52' rx='10' fill='%23f6f3ec'/%3E%3Cpath d='M12 9 C11 20 10 31 12 39 C14 43 20 43 26 41' fill='none' stroke='%23292d38' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M31 42 C30 32 30 18 32 9 C33 8 35 8 36 10 C50 11 58 19 56 29 C54 39 42 44 33 40 C40 42 48 38 50 30' fill='none' stroke='%23292d38' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M9 46 C24 50 46 49 62 43' fill='none' stroke='%23c59a42' stroke-width='2.8' stroke-linecap='round'/%3E%3C/svg%3E" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -27,7 +27,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,500;9..144,1,600&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Caveat:wght@500;600;700&display=swap" rel="stylesheet" />
 
   <!-- Styles -->
   <link rel="stylesheet" href="assets/css/styles.css" />
@@ -41,26 +41,20 @@
     <nav class="nav container">
       <a href="#home" class="brand" aria-label="Luke Dysart — home">
         <span class="brand-mark" aria-hidden="true">
-          <!-- Heartbeat mark: a clean ECG trace in a rounded tile. A bright
-               pulse continuously travels the line (the signal, alive). -->
-          <svg viewBox="0 0 44 44" width="38" height="38">
-            <defs>
-              <linearGradient id="brandG" x1="0" y1="0" x2="1" y2="1">
-                <stop offset="0" stop-color="#35c3f0"/><stop offset="1" stop-color="#2f9fe0"/>
-              </linearGradient>
-            </defs>
-            <rect x="2" y="2" width="40" height="40" rx="12" fill="url(#brandG)"/>
-            <rect x="2" y="2" width="40" height="40" rx="12" fill="#fff" opacity="0.06"/>
-            <!-- faint baseline track -->
-            <path d="M6 23 H15 l3 -11 4 20 3 -14 2 7 h8"
-              fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="2.6"
-              stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- the live heartbeat line -->
-            <path class="brand-pulse" d="M6 23 H15 l3 -11 4 20 3 -14 2 7 h8"
-              fill="none" stroke="#ffffff" stroke-width="3"
-              stroke-linecap="round" stroke-linejoin="round"/>
-            <!-- bright blip that rides the pulse -->
-            <circle class="brand-blip" r="2.3" fill="#ffffff"/>
+          <!-- Handwritten LD monogram: an angled L, an expressive looping D,
+               and a sweeping gold finishing stroke. Provisional — swap the
+               paths for a traced sample of Luke's real handwriting later. -->
+          <svg class="ld-logo" viewBox="0 0 68 48" width="54" height="38" role="img" aria-label="LD monogram">
+            <!-- L: slight back-slant down-stroke + base flick -->
+            <path class="ld-l" d="M12 7 C11 18 10 29 12 37 C14 41 20 41 26 39"
+              fill="none" stroke="#292d38" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- D: vertical spine, then a big expressive bowl loop that overshoots -->
+            <path class="ld-d" d="M31 40 C30 30 30 16 32 7 C33 6 35 6 36 8
+              C50 9 58 17 56 27 C54 37 42 42 33 38 C40 40 48 36 50 28"
+              fill="none" stroke="#292d38" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- sweeping gold finishing stroke beneath -->
+            <path class="ld-flourish" d="M9 44 C24 48 46 47 62 41"
+              fill="none" stroke="#c59a42" stroke-width="2.6" stroke-linecap="round"/>
           </svg>
         </span>
         <span class="brand-word">LUKE DYSART</span>
@@ -82,26 +76,85 @@
     </nav>
   </header>
 
-  <!-- ================= HERO ================= -->
+  <!-- ================= HERO — sketchbook / editorial collage ================= -->
   <section id="home" class="hero tab-panel" data-panel="home">
-    <!-- Soft paper-grid backdrop (calm) -->
+    <!-- warm paper grid + subtle grain -->
     <div class="hero-grid-bg"></div>
+    <div class="hero-grain" aria-hidden="true"></div>
 
-    <div class="container hero-inner">
-      <p class="hero-eyebrow">ECE &amp; BME · Vanderbilt University</p>
-      <h1 class="hero-title" aria-label="Imagination, engineered.">
-        <span class="line line-1"><span class="accent">Imagination,</span></span>
-        <span class="line line-2"><span class="hero-line2">engineered.</span></span>
-      </h1>
-      <p class="hero-sub">
-        I live at the intersection of <strong>art and engineering</strong> — robotics, animatronics,
-        motion capture, projection mapping, and visual art.
-      </p>
-      <div class="hero-cta">
-        <a href="#engineering" class="btn btn-primary nav-tab" data-tab="engineering">View Engineering</a>
-        <a href="#art" class="btn btn-ghost nav-tab" data-tab="art">View Creative Art</a>
+    <div class="hero-stage">
+      <!-- LEFT — engineering sketchbook: the MIMIC robotic hand being drawn -->
+      <div class="hero-sketch" aria-hidden="true">
+        <svg class="sketch-hand" viewBox="0 0 180 220" fill="none">
+          <!-- faint construction grid + measurements -->
+          <g class="sk-construct" stroke="#c59a42" stroke-width="0.7" stroke-opacity=".55">
+            <circle cx="92" cy="150" r="46" stroke-dasharray="3 4"/>
+            <line x1="20" y1="150" x2="164" y2="150" stroke-dasharray="2 5"/>
+            <line x1="92" y1="40" x2="92" y2="210" stroke-dasharray="2 5"/>
+            <path d="M44 196 h30 M44 193 v6 M74 193 v6"/>
+          </g>
+          <!-- the hand: palm + 4 fingers + thumb, drawn as strokes (reveal) -->
+          <g class="sk-ink" stroke="#292d38" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+            <path class="sk-p" d="M60 150 q-10 24 6 40 q26 20 56 6 q18 -10 16 -34 l-2 -22"/>
+            <path class="sk-f sk-f1" d="M58 128 q-3 -34 2 -46"/>
+            <path class="sk-f sk-f2" d="M74 120 q-2 -40 1 -54"/>
+            <path class="sk-f sk-f3" d="M92 118 q0 -42 2 -56"/>
+            <path class="sk-f sk-f4" d="M110 122 q4 -36 7 -48"/>
+            <path class="sk-f sk-th" d="M60 150 q-20 -4 -30 10"/>
+            <!-- knuckle joint diagrams -->
+            <g class="sk-joints" stroke-width="1.6">
+              <circle cx="60" cy="128" r="3"/><circle cx="75" cy="120" r="3"/>
+              <circle cx="93" cy="118" r="3"/><circle cx="110" cy="122" r="3"/>
+            </g>
+          </g>
+        </svg>
+        <span class="note note-hand">robotic hand — MIMIC</span>
+        <svg class="arrow arrow-hand" viewBox="0 0 80 50" aria-hidden="true"><path d="M4 6 C30 4 44 20 62 34" fill="none" stroke="#292d38" stroke-width="2" stroke-linecap="round"/><path d="M62 34 l-11 -1 M62 34 l-2 -11" fill="none" stroke="#292d38" stroke-width="2" stroke-linecap="round"/></svg>
+        <span class="note note-build">built with curiosity</span>
+      </div>
+
+      <!-- CENTER — the message -->
+      <div class="hero-inner">
+        <p class="hero-eyebrow">Electrical &amp; Computer Engineering · Vanderbilt University</p>
+        <h1 class="hero-title" aria-label="Imagination, engineered.">
+          <span class="line line-1"><span class="accent">Imagination,</span></span>
+          <span class="line line-2">
+            <span class="hero-line2">engineered.</span>
+            <!-- hand-drawn gold underline under 'engineered.' -->
+            <svg class="hero-underline" viewBox="0 0 300 24" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M6 14 C70 6 150 5 210 11 C250 15 278 13 294 9" fill="none" stroke="#c59a42" stroke-width="4" stroke-linecap="round"/>
+            </svg>
+          </span>
+        </h1>
+        <p class="hero-sub">I build things that blur the line between imagination and reality.</p>
+        <div class="hero-cta">
+          <a href="#engineering" class="btn btn-primary nav-tab" data-tab="engineering">View Engineering</a>
+          <a href="#art" class="btn btn-ghost nav-tab" data-tab="art">View Creative Art</a>
+        </div>
+        <span class="note note-ideas">ideas · systems · stories</span>
+      </div>
+
+      <!-- RIGHT — creative collage: placeholder frames (replace with real photos) -->
+      <div class="hero-collage" aria-hidden="true" data-parallax>
+        <figure class="frame frame-1" data-depth="2">
+          <div class="frame-ph ph-blue"><span>project photo</span></div>
+          <figcaption>MIMIC · bench test</figcaption>
+          <span class="tape tape-tl"></span>
+        </figure>
+        <figure class="frame frame-2" data-depth="4">
+          <div class="frame-ph ph-coral"><span>projection mapping</span></div>
+          <figcaption>Stories Illuminated</figcaption>
+          <span class="tape tape-tr"></span>
+        </figure>
+        <figure class="frame frame-3" data-depth="3">
+          <div class="frame-ph ph-paper"><span>Vanderbilt</span></div>
+          <span class="tape tape-tl"></span>
+        </figure>
+        <span class="note note-motion">turning ideas into motion</span>
+        <svg class="arrow arrow-collage" viewBox="0 0 70 46" aria-hidden="true"><path d="M64 8 C40 6 26 22 10 36" fill="none" stroke="#b76e54" stroke-width="2" stroke-linecap="round"/><path d="M10 36 l11 -2 M10 36 l1 -11" fill="none" stroke="#b76e54" stroke-width="2" stroke-linecap="round"/></svg>
       </div>
     </div>
+
     <a href="#about" class="scroll-cue nav-tab" data-tab="about" aria-label="Go to About">↓</a>
   </section>
 
