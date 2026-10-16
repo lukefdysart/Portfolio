@@ -494,78 +494,90 @@ a { color: inherit; text-decoration: none; }
   100% { stroke-dasharray: 26 274; stroke-dashoffset: 0; }
 }
 
-/* ---- MIMIC: stick figure walks in, PAINTS the 'M', walks off (Pixar-intro) ---- */
-.logo-mimic .mi-draw {
-  stroke-dasharray: 200; stroke-dashoffset: 200;
-  animation: markDraw 1.8s cubic-bezier(.5,0,.5,1) 1s forwards, markBreathe 3.4s ease-in-out 3.2s infinite;
-}
-.logo-mimic .mi-node, .logo-mimic .mi-node2 { opacity: 0; }
+/* ---- MIMIC: a builder ASSEMBLES a 3D 'M' — pillars rise, chevron drops ---- */
+.logo-mimic g[class^="mi-p"], .logo-mimic .mi-V { transform-box: view-box; }
+/* left pillar rises out of the floor, pushed up */
+.logo-mimic .mi-pL { transform: translateY(54px); opacity: 0; animation: riseUp .6s cubic-bezier(.2,.8,.3,1.2) 1.1s forwards; }
+/* right pillar rises next */
+.logo-mimic .mi-pR { transform: translateY(54px); opacity: 0; animation: riseUp .6s cubic-bezier(.2,.8,.3,1.2) 2.1s forwards; }
+/* chevron drops in from the top with a bounce */
+.logo-mimic .mi-V  { transform: translateY(-60px); opacity: 0; animation: dropIn .7s cubic-bezier(.3,1.4,.5,1) 3s forwards; }
+@keyframes riseUp { 0%{transform:translateY(54px);opacity:0} 60%{opacity:1} 100%{transform:translateY(0);opacity:1} }
+@keyframes dropIn { 0%{transform:translateY(-60px);opacity:0} 60%{opacity:1} 80%{transform:translateY(4px)} 100%{transform:translateY(0);opacity:1} }
+/* the floor shadow 'thumps' when the chevron lands */
+.logo-mimic .mi-shadow { transform-box: view-box; transform-origin: 64px 98px; animation: shadowThump .3s ease-out 3.5s both, floorBreathe 3.6s ease-in-out 4s infinite; }
+@keyframes shadowThump { 0%{transform:scaleX(.7)} 50%{transform:scaleX(1.25)} 100%{transform:scaleX(1)} }
+@keyframes floorBreathe { 0%,100%{opacity:1} 50%{opacity:.7} }
 
-/* the little painter: enters L (-40 off-stage), rides the M path, exits R */
-.logo-mimic .mi-stick {
-  transform-box: view-box; transform: translate(-20px, 64px);
-  animation: miStickWalkIn 1s linear both, miStickPaint 1.8s cubic-bezier(.5,0,.5,1) 1s both, miStickExit .9s ease-in 2.9s both;
+/* BUILDER walks to left pillar, pushes, walks to right, pushes, then exits */
+.logo-mimic .mi-builder {
+  transform-box: view-box; transform: translate(-20px,92px);
+  animation: miBuildWalk 4.4s linear both, miBuildExit 1s ease-in 3.9s both;
 }
-@keyframes miStickWalkIn { from { transform: translate(-26px,64px);} to { transform: translate(34px,86px);} }
-/* follow the M vertices while the stroke draws (keyframes mirror the path corners) */
-@keyframes miStickPaint {
-  0%   { transform: translate(34px,86px); }
-  25%  { transform: translate(34px,42px); }
-  50%  { transform: translate(64px,74px); }
-  75%  { transform: translate(94px,42px); }
-  100% { transform: translate(94px,86px); }
+@keyframes miBuildWalk {
+  0%   { transform: translate(-20px,92px); }
+  18%  { transform: translate(22px,92px); }   /* at left pillar */
+  25%  { transform: translate(22px,92px); }   /* push */
+  45%  { transform: translate(78px,92px); }   /* at right pillar */
+  52%  { transform: translate(78px,92px); }   /* push */
+  100% { transform: translate(78px,92px); }
 }
-@keyframes miStickExit { from { transform: translate(94px,86px); opacity:1;} to { transform: translate(150px,86px); opacity:0;} }
-
-/* legs cycle (walking) only during walk-in and exit */
-.logo-mimic .mi-stick .leg-a { animation: legA .4s ease-in-out 10 both; }
-.logo-mimic .mi-stick .leg-b { animation: legB .4s ease-in-out 10 both; }
-@keyframes legA { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(20deg) } }
-@keyframes legB { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(-20deg) } }
-.logo-mimic .mi-stick .leg-a, .logo-mimic .mi-stick .leg-b { transform-box: fill-box; transform-origin: top; }
+@keyframes miBuildExit { from{transform:translate(78px,92px);opacity:1} to{transform:translate(140px,92px);opacity:0} }
+/* pushing arm thrusts when at a pillar */
+.logo-mimic .mi-builder .mi-armU { transform-box: fill-box; transform-origin: left; animation: pushArm 1s ease-in-out 2; }
+@keyframes pushArm { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-22deg)} }
+.logo-mimic .mi-builder .mi-legA { transform-box: fill-box; transform-origin: top; animation: legA .4s ease-in-out 11 both; }
+.logo-mimic .mi-builder .mi-legB { transform-box: fill-box; transform-origin: top; animation: legB .4s ease-in-out 11 both; }
+@keyframes legA { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(22deg) } }
+@keyframes legB { 0%,100%{ transform: rotate(0) } 50%{ transform: rotate(-22deg) } }
 
 .logo-mimic { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
-.project:hover .logo-mimic { transform: scale(1.06) rotate(-2deg); }
-/* replay the whole intro on hover */
-.project:hover .logo-mimic .mi-stick { animation: miStickWalkIn 1s linear both, miStickPaint 1.8s cubic-bezier(.5,0,.5,1) 1s both, miStickExit .9s ease-in 2.9s both; }
+.project:hover .logo-mimic { transform: scale(1.06); }
 
-/* ---- Stories: stick figure walks in, UNSPOOLS the 'S', cheers as star pops ---- */
-.logo-stories .st-draw {
-  stroke-dasharray: 240; stroke-dashoffset: 240;
-  animation: markDraw 1.9s cubic-bezier(.5,0,.5,1) 1s forwards, markBreathe 3.6s ease-in-out 3.4s infinite;
-}
-.logo-stories .st-node { opacity: 0; }
+/* ---- Stories: storyteller OPENS a 3D book; a dimensional star rises ---- */
+.logo-stories .st-book-base { opacity: 0; animation: fadeIn .4s ease 1.1s forwards; }
+/* covers swing open from the spine (scaleX from the center) */
+.logo-stories .st-page-l, .logo-stories .st-page-r { transform-box: view-box; transform-origin: 64px 76px; opacity: 0; }
+.logo-stories .st-page-l { animation: coverOpenL .8s cubic-bezier(.3,1.2,.5,1) 1.6s both; }
+.logo-stories .st-page-r { animation: coverOpenR .8s cubic-bezier(.3,1.2,.5,1) 1.6s both; }
+@keyframes coverOpenL { 0%{transform:scaleX(0);opacity:0} 40%{opacity:1} 100%{transform:scaleX(1);opacity:1} }
+@keyframes coverOpenR { 0%{transform:scaleX(0);opacity:0} 40%{opacity:1} 100%{transform:scaleX(1);opacity:1} }
+/* glow billows up after the book opens */
+.logo-stories .st-glow { transform-box: view-box; transform-origin: 64px 60px; opacity: 0;
+  animation: glowUp .8s ease 2.4s forwards, floorBreathe 3.6s ease-in-out 3.4s infinite; }
+@keyframes glowUp { 0%{opacity:0;transform:scale(.5)} 100%{opacity:.85;transform:scale(1)} }
+.logo-stories .st-shadow { transform-box: view-box; transform-origin: 64px 100px; animation: shadowThump .3s ease-out 2.4s both; }
 
-/* the storyteller: walks in L, rides the S path while it draws, cheers, exits R */
-.logo-stories .st-stick {
-  transform-box: view-box; transform: translate(-20px,42px);
-  animation: stWalkIn 1s linear both, stRide 1.9s cubic-bezier(.5,0,.5,1) 1s both, stCheer .6s ease 2.9s both, stExit 1s ease-in 3.6s both;
-}
-@keyframes stWalkIn { from { transform: translate(-26px,64px);} to { transform: translate(86px,42px);} }
-/* follow the S bezier roughly via sampled points */
-@keyframes stRide {
-  0%   { transform: translate(86px,42px); }
-  20%  { transform: translate(52px,34px); }
-  45%  { transform: translate(60px,60px); }
-  70%  { transform: translate(84px,74px); }
-  100% { transform: translate(52px,88px); }
-}
-@keyframes stCheer { 0%,100%{ transform: translate(52px,88px);} 50%{ transform: translate(52px,82px);} }
-@keyframes stExit { from { transform: translate(52px,88px); opacity:1;} to { transform: translate(-30px,92px); opacity:0;} }
-.logo-stories .st-stick .st-leg-a { animation: legA .4s ease-in-out 8 both; transform-box: fill-box; transform-origin: top; }
-.logo-stories .st-stick .st-leg-b { animation: legB .4s ease-in-out 8 both; transform-box: fill-box; transform-origin: top; }
-/* the arm throws up to cheer when the star pops */
-.logo-stories .st-stick .st-arm { animation: stArmUp .4s ease 2.9s both; transform-box: fill-box; transform-origin: left; }
-@keyframes stArmUp { to { transform: rotate(-50deg); } }
-
-.logo-stories .stories-spark { transform-box: view-box; transform-origin: 64px 30px; opacity: 0;
-  animation: starPop .7s cubic-bezier(.34,1.56,.64,1) 2.9s forwards, sparkTwinkle 2.6s ease-in-out 3.7s infinite; }
-@keyframes starPop {
-  0%   { opacity: 0; transform: translateY(22px) scale(.2) rotate(-30deg); }
-  70%  { opacity: 1; }
+/* a dimensional star rises up out of the book, then twinkles */
+.logo-stories .stories-spark { transform-box: view-box; transform-origin: 64px 42px; opacity: 0;
+  animation: starRise .9s cubic-bezier(.34,1.5,.5,1) 2.6s forwards, sparkTwinkle 2.8s ease-in-out 3.6s infinite; }
+@keyframes starRise {
+  0%   { opacity: 0; transform: translateY(30px) scale(.2) rotate(-40deg); }
+  60%  { opacity: 1; }
   100% { opacity: 1; transform: translateY(0) scale(1) rotate(0deg); }
 }
-@keyframes sparkTwinkle { 0%,100%{opacity:.7; transform:scale(.88)} 50%{opacity:1; transform:scale(1.18)} }
+@keyframes sparkTwinkle { 0%,100%{ filter: drop-shadow(0 0 0 rgba(255,224,138,0)) } 50%{ filter: drop-shadow(0 0 5px rgba(255,224,138,.8)) } }
+
+/* storyteller walks to the book, pulls it open, cheers at the star, exits */
+.logo-stories .st-stick {
+  transform-box: view-box; transform: translate(-20px,92px);
+  animation: stWalk 3.4s linear both, stCheer .6s ease-in-out 2.6s 2, stExit 1s ease-in 3.4s both;
+}
+@keyframes stWalk {
+  0%   { transform: translate(-20px,92px); }
+  28%  { transform: translate(40px,92px); }   /* reach the book */
+  47%  { transform: translate(40px,92px); }   /* pull it open */
+  100% { transform: translate(40px,92px); }
+}
+@keyframes stCheer { 0%,100%{ transform: translate(40px,92px);} 50%{ transform: translate(40px,86px);} }
+@keyframes stExit { from{transform:translate(40px,92px);opacity:1} to{transform:translate(-30px,92px);opacity:0} }
+.logo-stories .st-stick .st-leg-a { transform-box: fill-box; transform-origin: top; animation: legA .4s ease-in-out 9 both; }
+.logo-stories .st-stick .st-leg-b { transform-box: fill-box; transform-origin: top; animation: legB .4s ease-in-out 9 both; }
+.logo-stories .st-stick .st-arm { transform-box: fill-box; transform-origin: left; animation: stPull .5s ease-in-out 1.6s 2, stArmUp .4s ease 2.6s both; }
+@keyframes stPull { 0%,100%{transform:rotate(0)} 50%{transform:rotate(-30deg)} }
+@keyframes stArmUp { to { transform: rotate(-55deg); } }
+
+@keyframes fadeIn { to { opacity: 1; } }
 .logo-stories { transition: transform .4s cubic-bezier(.22,.61,.36,1); }
 .project:hover .logo-stories { transform: translateY(-3px) scale(1.05); }
 
@@ -578,9 +590,11 @@ a { color: inherit; text-decoration: none; }
 
 /* Reduced motion: show finished marks, no formation animation */
 @media (prefers-reduced-motion: reduce) {
-  .logo-mary .mary-pulse, .logo-mimic .mi-draw, .logo-stories .st-draw { stroke-dashoffset: 0 !important; animation: none !important; }
-  .logo-mimic .mi-node, .logo-mimic .mi-node2, .logo-stories .st-node { opacity: 0 !important; animation: none !important; }
-  .logo-mimic .mi-stick, .logo-stories .st-stick { opacity: 0 !important; animation: none !important; }
+  .logo-mary .mary-pulse, .logo-stories .st-draw { stroke-dashoffset: 0 !important; animation: none !important; }
+  .logo-stories .st-node { opacity: 0 !important; animation: none !important; }
+  .logo-mimic .mi-pL, .logo-mimic .mi-pR, .logo-mimic .mi-V { transform: none !important; opacity: 1 !important; animation: none !important; }
+  .logo-mimic .mi-builder, .logo-stories .st-stick { opacity: 0 !important; animation: none !important; }
+  .logo-mimic .mi-shadow { animation: none !important; }
   .logo-stories .stories-spark { opacity: 1 !important; animation: none !important; }
 }
 

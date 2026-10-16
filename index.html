@@ -378,40 +378,54 @@
             <svg class="logo-anim logo-mimic" viewBox="0 0 128 128" fill="none" role="img" aria-label="Project MIMIC logo">
               <defs>
                 <linearGradient id="miBg" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#3ec6f0" />
-                  <stop offset="1" stop-color="#2f9fe0" />
+                  <stop stop-color="#3ec6f0" /><stop offset="1" stop-color="#1f82c7" />
                 </linearGradient>
-                <linearGradient id="miMark" x1="24" y1="64" x2="104" y2="64" gradientUnits="userSpaceOnUse">
-                  <stop stop-color="#ffffff" />
-                  <stop offset="1" stop-color="#eafaff" />
+                <linearGradient id="miFace" x1="0" y1="0" x2="0" y2="1">
+                  <stop stop-color="#ffffff" /><stop offset="1" stop-color="#d6eefc" />
                 </linearGradient>
+                <radialGradient id="miFloor" cx="50%" cy="50%" r="50%">
+                  <stop stop-color="#0b4d78" stop-opacity=".5" /><stop offset="1" stop-color="#0b4d78" stop-opacity="0" />
+                </radialGradient>
               </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#miBg)" />
-              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
-              <!-- Pixar-lamp style: a bold 'M' is DRAWN by a travelling robot
-                   node (the tracker), which then settles into place. -->
-              <path class="mi-track" d="M34 86 L34 42 L64 74 L94 42 L94 86"
-                stroke="#ffffff" stroke-opacity="0.16" stroke-width="8"
-                stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <path class="mi-draw" d="M34 86 L34 42 L64 74 L94 42 L94 86"
-                stroke="url(#miMark)" stroke-width="8"
-                stroke-linecap="round" stroke-linejoin="round" fill="none" />
-              <!-- the drawing node that rides along forming the M -->
-              <circle class="mi-node" r="5" fill="#ffffff" />
-              <!-- offset motion-path node (visual spark at the pen tip) -->
-              <circle class="mi-node2" cx="34" cy="86" r="3" fill="#eafaff" />
-              <!-- STICK FIGURE: walks in, draws the M with a brush, walks off -->
-              <g class="mi-stick" stroke="#15202b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                <circle cx="0" cy="-20" r="4.5" fill="#15202b" stroke="none"/>
-                <path d="M0 -15 V -3"/>
-                <path class="arm" d="M0 -11 L10 -16"/>   <!-- raised arm holding brush -->
-                <path d="M0 -11 L-7 -6"/>
-                <path class="leg-a" d="M0 -3 L-6 8"/>
-                <path class="leg-b" d="M0 -3 L6 8"/>
-                <line x1="10" y1="-16" x2="16" y2="-20" stroke="#2f9fe0" stroke-width="3"/> <!-- brush -->
+              <!-- depth: subtle perspective floor so the letter sits in SPACE -->
+              <path d="M18 96 L110 96 L120 116 L8 116 Z" fill="#0b4d78" opacity=".28" />
+              <ellipse class="mi-shadow" cx="64" cy="98" rx="40" ry="7" fill="url(#miFloor)" />
+
+              <!-- 3D extruded M: each piece has a dark side-face (depth) + light face.
+                   The pieces are ASSEMBLED by the builder below. -->
+              <!-- left pillar -->
+              <g class="mi-pL">
+                <path d="M34 90 V46 l8 6 V96 Z" fill="#1565a0"/>            <!-- extrusion -->
+                <rect x="26" y="40" width="8" height="50" rx="2" fill="url(#miFace)"/>
+                <path d="M26 40 l8 6 8 -6 -8 -6 Z" fill="#eafaff"/>         <!-- top bevel -->
               </g>
-              <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
-                font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
+              <!-- right pillar -->
+              <g class="mi-pR">
+                <path d="M86 90 V46 l8 6 V96 Z" fill="#1565a0"/>
+                <rect x="86" y="40" width="8" height="50" rx="2" fill="url(#miFace)"/>
+                <path d="M86 40 l8 6 8 -6 -8 -6 Z" fill="#eafaff"/>
+              </g>
+              <!-- center chevron (drops in) -->
+              <g class="mi-V">
+                <path d="M42 46 L64 72 L86 46 l6 5 L64 82 L36 51 Z" fill="#1565a0"/>  <!-- depth -->
+                <path d="M40 42 L64 70 L88 42 l5 4 L64 78 L35 46 Z" fill="url(#miFace)"/>
+              </g>
+
+              <!-- BUILDER: stick figure that pushes/places the pieces, with legs,
+                   a hard-hat vibe, standing ON the floor (grounded) -->
+              <g class="mi-builder" stroke="#15202b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <circle cx="0" cy="-18" r="4.2" fill="#ffd14d" stroke="#15202b"/>  <!-- helmet head -->
+                <path d="M-4 -20 h8" stroke-width="2"/>                              <!-- helmet brim -->
+                <path d="M0 -14 V -4"/>
+                <path class="mi-armU" d="M0 -11 L9 -16"/>  <!-- pushing arm -->
+                <path d="M0 -10 L-6 -5"/>
+                <path class="mi-legA" d="M0 -4 L-5 6"/>
+                <path class="mi-legB" d="M0 -4 L5 6"/>
+              </g>
+
+              <text x="104" y="110" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+                font-size="11" font-weight="800" fill="#ffffff" opacity="0.75" letter-spacing="1">DYS</text>
             </svg>
           </div>
         </div>
@@ -474,31 +488,54 @@
                   <stop offset="1" stop-color="#f1ecff" />
                 </linearGradient>
               </defs>
+              <defs>
+                <linearGradient id="stPage" x1="0" y1="0" x2="0" y2="1"><stop stop-color="#ffffff"/><stop offset="1" stop-color="#ece6ff"/></linearGradient>
+                <radialGradient id="stGlowB" cx="50%" cy="40%" r="60%"><stop stop-color="#fff6d8" stop-opacity=".95"/><stop offset="1" stop-color="#fff6d8" stop-opacity="0"/></radialGradient>
+                <radialGradient id="stFloor" cx="50%" cy="50%" r="50%"><stop stop-color="#3a2a7a" stop-opacity=".5"/><stop offset="1" stop-color="#3a2a7a" stop-opacity="0"/></radialGradient>
+              </defs>
               <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#stBg)" />
-              <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
-              <!-- Pixar-lamp style: a bold 'S' is DRAWN like unspooling ribbon
-                   (a story unfolding), then a star pops up off the top. -->
-              <path class="st-track" d="M86 42 C86 30 42 30 42 48 C42 64 86 62 86 80 C86 98 42 98 42 84"
-                stroke="#ffffff" stroke-opacity="0.16" stroke-width="8"
-                stroke-linecap="round" fill="none" />
-              <path class="st-draw" d="M86 42 C86 30 42 30 42 48 C42 64 86 62 86 80 C86 98 42 98 42 84"
-                stroke="url(#stMark)" stroke-width="8"
-                stroke-linecap="round" fill="none" />
-              <!-- node that rides the ribbon as it draws -->
-              <circle class="st-node" r="4.5" fill="#ffffff" />
-              <!-- STICK FIGURE: walks in, unspools the 'S' like ribbon, cheers as the star pops -->
-              <g class="st-stick" stroke="#15202b" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none">
-                <circle cx="0" cy="-20" r="4.5" fill="#15202b" stroke="none"/>
-                <path d="M0 -15 V -3"/>
-                <path class="st-arm" d="M0 -11 L10 -15"/>
-                <path d="M0 -11 L-8 -8"/>
-                <path class="st-leg-a" d="M0 -3 L-6 8"/>
-                <path class="st-leg-b" d="M0 -3 L6 8"/>
+              <!-- perspective floor + shadow for depth/space -->
+              <path d="M18 98 L110 98 L120 116 L8 116 Z" fill="#3a2a7a" opacity=".28" />
+              <ellipse class="st-shadow" cx="64" cy="100" rx="40" ry="7" fill="url(#stFloor)" />
+
+              <!-- glow that billows up once the book is open -->
+              <ellipse class="st-glow" cx="64" cy="60" rx="30" ry="26" fill="url(#stGlowB)" />
+
+              <!-- 3D OPEN BOOK: a spine with two covers that swing open to pages -->
+              <!-- back cover + spine depth -->
+              <path class="st-book-base" d="M64 60 L64 100 L30 92 L30 56 Z M64 60 L64 100 L98 92 L98 56 Z" fill="#4a3a8f"/>
+              <!-- left page (swings open) -->
+              <g class="st-page-l">
+                <path d="M64 58 L30 52 L30 90 L64 96 Z" fill="url(#stPage)" stroke="#2a2140" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M36 62 h20 M36 70 h20 M36 78 h16" stroke="#b7a8e8" stroke-width="2" stroke-linecap="round"/>
               </g>
-              <!-- star pops up after the S forms -->
-              <path class="stories-spark" d="M64 24 l2 4.4 4.8 .6 -3.6 3.4 .9 4.8 -4.1-2.3 -4.1 2.3 .9-4.8 -3.6-3.4 4.8-.6 Z" fill="#ffe9a8" stroke="#fff" stroke-width="1" stroke-linejoin="round" />
-              <text x="104" y="108" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
-                font-size="12" font-weight="800" fill="#ffffff" opacity="0.7" letter-spacing="1">DYS</text>
+              <!-- right page (swings open) -->
+              <g class="st-page-r">
+                <path d="M64 58 L98 52 L98 90 L64 96 Z" fill="url(#stPage)" stroke="#2a2140" stroke-width="2.5" stroke-linejoin="round"/>
+                <path d="M72 62 h20 M72 70 h20 M72 78 h16" stroke="#b7a8e8" stroke-width="2" stroke-linecap="round"/>
+              </g>
+              <!-- spine highlight -->
+              <path d="M64 58 V96" stroke="#2a2140" stroke-width="2.5"/>
+
+              <!-- a dimensional star rises UP out of the open book -->
+              <g class="stories-spark">
+                <path d="M64 30 l3 7 7.6 1 -5.6 5.4 1.4 7.6 -6.4-3.6 -6.4 3.6 1.4-7.6 -5.6-5.4 7.6-1 Z"
+                  fill="#ffe08a" stroke="#15202b" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M64 30 l3 7 7.6 1 -5.6 5.4 -5-13.4 Z" fill="#ffd14d"/>  <!-- facet for depth -->
+              </g>
+
+              <!-- STORYTELLER: walks in, pulls the book open, cheers at the star, exits -->
+              <g class="st-stick" stroke="#15202b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none">
+                <circle cx="0" cy="-18" r="4.2" fill="#9a7bff" stroke="#15202b"/>
+                <path d="M0 -14 V -4"/>
+                <path class="st-arm" d="M0 -11 L9 -14"/>
+                <path d="M0 -10 L-7 -6"/>
+                <path class="st-leg-a" d="M0 -4 L-5 6"/>
+                <path class="st-leg-b" d="M0 -4 L5 6"/>
+              </g>
+
+              <text x="104" y="110" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+                font-size="11" font-weight="800" fill="#ffffff" opacity="0.75" letter-spacing="1">DYS</text>
             </svg>
             <span class="wip-badge">In Development</span>
           </div>
