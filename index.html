@@ -10,7 +10,7 @@
   <link rel="canonical" href="https://lukefdysart.github.io/Portfolio/" />
 
   <!-- Favicon (inline SVG, no file needed) — light-blue LD monogram -->
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='12' fill='%23f7f8fc'/%3E%3Cpath d='M9 11 a13 6 0 0 1 26 0 Z' fill='%232f9fe0'/%3E%3Cg stroke='%239aa6b4' stroke-width='1'%3E%3Cpath d='M9 11 L13 20'/%3E%3Cpath d='M22 13 L22 20'/%3E%3Cpath d='M35 11 L31 20'/%3E%3C/g%3E%3Ctext x='22' y='32' text-anchor='middle' font-family='sans-serif' font-weight='700' font-size='15' fill='%2315202b'%3Edys%3C/text%3E%3Cpath d='M4 37 H15 l2 -6 3 11 2 -5 h18' fill='none' stroke='%23e5484d' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 44 44'%3E%3Crect width='44' height='44' rx='12' fill='%232f9fe0'/%3E%3Cpath d='M6 23 H15 l3 -11 4 20 3 -14 2 7 h8' fill='none' stroke='%23fff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -41,24 +41,26 @@
     <nav class="nav container">
       <a href="#home" class="brand" aria-label="Luke Dysart — home">
         <span class="brand-mark" aria-hidden="true">
-          <!-- "dys" wordmark where the motifs ARE the letters:
-               a parachute canopy hangs cords that become the strokes, and a
-               heartbeat pulse is the baseline running through the word. -->
-          <svg viewBox="0 0 54 44" width="48" height="40">
-            <!-- parachute canopy up top -->
-            <path class="brand-chute" d="M12 7 a15 7 0 0 1 30 0 Z" fill="#2f9fe0" stroke="#1f82c7" stroke-width="1.5" stroke-linejoin="round"/>
-            <path class="brand-chute-rib" d="M12 7 q15 7 30 0 M22 7.5 q5 5 5 9 M32 7.5 q-5 5 -5 9" stroke="#1f82c7" stroke-width="1" fill="none" opacity=".7"/>
-            <!-- cords from the canopy down to the letters -->
-            <g class="brand-cords" stroke="#9aa6b4" stroke-width="1" opacity=".8">
-              <path d="M12 7 L15 20"/><path d="M27 10 L27 18"/><path d="M42 7 L39 20"/>
-            </g>
-            <!-- the 'dys' letters (hung from the cords) -->
-            <text class="brand-letters" x="27" y="30" text-anchor="middle"
-              font-family="'Space Grotesk','Segoe UI',sans-serif" font-weight="700" font-size="18"
-              letter-spacing="-0.5" fill="#15202b">dys</text>
-            <!-- heartbeat pulse = the baseline running through the word -->
-            <path class="brand-pulse" d="M4 37 H16 l3 -9 4 17 3 -8 h5 l2 4 h14"
-              fill="none" stroke="#e5484d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Heartbeat mark: a clean ECG trace in a rounded tile. A bright
+               pulse continuously travels the line (the signal, alive). -->
+          <svg viewBox="0 0 44 44" width="38" height="38">
+            <defs>
+              <linearGradient id="brandG" x1="0" y1="0" x2="1" y2="1">
+                <stop offset="0" stop-color="#35c3f0"/><stop offset="1" stop-color="#2f9fe0"/>
+              </linearGradient>
+            </defs>
+            <rect x="2" y="2" width="40" height="40" rx="12" fill="url(#brandG)"/>
+            <rect x="2" y="2" width="40" height="40" rx="12" fill="#fff" opacity="0.06"/>
+            <!-- faint baseline track -->
+            <path d="M6 23 H15 l3 -11 4 20 3 -14 2 7 h8"
+              fill="none" stroke="#ffffff" stroke-opacity=".22" stroke-width="2.6"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- the live heartbeat line -->
+            <path class="brand-pulse" d="M6 23 H15 l3 -11 4 20 3 -14 2 7 h8"
+              fill="none" stroke="#ffffff" stroke-width="3"
+              stroke-linecap="round" stroke-linejoin="round"/>
+            <!-- bright blip that rides the pulse -->
+            <circle class="brand-blip" r="2.3" fill="#ffffff"/>
           </svg>
         </span>
         <span class="brand-word">LUKE DYSART</span>
@@ -84,123 +86,6 @@
   <section id="home" class="hero tab-panel" data-panel="home">
     <!-- Soft paper-grid backdrop (calm) -->
     <div class="hero-grid-bg"></div>
-
-    <!-- Custom doodle collage — a bold, hand-drawn cast of symbols from Luke's
-         life, clustered down both margins (center stays readable). Filled,
-         thick-outline, colorful "sticker" style a la Overexposed / Black Pontiac. -->
-    <div class="doodles" aria-hidden="true">
-      <!-- LEFT COLUMN -->
-      <svg class="doodle dd-hockey" viewBox="0 0 64 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M14 10 L22 44" fill="none"/><path d="M22 44 q-2 10 10 10 h16 v-8 h-14 q-3 0 -2.5 -4" fill="#c7962f"/><circle cx="50" cy="20" r="6" fill="#2f9fe0"/></g></svg>
-      <svg class="doodle dd-football" viewBox="0 0 64 48"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><ellipse cx="32" cy="24" rx="22" ry="13" fill="#b4652f"/><path d="M24 24h16M28 20v8M32 20v8M36 20v8" fill="none" stroke="#fff"/></g></svg>
-      <svg class="doodle dd-mountain" viewBox="0 0 72 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M6 50 L28 14 L40 32 L52 18 L66 50 Z" fill="#7b5cc4"/><path d="M22 23 l6 5 -5 4 7 2" fill="#fff" stroke="none"/></g></svg>
-      <svg class="doodle dd-run" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"><circle cx="34" cy="12" r="6" fill="#2f9fe0" stroke-width="2.5"/><path d="M30 20 l-6 12 8 6 -4 14M32 24 l10 4M24 32 l-12 2M38 44 l6 8"/></g></svg>
-      <svg class="doodle dd-turtle" viewBox="0 0 70 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><ellipse cx="35" cy="30" rx="18" ry="14" fill="#2bb673"/><path d="M35 20 l5 7 -5 7 -5-7 Z" fill="#c7962f" stroke-width="2"/><circle cx="17" cy="22" r="4" fill="#2bb673"/><path d="M20 42l-4 7M50 42l4 7M14 36l-7 3M56 36l7 3" fill="none" stroke-linecap="round"/></g></svg>
-      <svg class="doodle dd-chef" viewBox="0 0 60 60"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M16 30a10 10 0 1 1 6-18 9 9 0 0 1 16 0 10 10 0 1 1 6 18 Z" fill="#eef1f8"/><path d="M16 30h28v10a4 4 0 0 1-4 4H20a4 4 0 0 1-4-4Z" fill="#eef1f8"/><path d="M16 38h28" fill="none"/></g></svg>
-      <svg class="doodle dd-tv" viewBox="0 0 64 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><rect x="8" y="14" width="48" height="34" rx="5" fill="#9a7bff"/><path d="M26 24 l12 7 -12 7 Z" fill="#fff" stroke="none"/><path d="M24 8l8 6 8-6" fill="none" stroke-linecap="round"/></g></svg>
-
-      <!-- RIGHT COLUMN -->
-      <svg class="doodle dd-plane" viewBox="0 0 72 60"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M36 6 L42 30 L64 42 L42 40 L40 54 L36 46 L32 54 L30 40 L8 42 L30 30 Z" fill="#2f9fe0"/></g></svg>
-      <svg class="doodle dd-chute" viewBox="0 0 64 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M8 26a24 24 0 0 1 48 0 Z" fill="#c7962f"/><path d="M8 26 L30 46 M32 26 L30 46 M56 26 L34 46" fill="none"/><circle cx="32" cy="52" r="5" fill="#15202b"/></g></svg>
-      <svg class="doodle dd-dogtag" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round" fill="none"><path d="M14 10 a6 6 0 0 0 0 12 l6 0" stroke-width="2.5"/><rect x="20" y="20" width="20" height="34" rx="7" fill="#b8c0cc"/><path d="M25 30h10M25 38h10" stroke="#15202b" stroke-width="2"/></g></svg>
-      <svg class="doodle dd-brush" viewBox="0 0 60 64"><g stroke="#15202b" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M46 8 26 28l8 8 20-20a4.5 4.5 0 0 0-8-8Z" fill="#7b5cc4"/><path d="M26 28c-7 1-10 6-11 14-.5 3-2 4-5 5 3 5 11 6 17 1 4-3 5-8 7-14Z" fill="#ff6fae"/></g></svg>
-      <svg class="doodle dd-mask" viewBox="0 0 72 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M8 10 q10 4 20 0 v16 a10 10 0 0 1 -20 0 Z" fill="#f6d35a"/><path d="M12 16a3 2 0 0 1 5 0M19 16a3 2 0 0 1 5 0M11 22q6 5 14 1" fill="none" stroke-width="2"/><path d="M44 10 q10 4 20 0 v16 a10 10 0 0 1 -20 0 Z" fill="#2f9fe0"/><path d="M48 16a3 2 0 0 1 5 0M55 16a3 2 0 0 1 5 0M47 26q6-5 14-1" fill="none" stroke-width="2"/></g></svg>
-      <svg class="doodle dd-pulse" viewBox="0 0 76 44"><path d="M6 22 H22 L30 8 L40 36 L50 8 L58 22 H70" fill="none" stroke="#e5484d" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      <svg class="doodle dd-tree" viewBox="0 0 56 64"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M28 6 L42 28 H34 L46 48 H10 L22 28 H14 Z" fill="#2bb673"/><path d="M28 48 v10" fill="none"/></g></svg>
-      <svg class="doodle dd-dog" viewBox="0 0 64 56"><g stroke="#15202b" stroke-width="3" stroke-linejoin="round"><path d="M20 20 q-10 -2 -12 10 q-1 8 6 9 l0 10 h28 l0 -10 q7 -1 6 -9 q-2 -12 -12 -10 Z" fill="#e9b64d"/><path d="M14 22 q-6 2 -5 12M50 22 q6 2 5 12" fill="#d79a33" stroke-width="2"/><circle cx="25" cy="34" r="2.2" fill="#15202b" stroke="none"/><circle cx="39" cy="34" r="2.2" fill="#15202b" stroke="none"/><path d="M29 40 q3 3 6 0" fill="none" stroke-width="2"/></g></svg>
-      <svg class="doodle dd-star" viewBox="0 0 48 48"><path d="M24 4l6 12 13 2-9.5 9 2 13-11.5-6-11.5 6 2-13L5 18l13-2Z" fill="#f6d35a" stroke="#15202b" stroke-width="3" stroke-linejoin="round"/></svg>
-
-      <!-- ★ Animated STICK-GUY: cycles through Luke's activities (left side) -->
-      <div class="stickguy stickguy-left">
-        <svg viewBox="0 0 120 140">
-          <!-- Pose 1: PARACHUTING -->
-          <g class="pose pose-chute">
-            <path d="M24 34 a36 20 0 0 1 72 0 Z" fill="#c7962f" stroke="#15202b" stroke-width="3" stroke-linejoin="round"/>
-            <path d="M24 34 L52 60 M48 34 L52 60 M72 34 L56 60 M96 34 L56 60" stroke="#15202b" stroke-width="2" fill="none"/>
-            <g stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-              <circle cx="54" cy="70" r="7" fill="#2f9fe0" stroke-width="3"/>
-              <path d="M54 77 v22 M54 85 l-10 -6 M54 85 l10 -6 M54 99 l-8 16 M54 99 l8 16"/>
-            </g>
-          </g>
-          <!-- Pose 2: COOKING -->
-          <g class="pose pose-chef">
-            <path d="M44 36a9 9 0 1 1 5-16 8 8 0 0 1 14 0 9 9 0 1 1 5 16 Z" fill="#eef1f8" stroke="#15202b" stroke-width="3" stroke-linejoin="round"/>
-            <rect x="44" y="36" width="26" height="7" fill="#eef1f8" stroke="#15202b" stroke-width="3"/>
-            <g stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-              <circle cx="57" cy="54" r="7" fill="#2f9fe0" stroke-width="3"/>
-              <path d="M57 61 v24 M57 68 l-14 2 M57 68 l16 -6 M57 85 l-9 18 M57 85 l9 18"/>
-            </g>
-            <!-- frying pan tossing food -->
-            <path d="M70 60 h18 a3 3 0 0 0 0-6 h-18 Z" fill="#15202b"/>
-            <circle class="toss" cx="80" cy="48" r="3" fill="#c7962f"/>
-          </g>
-          <!-- Pose 3: RUNNING -->
-          <g class="pose pose-run">
-            <g stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-              <circle cx="56" cy="40" r="7" fill="#2f9fe0" stroke-width="3"/>
-              <path d="M56 47 l-4 24 M56 53 l-14 -4 M56 53 l14 6 M52 71 l-16 10 M52 71 l16 14"/>
-            </g>
-          </g>
-          <!-- Pose 4: HOCKEY -->
-          <g class="pose pose-hockey">
-            <g stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-              <circle cx="54" cy="40" r="7" fill="#2f9fe0" stroke-width="3"/>
-              <path d="M54 47 v22 M54 54 l16 6 M54 54 l-12 8 M54 69 l-10 16 M54 69 l12 16"/>
-              <path d="M70 60 L96 92" stroke="#c7962f" stroke-width="4"/>
-            </g>
-            <circle cx="98" cy="94" r="4" fill="#15202b"/>
-          </g>
-          <!-- Pose 5: PAINTING -->
-          <g class="pose pose-paint">
-            <g stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-              <circle cx="52" cy="40" r="7" fill="#2f9fe0" stroke-width="3"/>
-              <path d="M52 47 v24 M52 54 l-12 10 M52 54 l16 -4 M52 71 l-8 18 M52 71 l8 18"/>
-              <path d="M68 50 l14 -8" stroke="#7b5cc4" stroke-width="4"/>
-            </g>
-            <circle class="toss" cx="84" cy="41" r="3.5" fill="#ff6fae"/>
-          </g>
-          <!-- Pose 6: SALUTE (service) -->
-          <g class="pose pose-salute">
-            <g stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-              <circle cx="56" cy="40" r="7" fill="#2f9fe0" stroke-width="3"/>
-              <path d="M56 47 v24 M56 54 l-14 6 M56 54 l8 -8 l-2 -4 M56 71 l-8 18 M56 71 l8 18"/>
-            </g>
-          </g>
-        </svg>
-      </div>
-
-      <!-- ★ RIGHT buddy: a second stick-guy who REACTS to the left guy -->
-      <div class="stickguy stickguy-right">
-        <svg viewBox="0 0 120 140">
-          <!-- Reaction 1: cheering (arms up) -->
-          <g class="react react-cheer" stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-            <circle cx="56" cy="40" r="7" fill="#c7962f" stroke-width="3"/>
-            <path d="M56 47 v24 M56 53 l-12 -12 M56 53 l12 -12 M56 71 l-9 18 M56 71 l9 18"/>
-          </g>
-          <!-- Reaction 2: thumbs up / admiring -->
-          <g class="react react-thumb" stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-            <circle cx="56" cy="42" r="7" fill="#c7962f" stroke-width="3"/>
-            <path d="M56 49 v22 M56 55 l14 -4 M56 55 l-12 8 M56 71 l-8 16 M56 71 l8 16"/>
-            <circle cx="72" cy="49" r="3" fill="#2bb673" stroke-width="0"/>
-          </g>
-          <!-- Reaction 3: goalie crouch (for hockey) -->
-          <g class="react react-goalie" stroke="#15202b" stroke-width="4" stroke-linecap="round" fill="none">
-            <circle cx="56" cy="48" r="7" fill="#c7962f" stroke-width="3"/>
-            <path d="M56 55 v14 M56 60 l-16 -2 M56 60 l16 -2 M56 69 l-12 16 M56 69 l12 16"/>
-          </g>
-        </svg>
-      </div>
-
-      <!-- ★ Golden retriever that trots across between them -->
-      <svg class="hero-dog" viewBox="0 0 70 48" aria-hidden="true">
-        <g stroke="#15202b" stroke-width="3" stroke-linejoin="round" stroke-linecap="round">
-          <path d="M14 22 q-6 -2 -8 6 l2 8 M14 22 h30 q8 0 8 10 l0 4" fill="#e9b64d"/>
-          <path d="M44 26 q10 -4 14 2 l-2 6" fill="#e9b64d"/>
-          <path d="M12 30 a4 4 0 0 0 0 6M16 30 a4 4 0 0 0 0 6M48 30 a4 4 0 0 0 0 6M52 30 a4 4 0 0 0 0 6" />
-          <path class="dog-tail" d="M52 20 q10 -6 10 -14" fill="none"/>
-          <circle cx="56" cy="22" r="1.6" fill="#15202b" stroke="none"/>
-        </g>
-      </svg>
-    </div>
 
     <div class="container hero-inner">
       <p class="hero-eyebrow">ECE &amp; BME · Vanderbilt University</p>
