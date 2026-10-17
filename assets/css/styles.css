@@ -190,11 +190,13 @@ a { color: inherit; text-decoration: none; }
 .photo-placeholder small, .art-placeholder small { font-size: 0.72rem; opacity: .7; }
 .about-text p { color: var(--text-dim); margin-bottom: 20px; max-width: 60ch; }
 .about-text strong { color: var(--text); font-weight: 600; }
-/* subtle standalone "earlier research" link below the bio */
-.about-earlier {
+/* subtle standalone research links below the bio — a small cohesive footer */
+.about-research {
   margin-top: 28px; font-family: var(--font-head); font-size: 0.82rem;
   letter-spacing: 0.5px; color: var(--text-faint);
 }
+.about-research p { margin: 0 0 6px; color: var(--text-faint); }
+.about-research p:last-child { margin-bottom: 0; }
 
 /* ---------------- Projects — editorial case studies ---------------- */
 /* Two-column: logo/identity on the left, information on the right.
