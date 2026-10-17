@@ -223,9 +223,10 @@ a { color: inherit; text-decoration: none; }
   font-family: var(--font-head); font-size: clamp(1.6rem, 3vw, 2.1rem); font-weight: 700;
   letter-spacing: -0.5px; margin-bottom: 6px; display: flex; align-items: baseline;
   flex-wrap: wrap; gap: 12px;
+  color: var(--text);   /* all titles default to charcoal (consistent across projects) */
 }
-.project-title-link { transition: color .2s ease; }
-.project-title-link:hover { color: var(--accent); }
+.project-title-link { color: var(--text); transition: color .2s ease; }
+.project-title-link:hover { color: var(--accent); }   /* gold only on hover */
 .project-subtitle {
   font-family: var(--font-display); font-style: italic; font-size: 1.12rem;
   color: var(--accent-2); margin-bottom: 20px;
