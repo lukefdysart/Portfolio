@@ -19,25 +19,31 @@
         Omit all three to show a styled "coming soon" card.
         `project` must be one of: MIMIC | Stories | General
      ---------------------------------------------------------- */
+  /* NOTE: the two MIMIC clips have browser-compat issues (mp4v codec /
+     .MOV container) and are TEMPORARILY disabled for launch. Their paths are
+     preserved below as `_video` / `_videoType` — to re-enable a clip once a
+     web-friendly H.264 .mp4 exists, rename `_video` back to `video` (and
+     `_videoType` to `videoType`). Entries without an active `video` render the
+     understated "Footage coming soon" placeholder (no play button, no modal). */
   var LOGS = [
     {
       n: 1,
-      title: 'Project MIMIC: hand tracking to servos',
+      title: 'From hand tracking to robotic motion',
       date: '',
       project: 'MIMIC',
       blurb: 'A build log for the MIMIC robotic hand — the computer-vision hand-tracking pipeline driving the servo-actuated hand.',
-      video: 'assets/img/Mimic_log1.MP4',
-      videoType: 'video/mp4',
+      _video: 'assets/img/Mimic_log1.MP4',
+      _videoType: 'video/mp4',
       duration: ''
     },
     {
       n: 2,
-      title: 'Project MIMIC: hand grasping',
+      title: 'Teaching a robotic hand to grasp',
       date: '',
       project: 'MIMIC',
       blurb: 'Footage of the MIMIC robotic hand grasping / following along with hand movement.',
-      video: 'assets/img/Hand_Grasping_Movie.MOV',
-      videoType: 'video/quicktime',
+      _video: 'assets/img/Hand_Grasping_Movie.MOV',
+      _videoType: 'video/quicktime',
       duration: ''
     },
     {
@@ -82,7 +88,7 @@
         '<div class="log-media-bg"></div>' +
         (hasVideo(log)
           ? '<span class="log-play">▶</span>'
-          : '<span class="log-soon">Recording soon</span>') +
+          : '<span class="log-soon">Footage coming soon</span>') +
         '<span class="log-num">LOG ' + pad(log.n) + '</span>' +
         (log.duration ? '<span class="log-dur">' + esc(log.duration) + '</span>' : '') +
       '</div>';
