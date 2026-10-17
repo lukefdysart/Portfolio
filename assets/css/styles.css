@@ -537,9 +537,15 @@ a { color: inherit; text-decoration: none; }
   position: fixed; inset: 0; z-index: 200; background: rgba(5,7,11,.94);
   display: flex; align-items: center; justify-content: center; padding: 40px;
 }
-.vlightbox-inner { width: min(90vw, 980px); aspect-ratio: 16/9; }
-.vlightbox-inner iframe, .vlightbox-inner video {
-  width: 100%; height: 100%; border-radius: 12px; border: 0; background: #000;
+/* iframe embeds (YouTube/Vimeo) keep a 16:9 frame */
+.vlightbox-inner { width: min(90vw, 980px); max-height: 86vh; display: flex; align-items: center; justify-content: center; }
+.vlightbox-inner iframe {
+  width: 100%; aspect-ratio: 16/9; border-radius: 12px; border: 0; background: #000;
+}
+/* self-hosted video sizes to its own footage (no forced black 16:9 box) */
+.vlightbox-inner video {
+  max-width: min(90vw, 980px); max-height: 86vh; width: auto; height: auto;
+  border-radius: 12px; border: 0; background: #000; display: block;
 }
 
 @media (max-width: 820px) {
