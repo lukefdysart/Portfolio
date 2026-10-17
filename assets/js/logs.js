@@ -22,19 +22,30 @@
   var LOGS = [
     {
       n: 1,
-      title: 'MIMIC: hand tracking to servos',
+      title: 'Project MIMIC: hand tracking to servos',
       date: '',
       project: 'MIMIC',
-      blurb: 'Walking through the pipeline — webcam to MediaPipe to joint-angle math to an Arduino driving the robotic hand.',
-      // youtube: 'XXXXXXXXXXX',
+      blurb: 'A build log for the MIMIC robotic hand — the computer-vision hand-tracking pipeline driving the servo-actuated hand.',
+      video: 'assets/img/Mimic_log1.MP4',
+      videoType: 'video/mp4',
       duration: ''
     },
     {
       n: 2,
+      title: 'Project MIMIC: hand grasping',
+      date: '',
+      project: 'MIMIC',
+      blurb: 'Footage of the MIMIC robotic hand grasping / following along with hand movement.',
+      video: 'assets/img/Hand_Grasping_Movie.MOV',
+      videoType: 'video/quicktime',
+      duration: ''
+    },
+    {
+      n: 3,
       title: 'Stories Illuminated: first light',
       date: '',
       project: 'Stories',
-      blurb: 'Early bench test of the projection-mapped animatronic storybook. Rough, but it moves.',
+      blurb: 'Early bench test of the projection-mapped animatronic storybook. Recording coming soon.',
       duration: ''
     }
   ];
@@ -147,7 +158,13 @@
              '?autoplay=1" title="' + esc(log.title) + '" frameborder="0" ' +
              'allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>';
     } else if (log.video) {
-      html = '<video src="' + esc(log.video) + '" controls autoplay playsinline></video>';
+      var typeAttr = log.videoType ? ' type="' + esc(log.videoType) + '"' : '';
+      html = '<video controls autoplay playsinline preload="metadata"' +
+             (log.poster ? ' poster="' + esc(log.poster) + '"' : '') + '>' +
+             '<source src="' + esc(log.video) + '"' + typeAttr + '>' +
+             'Your browser can\u2019t play this video format. ' +
+             '<a href="' + esc(log.video) + '" download>Download the clip</a> instead.' +
+             '</video>';
     }
     vlbInner.innerHTML = html;
     vlb.hidden = false;
