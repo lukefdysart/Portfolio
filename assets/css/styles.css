@@ -569,13 +569,25 @@ a { color: inherit; text-decoration: none; }
   0%, 100% { opacity: 1; filter: drop-shadow(0 0 0 rgba(228,232,255,0)); }
   50%      { opacity: 0.82; filter: drop-shadow(0 0 5px rgba(228,232,255,0.55)); }
 }
-/* a live "pulse travels the line" accent on hover */
+/* a live "pulse travels the line" accent on hover (desktop) */
 .project:hover .logo-mary .mary-pulse {
   animation: maryDraw 1s ease-out forwards, maryTravel 1.4s linear infinite;
 }
 @keyframes maryTravel {
   0%   { stroke-dasharray: 26 274; stroke-dashoffset: 300; }
   100% { stroke-dasharray: 26 274; stroke-dashoffset: 0; }
+}
+/* Touch devices have no hover, so the impactful "traveling pulse" never
+   shows — and on an SPA the on-load draw finishes before the user reaches
+   Engineering. On hover-less devices, run the same traveling-pulse effect
+   automatically once the logo scrolls into view (JS toggles .in-view), so
+   iOS/mobile gets the same visual character as desktop hover.
+   The glow uses opacity (not filter) here, which iOS Safari renders
+   reliably. */
+@media (hover: none) {
+  .logo-mary.in-view .mary-pulse {
+    animation: maryDraw 1s ease-out forwards, maryTravel 1.6s linear .9s infinite;
+  }
 }
 
 /* ---- MIMIC: the word writes itself, then its reflection MIMICS it ---- */
@@ -640,7 +652,7 @@ a { color: inherit; text-decoration: none; }
 
 /* Reduced motion: show finished marks, no formation animation */
 @media (prefers-reduced-motion: reduce) {
-  .logo-mary .mary-pulse { stroke-dashoffset: 0 !important; animation: none !important; }
+  .logo-mary .mary-pulse, .logo-mary.in-view .mary-pulse { stroke-dashoffset: 0 !important; animation: none !important; }
   .logo-mimic .mi-top, .logo-mimic .mi-bot { clip-path: none !important; animation: none !important; }
   .logo-mimic .mi-mirror { stroke-dashoffset: 0 !important; animation: none !important; }
   .logo-stories .st-lightcol, .logo-stories .st-pool, .logo-stories .st-spk { animation: none !important; }

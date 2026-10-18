@@ -54,6 +54,36 @@
     revealTargets.forEach(function (el) { el.classList.add('visible'); });
   }
 
+  // ----- MARY logo: trigger its animation when it scrolls into view -----
+  // On touch devices there's no hover, and in this tabbed SPA the on-load
+  // draw-in finishes before the user reaches Engineering. Toggling .in-view
+  // when the logo is actually visible lets the CSS run the "traveling pulse"
+  // for mobile (see @media (hover:none) .logo-mary.in-view). Replays on
+  // re-entry; skipped under prefers-reduced-motion.
+  (function () {
+    var maryLogo = document.querySelector('.logo-mary');
+    if (!maryLogo || !('IntersectionObserver' in window)) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    var maryIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        // toggle so the animation restarts each time the logo re-enters view
+        maryLogo.classList.toggle('in-view', entry.isIntersecting && entry.intersectionRatio > 0.4);
+      });
+    }, { threshold: [0, 0.4, 0.75] });
+    maryIO.observe(maryLogo);
+
+    // In the tabbed SPA the panel is hidden until navigated to; re-check on
+    // tab change so the observer re-evaluates once Engineering is shown.
+    document.addEventListener('tabchange', function (e) {
+      if (e.detail && e.detail.id === 'engineering') {
+        maryLogo.classList.remove('in-view');
+        // next frame, let the observer re-fire against the now-visible panel
+        requestAnimationFrame(function () { maryIO.unobserve(maryLogo); maryIO.observe(maryLogo); });
+      }
+    });
+  })();
+
   // ----- Gallery lightbox -----
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightbox-img');
