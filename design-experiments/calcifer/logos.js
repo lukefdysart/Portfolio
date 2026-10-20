@@ -1,380 +1,221 @@
 /* ===========================================================================
- * CALCIFER — Logo Lab · v2 (full creative reset)
+ * CALCIFER — Logo Lab · v3  (match the portfolio house style)
  *
- * CALCIFER is a working physical model of a human heart, driven by servo
- * motors connected to the maker's real heart rate. The marks below pursue a
- * Studio-Ghibli-inspired "eccentric inventor's workshop" feeling — warm,
- * crafted, alive — while keeping ANATOMY as the foundation (NOT a Valentine
- * heart, NOT a flame character).
+ * Direction: make Calcifer sit in the SAME SET as MIMIC / MARY / Stories.
+ * Same construction formula, same visual weight — just an anatomically
+ * accurate human heart as the subject, with Calcifer's own color slot.
  *
- * Three genuinely distinct directions:
- *   A — The Clockwork Heart   (brass instrument, intricate linkages)
- *   B — The Living Heart      (soft organic ink, warmth & personality)
- *   C — The Inventor's Emblem (vintage illustrated insignia + DYS stamp)
+ * House formula (copied from the reference logos):
+ *   • viewBox 0 0 128 128
+ *   • rounded-square badge: <rect x=12 y=12 w=104 h=104 rx=30> on a diagonal
+ *     gradient (x1=20 y1=12 -> x2=108 y2=116), + a white 0.05 sheen rect
+ *   • light (white/pale) line-art foreground, round caps/joins
+ *   • small "DYS" monogram, bottom-right, Inter 800, white ~0.65 opacity
+ *   • subtle, tasteful animation (here: a gentle heartbeat)
  *
- * Craft notes:
- *   • Every mark is layered, editable SVG (no emoji / icon fonts / stock).
- *   • Anatomy = two ventricles with an interventricular groove + atria, plus
- *     simplified great vessels (aorta arch, pulmonary trunk, venae cavae).
- *   • Mechanics = believable brass servo parts: a servo body, horn, pushrod
- *     linkage and pivots that MOVE WITH the contraction (not decoration).
- *   • DYS appears as a small engraved brass maker's plate / stamp.
- *   • Animation hooks: classes consumed by styles.css (see .heart-core,
- *     .linkage-rock, .servo-horn, .breath). Two-part "lub-dub" + rest loop,
- *     gated by prefers-reduced-motion.
+ * Calcifer's color slot: deep crimson -> warm coral (its own identity among
+ * MIMIC blue, MARY indigo, Stories navy).
  *
- * Palette tokens (kept consistent across concepts) ------------------------- */
-const PAL = {
-  parchment:  "#f3e7d2", // warm background wash
-  parchment2: "#e9d8bc",
-  ink:        "#3a2c24", // soft dark brown outline
-  inkSoft:    "#6a5444",
-  terracotta: "#c75d44", // heart mid
-  crimson:    "#a23a39", // heart deep
-  coral:      "#e8886b", // heart highlight
-  brass:      "#c69a4c", // mechanical
-  brassDeep:  "#9a7332",
-  brassHi:    "#edcf8e",
-  sage:       "#8aa07f", // tiny contrast accent
-  dustyBlue:  "#7d93a6",
-};
+ * Three variations on the SAME house-style idea (not wildly different icons —
+ * the brief is "same spirit as the others"):
+ *   A  Anatomical line-art heart        (pure white medical line drawing)
+ *   B  Heart + fine servo linkage       (one quiet mechanical detail)
+ *   C  Heart with an ECG tie-in         (nods to MARY's pulse language)
+ * =========================================================================== */
 
-/* --- shared helper: a reusable anatomical heart body path -----------------
- * Built once so all three concepts share a believable anatomy baseline while
- * styling it differently. Coordinate space is a 128 viewBox.
- * The silhouette: broad base of two ventricles, a dip for the interventricular
- * sulcus, left/right atrial bulges up top, tapering to the apex bottom-right.
- */
-function heartBody(fill, stroke, sw) {
+/* The badge shell + sheen + DYS, shared exactly like the reference logos. */
+function badge(idbg, inner, dysOpacity) {
   return `
-    <path class="heart-outline"
-      d="M64 34
-         C 58 24, 44 20, 35 27
-         C 25 35, 25 50, 33 64
-         C 39 75, 50 88, 62 102
-         C 64 104, 66 104, 68 101
-         C 78 86, 90 72, 96 59
-         C 102 46, 100 31, 88 27
-         C 79 24, 70 27, 66 35 Z"
-      fill="${fill}" stroke="${stroke}" stroke-width="${sw}"
-      stroke-linejoin="round"/>`;
+      <rect x="12" y="12" width="104" height="104" rx="30" fill="url(#${idbg})" />
+      <rect x="12" y="12" width="104" height="104" rx="30" fill="#ffffff" opacity="0.05" />
+      ${inner}
+      <text x="104" y="110" text-anchor="end" font-family="Inter, 'Segoe UI', sans-serif"
+        font-size="11" font-weight="800" fill="#ffffff" opacity="${dysOpacity}" letter-spacing="1">DYS</text>`;
+}
+
+/* ---------------------------------------------------------------------------
+ * ANATOMICAL HEART — a single, carefully drawn white line-art heart that reads
+ * as a real human heart (not a Valentine): paired ventricles with the apex
+ * down-left, atria up top, and the great vessels rising from the base —
+ * aortic arch, pulmonary trunk, superior vena cava. Coordinates tuned to sit
+ * nicely inside the 104x104 card. `stroke` + `sw` let each concept restyle it.
+ * The whole organ lives in a <g class="heart-core"> so it can beat.
+ * ------------------------------------------------------------------------- */
+function anatomicalHeart(stroke, sw, glowStroke) {
+  return `
+    <g class="heart-core" style="transform-origin:64px 70px">
+      <!-- soft inner glow copy (sits behind, slightly heavier, low opacity) -->
+      <path d="M63 54
+               C 58 46, 48 44, 42 49
+               C 35 55, 36 66, 44 77
+               C 51 86, 58 94, 63 101
+               C 64 102, 65 102, 66 100
+               C 73 90, 83 80, 88 70
+               C 93 60, 90 49, 82 48
+               C 75 47, 68 50, 65 56 Z"
+            fill="none" stroke="${glowStroke}" stroke-width="${sw + 4}"
+            stroke-linejoin="round" stroke-linecap="round" opacity="0.18"/>
+
+      <!-- ventricular mass: apex points down toward lower-left (anatomical) -->
+      <path d="M63 54
+               C 58 46, 48 44, 42 49
+               C 35 55, 36 66, 44 77
+               C 51 86, 58 94, 63 101
+               C 64 102, 65 102, 66 100
+               C 73 90, 83 80, 88 70
+               C 93 60, 90 49, 82 48
+               C 75 47, 68 50, 65 56 Z"
+            fill="none" stroke="${stroke}" stroke-width="${sw}"
+            stroke-linejoin="round" stroke-linecap="round"/>
+
+      <!-- interventricular sulcus (groove between the two ventricles) -->
+      <path d="M64 58 C 60 70, 61 86, 64 99"
+            fill="none" stroke="${stroke}" stroke-width="${sw - 0.8}"
+            stroke-linecap="round" opacity="0.7"/>
+
+      <!-- right atrium / auricle bulge (upper left of the base) -->
+      <path d="M46 50 C 40 46, 34 48, 34 55 C 34 60, 39 62, 44 60"
+            fill="none" stroke="${stroke}" stroke-width="${sw}"
+            stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- left atrium / auricle bulge (upper right of the base) -->
+      <path d="M82 50 C 88 46, 94 49, 93 56 C 92 61, 87 62, 83 59"
+            fill="none" stroke="${stroke}" stroke-width="${sw}"
+            stroke-linecap="round" stroke-linejoin="round"/>
+
+      <!-- GREAT VESSELS rising from the base -->
+      <!-- aortic arch (center, curving over to the right) -->
+      <path d="M64 52 C 64 38, 66 30, 72 27 C 79 24, 85 28, 85 35"
+            fill="none" stroke="${stroke}" stroke-width="${sw}"
+            stroke-linecap="round"/>
+      <!-- pulmonary trunk (just left of the aorta, splitting) -->
+      <path d="M58 52 C 56 40, 54 33, 50 29"
+            fill="none" stroke="${stroke}" stroke-width="${sw}"
+            stroke-linecap="round"/>
+      <path d="M50 29 C 47 31, 45 33, 44 36"
+            fill="none" stroke="${stroke}" stroke-width="${sw - 0.8}"
+            stroke-linecap="round" opacity="0.85"/>
+      <!-- superior vena cava (to the right of the aorta, straighter) -->
+      <path d="M76 50 C 78 40, 79 33, 79 28"
+            fill="none" stroke="${stroke}" stroke-width="${sw - 0.6}"
+            stroke-linecap="round" opacity="0.9"/>
+
+      <!-- a couple of coronary vessels tracing the surface (anatomical detail) -->
+      <path d="M52 60 C 56 68, 58 80, 56 90"
+            fill="none" stroke="${stroke}" stroke-width="1.3"
+            stroke-linecap="round" opacity="0.55"/>
+      <path d="M78 62 C 76 70, 72 78, 70 86"
+            fill="none" stroke="${stroke}" stroke-width="1.3"
+            stroke-linecap="round" opacity="0.5"/>
+    </g>`;
+}
+
+/* The three shared Calcifer gradients (its color slot). */
+function calciferDefs(id) {
+  return `
+    <defs>
+      <linearGradient id="cf-bg-${id}" x1="20" y1="12" x2="108" y2="116" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#e26d5a" /><stop offset="1" stop-color="#9e2a2b" />
+      </linearGradient>
+      <linearGradient id="cf-line-${id}" x1="40" y1="30" x2="90" y2="100" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#ffffff" /><stop offset="1" stop-color="#ffe3d8" />
+      </linearGradient>
+    </defs>`;
 }
 
 /* ===========================================================================
- * CONCEPT A — THE CLOCKWORK HEART
- * A handcrafted brass scientific instrument. Polished brass servo bracket on
- * the right flank drives a pushrod linkage into the ventricle wall; a toothed
- * brass gear nests where the atrium meets the aorta. Anatomy stays legible;
- * brass is precise and jewel-like, not cluttered.
+ * CONCEPT A — Anatomical line-art heart (the cleanest house-style match)
  * =========================================================================== */
-function conceptClockwork(id) {
+function conceptAnatomy(id) {
+  const inner = anatomicalHeart(`url(#cf-line-${id})`, 2.8, "#ffffff");
   return `
-  <svg viewBox="0 0 128 128" role="img"
-       aria-label="Calcifer — the Clockwork Heart: an anatomical heart with brass servo linkages"
+  <svg viewBox="0 0 128 128" fill="none" role="img"
+       aria-label="Calcifer logo — anatomical human heart line drawing"
        xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="cw-heart-${id}" x1="30" y1="24" x2="96" y2="104" gradientUnits="userSpaceOnUse">
-        <stop offset="0"   stop-color="${PAL.coral}"/>
-        <stop offset="0.55" stop-color="${PAL.terracotta}"/>
-        <stop offset="1"   stop-color="${PAL.crimson}"/>
-      </linearGradient>
-      <linearGradient id="cw-brass-${id}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="${PAL.brassHi}"/>
-        <stop offset="0.5" stop-color="${PAL.brass}"/>
-        <stop offset="1" stop-color="${PAL.brassDeep}"/>
-      </linearGradient>
-      <radialGradient id="cw-sheen-${id}" cx="38%" cy="30%" r="60%">
-        <stop offset="0" stop-color="#ffffff" stop-opacity=".5"/>
-        <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
-      </radialGradient>
-    </defs>
+    ${calciferDefs(id)}
+    ${badge(`cf-bg-${id}`, inner, 0.7)}
+  </svg>`;
+}
 
-    <!-- subtle cast shadow grounding the instrument -->
-    <ellipse cx="64" cy="110" rx="34" ry="5" fill="${PAL.ink}" opacity="0.10"/>
-
-    <!-- ====== HEART CORE (this group breathes) ====== -->
-    <g class="heart-core" style="transform-origin:64px 66px">
-      ${heartBody(`url(#cw-heart-${id})`, PAL.ink, 2.6)}
-
-      <!-- interventricular sulcus (the groove between ventricles) -->
-      <path d="M62 44 C 56 60, 58 80, 63 99" fill="none"
-            stroke="${PAL.crimson}" stroke-width="2" stroke-linecap="round" opacity="0.55"/>
-      <!-- left-ventricle inner shading -->
-      <path d="M48 42 C 40 54, 44 72, 56 90" fill="none"
-            stroke="${PAL.coral}" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-
-      <!-- great vessels: aorta arch + pulmonary trunk + a vena-cava stub -->
-      <path d="M66 35 C 68 22, 82 18, 88 26 C 92 31, 90 38, 84 40" fill="none"
-            stroke="${PAL.ink}" stroke-width="2.6" stroke-linecap="round"/>
-      <path d="M58 34 C 54 23, 46 20, 42 24" fill="none"
-            stroke="${PAL.ink}" stroke-width="2.6" stroke-linecap="round"/>
-      <path d="M74 33 C 78 26, 83 25, 86 28" fill="none"
-            stroke="${PAL.ink}" stroke-width="2.2" stroke-linecap="round" opacity="0.8"/>
-      <!-- specular sheen -->
-      ${heartBody(`url(#cw-sheen-${id})`, "none", 0)}
-    </g>
-
-    <!-- ====== BRASS MECHANISM ====== -->
-    <!-- toothed gear nestled at the aortic root -->
-    <g class="gear-spin" style="transform-origin:84px 34px">
-      <g fill="url(#cw-brass-${id})" stroke="${PAL.brassDeep}" stroke-width="1">
-        <circle cx="84" cy="34" r="8.5"/>
-        <!-- gear teeth -->
-        <g>
-          <rect x="82.6" y="23" width="2.8" height="4" rx="0.6"/>
-          <rect x="82.6" y="41" width="2.8" height="4" rx="0.6"/>
-          <rect x="73" y="32.6" width="4" height="2.8" rx="0.6"/>
-          <rect x="91" y="32.6" width="4" height="2.8" rx="0.6"/>
-          <rect x="75.5" y="25.5" width="3.4" height="2.8" rx="0.6" transform="rotate(-45 77 27)"/>
-          <rect x="89" y="39.5" width="3.4" height="2.8" rx="0.6" transform="rotate(-45 90.7 41)"/>
-          <rect x="89" y="25.5" width="3.4" height="2.8" rx="0.6" transform="rotate(45 90.7 27)"/>
-          <rect x="75.5" y="39.5" width="3.4" height="2.8" rx="0.6" transform="rotate(45 77 41)"/>
-        </g>
-      </g>
-      <circle cx="84" cy="34" r="2.6" fill="${PAL.brassDeep}"/>
-    </g>
-
-    <!-- servo body bracket mounted on the right flank -->
+/* ===========================================================================
+ * CONCEPT B — Anatomical heart + ONE quiet servo linkage (the project's story)
+ * A fine white/pale linkage pin on the ventricle, driven from a small pivot —
+ * same line-art weight so it reads as part of the drawing, not a gadget.
+ * The linkage rocks with the beat.
+ * =========================================================================== */
+function conceptServo(id) {
+  const inner = `
+    ${anatomicalHeart(`url(#cf-line-${id})`, 2.8, "#ffffff")}
+    <!-- quiet mechanical detail: a small servo pivot + linkage on the heart -->
     <g>
-      <rect x="92" y="56" width="20" height="26" rx="3" fill="url(#cw-brass-${id})"
-            stroke="${PAL.brassDeep}" stroke-width="1.4"/>
-      <rect x="95" y="60" width="14" height="7" rx="1.4" fill="${PAL.parchment}" opacity="0.55"/>
-      <circle cx="99" cy="76" r="1.3" fill="${PAL.brassDeep}"/>
-      <circle cx="105" cy="76" r="1.3" fill="${PAL.brassDeep}"/>
-      <!-- output shaft pivot -->
-      <circle cx="92" cy="63" r="3" fill="${PAL.brassHi}" stroke="${PAL.brassDeep}" stroke-width="1.2"/>
+      <!-- pivot anchored to the card, lower-right of the heart -->
+      <circle cx="92" cy="84" r="3.4" fill="none" stroke="url(#cf-line-${id})" stroke-width="2.4"/>
+      <circle cx="92" cy="84" r="0.9" fill="#ffffff"/>
     </g>
-
-    <!-- servo horn + pushrod linkage into the ventricle wall (MOVES) -->
-    <g class="linkage-rock" style="transform-origin:92px 63px">
-      <!-- horn -->
-      <path d="M92 63 L 80 58" stroke="url(#cw-brass-${id})" stroke-width="4"
-            stroke-linecap="round"/>
-      <circle cx="80" cy="58" r="2.6" fill="${PAL.brassHi}" stroke="${PAL.brassDeep}" stroke-width="1"/>
-      <!-- pushrod to the heart wall -->
-      <path d="M80 58 L 70 72" stroke="url(#cw-brass-${id})" stroke-width="3.2"
-            stroke-linecap="round"/>
-      <circle cx="70" cy="72" r="2.6" fill="${PAL.crimson}" stroke="${PAL.ink}" stroke-width="1.2"/>
-    </g>
-
-    <!-- engraved DYS maker's plate riveted to the base -->
-    <g class="dys-plate">
-      <rect x="46" y="104" width="36" height="13" rx="2.5"
-            fill="url(#cw-brass-${id})" stroke="${PAL.brassDeep}" stroke-width="1.2"/>
-      <circle cx="49.5" cy="110.5" r="1" fill="${PAL.brassDeep}"/>
-      <circle cx="78.5" cy="110.5" r="1" fill="${PAL.brassDeep}"/>
-      <text x="64" y="114" text-anchor="middle"
-        font-family="'Space Grotesk','Georgia',serif" font-weight="700" font-size="9"
-        letter-spacing="2.5" fill="${PAL.ink}">DYS</text>
-    </g>
+    <g class="linkage-rock" style="transform-origin:92px 84px">
+      <!-- rigid link from pivot to a point on the ventricle wall -->
+      <line x1="92" y1="84" x2="74" y2="78"
+            stroke="url(#cf-line-${id})" stroke-width="2.4" stroke-linecap="round"/>
+      <!-- the attachment node on the heart -->
+      <circle cx="74" cy="78" r="2.4" fill="#ffffff" opacity="0.95"/>
+    </g>`;
+  return `
+  <svg viewBox="0 0 128 128" fill="none" role="img"
+       aria-label="Calcifer logo — anatomical heart with a servo linkage"
+       xmlns="http://www.w3.org/2000/svg">
+    ${calciferDefs(id)}
+    ${badge(`cf-bg-${id}`, inner, 0.7)}
   </svg>`;
 }
 
 /* ===========================================================================
- * CONCEPT B — THE LIVING HEART
- * The warmest, most hand-drawn direction. Loose ink outline with a painterly
- * terracotta wash, visible brush character, and a single honest mechanical
- * reveal: a small brass servo + pushrod tucked behind the heart, as if the
- * organ were a living thing gently helped to beat. No cartoon face.
+ * CONCEPT C — Anatomical heart with an ECG trace tie-in (echoes MARY's pulse)
+ * A thin baseline crosses behind the heart with one QRS spike, tying Calcifer
+ * to the live-heart-rate idea and visually rhyming with MARY's pulse logo.
+ * The spike "fires" on each beat.
  * =========================================================================== */
-function conceptLiving(id) {
+function conceptEcg(id) {
+  const inner = `
+    <!-- faint ECG baseline behind the heart -->
+    <path class="ecg-line" d="M22 92 L48 92 L54 92 L58 78 L62 102 L66 92 L74 92 L106 92"
+          fill="none" stroke="url(#cf-line-${id})" stroke-width="2.2"
+          stroke-linecap="round" stroke-linejoin="round" opacity="0.55"/>
+    ${anatomicalHeart(`url(#cf-line-${id})`, 2.8, "#ffffff")}`;
   return `
-  <svg viewBox="0 0 128 128" role="img"
-       aria-label="Calcifer — the Living Heart: a soft hand-drawn anatomical heart with one brass servo reveal"
+  <svg viewBox="0 0 128 128" fill="none" role="img"
+       aria-label="Calcifer logo — anatomical heart over an ECG pulse line"
        xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <radialGradient id="lv-wash-${id}" cx="42%" cy="38%" r="68%">
-        <stop offset="0"   stop-color="${PAL.coral}"/>
-        <stop offset="0.5" stop-color="${PAL.terracotta}"/>
-        <stop offset="1"   stop-color="${PAL.crimson}"/>
-      </radialGradient>
-      <linearGradient id="lv-brass-${id}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="${PAL.brassHi}"/>
-        <stop offset="1" stop-color="${PAL.brassDeep}"/>
-      </linearGradient>
-      <filter id="lv-paper-${id}" x="-20%" y="-20%" width="140%" height="140%">
-        <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" seed="7" result="n"/>
-        <feColorMatrix in="n" type="matrix"
-          values="0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.05 0"/>
-        <feComposite operator="over" in2="SourceGraphic"/>
-      </filter>
-    </defs>
-
-    <ellipse cx="64" cy="110" rx="30" ry="4.5" fill="${PAL.ink}" opacity="0.09"/>
-
-    <!-- mechanical reveal sits BEHIND the heart (drawn first) -->
-    <g class="servo-back">
-      <!-- small servo tucked lower-right behind the apex -->
-      <rect x="84" y="72" width="16" height="22" rx="3" fill="url(#lv-brass-${id})"
-            stroke="${PAL.brassDeep}" stroke-width="1.3" opacity="0.96"/>
-      <circle cx="84" cy="78" r="2.6" fill="${PAL.brassHi}" stroke="${PAL.brassDeep}" stroke-width="1"/>
-      <!-- pushrod reaching into the ventricle (MOVES with the beat) -->
-      <g class="linkage-rock" style="transform-origin:84px 78px">
-        <path d="M84 78 L 70 68" stroke="url(#lv-brass-${id})" stroke-width="3.4"
-              stroke-linecap="round"/>
-        <circle cx="70" cy="68" r="2.4" fill="${PAL.brassHi}" stroke="${PAL.brassDeep}" stroke-width="1"/>
-      </g>
-    </g>
-
-    <!-- ====== HEART CORE (breathes) ====== -->
-    <g class="heart-core" style="transform-origin:62px 64px" filter="url(#lv-paper-${id})">
-      <!-- painterly fill with a slightly looser, softer outline -->
-      <path class="heart-outline"
-        d="M62 32
-           C 55 21, 40 19, 31 28
-           C 22 37, 23 52, 32 66
-           C 39 78, 50 90, 60 103
-           C 62 105, 64 105, 66 102
-           C 76 88, 88 74, 93 60
-           C 98 47, 95 31, 83 28
-           C 74 26, 66 30, 63 36 Z"
-        fill="url(#lv-wash-${id})" stroke="${PAL.ink}" stroke-width="3"
-        stroke-linejoin="round" stroke-linecap="round"/>
-
-      <!-- hand-drawn interior gesture lines (chambers suggested, not clinical) -->
-      <path d="M60 42 C 52 56, 55 76, 61 98" fill="none"
-            stroke="${PAL.crimson}" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/>
-      <path d="M46 44 C 39 56, 43 72, 54 86" fill="none"
-            stroke="${PAL.ink}" stroke-width="1.8" stroke-linecap="round" opacity="0.35"/>
-
-      <!-- great vessels, soft and organic -->
-      <path d="M63 34 C 65 21, 80 17, 86 26 C 90 32, 87 40, 80 41" fill="none"
-            stroke="${PAL.ink}" stroke-width="3" stroke-linecap="round"/>
-      <path d="M54 32 C 50 21, 42 19, 38 24" fill="none"
-            stroke="${PAL.ink}" stroke-width="2.8" stroke-linecap="round"/>
-
-      <!-- warm highlight (gives it life) -->
-      <path d="M40 40 C 34 48, 36 60, 42 70" fill="none"
-            stroke="${PAL.coral}" stroke-width="3" stroke-linecap="round" opacity="0.6"/>
-    </g>
-
-    <!-- DYS as a small hand-stamped wax/ink seal, lower-left -->
-    <g class="dys-plate">
-      <circle cx="34" cy="96" r="10" fill="${PAL.brass}" stroke="${PAL.brassDeep}" stroke-width="1.4"/>
-      <circle cx="34" cy="96" r="7.5" fill="none" stroke="${PAL.parchment}" stroke-width="1" opacity="0.6"/>
-      <text x="34" y="99.5" text-anchor="middle"
-        font-family="'Space Grotesk','Georgia',serif" font-weight="700" font-size="7.5"
-        letter-spacing="1.5" fill="${PAL.ink}">DYS</text>
-    </g>
-  </svg>`;
-}
-
-/* ===========================================================================
- * CONCEPT C — THE INVENTOR'S EMBLEM
- * A composed vintage insignia: the anatomical heart centered within a thin
- * brass ring/banner, a small servo + gear detail at the base, a sprig of
- * sage for the "living" note, and DYS set into an engraved banner — like an
- * old scientific-society seal reimagined by a whimsical inventor.
- * =========================================================================== */
-function conceptEmblem(id) {
-  return `
-  <svg viewBox="0 0 128 128" role="img"
-       aria-label="Calcifer — the Inventor's Emblem: an anatomical heart in a vintage brass insignia with a DYS banner"
-       xmlns="http://www.w3.org/2000/svg">
-    <defs>
-      <linearGradient id="em-heart-${id}" x1="40" y1="34" x2="88" y2="92" gradientUnits="userSpaceOnUse">
-        <stop offset="0" stop-color="${PAL.coral}"/>
-        <stop offset="0.6" stop-color="${PAL.terracotta}"/>
-        <stop offset="1" stop-color="${PAL.crimson}"/>
-      </linearGradient>
-      <linearGradient id="em-brass-${id}" x1="0" y1="0" x2="0" y2="1">
-        <stop offset="0" stop-color="${PAL.brassHi}"/>
-        <stop offset="0.5" stop-color="${PAL.brass}"/>
-        <stop offset="1" stop-color="${PAL.brassDeep}"/>
-      </linearGradient>
-    </defs>
-
-    <!-- outer engraved brass ring (the insignia frame) -->
-    <circle cx="64" cy="60" r="50" fill="none" stroke="url(#em-brass-${id})" stroke-width="3.5"/>
-    <circle cx="64" cy="60" r="45" fill="none" stroke="${PAL.brassDeep}" stroke-width="1" opacity="0.5"/>
-    <!-- tick engraving around the ring (instrument dial feel) -->
-    <g stroke="${PAL.brassDeep}" stroke-width="1.1" opacity="0.65">
-      <line x1="64" y1="12" x2="64" y2="16"/>
-      <line x1="64" y1="104" x2="64" y2="108"/>
-      <line x1="16" y1="60" x2="20" y2="60"/>
-      <line x1="108" y1="60" x2="112" y2="60"/>
-      <line x1="30" y1="26" x2="33" y2="29"/>
-      <line x1="95" y1="26" x2="98" y2="29"/>
-      <line x1="30" y1="94" x2="33" y2="91"/>
-      <line x1="95" y1="94" x2="98" y2="91"/>
-    </g>
-
-    <!-- small sage sprig (the living note) nestled upper-left in the ring -->
-    <g class="sprig" stroke="${PAL.sage}" stroke-width="1.8" fill="none" stroke-linecap="round" opacity="0.9">
-      <path d="M30 44 q 6 -5 12 -3"/>
-      <path d="M34 42 q 1 -4 4 -5"/>
-      <path d="M38 42 q 1 -4 4 -4.5"/>
-    </g>
-
-    <!-- ====== HEART CORE (breathes), centered & slightly smaller for the frame ====== -->
-    <g class="heart-core" style="transform-origin:64px 58px">
-      <g transform="translate(64 58) scale(0.72) translate(-64 -62)">
-        ${heartBody(`url(#em-heart-${id})`, PAL.ink, 3)}
-        <path d="M62 44 C 56 60, 58 80, 63 99" fill="none"
-              stroke="${PAL.crimson}" stroke-width="2.4" stroke-linecap="round" opacity="0.5"/>
-        <path d="M66 35 C 68 22, 82 18, 88 26 C 92 31, 90 38, 84 40" fill="none"
-              stroke="${PAL.ink}" stroke-width="3" stroke-linecap="round"/>
-        <path d="M58 34 C 54 23, 46 20, 42 24" fill="none"
-              stroke="${PAL.ink}" stroke-width="3" stroke-linecap="round"/>
-      </g>
-    </g>
-
-    <!-- small servo + gear detail at the base of the frame -->
-    <g class="gear-spin" style="transform-origin:50px 92px">
-      <circle cx="50" cy="92" r="5.5" fill="url(#em-brass-${id})" stroke="${PAL.brassDeep}" stroke-width="1"/>
-      <g fill="${PAL.brassDeep}">
-        <rect x="48.8" y="85" width="2.4" height="3" rx="0.5"/>
-        <rect x="48.8" y="96" width="2.4" height="3" rx="0.5"/>
-        <rect x="43" y="90.8" width="3" height="2.4" rx="0.5"/>
-        <rect x="55" y="90.8" width="3" height="2.4" rx="0.5"/>
-      </g>
-      <circle cx="50" cy="92" r="1.8" fill="${PAL.parchment}"/>
-    </g>
-    <g class="linkage-rock" style="transform-origin:50px 92px">
-      <path d="M50 92 L 60 86" stroke="url(#em-brass-${id})" stroke-width="2.6" stroke-linecap="round"/>
-      <circle cx="60" cy="86" r="2" fill="${PAL.brassHi}" stroke="${PAL.brassDeep}" stroke-width="0.9"/>
-    </g>
-
-    <!-- DYS engraved banner across the bottom of the insignia -->
-    <g class="dys-plate">
-      <path d="M34 104 L 94 104 L 90 116 L 38 116 Z"
-            fill="url(#em-brass-${id})" stroke="${PAL.brassDeep}" stroke-width="1.3"/>
-      <path d="M34 104 L 28 108 L 38 116 Z" fill="${PAL.brassDeep}"/>
-      <path d="M94 104 L 100 108 L 90 116 Z" fill="${PAL.brassDeep}"/>
-      <text x="64" y="113.5" text-anchor="middle"
-        font-family="'Space Grotesk','Georgia',serif" font-weight="700" font-size="9.5"
-        letter-spacing="4" fill="${PAL.ink}">DYS</text>
-    </g>
+    ${calciferDefs(id)}
+    ${badge(`cf-bg-${id}`, inner, 0.7)}
   </svg>`;
 }
 
 /* Registry ---------------------------------------------------------------- */
 const CALCIFER_CONCEPTS = [
   {
-    key: "clockwork",
+    key: "anatomy",
     letter: "A",
-    title: "The Clockwork Heart",
-    tagline: "A handcrafted brass instrument that happens to be alive",
-    render: conceptClockwork,
+    title: "Anatomical Heart",
+    tagline: "Clean white line-art heart — the pure house-style match",
+    render: conceptAnatomy,
     reasoning:
-      "The anatomical heart is treated as a jewel-like scientific instrument: a brass servo bracket on the right flank drives a pushrod into the ventricle wall, and a toothed gear nests at the aortic root. The brass is precise and restrained so the two-ventricle anatomy and great vessels stay legible even at icon size. On the beat, the servo horn and pushrod rock inward with the contraction — the mechanism visibly does the work.",
+      "The straightest fit with the existing set: the same 128 badge, the same diagonal gradient card and 0.05 sheen, the same light line-art treatment and corner DYS monogram as MIMIC / MARY / Stories — just an anatomically accurate human heart (paired ventricles with the apex down-left, atrial auricles, and the aortic arch / pulmonary trunk / vena cava rising from the base). Calcifer takes its own crimson-to-coral color slot. The organ gives a subtle, real two-part heartbeat.",
   },
   {
-    key: "living",
+    key: "servo",
     letter: "B",
-    title: "The Living Heart",
-    tagline: "Hand-drawn warmth with one honest mechanical reveal",
-    render: conceptLiving,
+    title: "Heart + Servo Linkage",
+    tagline: "The same heart, with one quiet mechanical linkage",
+    render: conceptServo,
     reasoning:
-      "The warmest, most painterly direction: a loose ink outline over a terracotta wash with a faint paper grain, and gestural interior lines that suggest chambers without turning clinical. A single brass servo + pushrod is tucked behind the organ — the 'reveal' of how a living thing is gently helped to beat. No face, but plenty of character. The whole body breathes with a soft two-part rhythm.",
+      "Identical house-style heart, plus a single fine servo pivot-and-linkage drawn in the same line weight so it reads as part of the illustration rather than a bolted-on gadget. It tells the actual Calcifer story (a servo-driven heart) without clutter. The linkage rocks in time with the contraction.",
   },
   {
-    key: "emblem",
+    key: "ecg",
     letter: "C",
-    title: "The Inventor's Emblem",
-    tagline: "A vintage scientific insignia with a DYS banner",
-    render: conceptEmblem,
+    title: "Heart + ECG Pulse",
+    tagline: "Anatomical heart over a pulse line — rhymes with MARY",
+    render: conceptEcg,
     reasoning:
-      "A composed, badge-like insignia: the anatomical heart centered in an engraved brass dial-ring, a sage sprig for the living note, a small servo + gear at the base, and DYS set into an engraved banner — an old scientific-society seal reimagined by a whimsical inventor. It reads as a crafted artifact/emblem rather than an app icon, and the heart inside the ring still gives a subtle beat.",
+      "The anatomical heart sits over a thin ECG baseline with a single QRS spike — a direct nod to the live-heart-rate concept and a deliberate visual rhyme with MARY's heartbeat logo, so the two biomedical projects feel related. The spike fires on each beat.",
   },
 ];
