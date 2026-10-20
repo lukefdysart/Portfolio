@@ -4,14 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Calcifer · Logo Lab v3 (local only — not published)</title>
+<title>Calcifer · Logo Lab v5 (local only — not published)</title>
 <style>
   :root {
-    --cream:     #f7f0e3;   /* approximates the portfolio background */
+    --cream:     #f7f0e3;
     --ink:       #2a2420;
     --ink-soft:  #6a5f55;
-    --crimson:   #9e2a2b;   /* Calcifer accent */
+    --crimson:   #9e2a2b;
     --coral:     #e26d5a;
+    --ember:     #ff8a3a;
     --hairline:  #e2d8c6;
     --panel:     #fffdf8;
     --radius: 16px;
@@ -19,20 +20,13 @@
     --font-head: "Space Grotesk", "Segoe UI", sans-serif;
   }
   * { box-sizing: border-box; }
-  body {
-    margin: 0; font-family: var(--font); color: var(--ink);
-    background: var(--cream);
-    -webkit-font-smoothing: antialiased; padding: 48px 24px 100px;
-  }
-  .page { max-width: 1100px; margin: 0 auto; }
+  body { margin: 0; font-family: var(--font); color: var(--ink); background: var(--cream);
+         -webkit-font-smoothing: antialiased; padding: 48px 24px 100px; }
+  .page { max-width: 980px; margin: 0 auto; }
 
-  .lab-flag {
-    display: inline-flex; align-items: center; gap: 8px;
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--crimson); font-weight: 700;
-    border: 1px solid var(--crimson); border-radius: 999px;
-    padding: 5px 12px; background: #fff;
-  }
+  .lab-flag { display: inline-flex; align-items: center; gap: 8px; font-size: 11px;
+    letter-spacing: .14em; text-transform: uppercase; color: var(--crimson); font-weight: 700;
+    border: 1px solid var(--crimson); border-radius: 999px; padding: 5px 12px; background: #fff; }
   .lab-flag::before { content:""; width:7px; height:7px; border-radius:50%; background:var(--crimson); }
   header h1 { font-family: var(--font-head); font-size: clamp(28px,4vw,40px); margin: 18px 0 6px; }
   header p.sub { margin: 0; color: var(--ink-soft); max-width: 72ch; line-height: 1.55; }
@@ -42,49 +36,46 @@
   .hint { font-size: 12px; color: var(--ink-soft); }
   .divider { height: 1px; background: var(--hairline); margin: 32px 0; border: 0; }
 
-  /* concept cards */
-  .concepts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  @media (max-width: 860px) { .concepts { grid-template-columns: 1fr; } }
-  .card { background: var(--panel); border: 1px solid var(--hairline); border-radius: var(--radius);
-          overflow: hidden; box-shadow: 0 1px 2px rgba(42,36,32,.05), 0 14px 34px rgba(42,36,32,.04);
-          display: flex; flex-direction: column; }
-  .stage { padding: 30px; display: flex; flex-direction: column; align-items: center; gap: 16px; }
-  .mark-xl { width: 240px; height: 240px; max-width: 100%; }
+  /* ---- hero: the single logo, large ---- */
+  .hero { background: var(--panel); border: 1px solid var(--hairline); border-radius: var(--radius);
+          padding: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 36px; align-items: center;
+          box-shadow: 0 1px 2px rgba(42,36,32,.05), 0 16px 40px rgba(42,36,32,.05); }
+  @media (max-width: 760px) { .hero { grid-template-columns: 1fr; } }
+  .stage { display: flex; flex-direction: column; align-items: center; gap: 18px; }
+  .mark-xl { width: 300px; height: 300px; max-width: 100%; }
   .mark-xl svg { width: 100%; height: 100%; display: block; }
-  .wordmark { font-family: var(--font-head); font-weight: 700; letter-spacing: 0.4em;
-              text-transform: uppercase; font-size: 20px; padding-left: 0.4em; }
+  .wordmark { font-family: var(--font-head); font-weight: 700; letter-spacing: .42em;
+              text-transform: uppercase; font-size: 22px; padding-left: .42em; }
+  .hero .info h2 { font-family: var(--font-head); font-size: 22px; margin: 0 0 4px; }
+  .hero .info .tag { color: var(--ink-soft); margin: 0 0 14px; font-size: 14px; }
+  .hero .info p.reason { font-size: 13.5px; line-height: 1.65; color: #4a403a; margin: 0; }
 
-  .info { padding: 0 22px 22px; }
-  .eyebrow { font-family: var(--font-head); font-size: 11px; letter-spacing: 0.16em;
-             text-transform: uppercase; color: var(--crimson); font-weight: 700; }
-  .card-title { font-family: var(--font-head); font-size: 20px; margin: 5px 0 3px; }
-  .card-tagline { font-size: 13px; color: var(--ink-soft); margin: 0 0 12px; }
-  .reasoning { font-size: 13px; line-height: 1.6; color: #4a403a; }
-
-  .scale-row { margin: 16px 0 2px; display: flex; align-items: flex-end; gap: 18px;
-               padding-top: 14px; border-top: 1px dashed var(--hairline); }
-  .scale-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  /* ---- scale previews (incl. on cream + tiny) ---- */
+  .scales { margin-top: 28px; }
+  .scales .scale-label { font-size: 10px; letter-spacing: .14em; text-transform: uppercase;
+                         color: var(--crimson); font-weight: 700; margin-bottom: 12px; }
+  .scale-row { display: flex; align-items: flex-end; gap: 24px; flex-wrap: wrap; }
+  .scale-cell { display: flex; flex-direction: column; align-items: center; gap: 7px; }
   .scale-cell .cap { font-size: 10px; color: var(--ink-soft); }
-  .mk { display: block; }
-  .mk.sz-150 { width: 120px; height: 120px; }
-  .mk.sz-56  { width: 56px;  height: 56px; }
-  .mk.sz-32  { width: 32px;  height: 32px; }
-  .mk svg { width: 100%; height: 100%; display: block; }
+  .mk { display: block; } .mk svg { width: 100%; height: 100%; display: block; }
+  .mk.sz-120 { width: 120px; height: 120px; }
+  .mk.sz-56  { width: 56px; height: 56px; }
+  .mk.sz-32  { width: 32px; height: 32px; }
+  .on-cream { background: var(--cream); border: 1px dashed var(--hairline); border-radius: 12px;
+              display: grid; place-items: center; padding: 8px; }
 
-  /* comparison strip */
+  /* ---- comparison strip ---- */
   .compare { margin-top: 52px; }
   .compare h2 { font-family: var(--font-head); font-size: 20px; margin: 0 0 4px; }
   .compare p.lead { margin: 0 0 20px; color: var(--ink-soft); max-width: 74ch; line-height: 1.55; font-size: 14px; }
-  .strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; background: var(--panel);
+  .strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; background: var(--panel);
            border: 1px solid var(--hairline); border-radius: var(--radius); padding: 24px 20px; align-items: end; }
-  @media (max-width: 760px) { .strip { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 620px) { .strip { grid-template-columns: repeat(2, 1fr); } }
   .cmp-cell { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
-  .cmp-badge { width: 84px; height: 84px; }
-  .cmp-badge svg { width: 100%; height: 100%; display: block; }
+  .cmp-badge { width: 88px; height: 88px; } .cmp-badge svg { width: 100%; height: 100%; display: block; }
   .cmp-name { font-size: 11px; color: var(--ink-soft); line-height: 1.3; }
   .cmp-kind { font-size: 9px; letter-spacing: .12em; text-transform: uppercase; font-weight: 700; }
-  .cmp-kind.ref { color: var(--ink-soft); }
-  .cmp-kind.calc { color: var(--crimson); }
+  .cmp-kind.ref { color: var(--ink-soft); } .cmp-kind.calc { color: var(--crimson); }
   .cmp-sub { margin: 22px 0 10px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
              color: var(--crimson); font-weight: 700; }
 
@@ -96,55 +87,76 @@
   footer { margin-top: 44px; color: var(--ink-soft); font-size: 12px; text-align: center; }
 
   /* =========================================================================
-   * HEARTBEAT — subtle & tasteful, in the spirit of MARY/Stories animations.
-   * Two-part "lub-dub" + a rest, looping. Linkage rocks & ECG spike fires in
-   * sync. Reduced-motion holds the resting pose.
+   * FIREPLACE HEARTBEAT — the key: strong DARK vs BRIGHT contrast on the beat.
+   * On each lub-dub the ember glow + lit overlay FLARE bright while the dark
+   * hearth card dips darker — like a fire catching, then settling into embers.
    * ========================================================================= */
-  @keyframes cf-beat {
+  @keyframes cf-beat {               /* the organ contracts, two-part */
     0%,100% { transform: scale(1); }
-    7%      { transform: scale(0.955); }
-    14%     { transform: scale(1.006); }
-    21%     { transform: scale(0.975); }
-    30%     { transform: scale(1.002); }
-    40%     { transform: scale(1); }
+    7%      { transform: scale(0.945); }
+    15%     { transform: scale(1.008); }
+    23%     { transform: scale(0.972); }
+    32%     { transform: scale(1.003); }
+    42%     { transform: scale(1); }
   }
-  @keyframes cf-linkage {
-    0%,100% { transform: rotate(0deg); }
-    7%      { transform: rotate(-8deg); }
-    14%     { transform: rotate(1deg); }
-    21%     { transform: rotate(-5deg); }
-    30%     { transform: rotate(0.5deg); }
-    40%     { transform: rotate(0deg); }
+  @keyframes cf-emberflare {         /* glow surges then falls back */
+    0%,100% { transform: scale(0.9);  opacity: .55; }
+    7%      { transform: scale(1.18); opacity: 1;   }
+    23%     { transform: scale(1.02); opacity: .78; }
+    42%,99% { transform: scale(0.9);  opacity: .55; }
   }
-  @keyframes cf-ecg {
-    0%, 4%   { opacity: .4; }
-    7%       { opacity: .95; }
-    20%      { opacity: .9; }
-    40%,100% { opacity: .4; }
+  @keyframes cf-lit {                /* the organ's lit overlay brightens */
+    0%,100% { opacity: .25; }
+    7%      { opacity: 1;   }
+    23%     { opacity: .5;  }
+    42%     { opacity: .25; }
   }
-  @keyframes cf-ember {
-    0%,100% { transform: scale(1);    opacity: .85; }
-    7%      { transform: scale(1.08); opacity: 1;   }
-    40%     { transform: scale(1);    opacity: .85; }
+  @keyframes cf-hearthdim {          /* card darkens between flares -> contrast */
+    0%,100% { opacity: 1;    }
+    7%      { opacity: 0.72; }       /* lifts (brightens) as the flare lights it */
+    42%     { opacity: 1;    }
   }
-  /* a slow, independent blink so it feels alive (not tied to the beat) */
-  @keyframes cf-blink {
-    0%, 92%, 100% { transform: scaleY(1); }
-    95%           { transform: scaleY(0.1); }
+  @keyframes cf-floor {              /* ember bed at the hearth base */
+    0%,100% { opacity: .45; }
+    7%      { opacity: .9;  }
+    42%     { opacity: .45; }
   }
-  .anim .heart-core   { animation: cf-beat 2.4s cubic-bezier(.4,0,.3,1) infinite; }
-  .anim .linkage-rock { animation: cf-linkage 2.4s cubic-bezier(.4,0,.3,1) infinite; }
-  .anim .ecg-line     { animation: cf-ecg 2.4s cubic-bezier(.4,0,.3,1) infinite; }
-  .anim .ember        { animation: cf-ember 2.4s cubic-bezier(.4,0,.3,1) infinite; }
-  .anim .blink        { animation: cf-blink 5.2s ease-in-out infinite; }
+  @keyframes cf-eyes {               /* Calcifer's eyes brighten with the flare */
+    0%,100% { opacity: .7; }
+    7%      { opacity: 1;  }
+    42%     { opacity: .7; }
+  }
+  @keyframes cf-blink {              /* slow, independent blink */
+    0%, 93%, 100% { transform: scaleY(1); }
+    96%           { transform: scaleY(0.1); }
+  }
+  @keyframes cf-spark {              /* tiny rising sparks */
+    0%   { transform: translateY(4px); opacity: 0; }
+    20%  { opacity: .9; }
+    100% { transform: translateY(-18px); opacity: 0; }
+  }
+
+  .anim .heart-core  { animation: cf-beat 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .ember-glow  { animation: cf-emberflare 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .heart-lit   { animation: cf-lit 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .hearth-dark { animation: cf-hearthdim 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .ember-floor { animation: cf-floor 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .cal-eyes    { animation: cf-eyes 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .cal-blink   { animation: cf-blink 5.4s ease-in-out infinite; }
+  .anim .spark.s1    { animation: cf-spark 2.6s ease-out infinite .1s; }
+  .anim .spark.s2    { animation: cf-spark 3.1s ease-out infinite .9s; }
+  .anim .spark.s3    { animation: cf-spark 2.9s ease-out infinite 1.6s; }
 
   @media (prefers-reduced-motion: reduce) {
-    .anim .heart-core, .anim .linkage-rock, .anim .ecg-line,
-    .anim .ember, .anim .blink {
+    .anim .heart-core, .anim .ember-glow, .anim .heart-lit, .anim .hearth-dark,
+    .anim .ember-floor, .anim .cal-eyes, .anim .cal-blink, .anim .spark {
       animation: none !important; transform: none !important; opacity: 1 !important; }
+    /* keep a tasteful resting glow when motion is reduced */
+    .anim .heart-lit { opacity: .4 !important; }
+    .anim .ember-glow { opacity: .7 !important; }
   }
-  .motion-off .heart-core, .motion-off .linkage-rock, .motion-off .ecg-line,
-  .motion-off .ember, .motion-off .blink {
+  .motion-off .heart-core, .motion-off .ember-glow, .motion-off .heart-lit, .motion-off .hearth-dark,
+  .motion-off .ember-floor, .motion-off .cal-eyes, .motion-off .cal-blink, .motion-off .spark {
     animation: none !important; transform: none !important; }
 </style>
 </head>
@@ -152,42 +164,51 @@
 <div class="page">
   <header>
     <span class="lab-flag">Experimental · local only · not published</span>
-    <h1>Calcifer — Logo Lab <span style="color:var(--crimson);font-size:.5em;vertical-align:middle;">v4</span></h1>
+    <h1>Calcifer — Logo Lab <span style="color:var(--crimson);font-size:.5em;vertical-align:middle;">v5 · final direction</span></h1>
     <p class="sub">
-      The fusion: an <strong>anatomically accurate human heart</strong> given the life of
-      <strong>Calcifer the fire-spirit</strong> (his wide eyes + little open mouth + warm ember glow —
-      no literal flame) — a living heart-creature. Still built on the <strong>same house style</strong>
-      as MIMIC / MARY / Stories (128 badge, gradient card, 0.05 sheen, line-art, corner <strong>DYS</strong>)
-      in Calcifer's own crimson-to-coral slot. The heart beats, the ember breathes, and it blinks.
+      One focused mark: a <strong>realistic anatomical heart</strong> glowing like an ember in a
+      <strong>dark hearth</strong>. On each heartbeat the heart and its fireplace glow
+      <strong>flare bright against the dark card</strong> — strong contrast, like a fire catching —
+      then settle to embers. <strong>Calcifer</strong> is present as two ember-eyes glowing deep inside,
+      with a slow blink and a few rising sparks. Carries the corner <strong>DYS</strong> tag and the
+      portfolio's rounded badge so it still ties to MIMIC / MARY / Stories.
     </p>
     <div class="controls">
-      <button class="btn" id="toggle-motion">⏸ Pause heartbeat</button>
+      <button class="btn" id="toggle-motion">⏸ Pause</button>
       <span class="hint">Loops indefinitely; auto-disables under <code>prefers-reduced-motion</code>.</span>
     </div>
   </header>
 
   <hr class="divider" />
-  <section class="concepts" id="concepts"><!-- injected --></section>
+
+  <section class="hero" id="hero"><!-- injected --></section>
+
+  <div class="scales">
+    <div class="scale-label">At smaller sizes (on cream, as it'd sit in the portfolio)</div>
+    <div class="scale-row" id="scales"><!-- injected --></div>
+  </div>
 
   <section class="compare">
     <h2>Side-by-side with the existing portfolio logos</h2>
     <p class="lead">
       The three live marks (copied read-only from <code>index.html</code> — not redesigned) at matched
-      scale. Calcifer is built on the exact same badge, gradient, sheen, line-weight, and DYS placement,
-      so it reads as a sibling rather than an outsider.
+      scale. Calcifer keeps the rounded badge, the 0.05 sheen, and the corner DYS tag, but intentionally
+      uses a dark hearth card so the ember heart can flare with real contrast.
     </p>
     <div class="cmp-sub">Existing portfolio logos (reference · unchanged)</div>
     <div class="strip" id="ref-strip"><!-- injected --></div>
-    <div class="cmp-sub">Calcifer v4 concepts</div>
+    <div class="cmp-sub">Calcifer</div>
     <div class="strip" id="calc-strip"><!-- injected --></div>
   </section>
 
   <div class="refnote">
     <h3>Notes</h3>
-    Geometry is layered, editable SVG in <code>logos.js</code> (the anatomical heart is one shared
-    function restyled per concept). The badge shell, gradient, sheen, and DYS monogram mirror
-    <code>reference-logos.js</code> exactly. Heartbeat keyframes live in the CSS above and drive all
-    three via <code>.heart-core</code> / <code>.linkage-rock</code> / <code>.ecg-line</code>.
+    One editable, layered SVG in <code>logos.js</code>: the anatomical heart (great-vessel bundle +
+    coronary tree), the dark hearth card with brick seams + ember bed, the flaring glow, Calcifer's
+    eyes, sparks, and the DYS tag. The fireplace contrast is driven by CSS <code>@keyframes</code>
+    above via <code>.hearth-dark</code> / <code>.ember-glow</code> / <code>.heart-lit</code> /
+    <code>.heart-core</code> (+ <code>.cal-eyes</code>, <code>.spark</code>). Re-tint from the SVG
+    gradients in <code>calciferDefs()</code>.
   </div>
 
   <footer>design-experiments/calcifer · excluded from GitHub Pages output · not linked from the site</footer>
@@ -196,46 +217,40 @@
 <script src="logos.js"></script>
 <script src="reference-logos.js"></script>
 <script>
+  const C = CALCIFER_CONCEPTS[0];
   const WORDMARK = `<span class="wordmark">CALCIFER</span>`;
 
-  function panel(c) {
-    return `
-    <article class="card">
-      <div class="stage">
-        <div class="mark-xl">${c.render(c.key + "-xl")}</div>
-        ${WORDMARK}
-      </div>
-      <div class="info">
-        <div class="eyebrow">Concept ${c.letter}</div>
-        <h2 class="card-title">${c.title}</h2>
-        <p class="card-tagline">${c.tagline}</p>
-        <p class="reasoning">${c.reasoning}</p>
-        <div class="scale-row">
-          <div class="scale-cell"><div class="mk sz-150">${c.render(c.key+"-150")}</div><span class="cap">~portfolio</span></div>
-          <div class="scale-cell"><div class="mk sz-56">${c.render(c.key+"-56")}</div><span class="cap">56&nbsp;px</span></div>
-          <div class="scale-cell"><div class="mk sz-32">${c.render(c.key+"-32")}</div><span class="cap">32&nbsp;px</span></div>
-        </div>
-      </div>
-    </article>`;
-  }
-  document.getElementById("concepts").innerHTML = CALCIFER_CONCEPTS.map(panel).join("");
+  document.getElementById("hero").innerHTML = `
+    <div class="stage">
+      <div class="mark-xl">${C.render("hero")}</div>
+      ${WORDMARK}
+    </div>
+    <div class="info">
+      <h2>${C.title}</h2>
+      <p class="tag">${C.tagline}</p>
+      <p class="reason">${C.reasoning}</p>
+    </div>`;
+
+  document.getElementById("scales").innerHTML = `
+    <div class="scale-cell"><div class="on-cream"><div class="mk sz-120">${C.render("s120")}</div></div><span class="cap">~portfolio</span></div>
+    <div class="scale-cell"><div class="on-cream"><div class="mk sz-56">${C.render("s56")}</div></div><span class="cap">56&nbsp;px</span></div>
+    <div class="scale-cell"><div class="on-cream"><div class="mk sz-32">${C.render("s32")}</div></div><span class="cap">32&nbsp;px icon</span></div>`;
 
   document.getElementById("ref-strip").innerHTML = REFERENCE_LOGOS.map(function (r) {
     return `<div class="cmp-cell"><div class="cmp-badge">${r.svg}</div>
       <div class="cmp-kind ref">reference</div><div class="cmp-name">${r.title}</div></div>`;
   }).join("");
-  document.getElementById("calc-strip").innerHTML = CALCIFER_CONCEPTS.map(function (c) {
-    return `<div class="cmp-cell"><div class="cmp-badge">${c.render(c.key+"-cmp")}</div>
-      <div class="cmp-kind calc">Concept ${c.letter}</div><div class="cmp-name">${c.title}</div></div>`;
-  }).join("");
+  document.getElementById("calc-strip").innerHTML =
+    `<div class="cmp-cell"><div class="cmp-badge">${C.render("cmp")}</div>
+      <div class="cmp-kind calc">new</div><div class="cmp-name">Calcifer</div></div>`;
 
   var btn = document.getElementById("toggle-motion");
   btn.addEventListener("click", function () {
     document.body.classList.toggle("motion-off");
-    btn.textContent = document.body.classList.contains("motion-off") ? "▶ Play heartbeat" : "⏸ Pause heartbeat";
+    btn.textContent = document.body.classList.contains("motion-off") ? "▶ Play" : "⏸ Pause";
   });
   if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    btn.textContent = "▶ Play heartbeat (reduced-motion on)";
+    btn.textContent = "▶ Play (reduced-motion on)";
   }
 </script>
 </body>
