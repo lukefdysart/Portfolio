@@ -309,6 +309,8 @@
     var dt = now - lastTime; lastTime = now;
     if (dt > 0) currentFps = Math.round(1000 / dt);
 
+    if (!firstResult) { firstResult = true; mark('first inference / model live'); }
+
     if (results.multiHandLandmarks && results.multiHandLandmarks.length) {
       var lm = results.multiHandLandmarks[0];
       bend = getFingerBends(lm);
@@ -338,10 +340,13 @@
   // reuse the ~9MB model across visits instead of re-resolving 'latest'.
   var MP_BASE = 'https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/';
 
-  var handsReady = null;   // Promise that resolves once the model is initialized
-  var modelInitDone = false;
+  var firstResult = false;  // set true on the first onResults (model is live)
 
   // Create the Hands instance (once) and configure it.
+  // IMPORTANT: we do NOT call hands.initialize() — the pinned WASM build
+  // aborts on the explicit initialize() path ("Module.arguments has been
+  // replaced with plain arguments"). The reliable path is to let the FIRST
+  // hands.send() initialize the solution lazily, exactly as it did before.
   function createHands() {
     if (hands) return hands;
     if (typeof Hands === 'undefined') return null;
@@ -356,19 +361,23 @@
     return hands;
   }
 
-  // Download + initialize the model WITHOUT the camera. Safe to call repeatedly;
-  // reuses the same promise so we never init twice.
+  // Prewarm = warm the HTTP cache for the big WASM/model assets so the first
+  // send() is fast — WITHOUT instantiating the WASM (no camera, no
+  // initialize()). Just fetches the files into cache.
+  var prewarmed = false;
   function prewarm() {
-    if (handsReady) return handsReady;
-    if (!createHands()) {
-      // MediaPipe script not parsed yet — try again shortly (don't block).
-      if (typeof Hands === 'undefined') { setTimeout(prewarm, 400); }
-      return null;
-    }
-    handsReady = (hands.initialize ? hands.initialize() : Promise.resolve())
-      .then(function () { modelInitDone = true; mark('prewarm model ready'); })
-      .catch(function (e) { handsReady = null; throw e; });  // allow retry
-    return handsReady;
+    if (prewarmed) return;
+    prewarmed = true;
+    var assets = [
+      'hands_solution_simd_wasm_bin.js',
+      'hands_solution_simd_wasm_bin.wasm',
+      'hands_solution_packed_assets.data',
+      'hands.binarypb'
+    ];
+    assets.forEach(function (f) {
+      try { fetch(MP_BASE + f, { mode: 'cors', cache: 'force-cache' }).catch(function () {}); }
+      catch (e) {}
+    });
   }
 
   function start() {
@@ -381,20 +390,24 @@
       showRetry();
       return;
     }
-    createHands();
+    if (!createHands()) {
+      setStatus('Couldn’t start hand tracking', '#ff6b6b');
+      showRetry();
+      return;
+    }
 
-    // Kick off camera and model init CONCURRENTLY (they're independent).
     setStatus('Requesting camera access…');
+    firstResult = false;
 
-    // 1) model init (prewarm may already have it downloading/done)
-    var modelP = (modelInitDone ? Promise.resolve() : prewarm()) || Promise.resolve();
-    modelP.then(function () { mark('model ready'); });
-
-    // 2) camera
+    // Camera up first (fast); the first onFrame -> hands.send() lazily
+    // initializes the model. Status reflects the real phase.
     var camP;
     if (typeof Camera !== 'undefined') {
       camera = new Camera(video, {
-        onFrame: async function () { await hands.send({ image: video }); },
+        onFrame: async function () {
+          try { await hands.send({ image: video }); }
+          catch (e) { handleInitError(e); }
+        },
         width: 640, height: 480
       });
       camP = camera.start();
@@ -404,29 +417,31 @@
         .then(function () {
           (function pump() {
             if (!running) return;
-            hands.send({ image: video }).then(function () { requestAnimationFrame(pump); });
+            hands.send({ image: video })
+              .then(function () { requestAnimationFrame(pump); })
+              .catch(handleInitError);
           })();
         });
     }
 
-    camP.then(function () { mark('camera ready'); }).catch(cameraError);
-
-    // Reflect the real phase in the UI: once the camera is up, the remaining
-    // wait (if any) is the model finishing loading.
     camP.then(function () {
-      if (!modelInitDone) setStatus('Loading hand-tracking model…');
-      return modelP;
-    }).then(function () {
-      setStatus('Initializing hand tracking…');
+      mark('camera ready');
       running = true; lastTime = performance.now(); animate();
-      mark('tracking started');
-      // first onResults flips the status to 'Hand scan active' / 'Show your hand'
-    }).catch(function (err) {
-      if (err && (err.name === 'NotAllowedError' || err.name === 'NotFoundError')) return; // handled by cameraError
-      console.error(err);
-      setStatus('Couldn’t start hand tracking', '#ff6b6b');
-      showRetry();
-    });
+      setStatus('Loading hand-tracking model…');
+      // onResults() will flip to 'Hand scan active' once the model is live.
+    }).catch(cameraError);
+  }
+
+  // Surfaces a genuine WASM/model init failure (not a camera issue).
+  var initFailed = false;
+  function handleInitError(e) {
+    if (initFailed) return;
+    initFailed = true;
+    console.error('[MIMIC] hand-tracking init failed:', e);
+    running = false;
+    if (camera && camera.stop) { try { camera.stop(); } catch (x) {} }
+    setStatus('Couldn’t start hand tracking', '#ff6b6b');
+    showRetry();
   }
 
   function cameraError(err) {
@@ -438,6 +453,15 @@
     showRetry();
   }
 
+  // Tear down the current Hands instance so the next start() builds a fresh
+  // one (used by Retry — never reuse a tracker that failed to initialize).
+  function destroyHands() {
+    if (camera && camera.stop) { try { camera.stop(); } catch (e) {} }
+    camera = null;
+    if (hands && hands.close) { try { hands.close(); } catch (e) {} }
+    hands = null;
+  }
+
   // Inline retry button inside the controls (created once, on demand)
   function showRetry() {
     if (document.getElementById('mimic-retry')) return;
@@ -445,7 +469,14 @@
     b.id = 'mimic-retry';
     b.className = 'btn btn-small btn-ghost';
     b.textContent = 'Retry';
-    b.addEventListener('click', function () { b.remove(); start(); });
+    b.addEventListener('click', function () {
+      b.remove();
+      // genuinely rebuild: drop the broken instance, reset failure state
+      running = false;
+      initFailed = false;
+      destroyHands();
+      start();
+    });
     if (startBtn && startBtn.parentNode) startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
   }
 
@@ -456,8 +487,9 @@
       video.srcObject.getTracks().forEach(function (t) { t.stop(); });
       video.srcObject = null;
     }
-    // NOTE: we deliberately keep the initialized `hands` model in memory so a
-    // restart reuses it (no re-download / re-init).
+    // Keep a WORKING `hands` model in memory so a normal restart reuses it
+    // (no re-download / re-init). A failed instance is torn down by Retry.
+    initFailed = false;
     setStatus('Camera off');
     if (fpsEl) fpsEl.textContent = '';
     bend = { thumb: 0, index: 0, middle: 0, ring: 0, pinky: 0 };
