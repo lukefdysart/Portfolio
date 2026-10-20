@@ -117,20 +117,34 @@
     40%     { transform: rotate(0deg); }
   }
   @keyframes cf-ecg {
-    0%, 4%   { opacity: .35; }
+    0%, 4%   { opacity: .4; }
     7%       { opacity: .95; }
     20%      { opacity: .9; }
-    40%,100% { opacity: .35; }
+    40%,100% { opacity: .4; }
+  }
+  @keyframes cf-ember {
+    0%,100% { transform: scale(1);    opacity: .85; }
+    7%      { transform: scale(1.08); opacity: 1;   }
+    40%     { transform: scale(1);    opacity: .85; }
+  }
+  /* a slow, independent blink so it feels alive (not tied to the beat) */
+  @keyframes cf-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95%           { transform: scaleY(0.1); }
   }
   .anim .heart-core   { animation: cf-beat 2.4s cubic-bezier(.4,0,.3,1) infinite; }
   .anim .linkage-rock { animation: cf-linkage 2.4s cubic-bezier(.4,0,.3,1) infinite; }
   .anim .ecg-line     { animation: cf-ecg 2.4s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .ember        { animation: cf-ember 2.4s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .blink        { animation: cf-blink 5.2s ease-in-out infinite; }
 
   @media (prefers-reduced-motion: reduce) {
-    .anim .heart-core, .anim .linkage-rock, .anim .ecg-line {
+    .anim .heart-core, .anim .linkage-rock, .anim .ecg-line,
+    .anim .ember, .anim .blink {
       animation: none !important; transform: none !important; opacity: 1 !important; }
   }
-  .motion-off .heart-core, .motion-off .linkage-rock, .motion-off .ecg-line {
+  .motion-off .heart-core, .motion-off .linkage-rock, .motion-off .ecg-line,
+  .motion-off .ember, .motion-off .blink {
     animation: none !important; transform: none !important; }
 </style>
 </head>
@@ -138,12 +152,13 @@
 <div class="page">
   <header>
     <span class="lab-flag">Experimental · local only · not published</span>
-    <h1>Calcifer — Logo Lab <span style="color:var(--crimson);font-size:.5em;vertical-align:middle;">v3</span></h1>
+    <h1>Calcifer — Logo Lab <span style="color:var(--crimson);font-size:.5em;vertical-align:middle;">v4</span></h1>
     <p class="sub">
-      This round makes Calcifer sit in the <strong>same set</strong> as MIMIC, MARY, and Stories
-      Illuminated — identical badge construction, line-art treatment, and corner <strong>DYS</strong>
-      monogram — with an <strong>anatomically accurate human heart</strong> as the subject and its own
-      crimson-to-coral color slot. Three close variations on that single house-style idea.
+      The fusion: an <strong>anatomically accurate human heart</strong> given the life of
+      <strong>Calcifer the fire-spirit</strong> (his wide eyes + little open mouth + warm ember glow —
+      no literal flame) — a living heart-creature. Still built on the <strong>same house style</strong>
+      as MIMIC / MARY / Stories (128 badge, gradient card, 0.05 sheen, line-art, corner <strong>DYS</strong>)
+      in Calcifer's own crimson-to-coral slot. The heart beats, the ember breathes, and it blinks.
     </p>
     <div class="controls">
       <button class="btn" id="toggle-motion">⏸ Pause heartbeat</button>
@@ -163,7 +178,7 @@
     </p>
     <div class="cmp-sub">Existing portfolio logos (reference · unchanged)</div>
     <div class="strip" id="ref-strip"><!-- injected --></div>
-    <div class="cmp-sub">Calcifer v3 concepts</div>
+    <div class="cmp-sub">Calcifer v4 concepts</div>
     <div class="strip" id="calc-strip"><!-- injected --></div>
   </section>
 
