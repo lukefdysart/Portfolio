@@ -459,6 +459,18 @@ a { color: inherit; text-decoration: none; }
     radial-gradient(circle at 30% 25%, rgba(199,150,47,0.26), transparent 60%),
     linear-gradient(145deg, #e9edf7, #dbe3f1);
 }
+/* real thumbnail photo fills the 16:9 media area */
+.log-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+  transition: transform .3s ease;
+}
+/* subtle scrim so the white LOG number + play button stay legible on the photo */
+.log-media.has-poster::after {
+  content: ""; position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(10,12,18,.22), rgba(10,12,18,0) 38%, rgba(10,12,18,0) 62%, rgba(10,12,18,.28));
+}
+.log-media.has-poster.is-playable:hover .log-poster { transform: scale(1.04); }
 .log-media.is-playable { cursor: pointer; }
 .log-media.is-playable:hover .log-play { transform: scale(1.12); background: var(--accent); color: var(--accent-ink); }
 .log-play {

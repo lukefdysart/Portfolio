@@ -29,21 +29,23 @@
     {
       n: 1,
       title: 'From hand tracking to robotic motion',
-      date: '',
+      date: 'June 29, 2025',
       project: 'MIMIC',
       blurb: 'A build log for the MIMIC robotic hand — the computer-vision hand-tracking pipeline driving the servo-actuated hand.',
       video: 'assets/img/mimic-log1.mp4',
       videoType: 'video/mp4',
+      poster: 'assets/img/Log1Thumbnail.jpg',
       duration: ''
     },
     {
       n: 2,
       title: 'Teaching a robotic hand to grasp',
-      date: '',
+      date: 'July 13, 2025',
       project: 'MIMIC',
       blurb: 'Footage of the MIMIC robotic hand grasping / following along with hand movement.',
       video: 'assets/img/hand-grasping.mp4',
       videoType: 'video/mp4',
+      poster: 'assets/img/Log2thumbnail.jpg',
       duration: ''
     },
     {
@@ -83,9 +85,12 @@
     card.setAttribute('data-project', log.project || 'General');
 
     var media =
-      '<div class="log-media' + (hasVideo(log) ? ' is-playable' : ' is-empty') + '"' +
+      '<div class="log-media' + (hasVideo(log) ? ' is-playable' : ' is-empty') +
+        (log.poster ? ' has-poster' : '') + '"' +
         (hasVideo(log) ? ' role="button" tabindex="0" aria-label="Play log ' + log.n + '"' : '') + '>' +
-        '<div class="log-media-bg"></div>' +
+        (log.poster
+          ? '<img class="log-poster" src="' + esc(log.poster) + '" alt="" loading="lazy" decoding="async" />'
+          : '<div class="log-media-bg"></div>') +
         (hasVideo(log)
           ? '<span class="log-play">▶</span>'
           : '<span class="log-soon">Footage coming soon</span>') +
