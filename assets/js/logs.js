@@ -42,8 +42,8 @@
       date: '',
       project: 'MIMIC',
       blurb: 'Footage of the MIMIC robotic hand grasping / following along with hand movement.',
-      _video: 'assets/img/Hand_Grasping_Movie.MOV',
-      _videoType: 'video/quicktime',
+      video: 'assets/img/hand-grasping.mp4',
+      videoType: 'video/mp4',
       duration: ''
     },
     {
