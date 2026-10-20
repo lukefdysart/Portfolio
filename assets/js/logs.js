@@ -32,8 +32,8 @@
       date: '',
       project: 'MIMIC',
       blurb: 'A build log for the MIMIC robotic hand — the computer-vision hand-tracking pipeline driving the servo-actuated hand.',
-      _video: 'assets/img/Mimic_log1.MP4',
-      _videoType: 'video/mp4',
+      video: 'assets/img/mimic-log1.mp4',
+      videoType: 'video/mp4',
       duration: ''
     },
     {
