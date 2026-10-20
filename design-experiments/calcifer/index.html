@@ -4,22 +4,26 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta name="robots" content="noindex, nofollow" />
-<title>Calcifer · Logo Lab (local only — not published)</title>
+<title>Calcifer · Logo Lab v2 (local only — not published)</title>
 <style>
   :root {
-    /* ---- Restrained palette (edit here to re-tint the whole board) ---- */
-    --ink:        #161a1d;
-    --paper:      #f7f4ef;
-    --panel:      #ffffff;
-    --deep-red:   #b4232a;
-    --coral:      #ff6a5b;
-    --steel:      #6b7a86;
-    --hairline:   #e2ddd4;
-    --muted:      #7c7569;
+    /* ---- Warm, crafted palette (edit here to re-tint the board) ---- */
+    --parchment:   #f3e7d2;
+    --parchment-2: #e9d8bc;
+    --cream:       #f7f0e3;   /* approximates the portfolio's cream background */
+    --panel:       #fbf4e6;
+    --ink:         #3a2c24;
+    --ink-soft:    #6a5444;
+    --terracotta:  #c75d44;
+    --crimson:     #a23a39;
+    --brass:       #c69a4c;
+    --brass-deep:  #9a7332;
+    --sage:        #8aa07f;
+    --hairline:    #ddcbab;
 
-    --wordmark-spacing: 0.42em;
-    --radius: 14px;
+    --radius: 16px;
     --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+    --font-head: "Space Grotesk", "Segoe UI", sans-serif;
   }
 
   * { box-sizing: border-box; }
@@ -29,165 +33,183 @@
     font-family: var(--font);
     color: var(--ink);
     background:
-      radial-gradient(1200px 600px at 80% -10%, #fff 0%, transparent 60%),
-      var(--paper);
+      radial-gradient(1100px 520px at 78% -8%, #fffaf0 0%, transparent 60%),
+      var(--parchment);
     -webkit-font-smoothing: antialiased;
-    padding: 48px 24px 96px;
+    padding: 48px 24px 100px;
   }
-
-  .page { max-width: 1120px; margin: 0 auto; }
+  .page { max-width: 1180px; margin: 0 auto; }
 
   /* ---- Header ---- */
   .lab-flag {
     display: inline-flex; align-items: center; gap: 8px;
     font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--deep-red); font-weight: 700;
-    border: 1px solid var(--deep-red); border-radius: 999px;
-    padding: 5px 12px; background: #fff;
+    color: var(--crimson); font-weight: 700;
+    border: 1px solid var(--crimson); border-radius: 999px;
+    padding: 5px 12px; background: #fff7ea;
   }
-  .lab-flag::before {
-    content: ""; width: 7px; height: 7px; border-radius: 50%;
-    background: var(--deep-red);
-  }
+  .lab-flag::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: var(--crimson); }
 
-  header h1 {
-    font-size: clamp(28px, 4vw, 40px);
-    margin: 18px 0 6px; letter-spacing: 0.02em;
-  }
-  header p.sub { margin: 0; color: var(--muted); max-width: 60ch; line-height: 1.5; }
+  header h1 { font-family: var(--font-head); font-size: clamp(28px, 4vw, 42px); margin: 18px 0 6px; letter-spacing: 0.01em; }
+  header p.sub { margin: 0; color: var(--ink-soft); max-width: 72ch; line-height: 1.55; }
 
-  .divider { height: 1px; background: var(--hairline); margin: 36px 0; border: 0; }
-
-  /* ---- Concept grid ---- */
-  .concepts {
-    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  .controls { margin-top: 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap; }
+  .btn {
+    font: inherit; font-size: 13px; font-weight: 600;
+    border: 1px solid var(--brass-deep); background: var(--brass);
+    color: #30240f; padding: 7px 14px; border-radius: 999px; cursor: pointer;
   }
-  @media (max-width: 900px) { .concepts { grid-template-columns: 1fr; } }
+  .btn.secondary { background: #fff7ea; color: var(--ink); border-color: var(--hairline); }
+  .hint { font-size: 12px; color: var(--ink-soft); }
+
+  .divider { height: 1px; background: var(--hairline); margin: 32px 0; border: 0; }
+
+  /* ---- Concept panels (stacked, large & inspectable) ---- */
+  .concepts { display: flex; flex-direction: column; gap: 30px; }
 
   .card {
     background: var(--panel);
     border: 1px solid var(--hairline);
     border-radius: var(--radius);
     overflow: hidden;
-    display: flex; flex-direction: column;
-    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 10px 30px rgba(0,0,0,0.03);
+    box-shadow: 0 1px 2px rgba(58,44,36,0.05), 0 18px 40px rgba(58,44,36,0.04);
+    display: grid; grid-template-columns: 1.15fr 1fr;
   }
+  @media (max-width: 820px) { .card { grid-template-columns: 1fr; } }
 
-  .card-head {
-    padding: 16px 18px 12px;
-    border-bottom: 1px solid var(--hairline);
+  /* left: the big artwork on a warm wash */
+  .stage {
+    position: relative;
+    padding: 28px;
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 18px;
+    background:
+      radial-gradient(420px 300px at 50% 36%, #fff8ec 0%, transparent 70%),
+      var(--parchment-2);
+    border-right: 1px solid var(--hairline);
   }
-  .card-index {
-    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--steel); font-weight: 700;
-  }
-  .card-title { font-size: 18px; margin: 4px 0 2px; }
-  .card-tagline { font-size: 13px; color: var(--muted); margin: 0; }
+  @media (max-width: 820px) { .stage { border-right: 0; border-bottom: 1px solid var(--hairline); } }
+  .mark-xl { width: 320px; height: 320px; max-width: 100%; }
+  .mark-xl svg { width: 100%; height: 100%; display: block; overflow: visible; }
+  .wordmark { font-family: var(--font-head); font-weight: 700; letter-spacing: 0.42em; text-transform: uppercase; }
+  .stage .wordmark { font-size: 22px; color: var(--ink); padding-left: 0.42em; }
 
-  /* ---- Hero logo area ---- */
-  .hero {
-    padding: 30px 18px 10px;
-    display: flex; flex-direction: column; align-items: center; gap: 14px;
-  }
-  .hero .mark { width: 148px; height: 148px; }
-  .hero .mark svg { width: 100%; height: 100%; display: block; }
+  /* right: info + scale previews */
+  .info { padding: 26px 26px 30px; display: flex; flex-direction: column; }
+  .eyebrow { font-family: var(--font-head); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--brass-deep); font-weight: 700; }
+  .card-title { font-family: var(--font-head); font-size: 24px; margin: 6px 0 4px; }
+  .card-tagline { font-size: 14px; color: var(--ink-soft); margin: 0 0 14px; }
+  .reasoning { font-size: 13.5px; line-height: 1.6; color: #4a3a30; }
 
-  .wordmark {
-    font-weight: 800;
-    letter-spacing: var(--wordmark-spacing);
-    text-transform: uppercase;
-  }
-  .wordmark .dot { color: var(--deep-red); }
-  .hero .wordmark { font-size: 20px; }
-
-  /* ---- Icon / scale row ---- */
-  .scale-row {
-    margin-top: auto;
-    padding: 16px 18px 20px;
-    border-top: 1px dashed var(--hairline);
-    background: #faf8f4;
-  }
-  .scale-label {
-    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
-    color: var(--steel); font-weight: 700; margin-bottom: 12px;
-  }
-  .icons {
-    display: flex; align-items: flex-end; gap: 18px;
-  }
-  .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
-  .icon-cell .cap { font-size: 10px; color: var(--muted); }
-
-  /* app-icon chip (rounded square, like a launcher/project icon) */
-  .chip {
+  /* scale previews — show at approx portfolio sizes, on the cream bg */
+  .scales { margin-top: 22px; }
+  .scales .scale-label { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-deep); font-weight: 700; margin-bottom: 12px; }
+  .scale-row { display: flex; align-items: flex-end; gap: 22px; flex-wrap: wrap; }
+  .scale-cell { display: flex; flex-direction: column; align-items: center; gap: 7px; }
+  .scale-cell .cap { font-size: 10px; color: var(--ink-soft); }
+  /* the portfolio presents logos in a square tile up to ~150-240px on cream */
+  .on-cream { background: var(--cream); border: 1px dashed var(--hairline); border-radius: 12px; display: grid; place-items: center; }
+  .on-cream svg { width: 86%; height: 86%; display: block; overflow: visible; }
+  .sz-150 { width: 150px; height: 150px; }
+  .sz-72  { width: 72px;  height: 72px; }
+  .sz-40  { width: 40px;  height: 40px; border-radius: 9px; }
+  /* transparent check to prove it works without a background tile */
+  .transp {
+    width: 72px; height: 72px; border-radius: 12px;
+    background-image:
+      linear-gradient(45deg, #d9c7a6 25%, transparent 25%),
+      linear-gradient(-45deg, #d9c7a6 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #d9c7a6 75%),
+      linear-gradient(-45deg, transparent 75%, #d9c7a6 75%);
+    background-size: 14px 14px; background-position: 0 0, 0 7px, 7px -7px, -7px 0;
     display: grid; place-items: center;
-    background: var(--ink);
-    border-radius: 9px;
   }
-  .chip svg { width: 76%; height: 76%; display: block; }
-  .chip.sz-40 { width: 40px; height: 40px; border-radius: 9px; }
-  .chip.sz-24 { width: 24px; height: 24px; border-radius: 6px; }
-
-  /* tiny inline wordmark lockup at small scale */
-  .lockup {
-    display: flex; align-items: center; gap: 8px;
-  }
-  .lockup .chip.sz-28 { width: 28px; height: 28px; border-radius: 7px; }
-  .lockup .wordmark { font-size: 12px; letter-spacing: 0.3em; }
-
-  /* ---- Reasoning ---- */
-  .reasoning {
-    padding: 14px 18px 20px;
-    font-size: 13px; line-height: 1.55; color: #3c4248;
-    border-top: 1px solid var(--hairline);
-  }
-  .reasoning strong { color: var(--ink); }
-
-  /* ---- Reference / scale note ---- */
-  .refnote {
-    margin-top: 40px; padding: 18px 20px;
-    border: 1px dashed var(--hairline); border-radius: var(--radius);
-    background: #fff; color: var(--muted); font-size: 13px; line-height: 1.6;
-  }
-  .refnote h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; }
-  .refnote code { background: #f1ede6; padding: 1px 5px; border-radius: 4px; }
+  .transp svg { width: 86%; height: 86%; overflow: visible; }
 
   /* ---- Reference comparison ---- */
   .compare { margin-top: 56px; }
-  .compare h2 { font-size: 20px; margin: 0 0 4px; }
-  .compare p.lead { margin: 0 0 22px; color: var(--muted); max-width: 70ch; line-height: 1.55; font-size: 14px; }
-  .strip {
-    display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px;
-    background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
-    padding: 24px 20px;
-  }
+  .compare h2 { font-family: var(--font-head); font-size: 20px; margin: 0 0 4px; }
+  .compare p.lead { margin: 0 0 20px; color: var(--ink-soft); max-width: 74ch; line-height: 1.55; font-size: 14px; }
+  .strip { display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px; background: var(--panel); border: 1px solid var(--hairline); border-radius: var(--radius); padding: 24px 20px; }
   @media (max-width: 760px) { .strip { grid-template-columns: repeat(3, 1fr); } }
   .cmp-cell { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
-  .cmp-badge { width: 96px; height: 96px; }
+  .cmp-badge { width: 92px; height: 92px; }
   .cmp-badge svg { width: 100%; height: 100%; display: block; }
-  /* Calcifer concepts shown inside a neutral badge card for like-for-like compare */
-  .cmp-badge.calc { background: var(--ink); border-radius: 22px; display: grid; place-items: center; }
-  .cmp-badge.calc svg { width: 80%; height: 80%; }
-  .cmp-name { font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .cmp-badge.calc { background: var(--cream); border: 1px dashed var(--hairline); border-radius: 18px; display: grid; place-items: center; }
+  .cmp-badge.calc svg { width: 84%; height: 84%; overflow: visible; }
+  .cmp-name { font-size: 11px; color: var(--ink-soft); line-height: 1.3; }
   .cmp-kind { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
-  .cmp-kind.ref { color: var(--steel); }
-  .cmp-kind.calc { color: var(--deep-red); }
-  .cmp-sub { margin: 26px 0 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); font-weight: 700; }
+  .cmp-kind.ref { color: var(--brass-deep); }
+  .cmp-kind.calc { color: var(--crimson); }
+  .cmp-sub { margin: 24px 0 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--brass-deep); font-weight: 700; }
 
-  footer { margin-top: 56px; color: var(--muted); font-size: 12px; text-align: center; }
+  .refnote { margin-top: 36px; padding: 18px 20px; border: 1px dashed var(--hairline); border-radius: var(--radius); background: #fbf4e6; color: var(--ink-soft); font-size: 13px; line-height: 1.6; }
+  .refnote h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; font-family: var(--font-head); }
+  .refnote code { background: #efe3cc; padding: 1px 5px; border-radius: 4px; }
+
+  footer { margin-top: 48px; color: var(--ink-soft); font-size: 12px; text-align: center; }
+
+  /* =========================================================================
+   * HEARTBEAT ANIMATION
+   * Two-part "lub-dub" with a rest, looping. Organic easing (not a flat pulse):
+   * a quick strong contraction (lub), a smaller second contraction (dub), then
+   * a longer relaxed rest. The brass linkage rocks IN SYNC with the contraction.
+   * ========================================================================= */
+  @keyframes calcifer-beat {
+    0%    { transform: scale(1.000); }
+    8%    { transform: scale(0.945); }  /* lub — strong contraction */
+    16%   { transform: scale(1.010); }  /* recoil */
+    24%   { transform: scale(0.967); }  /* dub — second, smaller */
+    32%   { transform: scale(1.004); }
+    40%   { transform: scale(1.000); }  /* settle */
+    100%  { transform: scale(1.000); }  /* rest until next cycle */
+  }
+  @keyframes calcifer-linkage {
+    0%    { transform: rotate(0deg); }
+    8%    { transform: rotate(-9deg); }
+    16%   { transform: rotate(2deg); }
+    24%   { transform: rotate(-6deg); }
+    32%   { transform: rotate(1deg); }
+    40%   { transform: rotate(0deg); }
+    100%  { transform: rotate(0deg); }
+  }
+  @keyframes calcifer-gear {
+    0%   { transform: rotate(0deg); }
+    40%  { transform: rotate(14deg); }
+    100% { transform: rotate(14deg); }
+  }
+
+  .anim .heart-core   { animation: calcifer-beat 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .linkage-rock { animation: calcifer-linkage 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+  .anim .gear-spin    { animation: calcifer-gear 2.6s cubic-bezier(.4,0,.3,1) infinite; }
+
+  /* Respect reduced-motion: hold the resting pose, no looping. */
+  @media (prefers-reduced-motion: reduce) {
+    .anim .heart-core,
+    .anim .linkage-rock,
+    .anim .gear-spin { animation: none !important; transform: none !important; }
+  }
+  /* Manual toggle also disables it. */
+  .motion-off .heart-core,
+  .motion-off .linkage-rock,
+  .motion-off .gear-spin { animation: none !important; transform: none !important; }
 </style>
 </head>
-<body>
+<body class="anim">
 <div class="page">
   <header>
-    <span class="lab-flag">Experimental · local only · do not publish</span>
-    <h1>Calcifer — Logo Lab</h1>
+    <span class="lab-flag">Experimental · local only · not published</span>
+    <h1>Calcifer — Logo Lab <span style="color:var(--brass-deep);font-size:0.5em;vertical-align:middle;">v2</span></h1>
     <p class="sub">
-      Three logo directions for <strong>Calcifer</strong> — a servo-driven physical heart
-      that beats in sync with a live human pulse. Each mark is shown at hero scale and at
-      project-icon scale, with the <span class="wordmark" style="font-size:13px">CALCIFER</span>
-      wordmark. All artwork is editable inline SVG. A comparison strip at the bottom places
-      the concepts beside the real portfolio logos (MIMIC · MARY · Stories Illuminated).
+      Three new, deliberately distinct directions for <strong>Calcifer</strong> — a working physical
+      model of a human heart, driven by servos linked to the maker's real heart rate. The brief:
+      a Studio-Ghibli "eccentric inventor's workshop" warmth, with <strong>anatomy as the foundation</strong>,
+      believable brass servo mechanics, an integrated <strong>DYS</strong> maker's mark, and a gentle
+      looping heartbeat. All artwork is editable, layered inline SVG on warm backgrounds.
     </p>
+    <div class="controls">
+      <button class="btn" id="toggle-motion">⏸ Pause heartbeat</button>
+      <span class="hint">Animation loops indefinitely and auto-disables under <code>prefers-reduced-motion</code>.</span>
+    </div>
   </header>
 
   <hr class="divider" />
@@ -195,30 +217,27 @@
   <section class="concepts" id="concepts"><!-- injected by JS --></section>
 
   <section class="compare">
-    <h2>Comparison with the existing portfolio logos</h2>
+    <h2>Scale &amp; DYS reference — the existing portfolio logos</h2>
     <p class="lead">
-      The three live portfolio marks (copied read-only from <code>index.html</code>) share a
-      <strong>128&nbsp;×&nbsp;128 badge format</strong>: a 104&nbsp;×&nbsp;104 rounded-square card
-      (rx&nbsp;30) on a saturated gradient, light foreground artwork, and a small <em>DYS</em>
-      monogram. The Calcifer concepts below are placed in a neutral dark badge of the same scale
-      so you can judge dimensions, visual weight, and styling side-by-side. Calcifer currently
-      runs lighter/line-based vs. the filled gradient badges — useful to decide whether to adopt
-      the badge treatment.
+      Copied read-only from the live <code>index.html</code> (not redesigned). They establish the
+      portfolio's scale and, importantly, the <strong>DYS maker's-mark convention</strong> — a small,
+      quiet monogram set into the corner. The Calcifer concepts carry DYS forward as an engraved
+      brass plate / wax seal / banner. Note the existing logos use dark gradient badges; Calcifer
+      intentionally moves to warm, light, badge-free marks per the new brief.
     </p>
-
     <div class="cmp-sub">Existing portfolio logos (reference · unchanged)</div>
     <div class="strip" id="ref-strip"><!-- injected --></div>
-
-    <div class="cmp-sub">Calcifer concepts (this exploration)</div>
+    <div class="cmp-sub">Calcifer v2 concepts (on cream, as they'd sit in the portfolio)</div>
     <div class="strip" id="calc-strip"><!-- injected --></div>
   </section>
 
   <div class="refnote">
-    <h3>Scale notes</h3>
-    Reference badges render at their native 128-viewBox; Calcifer concepts use a 120-viewBox and
-    are boxed in a matching dark badge for the comparison. Re-tint the whole board from the CSS
-    variables in <code>:root</code>; edit geometry in <code>logos.js</code>. Reference artwork
-    lives in <code>reference-logos.js</code> (read-only copies — the live logos are not modified).
+    <h3>Notes</h3>
+    Geometry lives in <code>logos.js</code> (layered, editable SVG — one function per concept);
+    re-tint everything from the <code>:root</code> palette here. Reference artwork is in
+    <code>reference-logos.js</code> (read-only copies). The heartbeat is defined once in the CSS
+    <code>@keyframes</code> above and shared by all three marks via the <code>.heart-core</code> /
+    <code>.linkage-rock</code> / <code>.gear-spin</code> hooks.
   </div>
 
   <footer>design-experiments/calcifer · excluded from GitHub Pages output · not linked from the site</footer>
@@ -229,74 +248,67 @@
 <script>
   const WORDMARK = `<span class="wordmark">CALCIFER</span>`;
 
-  function card(concept, i) {
-    const n = String(i + 1).padStart(2, "0");
-    const heroSvg = concept.render(concept.key + "-hero");
-    const chip40  = concept.render(concept.key + "-40");
-    const chip24  = concept.render(concept.key + "-24");
-    const chip28  = concept.render(concept.key + "-28");
-
+  function panel(c) {
+    const xl   = c.render(c.key + "-xl");
+    const s150 = c.render(c.key + "-150");
+    const s72  = c.render(c.key + "-72");
+    const s40  = c.render(c.key + "-40");
+    const tr   = c.render(c.key + "-tr");
     return `
     <article class="card">
-      <div class="card-head">
-        <div class="card-index">Concept ${n}</div>
-        <h2 class="card-title">${concept.title}</h2>
-        <p class="card-tagline">${concept.tagline}</p>
-      </div>
-
-      <div class="hero">
-        <div class="mark">${heroSvg}</div>
+      <div class="stage">
+        <div class="mark-xl">${xl}</div>
         ${WORDMARK}
       </div>
+      <div class="info">
+        <div class="eyebrow">Concept ${c.letter}</div>
+        <h2 class="card-title">${c.title}</h2>
+        <p class="card-tagline">${c.tagline}</p>
+        <p class="reasoning">${c.reasoning}</p>
 
-      <div class="scale-row">
-        <div class="scale-label">At small / icon scale</div>
-        <div class="icons">
-          <div class="icon-cell">
-            <div class="chip sz-40">${chip40}</div>
-            <span class="cap">40&nbsp;px</span>
-          </div>
-          <div class="icon-cell">
-            <div class="chip sz-24">${chip24}</div>
-            <span class="cap">24&nbsp;px</span>
-          </div>
-          <div class="icon-cell">
-            <div class="lockup">
-              <div class="chip sz-28">${chip28}</div>
-              ${WORDMARK}
-            </div>
-            <span class="cap">lockup</span>
+        <div class="scales">
+          <div class="scale-label">At portfolio scale (on cream) · and transparent</div>
+          <div class="scale-row">
+            <div class="scale-cell"><div class="on-cream sz-150">${s150}</div><span class="cap">~150&nbsp;px tile</span></div>
+            <div class="scale-cell"><div class="on-cream sz-72">${s72}</div><span class="cap">72&nbsp;px</span></div>
+            <div class="scale-cell"><div class="on-cream sz-40">${s40}</div><span class="cap">40&nbsp;px icon</span></div>
+            <div class="scale-cell"><div class="transp">${tr}</div><span class="cap">transparent</span></div>
           </div>
         </div>
-      </div>
-
-      <div class="reasoning">
-        <strong>${concept.title}:</strong> ${concept.reasoning}
       </div>
     </article>`;
   }
 
   document.getElementById("concepts").innerHTML =
-    CALCIFER_CONCEPTS.map(card).join("");
+    CALCIFER_CONCEPTS.map(panel).join("");
 
-  // ---- Comparison strips ----
+  // Reference strip
   document.getElementById("ref-strip").innerHTML = REFERENCE_LOGOS.map(function (r) {
-    return `
-      <div class="cmp-cell">
-        <div class="cmp-badge">${r.svg}</div>
-        <div class="cmp-kind ref">reference</div>
-        <div class="cmp-name">${r.title}</div>
-      </div>`;
+    return `<div class="cmp-cell">
+      <div class="cmp-badge">${r.svg}</div>
+      <div class="cmp-kind ref">reference</div>
+      <div class="cmp-name">${r.title}</div></div>`;
   }).join("");
 
   document.getElementById("calc-strip").innerHTML = CALCIFER_CONCEPTS.map(function (c) {
-    return `
-      <div class="cmp-cell">
-        <div class="cmp-badge calc">${c.render(c.key + "-cmp")}</div>
-        <div class="cmp-kind calc">Calcifer</div>
-        <div class="cmp-name">${c.title}</div>
-      </div>`;
+    return `<div class="cmp-cell">
+      <div class="cmp-badge calc">${c.render(c.key + "-cmp")}</div>
+      <div class="cmp-kind calc">Concept ${c.letter}</div>
+      <div class="cmp-name">${c.title}</div></div>`;
   }).join("");
+
+  // Motion toggle
+  var btn = document.getElementById("toggle-motion");
+  btn.addEventListener("click", function () {
+    document.body.classList.toggle("motion-off");
+    var off = document.body.classList.contains("motion-off");
+    btn.textContent = off ? "▶ Play heartbeat" : "⏸ Pause heartbeat";
+  });
+  // Reflect reduced-motion preference in the button label on load
+  if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    btn.textContent = "▶ Play heartbeat (reduced-motion on)";
+    btn.disabled = false;
+  }
 </script>
 </body>
 </html>
