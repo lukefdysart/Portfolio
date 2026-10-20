@@ -1,0 +1,18 @@
+# GitHub Pages configuration
+# ---------------------------------------------------------------------------
+# This is a plain static HTML/CSS/JS site (no Liquid templates, no front-matter).
+# Jekyll copies such files to the published output verbatim, so enabling Jekyll
+# does NOT change how any existing page renders.
+#
+# The ONLY purpose of this file is the `exclude:` list below — it keeps the
+# private `design-experiments/` directory in the repo (versioned on `main`)
+# while dropping it from the published GitHub Pages output, so it is never
+# reachable at https://lukedysart.com/.
+#
+# NOTE: for `exclude` to take effect, Jekyll must run, so the previous root
+# `.nojekyll` file was removed. Because the site has no Jekyll-incompatible
+# content, the live site output is unchanged. CNAME is intentionally NOT
+# excluded so the custom domain keeps working.
+
+exclude:
+  - design-experiments/

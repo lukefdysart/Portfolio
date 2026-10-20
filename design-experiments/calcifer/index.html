@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Calcifer · Logo Lab (local only — not published)</title>
+<style>
+  :root {
+    /* ---- Restrained palette (edit here to re-tint the whole board) ---- */
+    --ink:        #161a1d;
+    --paper:      #f7f4ef;
+    --panel:      #ffffff;
+    --deep-red:   #b4232a;
+    --coral:      #ff6a5b;
+    --steel:      #6b7a86;
+    --hairline:   #e2ddd4;
+    --muted:      #7c7569;
+
+    --wordmark-spacing: 0.42em;
+    --radius: 14px;
+    --font: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    font-family: var(--font);
+    color: var(--ink);
+    background:
+      radial-gradient(1200px 600px at 80% -10%, #fff 0%, transparent 60%),
+      var(--paper);
+    -webkit-font-smoothing: antialiased;
+    padding: 48px 24px 96px;
+  }
+
+  .page { max-width: 1120px; margin: 0 auto; }
+
+  /* ---- Header ---- */
+  .lab-flag {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--deep-red); font-weight: 700;
+    border: 1px solid var(--deep-red); border-radius: 999px;
+    padding: 5px 12px; background: #fff;
+  }
+  .lab-flag::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--deep-red);
+  }
+
+  header h1 {
+    font-size: clamp(28px, 4vw, 40px);
+    margin: 18px 0 6px; letter-spacing: 0.02em;
+  }
+  header p.sub { margin: 0; color: var(--muted); max-width: 60ch; line-height: 1.5; }
+
+  .divider { height: 1px; background: var(--hairline); margin: 36px 0; border: 0; }
+
+  /* ---- Concept grid ---- */
+  .concepts {
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+  }
+  @media (max-width: 900px) { .concepts { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--panel);
+    border: 1px solid var(--hairline);
+    border-radius: var(--radius);
+    overflow: hidden;
+    display: flex; flex-direction: column;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04), 0 10px 30px rgba(0,0,0,0.03);
+  }
+
+  .card-head {
+    padding: 16px 18px 12px;
+    border-bottom: 1px solid var(--hairline);
+  }
+  .card-index {
+    font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--steel); font-weight: 700;
+  }
+  .card-title { font-size: 18px; margin: 4px 0 2px; }
+  .card-tagline { font-size: 13px; color: var(--muted); margin: 0; }
+
+  /* ---- Hero logo area ---- */
+  .hero {
+    padding: 30px 18px 10px;
+    display: flex; flex-direction: column; align-items: center; gap: 14px;
+  }
+  .hero .mark { width: 148px; height: 148px; }
+  .hero .mark svg { width: 100%; height: 100%; display: block; }
+
+  .wordmark {
+    font-weight: 800;
+    letter-spacing: var(--wordmark-spacing);
+    text-transform: uppercase;
+  }
+  .wordmark .dot { color: var(--deep-red); }
+  .hero .wordmark { font-size: 20px; }
+
+  /* ---- Icon / scale row ---- */
+  .scale-row {
+    margin-top: auto;
+    padding: 16px 18px 20px;
+    border-top: 1px dashed var(--hairline);
+    background: #faf8f4;
+  }
+  .scale-label {
+    font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--steel); font-weight: 700; margin-bottom: 12px;
+  }
+  .icons {
+    display: flex; align-items: flex-end; gap: 18px;
+  }
+  .icon-cell { display: flex; flex-direction: column; align-items: center; gap: 6px; }
+  .icon-cell .cap { font-size: 10px; color: var(--muted); }
+
+  /* app-icon chip (rounded square, like a launcher/project icon) */
+  .chip {
+    display: grid; place-items: center;
+    background: var(--ink);
+    border-radius: 9px;
+  }
+  .chip svg { width: 76%; height: 76%; display: block; }
+  .chip.sz-40 { width: 40px; height: 40px; border-radius: 9px; }
+  .chip.sz-24 { width: 24px; height: 24px; border-radius: 6px; }
+
+  /* tiny inline wordmark lockup at small scale */
+  .lockup {
+    display: flex; align-items: center; gap: 8px;
+  }
+  .lockup .chip.sz-28 { width: 28px; height: 28px; border-radius: 7px; }
+  .lockup .wordmark { font-size: 12px; letter-spacing: 0.3em; }
+
+  /* ---- Reasoning ---- */
+  .reasoning {
+    padding: 14px 18px 20px;
+    font-size: 13px; line-height: 1.55; color: #3c4248;
+    border-top: 1px solid var(--hairline);
+  }
+  .reasoning strong { color: var(--ink); }
+
+  /* ---- Reference / scale note ---- */
+  .refnote {
+    margin-top: 40px; padding: 18px 20px;
+    border: 1px dashed var(--hairline); border-radius: var(--radius);
+    background: #fff; color: var(--muted); font-size: 13px; line-height: 1.6;
+  }
+  .refnote h3 { margin: 0 0 8px; color: var(--ink); font-size: 14px; }
+  .refnote code { background: #f1ede6; padding: 1px 5px; border-radius: 4px; }
+
+  /* ---- Reference comparison ---- */
+  .compare { margin-top: 56px; }
+  .compare h2 { font-size: 20px; margin: 0 0 4px; }
+  .compare p.lead { margin: 0 0 22px; color: var(--muted); max-width: 70ch; line-height: 1.55; font-size: 14px; }
+  .strip {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 18px;
+    background: #fff; border: 1px solid var(--hairline); border-radius: var(--radius);
+    padding: 24px 20px;
+  }
+  @media (max-width: 760px) { .strip { grid-template-columns: repeat(3, 1fr); } }
+  .cmp-cell { display: flex; flex-direction: column; align-items: center; gap: 10px; text-align: center; }
+  .cmp-badge { width: 96px; height: 96px; }
+  .cmp-badge svg { width: 100%; height: 100%; display: block; }
+  /* Calcifer concepts shown inside a neutral badge card for like-for-like compare */
+  .cmp-badge.calc { background: var(--ink); border-radius: 22px; display: grid; place-items: center; }
+  .cmp-badge.calc svg { width: 80%; height: 80%; }
+  .cmp-name { font-size: 11px; color: var(--muted); line-height: 1.3; }
+  .cmp-kind { font-size: 9px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 700; }
+  .cmp-kind.ref { color: var(--steel); }
+  .cmp-kind.calc { color: var(--deep-red); }
+  .cmp-sub { margin: 26px 0 10px; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--steel); font-weight: 700; }
+
+  footer { margin-top: 56px; color: var(--muted); font-size: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="page">
+  <header>
+    <span class="lab-flag">Experimental · local only · do not publish</span>
+    <h1>Calcifer — Logo Lab</h1>
+    <p class="sub">
+      Three logo directions for <strong>Calcifer</strong> — a servo-driven physical heart
+      that beats in sync with a live human pulse. Each mark is shown at hero scale and at
+      project-icon scale, with the <span class="wordmark" style="font-size:13px">CALCIFER</span>
+      wordmark. All artwork is editable inline SVG. A comparison strip at the bottom places
+      the concepts beside the real portfolio logos (MIMIC · MARY · Stories Illuminated).
+    </p>
+  </header>
+
+  <hr class="divider" />
+
+  <section class="concepts" id="concepts"><!-- injected by JS --></section>
+
+  <section class="compare">
+    <h2>Comparison with the existing portfolio logos</h2>
+    <p class="lead">
+      The three live portfolio marks (copied read-only from <code>index.html</code>) share a
+      <strong>128&nbsp;×&nbsp;128 badge format</strong>: a 104&nbsp;×&nbsp;104 rounded-square card
+      (rx&nbsp;30) on a saturated gradient, light foreground artwork, and a small <em>DYS</em>
+      monogram. The Calcifer concepts below are placed in a neutral dark badge of the same scale
+      so you can judge dimensions, visual weight, and styling side-by-side. Calcifer currently
+      runs lighter/line-based vs. the filled gradient badges — useful to decide whether to adopt
+      the badge treatment.
+    </p>
+
+    <div class="cmp-sub">Existing portfolio logos (reference · unchanged)</div>
+    <div class="strip" id="ref-strip"><!-- injected --></div>
+
+    <div class="cmp-sub">Calcifer concepts (this exploration)</div>
+    <div class="strip" id="calc-strip"><!-- injected --></div>
+  </section>
+
+  <div class="refnote">
+    <h3>Scale notes</h3>
+    Reference badges render at their native 128-viewBox; Calcifer concepts use a 120-viewBox and
+    are boxed in a matching dark badge for the comparison. Re-tint the whole board from the CSS
+    variables in <code>:root</code>; edit geometry in <code>logos.js</code>. Reference artwork
+    lives in <code>reference-logos.js</code> (read-only copies — the live logos are not modified).
+  </div>
+
+  <footer>design-experiments/calcifer · excluded from GitHub Pages output · not linked from the site</footer>
+</div>
+
+<script src="logos.js"></script>
+<script src="reference-logos.js"></script>
+<script>
+  const WORDMARK = `<span class="wordmark">CALCIFER</span>`;
+
+  function card(concept, i) {
+    const n = String(i + 1).padStart(2, "0");
+    const heroSvg = concept.render(concept.key + "-hero");
+    const chip40  = concept.render(concept.key + "-40");
+    const chip24  = concept.render(concept.key + "-24");
+    const chip28  = concept.render(concept.key + "-28");
+
+    return `
+    <article class="card">
+      <div class="card-head">
+        <div class="card-index">Concept ${n}</div>
+        <h2 class="card-title">${concept.title}</h2>
+        <p class="card-tagline">${concept.tagline}</p>
+      </div>
+
+      <div class="hero">
+        <div class="mark">${heroSvg}</div>
+        ${WORDMARK}
+      </div>
+
+      <div class="scale-row">
+        <div class="scale-label">At small / icon scale</div>
+        <div class="icons">
+          <div class="icon-cell">
+            <div class="chip sz-40">${chip40}</div>
+            <span class="cap">40&nbsp;px</span>
+          </div>
+          <div class="icon-cell">
+            <div class="chip sz-24">${chip24}</div>
+            <span class="cap">24&nbsp;px</span>
+          </div>
+          <div class="icon-cell">
+            <div class="lockup">
+              <div class="chip sz-28">${chip28}</div>
+              ${WORDMARK}
+            </div>
+            <span class="cap">lockup</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="reasoning">
+        <strong>${concept.title}:</strong> ${concept.reasoning}
+      </div>
+    </article>`;
+  }
+
+  document.getElementById("concepts").innerHTML =
+    CALCIFER_CONCEPTS.map(card).join("");
+
+  // ---- Comparison strips ----
+  document.getElementById("ref-strip").innerHTML = REFERENCE_LOGOS.map(function (r) {
+    return `
+      <div class="cmp-cell">
+        <div class="cmp-badge">${r.svg}</div>
+        <div class="cmp-kind ref">reference</div>
+        <div class="cmp-name">${r.title}</div>
+      </div>`;
+  }).join("");
+
+  document.getElementById("calc-strip").innerHTML = CALCIFER_CONCEPTS.map(function (c) {
+    return `
+      <div class="cmp-cell">
+        <div class="cmp-badge calc">${c.render(c.key + "-cmp")}</div>
+        <div class="cmp-kind calc">Calcifer</div>
+        <div class="cmp-name">${c.title}</div>
+      </div>`;
+  }).join("");
+</script>
+</body>
+</html>
