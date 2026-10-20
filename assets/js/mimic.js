@@ -35,7 +35,14 @@
   launchBtn.addEventListener('click', function () {
     demo.hidden = !demo.hidden;
     launchBtn.textContent = demo.hidden ? '▶ See it in action' : '▼ Hide demo';
-    if (!demo.hidden) sizeCanvases();
+    if (!demo.hidden) {
+      sizeCanvases();
+      // Prewarm the hand-tracking model as soon as the demo is opened, so the
+      // ~9MB of MediaPipe assets download while the user reads — WITHOUT
+      // touching the camera (no permission prompt). By the time they press
+      // Start, the model is usually already initialized.
+      prewarm();
+    }
   });
 
   // ============================================================
@@ -315,16 +322,30 @@
     }
   }
 
-  function initHands() {
-    if (typeof Hands === 'undefined') {
-      statusEl.textContent = 'Tracking library failed to load (needs internet)';
-      return false;
-    }
-    hands = new Hands({
-      locateFile: function (file) {
-        return 'https://cdn.jsdelivr.net/npm/@mediapipe/hands/' + file;
-      }
-    });
+  // ---- status helpers ----
+  function setStatus(text, color) {
+    if (!statusEl) return;
+    statusEl.textContent = text;
+    statusEl.style.color = color || 'var(--text-dim)';
+  }
+  // lightweight timestamped instrumentation (visible in the console)
+  var T0 = 0;
+  function mark(label) {
+    try { console.log('[MIMIC] ' + label + ': +' + Math.round(performance.now() - T0) + 'ms'); } catch (e) {}
+  }
+
+  // Version-pinned asset URL — a stable, cacheable path so the browser can
+  // reuse the ~9MB model across visits instead of re-resolving 'latest'.
+  var MP_BASE = 'https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/';
+
+  var handsReady = null;   // Promise that resolves once the model is initialized
+  var modelInitDone = false;
+
+  // Create the Hands instance (once) and configure it.
+  function createHands() {
+    if (hands) return hands;
+    if (typeof Hands === 'undefined') return null;
+    hands = new Hands({ locateFile: function (file) { return MP_BASE + file; } });
     hands.setOptions({
       maxNumHands: 1,
       modelComplexity: 0,
@@ -332,47 +353,100 @@
       minTrackingConfidence: 0.5
     });
     hands.onResults(onResults);
-    return true;
+    return hands;
+  }
+
+  // Download + initialize the model WITHOUT the camera. Safe to call repeatedly;
+  // reuses the same promise so we never init twice.
+  function prewarm() {
+    if (handsReady) return handsReady;
+    if (!createHands()) {
+      // MediaPipe script not parsed yet — try again shortly (don't block).
+      if (typeof Hands === 'undefined') { setTimeout(prewarm, 400); }
+      return null;
+    }
+    handsReady = (hands.initialize ? hands.initialize() : Promise.resolve())
+      .then(function () { modelInitDone = true; mark('prewarm model ready'); })
+      .catch(function (e) { handsReady = null; throw e; });  // allow retry
+    return handsReady;
   }
 
   function start() {
     if (running) return;
     sizeCanvases();
-    if (!hands && !initHands()) return;
+    T0 = performance.now();
 
-    statusEl.textContent = 'Starting camera…';
+    if (typeof Hands === 'undefined') {
+      setStatus('Tracking library failed to load — check your connection', '#ff6b6b');
+      showRetry();
+      return;
+    }
+    createHands();
 
+    // Kick off camera and model init CONCURRENTLY (they're independent).
+    setStatus('Requesting camera access…');
+
+    // 1) model init (prewarm may already have it downloading/done)
+    var modelP = (modelInitDone ? Promise.resolve() : prewarm()) || Promise.resolve();
+    modelP.then(function () { mark('model ready'); });
+
+    // 2) camera
+    var camP;
     if (typeof Camera !== 'undefined') {
       camera = new Camera(video, {
         onFrame: async function () { await hands.send({ image: video }); },
         width: 640, height: 480
       });
-      camera.start().then(function () {
-        running = true; lastTime = performance.now(); animate();
-      }).catch(cameraError);
+      camP = camera.start();
     } else {
-      // fallback: raw getUserMedia + manual pump
-      navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
-        .then(function (stream) {
-          video.srcObject = stream;
-          return video.play();
-        })
+      camP = navigator.mediaDevices.getUserMedia({ video: { facingMode: 'user' } })
+        .then(function (stream) { video.srcObject = stream; return video.play(); })
         .then(function () {
-          running = true; lastTime = performance.now();
           (function pump() {
             if (!running) return;
             hands.send({ image: video }).then(function () { requestAnimationFrame(pump); });
           })();
-          animate();
-        })
-        .catch(cameraError);
+        });
     }
+
+    camP.then(function () { mark('camera ready'); }).catch(cameraError);
+
+    // Reflect the real phase in the UI: once the camera is up, the remaining
+    // wait (if any) is the model finishing loading.
+    camP.then(function () {
+      if (!modelInitDone) setStatus('Loading hand-tracking model…');
+      return modelP;
+    }).then(function () {
+      setStatus('Initializing hand tracking…');
+      running = true; lastTime = performance.now(); animate();
+      mark('tracking started');
+      // first onResults flips the status to 'Hand scan active' / 'Show your hand'
+    }).catch(function (err) {
+      if (err && (err.name === 'NotAllowedError' || err.name === 'NotFoundError')) return; // handled by cameraError
+      console.error(err);
+      setStatus('Couldn’t start hand tracking', '#ff6b6b');
+      showRetry();
+    });
   }
 
   function cameraError(err) {
     console.error(err);
-    statusEl.textContent = 'Camera access denied or unavailable';
-    statusEl.style.color = '#ff6b6b';
+    var msg = (err && err.name === 'NotAllowedError')
+      ? 'Camera access was blocked — allow it and retry'
+      : 'Camera unavailable';
+    setStatus(msg, '#ff6b6b');
+    showRetry();
+  }
+
+  // Inline retry button inside the controls (created once, on demand)
+  function showRetry() {
+    if (document.getElementById('mimic-retry')) return;
+    var b = document.createElement('button');
+    b.id = 'mimic-retry';
+    b.className = 'btn btn-small btn-ghost';
+    b.textContent = 'Retry';
+    b.addEventListener('click', function () { b.remove(); start(); });
+    if (startBtn && startBtn.parentNode) startBtn.parentNode.insertBefore(b, startBtn.nextSibling);
   }
 
   function stop() {
@@ -382,10 +456,10 @@
       video.srcObject.getTracks().forEach(function (t) { t.stop(); });
       video.srcObject = null;
     }
-    statusEl.textContent = 'Camera off';
-    statusEl.style.color = 'var(--text-dim)';
+    // NOTE: we deliberately keep the initialized `hands` model in memory so a
+    // restart reuses it (no re-download / re-init).
+    setStatus('Camera off');
     if (fpsEl) fpsEl.textContent = '';
-    // reset visuals gently
     bend = { thumb: 0, index: 0, middle: 0, ring: 0, pinky: 0 };
     drawScan(null);
     drawRoboHand();

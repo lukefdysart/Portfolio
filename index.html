@@ -646,8 +646,10 @@
   </footer>
 
   <!-- MediaPipe Hands (CDN) -->
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js" crossorigin="anonymous"></script>
+  <!-- MediaPipe Hands — version-pinned so the ~9MB model assets get a stable,
+       cacheable URL (unpinned 'latest' caused slow/uncached re-downloads). -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands@0.4.1675469240/hands.js" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.3.1675466862/camera_utils.js" crossorigin="anonymous"></script>
 
   <!-- Site scripts -->
   <script src="assets/js/main.js"></script>
